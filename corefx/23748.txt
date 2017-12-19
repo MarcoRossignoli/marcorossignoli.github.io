@@ -1,0 +1,34 @@
+Common/src/System/Drawing/ColorConverterCommon.cs:131 -> used by System.Drawing.Common
+System.ComponentModel.TypeConverter/src/System/ComponentModel/BaseNumberConverter.cs:48
+System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:35 --> fixed by @satano
+System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:42 --> fixed by @satano
+System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:47 --> fixed by @satano
+System.Configuration.ConfigurationManager/src/System/Configuration/ProtectedConfigurationSection.cs:58 --> fixed by @satano
+System.Configuration.ConfigurationManager/src/System/Configuration/ProtectedConfigurationSection.cs:88 --> fixed by @satano
+System.Data.SqlClient/src/System/Data/SqlClient/SNI/SNIProxy.cs:162 --> merged
+System.Data.SqlClient/src/System/Data/SqlClient/SNI/SNIProxy.cs:166 --> merged
+System.Data.SqlClient/src/System/Data/SqlClient/SqlUtil.cs:191 --> pull closed 25698 no action
+System.Drawing.Common/src/System/Drawing/Graphics.cs:216 -> wait for review
+System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:352 -> wait for analysis  @pjanotti
+System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:398 -> wait for analysis  @pjanotti
+System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:417 -> wait for analysis  @pjanotti
+System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:493 -> wait for analysis  @pjanotti
+System.Net.Http/src/System/Net/Http/Unix/CurlHandler.CurlResponseMessage.cs:61 -> A sentinel object 
+System.Net.Mail/src/System/Net/Mail/MailHeaderInfo.cs:79 --> #if DEBUG
+System.Net.WebSockets.Client/src/System/Net/WebSockets/WebSocketHandle.WinRT.cs:49 --> rethrow WebSocketException()
+System.Private.DataContractSerialization/src/System/Runtime/Serialization/DiagnosticUtility.cs:83 --> seems never bubble out to user, maybe only on race-condition not clear
+System.Private.DataContractSerialization/src/System/Runtime/Serialization/Json/XmlJsonReader.cs:357 --> merged
+System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3217 --> #if DEBUG 
+System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3219 --> #if DEBUG 
+System.Private.Xml/src/System/Xml/Core/XmlTextReaderImplAsync.cs:3609  --> create pull wip
+System.Private.Xml/src/System/Xml/Serialization/XmlSerializationWriter.cs:1925 --> comment out no action
+System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:80  create pull wip
+System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:246  create pull wip
+System.Private.Xml/src/System/Xml/Xsl/Xslt/XPathPatternBuilder.cs:331 --> ??? exception after Assert create "pull and ask"
+System.Runtime.WindowsRuntime/src/System/Runtime/InteropServices/WindowsRuntime/WindowsRuntimeBuffer.cs:94
+System.Runtime.WindowsRuntime/src/System/Threading/Tasks/TaskToAsyncInfoAdapter.cs:983
+System.Security.AccessControl/src/System/Security/AccessControl/SecurityDescriptor.cs:675
+System.Threading.Tasks.Dataflow/src/Base/DataflowBlock.cs:1356
+
+WIP
+findstr /n /s /c:"System.Private.Xml" *.cs
