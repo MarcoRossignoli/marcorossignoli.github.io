@@ -1,4 +1,4 @@
-Common/src/System/Drawing/ColorConverterCommon.cs:131 -> used by System.Drawing.Common
+Common/src/System/Drawing/ColorConverterCommon.cs:131 --> used by System.Drawing.Common
 System.ComponentModel.TypeConverter/src/System/ComponentModel/BaseNumberConverter.cs:48
 System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:35 --> fixed by @satano
 System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:42 --> fixed by @satano
