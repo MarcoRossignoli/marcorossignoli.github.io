@@ -20,12 +20,12 @@ System.Private.DataContractSerialization/src/System/Runtime/Serialization/Diagno
 System.Private.DataContractSerialization/src/System/Runtime/Serialization/Json/XmlJsonReader.cs:357 --> merged
 System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3217 --> #if DEBUG 
 System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3219 --> #if DEBUG 
-System.Private.Xml/src/System/Xml/Core/XmlTextReaderImplAsync.cs:3609  --> create pull wip
+System.Private.Xml/src/System/Xml/Core/XmlTextReaderImplAsync.cs:3609  --> wait merge
 System.Private.Xml/src/System/Xml/Serialization/XmlSerializationWriter.cs:1925 --> comment out no action
-System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:80  create pull wip
-System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:246  create pull wip
-System.Private.Xml/src/System/Xml/Xsl/Xslt/XPathPatternBuilder.cs:331 --> ??? exception after Assert create "pull and ask"
+System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:80  wait merge
+System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:246  wait merge
+System.Private.Xml/src/System/Xml/Xsl/Xslt/XPathPatternBuilder.cs:331 --> wait merge
 System.Runtime.WindowsRuntime/src/System/Runtime/InteropServices/WindowsRuntime/WindowsRuntimeBuffer.cs:94 rethrow NotImplementedException()
 System.Runtime.WindowsRuntime/src/System/Threading/Tasks/TaskToAsyncInfoAdapter.cs:983 --> seems ok, last chance "instead of failing with an inexplicable NullReferenceException"
-System.Security.AccessControl/src/System/Security/AccessControl/SecurityDescriptor.cs:675 WIP
+System.Security.AccessControl/src/System/Security/AccessControl/SecurityDescriptor.cs:675 --> merged
 System.Threading.Tasks.Dataflow/src/Base/DataflowBlock.cs:1356
