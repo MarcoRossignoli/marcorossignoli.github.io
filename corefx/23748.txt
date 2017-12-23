@@ -1,31 +1,31 @@
-Common/src/System/Drawing/ColorConverterCommon.cs:131 --> used by System.Drawing.Common
-System.ComponentModel.TypeConverter/src/System/ComponentModel/BaseNumberConverter.cs:48
-System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:35 --> fixed by @satano
-System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:42 --> fixed by @satano
-System.Configuration.ConfigurationManager/src/System/Configuration/GenericEnumConverter.cs:47 --> fixed by @satano
-System.Configuration.ConfigurationManager/src/System/Configuration/ProtectedConfigurationSection.cs:58 --> fixed by @satano
-System.Configuration.ConfigurationManager/src/System/Configuration/ProtectedConfigurationSection.cs:88 --> fixed by @satano
-System.Data.SqlClient/src/System/Data/SqlClient/SNI/SNIProxy.cs:162 --> merged
-System.Data.SqlClient/src/System/Data/SqlClient/SNI/SNIProxy.cs:166 --> merged
-System.Data.SqlClient/src/System/Data/SqlClient/SqlUtil.cs:191 --> pull closed 25698 no action
-System.Drawing.Common/src/System/Drawing/Graphics.cs:216 --> merged
-System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:352 --> wait for analysis  @pjanotti
-System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:398 --> wait for analysis  @pjanotti
-System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:417 --> wait for analysis  @pjanotti
-System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:493 --> wait for analysis  @pjanotti
-System.Net.Http/src/System/Net/Http/Unix/CurlHandler.CurlResponseMessage.cs:61 --> sentinel object 
-System.Net.Mail/src/System/Net/Mail/MailHeaderInfo.cs:79 --> #if DEBUG
-System.Net.WebSockets.Client/src/System/Net/WebSockets/WebSocketHandle.WinRT.cs:49 --> rethrow WebSocketException()
-System.Private.DataContractSerialization/src/System/Runtime/Serialization/DiagnosticUtility.cs:83 --> seems never bubble out to user, maybe only on race-condition not clear
-System.Private.DataContractSerialization/src/System/Runtime/Serialization/Json/XmlJsonReader.cs:357 --> merged
-System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3217 --> #if DEBUG 
-System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3219 --> #if DEBUG 
-System.Private.Xml/src/System/Xml/Core/XmlTextReaderImplAsync.cs:3609  --> wait merge
-System.Private.Xml/src/System/Xml/Serialization/XmlSerializationWriter.cs:1925 --> comment out no action
-System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:80  --> wait merge
-System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:246  --> wait merge
-System.Private.Xml/src/System/Xml/Xsl/Xslt/XPathPatternBuilder.cs:331 --> wait merge
-System.Runtime.WindowsRuntime/src/System/Runtime/InteropServices/WindowsRuntime/WindowsRuntimeBuffer.cs:94 rethrow NotImplementedException()
-System.Runtime.WindowsRuntime/src/System/Threading/Tasks/TaskToAsyncInfoAdapter.cs:983 --> seems ok, last chance "instead of failing with an inexplicable NullReferenceException"
-System.Security.AccessControl/src/System/Security/AccessControl/SecurityDescriptor.cs:675 --> merged
-System.Threading.Tasks.Dataflow/src/Base/DataflowBlock.cs:1356
+src/Common/src/System/Drawing/ColorConverterCommon.cs:131 --> used by System.Drawing.Common merged
+src/Microsoft.Diagnostics.Tracing.EventSource.Redist/shared/StubEnvironment.cs:69 --> Assert code #IF ES_BUILD_AGAINST_DOTNET_V35
+src/System.ComponentModel.TypeConverter/src/System/ComponentModel/BaseNumberConverter.cs:43
+src/System.Data.SqlClient/src/System/Data/Sql/SqlNorm.cs:104
+src/System.Data.SqlClient/src/System/Data/Sql/SqlNorm.cs:246
+src/System.Data.SqlClient/src/System/Data/Sql/SqlSer.cs:199
+src/System.Data.SqlClient/src/System/Data/SqlClient/SNI/SSRP.cs:37
+src/System.Data.SqlClient/src/System/Data/SqlClient/SqlUtil.cs:197  --> pull closed 25698 no action
+src/System.Drawing.Common/src/System/Drawing/Font.Serializable.cs:83 --> excluded from compilation
+src/System.Drawing.Common/src/System/Drawing/Icon.Unix.cs:556 --> internal not reference found
+src/System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:352 --> wait for analysis  @pjanotti
+src/System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:398 --> wait for analysis  @pjanotti
+src/System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:417 --> wait for analysis  @pjanotti
+src/System.IO.FileSystem.AccessControl/src/System/Security/AccessControl/DirectoryObjectSecurity.cs:493 --> wait for analysis  @pjanotti
+src/System.Management/src/System/Management/WMIGenerator.cs:566 --> comment out
+src/System.Net.Http/src/System/Net/Http/Unix/CurlHandler.CurlResponseMessage.cs:58  --> sentinel object
+src/System.Net.Mail/src/System/Net/Mail/MailHeaderInfo.cs:79 --> #if DEBUG
+src/System.Net.WebSockets.Client/src/System/Net/WebSockets/WebSocketHandle.WinRT.cs:49 --> rethrow WebSocketException()
+src/System.Private.DataContractSerialization/src/System/Runtime/Serialization/DiagnosticUtility.cs:78  --> seems never bubble out to user, maybe only on race-condition not clear
+src/System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3217 --> #if DEBUG 
+src/System.Private.Xml/src/System/Xml/BinaryXml/XmlBinaryReader.cs:3219 --> #if DEBUG
+src/System.Private.Xml/src/System/Xml/Core/XmlTextReaderImplAsync.cs:3596  --> wait merge
+src/System.Private.Xml/src/System/Xml/Serialization/XmlSerializationWriter.cs:1934 --> comment out
+src/System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:80 --> wait merge
+src/System.Private.Xml/src/System/Xml/Serialization/Xmlcustomformatter.cs:246 --> wait merge
+src/System.Private.Xml/src/System/Xml/Xsl/Xslt/XPathPatternBuilder.cs:331 --> wait merge
+src/System.Runtime.Caching/src/System/Runtime/Caching/Dbg.cs:867 --> #IF DEBUG 
+src/System.Runtime.WindowsRuntime/src/System/Runtime/InteropServices/WindowsRuntime/WindowsRuntimeBuffer.cs:93 rethrow NotImplementedException()
+src/System.Runtime.WindowsRuntime/src/System/Threading/Tasks/TaskToAsyncInfoAdapter.cs:982  "instead of failing with an inexplicable NullReferenceException"
+src/System.Threading.Channels/src/System/Threading/Channels/ChannelUtilities.cs:15 --> Sentinel object used to indicate being done writing.
+src/System.Threading.Tasks.Dataflow/src/Base/DataflowBlock.cs:1356
