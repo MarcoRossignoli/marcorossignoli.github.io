@@ -3,7 +3,7 @@ src/Microsoft.Diagnostics.Tracing.EventSource.Redist/shared/StubEnvironment.cs:6
 src/System.ComponentModel.TypeConverter/src/System/ComponentModel/BaseNumberConverter.cs:43
 src/System.Data.SqlClient/src/System/Data/Sql/SqlNorm.cs:104
 src/System.Data.SqlClient/src/System/Data/Sql/SqlNorm.cs:246
-src/System.Data.SqlClient/src/System/Data/Sql/SqlSer.cs:199
+src/System.Data.SqlClient/src/System/Data/Sql/SqlSer.cs:199 --> A dummy stream class, used to get the number of bytes written to the stream. 
 src/System.Data.SqlClient/src/System/Data/SqlClient/SNI/SSRP.cs:37
 src/System.Data.SqlClient/src/System/Data/SqlClient/SqlUtil.cs:197  --> pull closed 25698 no action
 src/System.Drawing.Common/src/System/Drawing/Font.Serializable.cs:83 --> excluded from compilation
