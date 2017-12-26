@@ -1,10 +1,8 @@
 # marcorossignoli.github.io
 
 * WIP<br>
-  * https://github.com/dotnet/corefx/issues/23748 Don't directly throw Exception <br/>
-  * https://github.com/dotnet/corefx/pull/25211 more precise error messages [here](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/issue_25211.txt)
-    waiting for Ubuntu debugging issue 
-
+  * https://github.com/dotnet/corefx/issues/23748 Don't directly throw Exception 
+  
 * @dotnet-bot commands https://github.com/Microsoft/ChakraCore/wiki/Jenkins-CI-Checks
 
 * Contributing guide: 
