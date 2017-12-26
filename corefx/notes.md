@@ -2,9 +2,6 @@
 
 * WIP<br>
   * https://github.com/dotnet/corefx/issues/23748 Don't directly throw Exception <br/>
-  
-    *    https://github.com/dotnet/corefx/pull/25696 System.IO.FileSystem.AccessControl
-    *    https://github.com/dotnet/corefx/pull/25791 System.Drawing    
   * https://github.com/dotnet/corefx/pull/25211 more precise error messages [here](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/issue_25211.txt)
     waiting for Ubuntu debugging issue 
 
