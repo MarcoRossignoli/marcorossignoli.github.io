@@ -41,6 +41,6 @@ Extra
 
 * Find string on source
 
-  cmd findstr /n /s /c:"!Directory.Exists("  *.cs
+  cmd -> findstr /n /s /c:"!Directory.Exists("  *.cs
   
-  bash git grep -n 'JsonDataContractCriticalHelper' | grep -v tests | cut -d: -f1,2 
+  bash -> git grep -n 'JsonDataContractCriticalHelper' | grep -v tests | cut -d: -f1,2 
