@@ -1,7 +1,6 @@
 # marcorossignoli.github.io
 
 * WIP<br>
-  * https://github.com/dotnet/corefx/issues/23748 Don't directly throw Exception 
   * https://github.com/dotnet/corefx/issues/25403 Perflib sync
   
 * @dotnet-bot commands https://github.com/Microsoft/ChakraCore/wiki/Jenkins-CI-Checks
