@@ -3,6 +3,8 @@
 * WIP<br>
   * https://github.com/dotnet/corefx/issues/25403 Perflib sync
   
+* dotnet core repos https://github.com/dotnet/core/blob/master/Documentation/core-repos.md
+
 * @dotnet-bot commands https://github.com/Microsoft/ChakraCore/wiki/Jenkins-CI-Checks
 
 * Contributing guide: 
