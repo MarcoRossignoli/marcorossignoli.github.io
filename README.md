@@ -1,4 +1,3 @@
 # marcorossignoli.github.io
-My notes repo
+My notes repo - follow me on twitter https://twitter.com/MarcoRossignoli
 
-follow me on twitter https://twitter.com/MarcoRossignoli
