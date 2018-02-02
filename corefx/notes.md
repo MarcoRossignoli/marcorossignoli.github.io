@@ -38,6 +38,8 @@ https://github.com/dotnet/corefx/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+la
 
   dotnet test --filter TraitName=TraitValue
 
+* test private CoreCLR change https://github.com/dotnet/coreclr/pull/16151
+
 Extra
 
 * Find string on source
