@@ -23,6 +23,7 @@ build.cmd -buildArch=x86 -framework=netfx -release
 ```
 msbuild System.Net.NameResolution.sln /t:RebuildAndTest /verbosity:minimal
 ```
+* rebuild/test unix https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#platformspecificattribute
 * trait dotnet test https://github.com/Microsoft/vstest-docs/blob/master/docs/filter.md
 ```
 dotnet test --filter TraitName=TraitValue
