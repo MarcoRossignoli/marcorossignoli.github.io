@@ -16,10 +16,21 @@ Git useful links
 * rename git branch locally and remotely https://gist.github.com/lttlrck/9628955
 
 * Update upstream/origin
-
+```
     git fetch upstream </br>
     git checkout master </br>
     git merge upstream/master </br>
     git push origin master </br>
-
+```
 * Squash remote commits https://gist.github.com/patik/b8a9dc5cd356f9f6f980#combining-the-commits
+* Setup credendial git https://git-scm.com/docs/git-credential-store
+```
+$ git config credential.helper store
+$ git push http://example.com/repo.git
+Username: <type your username>
+Password: <type your password>
+
+[several days later]
+$ git push http://example.com/repo.git
+[your credentials are used automatically]
+```
