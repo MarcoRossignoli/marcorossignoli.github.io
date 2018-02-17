@@ -3,9 +3,7 @@
 
 * @dotnet-bot commands https://github.com/Microsoft/ChakraCore/wiki/Jenkins-CI-Checks
 
-* Issue query: 
-
-https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs up for grabs
+* up-for-grabs issue query https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs
 
 * area owner https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/issue-guide.md#areas
 
