@@ -17,10 +17,10 @@ Git useful links
 
 * Update upstream/origin
 ```
-    git fetch upstream </br>
-    git checkout master </br>
-    git merge upstream/master </br>
-    git push origin master </br>
+    git fetch upstream
+    git checkout master
+    git merge upstream/master
+    git push origin master
 ```
 * Squash remote commits https://gist.github.com/patik/b8a9dc5cd356f9f6f980#combining-the-commits
 * Setup credendial git https://git-scm.com/docs/git-credential-store
