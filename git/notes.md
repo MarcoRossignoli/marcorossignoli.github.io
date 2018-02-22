@@ -43,8 +43,6 @@ git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -
 
 * git-deleting-old-local-branches windows
 ``` git
-git gc
-git clean -fdx
 git fetch -p
 powershell "git branch --list --format '%%(if:equals=[gone])%%(upstream:track)%%(then)%%(refname)%%(end)' |  ? { $_ -ne '' } | %% { $_ -replace '^refs/heads/', '' } | %% { git branch -D $_ }"
 ```
