@@ -34,3 +34,10 @@ Password: <type your password>
 $ git push http://example.com/repo.git
 [your credentials are used automatically]
 ```
+
+* git-deleting-old-local-branches
+``` git
+git fetch -p
+git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d
+```
+
