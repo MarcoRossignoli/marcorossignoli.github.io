@@ -5,6 +5,7 @@
 * configure keyboard "dpkg-reconfigure keyboard-configuration" </br>
 * debug vs code https://github.com/dotnet/corefx/blob/e548aec5876e1d8233809451fb5113b20d874be6/Documentation/debugging/unix-instructions.md#using-visual-studio-code <br/>
 * fix debugger attach issue https://github.com/OmniSharp/omnisharp-vscode/issues/1979#issuecomment-362110246 <br/>
+* rebuild/test unix https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#platformspecificattribute
 * Stephen Toub dev advice [PR](https://github.com/dotnet/corefx/pull/27411#issuecomment-368120730)
 
 what do you use to dev coreclr/corefx on unix?
