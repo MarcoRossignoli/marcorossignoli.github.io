@@ -26,6 +26,8 @@ dotnet test --filter TraitName=TraitValue
 
 * Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f6f470cb2c4cdaafdc3ad85e2520992a8db265/Documentation/building/windows-instructions.md#debugging-netfx-tests-in-visual-studio
 
+* single test msbuild https://github.com/dotnet/corefx/wiki/Build-and-run-tests#run-and-debug-single-test-in-command-line
+
 Extra
 
 * Find string on source
