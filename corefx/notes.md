@@ -18,6 +18,7 @@ build.cmd -buildArch=x86 -framework=netfx -release
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#tests  
 
 https://msdn.microsoft.com/en-us/library/ms164311.aspx
+
 ```
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
 ```
@@ -29,6 +30,7 @@ dotnet test --filter TraitName=TraitValue
 * test private CoreCLR change 
 
 https://github.com/dotnet/coreclr/pull/16151
+
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits
 
 * Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f6f470cb2c4cdaafdc3ad85e2520992a8db265/Documentation/building/windows-instructions.md#debugging-netfx-tests-in-visual-studio
