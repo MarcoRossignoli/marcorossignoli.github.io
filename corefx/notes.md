@@ -13,7 +13,8 @@
 build.cmd -buildArch=x86 -framework=netfx -release
 ```
 
-* rebuild/test lib 
+* rebuild/test lib
+
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#tests  
 https://msdn.microsoft.com/en-us/library/ms164311.aspx
 ```
