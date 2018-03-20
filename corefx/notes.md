@@ -25,7 +25,10 @@ msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.
 dotnet test --filter TraitName=TraitValue
 ```
 
-* test private CoreCLR change https://github.com/dotnet/coreclr/pull/16151
+* test private CoreCLR change 
+
+https://github.com/dotnet/coreclr/pull/16151
+https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits
 
 * Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f6f470cb2c4cdaafdc3ad85e2520992a8db265/Documentation/building/windows-instructions.md#debugging-netfx-tests-in-visual-studio
 
