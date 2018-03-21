@@ -40,7 +40,7 @@ https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits
 
-https://github.com/dotnet/coreclr/blob/master/Documentation/workflow/UsingYourBuild.md
+https://github.com/dotnet/coreclr/blob/master/Documentation/workflow/UsingYourBuild.md#update-coreclr-from-raw-binary-output
 
 * Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f6f470cb2c4cdaafdc3ad85e2520992a8db265/Documentation/building/windows-instructions.md#debugging-netfx-tests-in-visual-studio
 
