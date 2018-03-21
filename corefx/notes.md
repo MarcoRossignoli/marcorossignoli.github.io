@@ -17,7 +17,7 @@ build.cmd -buildArch=x86 -framework=netfx -release
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#tests  
 
-https://msdn.microsoft.com/en-us/library/ms164311.aspx
+https://msdn.microsoft.com/en-us/library/ms164311.aspx MSBuild Command-Line Reference
 
 ```
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
