@@ -21,6 +21,7 @@ https://msdn.microsoft.com/en-us/library/ms164311.aspx MSBuild Command-Line Refe
 
 ```
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
+msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj
 ```
 * trait dotnet test https://github.com/Microsoft/vstest-docs/blob/master/docs/filter.md
 ```
