@@ -29,6 +29,9 @@ dotnet test --filter TraitName=TraitValue
 
 * test private CoreCLR change 
 
+build.cmd -- /p:CoreCLROverridePath=d:\git\coreclr\bin\Product\Windows_NT.x64.Release\
+
+
 https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits
