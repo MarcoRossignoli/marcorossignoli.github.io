@@ -29,7 +29,7 @@ dotnet test --filter TraitName=TraitValue
 
 * test private CoreCLR change 
 
-https://github.com/dotnet/coreclr/pull/16151
+https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits
 
