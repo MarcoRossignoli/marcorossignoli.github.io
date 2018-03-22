@@ -19,11 +19,11 @@ build skiptests release
 After every change recompile only managed part
 ### Win
 ```
-build skiptests skipnative
+build skiptests skipnative release
 ```
 ### Linux
 ```
-./build.sh skiptests skipnative
+./build.sh skiptests skipnative release
 ```
 
 ## CoreFx repo
