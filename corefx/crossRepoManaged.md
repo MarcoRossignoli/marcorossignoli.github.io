@@ -7,23 +7,23 @@ First compile repo
 ### Win
 ```
 clean -all
-build skiptests release
+build -skiptests -release
 ```
 ### Linux
 ```
 ./clean.sh -all
-./build.sh skiptests release
+./build.sh -skiptests -release
 ```
 
 
 After every change recompile only managed part
 ### Win
 ```
-build skiptests skipnative release
+build -skiptests -skipnative -release
 ```
 ### Linux
 ```
-./build.sh skiptests skipnative release
+./build.sh -skiptests -skipnative -release
 ```
 
 ## CoreFx repo
