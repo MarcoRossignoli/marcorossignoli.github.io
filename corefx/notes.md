@@ -34,6 +34,9 @@ dotnet test --filter TraitName=TraitValue
 build.cmd -- /p:CoreCLROverridePath=d:\git\coreclr\bin\Product\Windows_NT.x64.Release\
 
 ```
+* Running tests in a different target framework(es. netfx)  
+
+https://github.com/dotnet/corefx/blob/8e842fa29e14694cca96c6e39a38199c55a3a02e/Documentation/project-docs/developer-guide.md#running-tests-in-a-different-target-framework
 
 
 https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957
