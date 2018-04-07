@@ -1,4 +1,6 @@
 # marcorossignoli.github.io
+* Build Pivot https://github.com/dotnet/corefx/blob/6cb23ac20696ab314d2b28e95af40c8454bd7c0d/Documentation/coding-guidelines/project-guidelines.md#build-pivots
+
 * dotnet core repos https://github.com/dotnet/core/blob/master/Documentation/core-repos.md
 
 * @dotnet-bot commands https://github.com/Microsoft/ChakraCore/wiki/Jenkins-CI-Checks
