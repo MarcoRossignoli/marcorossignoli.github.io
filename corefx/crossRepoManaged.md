@@ -25,6 +25,16 @@ build -skiptests -skipnative -release
 ```
 ./build.sh -skiptests -skipnative -release
 ```
+## Update CLR repo after coding
+### Win
+```
+build -skiptests -skipnative -release
+```
+### Linux
+```
+./build.sh -skiptests -skipnative -release
+```
+
 
 ## CoreFx repo
 
