@@ -2,13 +2,6 @@
 
 ## Build/Test
 
-
-* build x86 Release .Net Desktop (https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#build)
-
-```
-build.cmd -buildArch=x86 -framework=netfx -release
-```
-
 * rebuild/test lib
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#tests  
@@ -20,6 +13,11 @@ msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj
 ```
 
+* build x86 Release .Net Desktop (https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#build)
+
+```
+build.cmd -buildArch=x86 -framework=netfx -release
+```
 * Running tests in a different target framework msbuild (es. netfx)  
 
 https://github.com/dotnet/corefx/blob/8e842fa29e14694cca96c6e39a38199c55a3a02e/Documentation/project-docs/developer-guide.md#running-tests-in-a-different-target-framework
