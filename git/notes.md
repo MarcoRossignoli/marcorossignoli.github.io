@@ -1,8 +1,8 @@
 Git useful links
 
-* resolve "This branch has conflicts that must be resolved" online git https://github.com/githubteacher/github-for-developers-sept-2015/issues/648
-
 * Replace local branch with remote branch entirely https://stackoverflow.com/questions/9210446/replace-local-branch-with-remote-branch-entirely
+
+* resolve "This branch has conflicts that must be resolved" online git https://github.com/githubteacher/github-for-developers-sept-2015/issues/648
 
 * Replace master branch with upstream https://stackoverflow.com/questions/42332769/how-do-i-reset-the-git-master-branch-to-the-upstream-branch-in-a-forked-reposito
 
