@@ -22,6 +22,10 @@ Git useful links
     git merge upstream/master
     git push origin master
 ```
+
+Or rebase https://github.com/dotnet/corefx/pull/29751#issuecomment-390033889
+
+
 * Squash remote commits https://gist.github.com/patik/b8a9dc5cd356f9f6f980#combining-the-commits
 * Setup credendial git https://git-scm.com/docs/git-credential-store
 ```
