@@ -8,6 +8,7 @@ Merged [all repos](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr
 
 Useful links  
 
+Apis of .Net https://apisof.net/  
 .Net Api browser https://docs.microsoft.com/en-us/dotnet/api/  
 .Net netfx source https://referencesource.microsoft.com/  
 .Net netcoreapp source https://source.dot.net/  
