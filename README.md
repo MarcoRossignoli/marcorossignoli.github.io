@@ -1,12 +1,22 @@
 # marcorossignoli.github.io
 My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignoli">https://twitter.com/MarcoRossignoli</a>
 
+#### Issues query
+
+corefx [up-for-grabs](https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs)  
+corefx [bugs](https://github.com/dotnet/corefx/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Abug)  
+corefx [api-approved](https://github.com/dotnet/corefx/labels/api-approved)  
+corefx [Hackaton](https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3AHackathon)  
+coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs)
+
+ #### My merged PR  
+
 Merged to [corefx](https://github.com/dotnet/corefx/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+)  
 Merged to [coreclr](https://github.com/dotnet/coreclr/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+)  
 Merged to [docs](https://github.com/dotnet/docs/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+)  
 Merged [all repos](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+)  
 
-Useful links  
+ #### Useful links  
 
 Apis of .Net https://apisof.net/  
 .Net Api browser https://docs.microsoft.com/en-us/dotnet/api/  
