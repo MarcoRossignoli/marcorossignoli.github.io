@@ -73,4 +73,5 @@ msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTest
 Maryam Ariyan way https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957  
 [MsBuild Command line for switches](https://msdn.microsoft.com/en-us/library/ms164311.aspx)  
 [XUnit method with msbuild](https://github.com/dotnet/buildtools/blob/master/Documentation/test-targets-usage.md#run-a-single-xunit-method)  
-To check when your coreclr PR was brought to corefx repo https://github.com/dotnet/corefx/commits?author=dotnet-maestro-bot  
+CoreClr runtime Updated(on Corefx) https://github.com/dotnet/corefx/commits?author=dotnet-maestro-bot  
+Mirror changes from dotnet/coreclr https://github.com/dotnet/corefx/pulls?q=is%3Apr+author%3Adotnet-bot  
