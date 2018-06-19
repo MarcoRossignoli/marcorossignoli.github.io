@@ -21,6 +21,9 @@ namespace ConsoleApp1
         {
             Tests.Add_DictionaryConcurrentAccessDetection_NullComparer_ValueTypeKey();
             Tests.Add_DictionaryConcurrentAccessDetection_Comparer_ValueTypeKey();
+
+            Tests.Add_DictionaryConcurrentAccessDetection_NullComparer_ReferenceTypeKey();
+            Tests.Add_DictionaryConcurrentAccessDetection_Comparer_ReferenceTypeKey();
         }
     }
 }
