@@ -57,11 +57,6 @@ Extra
 ```
 
 * dotnet core repos https://github.com/dotnet/core/blob/master/Documentation/core-repos.md
-
-* @dotnet-bot commands https://github.com/Microsoft/ChakraCore/wiki/Jenkins-CI-Checks
-
-* up-for-grabs issue query https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs
-
 * area owner https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/issue-guide.md#areas
 
 
