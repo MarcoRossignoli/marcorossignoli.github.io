@@ -19,11 +19,13 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            Tests.Add_DictionaryConcurrentAccessDetection_NullComparer_ValueTypeKey();
-            Tests.Add_DictionaryConcurrentAccessDetection_Comparer_ValueTypeKey();
+            Tests.Add_DictionaryConcurrentAccessDetection_NullComparer_ValueTypeKey().Wait();
+            //Tests.Add_DictionaryConcurrentAccessDetection_Comparer_ValueTypeKey().Wait();
 
-            Tests.Add_DictionaryConcurrentAccessDetection_NullComparer_ReferenceTypeKey();
-            Tests.Add_DictionaryConcurrentAccessDetection_Comparer_ReferenceTypeKey();
+            //Tests.Add_DictionaryConcurrentAccessDetection_NullComparer_ReferenceTypeKey().Wait();
+            //Tests.Add_DictionaryConcurrentAccessDetection_Comparer_ReferenceTypeKey().Wait();
+
+            Console.WriteLine("End");
         }
     }
 }
