@@ -48,7 +48,11 @@ https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/develope
 https://github.com/dotnet/coreclr/blob/master/Documentation/workflow/UsingYourBuild.md#update-coreclr-from-raw-binary-output
 
 
-Extra
+## Coverage
+
+Workflow https://github.com/dotnet/corefx/issues/23588#issuecomment-394055817
+
+##Extras
 
 * Find string on source
 ```
