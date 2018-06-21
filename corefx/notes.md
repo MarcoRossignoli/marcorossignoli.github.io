@@ -52,6 +52,12 @@ https://github.com/dotnet/coreclr/blob/master/Documentation/workflow/UsingYourBu
 
 Workflow https://github.com/dotnet/corefx/issues/23588#issuecomment-394055817
 
+## Benchmarking
+
+corefx guide([PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-398237008)) https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/performance-tests.md  
+adamsitnik https://github.com/dotnet/corefxlab/pull/2369#issuecomment-399122942
+
+
 ##Extras
 
 * Find string on source
