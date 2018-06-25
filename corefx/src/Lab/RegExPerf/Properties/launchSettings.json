@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RegExPerf": {
+      "commandName": "Project",
+      "commandLineArgs": "0"
+    }
+  }
+}
