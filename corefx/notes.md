@@ -54,6 +54,7 @@ Workflow https://github.com/dotnet/corefx/issues/23588#issuecomment-394055817
 
 ## Benchmarking
 
+https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/benchmarking.md  
 corefx guide([PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-398237008)) https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/performance-tests.md  
 adamsitnik https://github.com/dotnet/corefxlab/pull/2369#issuecomment-399122942
 
