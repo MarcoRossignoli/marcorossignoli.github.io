@@ -3,3 +3,4 @@ https://github.com/adamsitnik/awesome-dot-net-performance Adam Sitnik Awesome .N
 https://github.com/dotnet/coreclr/blob/master/Documentation/deep-dive-blog-posts.md List of blog posts that provide a 'deep-dive' into the CoreCLR source code  
 https://github.com/dotnet/coreclr/pull/18398 Intrinsic BSWAP  
 A Hitchhikers Guide to the CoreCLR Source Code http://mattwarren.org/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/  
+`Span<T> & Memory<T>` https://www.codemag.com/Article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T 
