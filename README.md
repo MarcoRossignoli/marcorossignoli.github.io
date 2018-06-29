@@ -1,6 +1,10 @@
 # marcorossignoli.github.io
 My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignoli">https://twitter.com/MarcoRossignoli</a>
 
+### WIP
+
+https://github.com/dotnet/corefx/issues/30190#issue-330334307
+
 #### Issues query
 
 corefx(no easy) [up-for-grabs](https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs+-label%3Aeasy)  
