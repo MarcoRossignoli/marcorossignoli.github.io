@@ -2,12 +2,10 @@
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Jobs;
-using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Toolchains.CustomCoreClr;
 using System;
 using System.IO;
-using System.Reflection;
 
 namespace RegExPerf
 {

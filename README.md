@@ -5,6 +5,11 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 https://github.com/dotnet/corefx/issues/30190#issue-330334307
 
+#### Help shortcuts
+
+[Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/notes.md)  
+[Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/crossRepoManaged.md)
+
 #### Issues query
 
 corefx(no easy) [up-for-grabs](https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs+-label%3Aeasy)  
