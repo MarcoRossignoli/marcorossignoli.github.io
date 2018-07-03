@@ -71,8 +71,6 @@ msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTest
 ../../Tools/msbuild.sh /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj
 ```
 Maryam Ariyan way https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957  
-[MsBuild Command line for switches](https://msdn.microsoft.com/en-us/library/ms164311.aspx)  
-[XUnit method with msbuild](https://github.com/dotnet/buildtools/blob/master/Documentation/test-targets-usage.md#run-a-single-xunit-method)  
 CoreClr runtime Updated(on Corefx) https://github.com/dotnet/corefx/commits?author=dotnet-maestro-bot  
 Mirror changes from dotnet/coreclr https://github.com/dotnet/corefx/pulls?q=is%3Apr+author%3Adotnet-bot  
 If build with local clr coreclr fail one solution could be https://github.com/dotnet/coreclr/pull/18524#issuecomment-398396986  

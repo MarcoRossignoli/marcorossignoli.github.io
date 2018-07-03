@@ -23,6 +23,10 @@ dotnet test --filter TraitName=TraitValue
 
 Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f6f470cb2c4cdaafdc3ad85e2520992a8db265/Documentation/building/windows-instructions.md#debugging-netfx-tests-in-visual-studio  
 
+[MsBuild Command line for switches](https://msdn.microsoft.com/en-us/library/ms164311.aspx)  
+
+[XUnit method with msbuild](https://github.com/dotnet/buildtools/blob/master/Documentation/test-targets-usage.md#run-a-single-xunit-method)  
+
 ## Coverage
 
 Workflow https://github.com/dotnet/corefx/issues/23588#issuecomment-394055817
