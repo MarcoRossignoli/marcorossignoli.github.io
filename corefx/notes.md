@@ -31,6 +31,22 @@ Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f
 
 Workflow https://github.com/dotnet/corefx/issues/23588#issuecomment-394055817
 
+On CoreClr repo:
+```
+build -release -skipTests -- /p:DebugType=pdbonly
+build -release -skipTests -windowsmscorlib -- /p:DebugType=pdbonly
+```
+
+The second step is important to get IL only of CoreLib on the folder that is going to be used in the CoreCLROverridePath, but as mentioned can be done in other ways.
+
+On CoreFx repo:
+```
+build -- /p:CoreCLROverridePath=C:\s\coreclr\bin\Product\Windows_NT.x64.Release
+build-tests -skipTests -- /p:CoreCLROverridePath=C:\s\coreclr\bin\Product\Windows_NT.x64.Release
+cd src\System.Collections\tests
+msbuild /t:RebuildAndTest /p:Coverage=True /p:CodeCoverageAssemblies="System.Private.CoreLib"
+```
+
 ## Benchmarking
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/benchmarking.md  
