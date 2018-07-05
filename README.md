@@ -3,7 +3,8 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 #### WIP
 
-https://github.com/dotnet/corefx/issues/30190#issue-330334307
+https://github.com/dotnet/corefx/issues/30190#issue-330334307  
+https://github.com/dotnet/corefx/issues/30507
 
 #### Help shortcuts
 
