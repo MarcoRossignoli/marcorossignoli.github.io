@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Manual\Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Manual\Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.10.13" />
   </ItemGroup>
 
