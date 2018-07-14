@@ -1,6 +1,11 @@
 # marcorossignoli.github.io
 My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignoli">https://twitter.com/MarcoRossignoli</a>
 
+#### Help shortcuts
+
+[Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/notes.md)  
+[Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/crossRepoManaged.md)
+
 #### WIP
 
 https://github.com/dotnet/corefx/issues/30190#issue-330334307  
@@ -11,10 +16,6 @@ https://github.com/dotnet/corefx/issues/30507 perf
 
 https://github.com/dotnet/corefx/issues/29360
 
-#### Help shortcuts
-
-[Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/notes.md)  
-[Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/crossRepoManaged.md)
 
 #### Issues query
 
