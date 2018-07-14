@@ -7,6 +7,10 @@ https://github.com/dotnet/corefx/issues/30190#issue-330334307
 https://github.com/dotnet/corefx/issues/30185  
 https://github.com/dotnet/corefx/issues/30507 perf
 
+#### Wish list
+
+https://github.com/dotnet/corefx/issues/29360
+
 #### Help shortcuts
 
 [Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/notes.md)  
