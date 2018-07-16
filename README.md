@@ -10,7 +10,7 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 WPF/Winforms support work https://github.com/dotnet/corefx/projects/5  
 https://github.com/dotnet/corefx/issues/30190#issue-330334307  
-https://github.com/dotnet/corefx/issues/30188
+https://github.com/dotnet/corefx/issues/30188  
 https://github.com/dotnet/corefx/issues/30185  
 
 https://github.com/dotnet/corefx/issues/30507 regex perf
