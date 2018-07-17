@@ -1,1 +1,1 @@
-copy *.* "..\..\..\..\..\..\corefx\bin\runtime\netcoreapp-Windows_NT-Release-x64" /Y
+copy *.* "..\..\..\..\..\..\corefxregexperf\bin\runtime\netcoreapp-Windows_NT-Release-x64" /Y
