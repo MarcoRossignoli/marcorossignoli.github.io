@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <!--coverlet settings copied from coverlet\src\coverlet.msbuild-->
+  <PropertyGroup>
+    <CollectCoverage Condition="$(CollectCoverage) == ''">false</CollectCoverage>
+    <CoverletOutputFormat Condition="$(CoverletOutputFormat) == ''">json</CoverletOutputFormat>
+    <CoverletOutput Condition="$(CoverletOutput) == ''">$([MSBuild]::EnsureTrailingSlash('$(MSBuildProjectDirectory)'))</CoverletOutput>
+    <Exclude Condition="$(Exclude) == ''" />
+    <ExcludeByFile Condition="$(ExcludeByFile) == ''" />
+    <Threshold Condition="$(Threshold) == ''">0</Threshold>
+    <ThresholdType Condition="$(ThresholdType) == ''">line,branch,method</ThresholdType>
+  </PropertyGroup>
+  
+  <UsingTask TaskName="Coverlet.MSbuild.Tasks.InstrumentationTask" AssemblyFile="..\..\..\..\coverlet\build\Debug\coverlet.msbuild.tasks.dll" />
+  <UsingTask TaskName="Coverlet.MSbuild.Tasks.CoverageResultTask" AssemblyFile="..\..\..\..\coverlet\build\Debug\coverlet.msbuild.tasks.dll" />
+
+  <Target Name="InstrumentModulesNoBuild" BeforeTargets="VSTest">
+    <Coverlet.MSbuild.Tasks.InstrumentationTask Condition="'$(VSTestNoBuild)' == 'true' and $(CollectCoverage) == 'true'" Exclude="$(Exclude)" ExcludeByFile="$(ExcludeByFile)" Path="$(TargetPath)" />
+  </Target>
+  <Target Name="InstrumentModulesAfterBuild" AfterTargets="BuildProject">
+    <Coverlet.MSbuild.Tasks.InstrumentationTask Condition="'$(VSTestNoBuild)' != 'true' and $(CollectCoverage) == 'true'" Exclude="$(Exclude)" ExcludeByFile="$(ExcludeByFile)" Path="$(TargetPath)" />
+  </Target>
+  <Target Name="GenerateCoverageResult" AfterTargets="VSTest">
+    <Coverlet.MSbuild.Tasks.CoverageResultTask Condition="$(CollectCoverage) == 'true'" Output="$(CoverletOutput)" OutputFormat="$(CoverletOutputFormat)" Threshold="$(Threshold)" ThresholdType="$(ThresholdType)" />
+  </Target>
+  <!--end coverlet settings-->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\CoverletSampleLib\CoverletSampleLib.csproj" />
+  </ItemGroup>
+
+</Project>
