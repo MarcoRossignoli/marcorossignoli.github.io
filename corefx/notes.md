@@ -125,6 +125,7 @@ Build should move compilation to release build folder.
 
 * dotnet core repos https://github.com/dotnet/core/blob/master/Documentation/core-repos.md
 * area owner https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/issue-guide.md#areas
+* [MSBuild-Tips-&-Tricks.md](https://github.com/Microsoft/msbuild/blob/b657647d2e6f4ed20ce6cb3201a55ee02f09c062/documentation/wiki/MSBuild-Tips-%26-Tricks.md)
 
 
 
