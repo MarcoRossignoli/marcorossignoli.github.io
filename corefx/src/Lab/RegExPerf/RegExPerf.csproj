@@ -7,10 +7,12 @@
 
   <ItemGroup>
     <Compile Remove="Manual\Program.cs" />
+    <Compile Remove="Manual\Regexredux.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Manual\Program.cs" />
+    <Content Include="Manual\Program.cs" />
+    <Content Include="Manual\Regexredux.cs" />
   </ItemGroup>
 
   <ItemGroup>

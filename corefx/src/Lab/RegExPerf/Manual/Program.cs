@@ -1612,10 +1612,10 @@ namespace regexbenchmark
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 100; i++)
-            {
-                new RegexBenchmark().RegexCtor();
-            }
+
+            new RegexBenchmark().RegexCtor();
+            new RegexBenchmark().RegexCtorIgnoreCase();
+
             //BenchmarkRunner.Run<RegexBenchmark>(new MainConfig());
         }
     }

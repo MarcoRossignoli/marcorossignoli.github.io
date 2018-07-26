@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>manifest\provider.res</Win32Resource>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,9 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="manifest\register.cmd" />
+    <None Include="manifest\unregister.cmd" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="manifest\" />
+    <Content Include="manifest\provider.c" />
+    <Content Include="manifest\provider.h" />
+    <Content Include="manifest\provider.rc" />
+    <Content Include="manifest\provider.res" />
+    <Content Include="manifest\provider_r.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="manifest\provider.man">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
