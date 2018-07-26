@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryConcurrentAccessDetection", "DictionaryConcurrentAccessDetection\DictionaryConcurrentAccessDetection.csproj", "{D7D09F35-8B03-4453-B458-9728E4CA6EDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExPerf", "RegExPerf\RegExPerf.csproj", "{AA3D2342-D9B4-4A3A-8C51-B3B62D3072B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegExPerf", "RegExPerf\RegExPerf.csproj", "{AA3D2342-D9B4-4A3A-8C51-B3B62D3072B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceData", "PerformanceData\PerformanceData.csproj", "{A4684A71-C7F8-47A9-9932-930DA0AC9725}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AA3D2342-D9B4-4A3A-8C51-B3B62D3072B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA3D2342-D9B4-4A3A-8C51-B3B62D3072B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA3D2342-D9B4-4A3A-8C51-B3B62D3072B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4684A71-C7F8-47A9-9932-930DA0AC9725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4684A71-C7F8-47A9-9932-930DA0AC9725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4684A71-C7F8-47A9-9932-930DA0AC9725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4684A71-C7F8-47A9-9932-930DA0AC9725}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
