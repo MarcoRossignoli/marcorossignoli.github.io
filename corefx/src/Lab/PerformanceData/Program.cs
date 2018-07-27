@@ -15,14 +15,17 @@ namespace PerformanceData
         static void Main(string[] args)
         {
             var schemaPath = RegisterCounters();
+            PerformanceCounter pc = new PerformanceCounter("Typing", "Words Typed In Interval");
             typingCounterSet = new CounterSet(providerId, typingCounterSetId, CounterSetInstanceType.Single);
             try
             {
                 typingCounterSet.AddCounter(1, CounterType.Delta32, "Words Typed In Interval");
                 typingCsInstance = typingCounterSet.CreateCounterSetInstance("Typing Instance");
                 typingCsInstance.Counters[1].Value = 0;
-                typingCsInstance.Counters["Words Typed In Interval"].Increment();
 
+                System.Diagnostics.Debug.Assert(pc.RawValue == 0);
+                typingCsInstance.Counters["Words Typed In Interval"].Increment();
+                System.Diagnostics.Debug.Assert(pc.RawValue == 1);
             }
             finally
             {
@@ -48,6 +51,7 @@ namespace PerformanceData
             var manifestPathTmp = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName(), "provider.man");
             Directory.CreateDirectory(Path.GetDirectoryName(manifestPathTmp));
             File.Copy("manifest\\provider.man", manifestPathTmp);
+            File.Copy("PerformanceData.exe", Path.Combine(Path.GetDirectoryName(manifestPathTmp), "PerformanceData.exe"));
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = "lodctr";
             psi.Arguments = "/m:\"" + manifestPathTmp + "\"";

@@ -6,7 +6,7 @@
   <instrumentation>
     <counters xmlns="http://schemas.microsoft.com/win/2005/12/counters>" >
       <provider
-             applicationIdentity = "provider.man"
+             applicationIdentity = "PerformanceData.exe"
              providerType = "userMode"
              providerGuid = "{51D1685C-35ED-45be-99FE-17261A4F27F3}">
 
