@@ -17,6 +17,57 @@ public class TimeoutException
     public virtual TimeSpan? Timeout { get; }
 }
 ```
+## Usage
+```cs
+
+while(true)
+{
+    ...retry logic...
+    try
+    {
+        // print does some works...supervision printer, read RFID, set parameters, print something
+        // every operation could timeout, but supervision timeout are recoverable other 
+        // not always or we cannot wait too much(if timeout is for example > 30 seconds)
+        printer.Print();
+    }
+    catch(TimeoutException ex)
+    {
+        // we can recover supervision timeout
+        if (ex.Timeout.HasValue && ex.Timeout <= TimeSpan.FromSeconds(3))
+        {
+            continue;
+        }
+        else
+            throw;
+    }
+}
+
+```
+```cs
+TimeSpan timeoutWait = TimeSpan.Zero;
+while (true)
+{
+    try
+    {
+        return printer.GetStatus();
+    }
+    catch (TimeoutException ex)
+    {
+        if (ex.Timeout.HasValue)
+        {
+            timeoutWait = timeoutWait.Add(ex.Timeout.Value);
+
+            // Wait for no more than 30 seconds
+            // I know timeout could be > 30 sec, but retry as much as possible, best we can
+            // Timeout threshold could change in future
+            if (timeoutWait >= TimeSpan.FromSeconds(30))
+                throw;
+
+            continue;
+        }
+    }
+}
+```
 ## Extra
 
 [I didn't found any issue with this on repo](https://github.com/dotnet/corefx/issues?utf8=%E2%9C%93&q=TimeoutException+TimeSpan) , but i suspect that this is not new topic.
