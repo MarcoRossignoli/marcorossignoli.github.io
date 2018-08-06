@@ -60,6 +60,7 @@ while (true)
             // Wait for no more than 30 seconds
             // I know timeout could be > 30 sec, but retry as much as possible, best we can
             // Timeout threshold could change in future
+            // Also in subclassed exception scenario...threshold could change          
             if (timeoutWait >= TimeSpan.FromSeconds(30))
                 throw;
 
