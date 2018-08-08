@@ -23,7 +23,7 @@ namespace DefaultValueAttributeFallbackTypeConverter
         /// </devdoc>
         private object _value;
         static Type s_typeDescriptorTypeCached;
-        static MethodInfo s_typeConverterConvertFromInvariantStringCached;
+        static MethodInfo s_typeConverterConvertFromInvariantStringMethodCached;
 
         static DefaultValueAttribute()
         {
@@ -31,7 +31,7 @@ namespace DefaultValueAttributeFallbackTypeConverter
             Type typeConverterType = Type.GetType("System.ComponentModel.TypeConverter, System, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
             if (typeConverterType != null)
             {
-                s_typeConverterConvertFromInvariantStringCached = typeConverterType.GetMethod("ConvertFromInvariantString", new Type[] { typeof(string) });
+                s_typeConverterConvertFromInvariantStringMethodCached = typeConverterType.GetMethod("ConvertFromInvariantString", new Type[] { typeof(string) });
             }
         }
 
@@ -66,13 +66,13 @@ namespace DefaultValueAttributeFallbackTypeConverter
 
             object ConvertFromInvariantString(Type typeToConvert, string stringValue)
             {
-                if (s_typeDescriptorTypeCached == null || s_typeConverterConvertFromInvariantStringCached == null)
+                if (s_typeDescriptorTypeCached == null || s_typeConverterConvertFromInvariantStringMethodCached == null)
                     return null;
 
                 var typeDescriptorTypeGetConverter = s_typeDescriptorTypeCached.GetMethod("GetConverter", new Type[] { typeToConvert });
                 var typeConverter = typeDescriptorTypeGetConverter.Invoke(null, new[] { typeToConvert });
 
-                return s_typeConverterConvertFromInvariantStringCached.Invoke(typeConverter, new[] { stringValue });
+                return s_typeConverterConvertFromInvariantStringMethodCached.Invoke(typeConverter, new[] { stringValue });
             }
         }
 
