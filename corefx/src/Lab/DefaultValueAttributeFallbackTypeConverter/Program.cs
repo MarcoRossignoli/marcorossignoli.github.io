@@ -10,7 +10,7 @@ namespace DefaultValueAttributeFallbackTypeConverter
         static void Main(string[] args)
         {
             TypeDescriptor.AddAttributes(typeof(MyType), new TypeConverterAttribute(typeof(MyConverter)));
-            var converter = TypeDescriptor.GetConverter(typeof(MyType));
+            //var converter = TypeDescriptor.GetConverter(typeof(MyType));
             var d = new DefaultValueAttribute(typeof(MyType), "10");
             Console.WriteLine(d.Value);
         }
@@ -67,13 +67,14 @@ namespace DefaultValueAttributeFallbackTypeConverter
 
             object ConvertFromInvariantString(Type typeToConvert, string stringValue)
             {
+                // if we didn't found types on initialization return null
                 if (s_typeDescriptorTypeCached == null || s_typeConverterConvertFromInvariantStringMethodCached == null)
                     return null;
 
-                var typeDescriptorTypeGetConverter = s_typeDescriptorTypeCached.GetMethod("GetConverter", new Type[] { typeToConvert });
+                MethodInfo typeDescriptorTypeGetConverter = s_typeDescriptorTypeCached.GetMethod("GetConverter", new Type[] { typeToConvert });
 
                 // typeConverter cannot be null GetConverter return default converter
-                var typeConverter = typeDescriptorTypeGetConverter.Invoke(null, new[] { typeToConvert });
+                object typeConverter = typeDescriptorTypeGetConverter.Invoke(null, new[] { typeToConvert });
 
                 return s_typeConverterConvertFromInvariantStringMethodCached.Invoke(typeConverter, new[] { stringValue });
             }
