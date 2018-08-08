@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegExPerf", "RegExPerf\RegE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceData", "PerformanceData\PerformanceData.csproj", "{A4684A71-C7F8-47A9-9932-930DA0AC9725}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefaultValueAttributeFallbackTypeConverter", "DefaultValueAttributeFallbackTypeConverter\DefaultValueAttributeFallbackTypeConverter.csproj", "{FB91F216-087E-4BDB-8892-8391A0F6216D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A4684A71-C7F8-47A9-9932-930DA0AC9725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4684A71-C7F8-47A9-9932-930DA0AC9725}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4684A71-C7F8-47A9-9932-930DA0AC9725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB91F216-087E-4BDB-8892-8391A0F6216D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB91F216-087E-4BDB-8892-8391A0F6216D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB91F216-087E-4BDB-8892-8391A0F6216D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB91F216-087E-4BDB-8892-8391A0F6216D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
