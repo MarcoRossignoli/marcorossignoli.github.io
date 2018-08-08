@@ -27,6 +27,7 @@ namespace DefaultValueAttributeFallbackTypeConverter
 
         static DefaultValueAttribute()
         {
+            //cache "reflection" types for conversion fallback
             s_typeDescriptorTypeCached = Type.GetType("System.ComponentModel.TypeDescriptor, System, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
             Type typeConverterType = Type.GetType("System.ComponentModel.TypeConverter, System, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
             if (typeConverterType != null)
@@ -70,6 +71,8 @@ namespace DefaultValueAttributeFallbackTypeConverter
                     return null;
 
                 var typeDescriptorTypeGetConverter = s_typeDescriptorTypeCached.GetMethod("GetConverter", new Type[] { typeToConvert });
+
+                // typeConverter cannot be null GetConverter return default converter
                 var typeConverter = typeDescriptorTypeGetConverter.Invoke(null, new[] { typeToConvert });
 
                 return s_typeConverterConvertFromInvariantStringMethodCached.Invoke(typeConverter, new[] { stringValue });
