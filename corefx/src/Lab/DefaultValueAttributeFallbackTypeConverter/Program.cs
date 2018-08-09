@@ -13,6 +13,9 @@ namespace DefaultValueAttributeFallbackTypeConverter
         {
             TypeDescriptor.AddAttributes(typeof(MyType), new TypeConverterAttribute(typeof(MyConverter)));
 
+            var converters = TypeDescriptor.GetConverter(typeof(MyType));
+
+            Console.WriteLine(object.ReferenceEquals(TypeDescriptor.GetConverter(typeof(MyType)), TypeDescriptor.GetConverter(typeof(MyType))));
 
             Console.WriteLine(new DefaultValueAttribute(typeof(MyType), "10").Value);
 
@@ -34,7 +37,7 @@ namespace DefaultValueAttributeFallbackTypeConverter
 
         // We cache reflection types for TypeConverter conversion
         static object s_getConverterMethod;
-        static object s_convertFromInvariantStringMethod;
+        //static object s_convertFromInvariantStringMethod;
 
         /// <devdoc>
         /// <para>Initializes a new instance of the <see cref='System.ComponentModel.DefaultValueAttribute'/> class, converting the
@@ -87,12 +90,16 @@ namespace DefaultValueAttributeFallbackTypeConverter
                     //}
 
                     // if we didn't found required types on initialization return null
-                    if (
-                        !(s_getConverterMethod is Func<Type, object> getConverter) //|| !(s_convertFromInvariantStringMethod is MethodInfo)
+                    if (!(s_getConverterMethod is Func<Type, object> getConverter) //|| !(s_convertFromInvariantStringMethod is MethodInfo)
                         )
                         return false;
 
                     var converter = getConverter(typeToConvert);
+                    var converter2 = getConverter(typeToConvert);
+
+                    Console.WriteLine(ReferenceEquals(converter, converter2));
+
+
                     Func<string, object> del = (Func<string, object>)Delegate.CreateDelegate(typeof(Func<string, object>), converter, "ConvertFromInvariantString");
 
                     conversionResult = del(stringValue);
