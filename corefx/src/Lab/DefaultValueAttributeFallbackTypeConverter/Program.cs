@@ -38,7 +38,7 @@ namespace DefaultValueAttributeFallbackTypeConverter
         // We cache reflection types for TypeConverter conversion
         static object s_getConverterMethod;
         static object s_convertFromInvariantStringMethod;
-        delegate void ConvertFromInvariantStringDelegate(object instance, string value, object result);
+        
         /// <devdoc>
         /// <para>Initializes a new instance of the <see cref='System.ComponentModel.DefaultValueAttribute'/> class, converting the
         ///    specified value to the
@@ -87,19 +87,19 @@ namespace DefaultValueAttributeFallbackTypeConverter
                     {
                         // https://stackoverflow.com/questions/28268378/open-instance-delegate-with-unknown-target-type
                         Type typeConverterType = Type.GetType("System.ComponentModel.TypeConverter, System, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
-                        MethodInfo mi = typeConverterType.GetMethod("ConvertFromInvariantString", new Type[] { typeof(string) });
-                        Delegate open = Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(typeConverterType, typeof(string), typeof(object)), null, mi);
-                        Volatile.Write(ref s_convertFromInvariantStringMethod, typeConverterType == null ? new object() : open);
+                        Volatile.Write(ref s_convertFromInvariantStringMethod, typeConverterType == null ? new object() : Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(typeConverterType, typeof(string), typeof(object)), null, typeConverterType.GetMethod("ConvertFromInvariantString", new Type[] { typeof(string) })));
                     }
 
                     // if we didn't found required types on initialization return null
-                    if (!(s_getConverterMethod is Func<Type, object> getConverter) || !(s_convertFromInvariantStringMethod is MethodInfo)
+                    if (!(s_getConverterMethod is Func<Type, object> getConverter) //|| !(s_convertFromInvariantStringMethod is MethodInfo                        
                         )
                         return false;
 
 
                     //var converter2 = getConverter(typeToConvert);
                     //Console.WriteLine(ReferenceEquals(converter, converter2));
+
+
 
                     var converter = getConverter(typeToConvert);
                     Func<string, object> del = (Func<string, object>)Delegate.CreateDelegate(typeof(Func<string, object>), converter, "ConvertFromInvariantString");
