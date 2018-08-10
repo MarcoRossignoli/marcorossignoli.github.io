@@ -9,22 +9,12 @@ namespace DefaultValueAttributeFallbackTypeConverter
 {
     class Program
     {
+        public delegate TRes Covariant<in T, out TRes>(T value);
+
         static void Main(string[] args)
         {
             TypeDescriptor.AddAttributes(typeof(MyType), new TypeConverterAttribute(typeof(MyConverter)));
-
-            var converters = TypeDescriptor.GetConverter(typeof(MyType));
-
-            Console.WriteLine(object.ReferenceEquals(TypeDescriptor.GetConverter(typeof(MyType)), TypeDescriptor.GetConverter(typeof(MyType))));
-
             Console.WriteLine(new DefaultValueAttribute(typeof(MyType), "10").Value);
-
-            var r = new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value;
-            var r2 = new DefaultValueAttribute(typeof(TimeSpan), "1:00:00").Value;
-
-            Console.WriteLine(DayOfWeek.Monday.Equals(new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value));
-
-            //DayOfWeek.Monday, new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value
         }
     }
 
@@ -38,7 +28,7 @@ namespace DefaultValueAttributeFallbackTypeConverter
         // We cache reflection types for TypeConverter conversion
         static object s_getConverterMethod;
         static object s_convertFromInvariantStringMethod;
-        
+
         /// <devdoc>
         /// <para>Initializes a new instance of the <see cref='System.ComponentModel.DefaultValueAttribute'/> class, converting the
         ///    specified value to the
@@ -85,26 +75,15 @@ namespace DefaultValueAttributeFallbackTypeConverter
 
                     if (s_convertFromInvariantStringMethod == null)
                     {
-                        // https://stackoverflow.com/questions/28268378/open-instance-delegate-with-unknown-target-type
                         Type typeConverterType = Type.GetType("System.ComponentModel.TypeConverter, System, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
                         Volatile.Write(ref s_convertFromInvariantStringMethod, typeConverterType == null ? new object() : Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(typeConverterType, typeof(string), typeof(object)), null, typeConverterType.GetMethod("ConvertFromInvariantString", new Type[] { typeof(string) })));
                     }
 
                     // if we didn't found required types on initialization return null
-                    if (!(s_getConverterMethod is Func<Type, object> getConverter) //|| !(s_convertFromInvariantStringMethod is MethodInfo                        
-                        )
+                    if (!(s_getConverterMethod is Func<Type, object> getConverter) || !(s_convertFromInvariantStringMethod is Delegate convertFromInvariantString))
                         return false;
 
-
-                    //var converter2 = getConverter(typeToConvert);
-                    //Console.WriteLine(ReferenceEquals(converter, converter2));
-
-
-
-                    var converter = getConverter(typeToConvert);
-                    Func<string, object> del = (Func<string, object>)Delegate.CreateDelegate(typeof(Func<string, object>), converter, "ConvertFromInvariantString");
-
-                    conversionResult = del(stringValue);
+                    conversionResult = convertFromInvariantString.DynamicInvoke(getConverter(typeToConvert), stringValue);
 
                     return true;
                 }
