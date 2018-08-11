@@ -9,11 +9,12 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 #### WIP
 
 WPF/Winforms support work https://github.com/dotnet/corefx/projects/5  
-https://github.com/dotnet/corefx/issues/30507 regex perf
 
 #### Wish list
 
-https://github.com/dotnet/corefx/issues/29360
+[Reduce huge heap allocations during Regex instantiation](https://github.com/dotnet/corefx/issues/30507)  
+[[Uri] Uri.FindOrFetchAsUnknownV1Syntax is breaking thread-safety](https://github.com/dotnet/corefx/issues/29360)  
+[Add Flush to ZipArchive](https://github.com/dotnet/corefx/issues/25273#issuecomment-412282034)
 
 
 #### Issues query
