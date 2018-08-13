@@ -11,20 +11,22 @@ namespace DefaultValueAttributeFallbackTypeConverter
     {
         static void Main(string[] args)
         {
-            TypeDescriptor.AddAttributes(typeof(MyType), new TypeConverterAttribute(typeof(MyConverter)));
+            DefaultValueAttribute.s_convertFromInvariantString = new object();
 
-            var converters = TypeDescriptor.GetConverter(typeof(MyType));
+            //TypeDescriptor.AddAttributes(typeof(MyType), new TypeConverterAttribute(typeof(MyConverter)));
 
-            Console.WriteLine(object.ReferenceEquals(TypeDescriptor.GetConverter(typeof(MyType)), TypeDescriptor.GetConverter(typeof(MyType))));
+            //var converters = TypeDescriptor.GetConverter(typeof(MyType));
 
-            Console.WriteLine(new DefaultValueAttribute(typeof(MyType), "10").Value);
+            //Console.WriteLine(object.ReferenceEquals(TypeDescriptor.GetConverter(typeof(MyType)), TypeDescriptor.GetConverter(typeof(MyType))));
 
-            var r = new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value;
-            var r2 = new DefaultValueAttribute(typeof(TimeSpan), "1:00:00").Value;
+            Console.WriteLine(new DefaultValueAttribute(typeof(int), "42").Value);
 
-            Console.WriteLine(DayOfWeek.Monday.Equals(new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value));
+            //var r = new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value;
+            //var r2 = new DefaultValueAttribute(typeof(TimeSpan), "1:00:00").Value;
 
-            //DayOfWeek.Monday, new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value
+            //Console.WriteLine(DayOfWeek.Monday.Equals(new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value));
+
+            //DayOfWeek.Monday, new DefaultValueAttribute(typeof(DayOfWeek), "Monday").Value            
         }
     }
 
@@ -35,10 +37,9 @@ namespace DefaultValueAttributeFallbackTypeConverter
         /// </devdoc>
         private object _value;
 
-        // We cache reflection types for TypeConverter conversion
-        static object s_getConverterMethod;
-        static object s_convertFromInvariantStringMethod;
-        
+        // Delegate ad hoc created 'TypeDescriptor.ConvertFromInvariantString' reflection object cache
+        public static object s_convertFromInvariantString;
+
         /// <devdoc>
         /// <para>Initializes a new instance of the <see cref='System.ComponentModel.DefaultValueAttribute'/> class, converting the
         ///    specified value to the
@@ -71,47 +72,29 @@ namespace DefaultValueAttributeFallbackTypeConverter
 
                 return;
 
-                // Try to load and use TypeConverter/TypeDescriptor types
+                // Looking for ad hoc created TypeDescriptor.ConvertFromInvariantString(Type, string)
                 bool TryConvertFromInvariantString(Type typeToConvert, string stringValue, out object conversionResult)
                 {
                     conversionResult = null;
 
                     // lazy init reflection objects
-                    if (s_getConverterMethod == null)
+                    if (s_convertFromInvariantString == null)
                     {
-                        Type typeDescriptorObject = Type.GetType("System.ComponentModel.TypeDescriptor, System, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
-                        Volatile.Write(ref s_getConverterMethod, typeDescriptorObject == null ? new object() : Delegate.CreateDelegate(typeof(Func<Type, object>), typeDescriptorObject.GetMethod("GetConverter", new Type[] { typeof(Type) })));
+                        Type typeDescriptorType = Type.GetType("System.ComponentModel.TypeDescriptor, System.ComponentModel.TypeConverter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
+                        Volatile.Write(ref s_convertFromInvariantString, typeDescriptorType == null ? new object() : Delegate.CreateDelegate(typeof(Func<Type, string, object>), typeDescriptorType, "ConvertFromInvariantString", ignoreCase: false));
                     }
 
-                    if (s_convertFromInvariantStringMethod == null)
-                    {
-                        // https://stackoverflow.com/questions/28268378/open-instance-delegate-with-unknown-target-type
-                        Type typeConverterType = Type.GetType("System.ComponentModel.TypeConverter, System, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089", throwOnError: false);
-                        Volatile.Write(ref s_convertFromInvariantStringMethod, typeConverterType == null ? new object() : Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(typeConverterType, typeof(string), typeof(object)), null, typeConverterType.GetMethod("ConvertFromInvariantString", new Type[] { typeof(string) })));
-                    }
-
-                    // if we didn't found required types on initialization return null
-                    if (!(s_getConverterMethod is Func<Type, object> getConverter) //|| !(s_convertFromInvariantStringMethod is MethodInfo                        
-                        )
+                    if (!(s_convertFromInvariantString is Func<Type, string, object> convertFromInvariantString))
                         return false;
 
-
-                    //var converter2 = getConverter(typeToConvert);
-                    //Console.WriteLine(ReferenceEquals(converter, converter2));
-
-
-
-                    var converter = getConverter(typeToConvert);
-                    Func<string, object> del = (Func<string, object>)Delegate.CreateDelegate(typeof(Func<string, object>), converter, "ConvertFromInvariantString");
-
-                    conversionResult = del(stringValue);
+                    conversionResult = convertFromInvariantString(typeToConvert, stringValue);
 
                     return true;
                 }
             }
             catch
             {
-                throw;
+
             }
         }
 
