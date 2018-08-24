@@ -4,7 +4,9 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 #### Help shortcuts
 
 [Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/notes.md)  
-[Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/crossRepoManaged.md)
+[Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/crossRepoManaged.md)  
+[My commented open pr](https://github.com/search?q=is%3Aopen+is%3Apr+commenter%3AMarcoRossignoli)  
+[My commented open issue](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+commenter%3AMarcoRossignoli)
 
 #### WIP
 
