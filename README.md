@@ -33,7 +33,7 @@ corefx [api-approved](https://github.com/dotnet/corefx/labels/api-approved)
 corefx [Hackaton](https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3AHackathon)  
 coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs)
 
- #### Useful links  
+#### Useful links  
 
 Apis of .Net https://apisof.net/  
 .Net Api browser https://docs.microsoft.com/en-us/dotnet/api/  
@@ -44,7 +44,7 @@ SharpLab https://sharplab.io/
 C# lang status https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md  
 Nuget package browser https://fuget.org/
 
- #### My merged PR  
+#### My merged PR  
 Merged [all repos](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+)  
 Merged to [corefx](https://github.com/dotnet/corefx/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+)  
 Merged to [coreclr](https://github.com/dotnet/coreclr/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+)  
