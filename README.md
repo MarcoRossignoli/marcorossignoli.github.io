@@ -35,14 +35,14 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 
 #### Useful links
 
-Apis of .Net https://apisof.net/  
-.Net Api browser https://docs.microsoft.com/en-us/dotnet/api/  
-.Net netfx source https://referencesource.microsoft.com/  
-.Net netcoreapp source https://source.dot.net/  
-.Net SDKs for Visual Studio https://www.microsoft.com/net/download/visual-studio-sdks  
-SharpLab https://sharplab.io/  
-C# lang status https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md  
-Nuget package browser https://fuget.org/
+[Apis of .Net https://apisof.net/](https://apisof.net/)  
+[.Net Api browser https://docs.microsoft.com/en-us/dotnet/api/](https://docs.microsoft.com/en-us/dotnet/api/)  
+[.Net netfx source https://referencesource.microsoft.com/](https://referencesource.microsoft.com/)  
+[.Net netcoreapp source https://source.dot.net/](https://source.dot.net/)  
+[.Net SDKs for Visual Studio https://www.microsoft.com/net/download/visual-studio-sdks](https://www.microsoft.com/net/download/visual-studio-sdks)  
+[SharpLab https://sharplab.io/](https://sharplab.io/)  
+[C# lang status https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md](https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md)  
+[Nuget package browser https://fuget.org/](https://fuget.org/)  
 
 #### My merged PR
   
