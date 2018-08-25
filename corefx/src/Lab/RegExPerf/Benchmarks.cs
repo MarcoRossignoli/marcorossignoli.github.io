@@ -4,6 +4,8 @@ using System.Text.RegularExpressions;
 
 namespace RegExPerf
 {
+    [KeepBenchmarkFiles]
+    [MemoryDiagnoser]
     public class Benchmarks
     {
         // A series of patterns (all valid and non pathological) and inputs (which they may or may not match)
@@ -1320,7 +1322,7 @@ namespace RegExPerf
             yield return new object[] { @"[a-[a-f]]", "abcdefghijklmnopqrstuvwxyz", RegexOptions.None, 0, 26, false, string.Empty };
         }
 
-        [Benchmark]
+        [Benchmark]        
         public void RegexCtor()
         {
             for (int i = 0; i < 30; i++)

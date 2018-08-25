@@ -1,10 +1,7 @@
 ﻿using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Diagnosers;
-using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
-using BenchmarkDotNet.Toolchains.CustomCoreClr;
-using System;
+using BenchmarkDotNet.Toolchains.CoreRun;
 using System.IO;
 
 namespace RegExPerf
@@ -13,57 +10,12 @@ namespace RegExPerf
     {
         static void Main(string[] args)
         {
-            CompareBeforeAfter(args);
+            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll();
+            //   .Run(args, DefaultConfig.Instance.With(
+            //       Job.ShortRun.With(
+            //           new CoreRunToolchain(
+            //               new FileInfo(@"D:\git\corefx\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe")
+            //               ))));
         }
-
-        static void CompareBeforeAfter(string[] args)
-        {
-            string packagesPath = Path.GetFullPath("../../../../../../../../corefx/bin/packages/Release");
-            string version =
-                Directory.GetFiles(packagesPath, "Microsoft.Private.CoreFx*")[0].TrimEnd(".nupkg".ToCharArray()).Substring(
-                Directory.GetFiles(packagesPath, "Microsoft.Private.CoreFx*")[0].TrimEnd(".nupkg".ToCharArray())
-                .IndexOf("Microsoft.Private.CoreFx.NETCoreApp"))
-                .Replace("Microsoft.Private.CoreFx.NETCoreApp.", "");
-
-            var libPath = Path.GetFullPath("../../../../../../../../corefx/bin") +
-                @"\AnyOS.AnyCPU.Release\System.Text.RegularExpressions\netcoreapp\System.Text.RegularExpressions.dll";
-
-            if (!File.Exists(libPath))
-            {
-                Console.WriteLine(libPath + " not found");
-                return;
-            }
-
-            Console.WriteLine("PackagesPath:" + packagesPath);
-            Console.WriteLine("Version:" + version);
-            Console.WriteLine("LibPath:" + libPath);
-
-
-
-            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly)
-             .Run(args, DefaultConfig.Instance
-                 .With(Job.ShortRun
-                     .With(CustomCoreClrToolchain.CreateForLocalCoreFxBuild(
-                         pathToNuGetFolder: packagesPath,
-                         privateCoreFxNetCoreAppVersion: version,
-                         displayName: "before"))
-                     .AsBaseline()
-                     .WithId("before"))
-                 .With(Job.ShortRun
-                     .With(CustomCoreClrToolchain.CreateForLocalCoreFxBuild(
-                         pathToNuGetFolder: packagesPath,
-                         privateCoreFxNetCoreAppVersion: version,
-                         displayName: "after",
-                         filesToCopy: new[] { libPath }
-                         ))
-                     .WithId("after"))
-                 .With(MarkdownExporter.GitHub)
-                 //.With(new ConsoleLogger())
-                 //.With(new HtmlExporter())
-                 .With(MemoryDiagnoser.Default)
-                 .KeepBenchmarkFiles());
-
-        }
-
     }
 }

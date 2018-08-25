@@ -6,17 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Manual\Program.cs" />
-    <Compile Remove="Manual\Regexredux.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Manual\Program.cs" />
-    <Content Include="Manual\Regexredux.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.10.13" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.11.1" />
   </ItemGroup>
 
 </Project>
