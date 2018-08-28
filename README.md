@@ -3,6 +3,8 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 #### Help shortcuts
 
+[corefx repo](https://github.com/dotnet/corefx)  
+
 [Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/notes.md)  
 [Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/crossRepoManaged.md)  
 
