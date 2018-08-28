@@ -15,16 +15,14 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 [My commented open issue](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+commenter%3AMarcoRossignoli)  
 [All notifications](https://github.com/notifications?all=1)
 
-#### WIP
-
-WPF/Winforms support work https://github.com/dotnet/corefx/projects/5  
-
 #### Wish list
 
+WPF/Winforms support work https://github.com/dotnet/corefx/projects/5  
 [Reduce huge heap allocations during Regex instantiation](https://github.com/dotnet/corefx/issues/30507)  
 [[Uri] Uri.FindOrFetchAsUnknownV1Syntax is breaking thread-safety](https://github.com/dotnet/corefx/issues/29360)  
 [Add Flush to ZipArchive](https://github.com/dotnet/corefx/issues/25273#issuecomment-412282034)  
-[HTTP2: Huffman decoding implementation is inefficient](https://github.com/dotnet/corefx/issues/31751)
+[HTTP2: Huffman decoding implementation is inefficient](https://github.com/dotnet/corefx/issues/31751)  
+[Incorrect Uri.IsWellFormedUriString result when Unicode is present](https://github.com/dotnet/corefx/issues/31956)
 
 
 #### Issues query
