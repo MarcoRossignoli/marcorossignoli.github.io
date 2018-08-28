@@ -3,6 +3,8 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 #### Help shortcuts
 
+[corefx repo](https://github.com/dotnet/corefx)  
+
 [Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/notes.md)  
 [Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/corefx/crossRepoManaged.md)  
 
@@ -11,18 +13,16 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 [Commented: Recently updated](https://github.com/search?o=desc&q=commenter%3AMarcoRossignoli&s=updated&type=Issues)  
 [My commented open pr](https://github.com/search?q=is%3Aopen+is%3Apr+commenter%3AMarcoRossignoli)  
 [My commented open issue](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+commenter%3AMarcoRossignoli)  
-[All notifications](https://github.com/notifications)
-
-#### WIP
-
-WPF/Winforms support work https://github.com/dotnet/corefx/projects/5  
+[All notifications](https://github.com/notifications?all=1)
 
 #### Wish list
 
+WPF/Winforms support work https://github.com/dotnet/corefx/projects/5  
 [Reduce huge heap allocations during Regex instantiation](https://github.com/dotnet/corefx/issues/30507)  
 [[Uri] Uri.FindOrFetchAsUnknownV1Syntax is breaking thread-safety](https://github.com/dotnet/corefx/issues/29360)  
 [Add Flush to ZipArchive](https://github.com/dotnet/corefx/issues/25273#issuecomment-412282034)  
-[HTTP2: Huffman decoding implementation is inefficient](https://github.com/dotnet/corefx/issues/31751)
+[HTTP2: Huffman decoding implementation is inefficient](https://github.com/dotnet/corefx/issues/31751)  
+[Incorrect Uri.IsWellFormedUriString result when Unicode is present](https://github.com/dotnet/corefx/issues/31956)
 
 
 #### Issues query
