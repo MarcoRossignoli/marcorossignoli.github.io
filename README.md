@@ -3,7 +3,7 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 #### Help shortcuts
 
-[Commented: Recently updated](https://github.com/issues?q=issue+commenter%3AMarcoRossignoli+sort%3Aupdated-desc)  
+[Commented: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=commenter%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 [My commented open pr](https://github.com/search?q=is%3Aopen+is%3Apr+commenter%3AMarcoRossignoli)  
 [My commented open issue](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+commenter%3AMarcoRossignoli)  
 [All notifications](https://github.com/notifications?all=1)  
