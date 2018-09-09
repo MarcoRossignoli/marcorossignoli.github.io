@@ -1,0 +1,1 @@
+dotnet run -c Release -f netcoreapp2.1 -- -f * --coreRun "..\..\..\corefx\bin\testhost\netcoreapp-Windows_NT-Debug-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe" --artifacts ".\before"

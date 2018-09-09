@@ -276,3 +276,4 @@ config.ps1
 #My
 **/coverageReport
 **/coverage.opencover.xml
+/src/RegExPerf/before/results
