@@ -1,0 +1,2 @@
+..\..\..\corert\bin\Windows_NT.x64.Debug\ILVerify\ILVerify.exe -r "C:\Program Files\dotnet\shared\Microsoft.NETCore.App\2.1.3\mscorlib.dll" -r "C:\Program Files\dotnet\shared\Microsoft.NETCore.App\2.1.3\System.Runtime.dll" -r "C:\Program Files\dotnet\shared\Microsoft.NETCore.App\2.1.3\System.Private.CoreLib.dll"  "..\..\..\corert\bin\Windows_NT.x64.Debug\ILVerification.Tests\Tests\InterfaceTest.dll"
+PEVerify "..\..\..\corert\bin\Windows_NT.x64.Debug\ILVerification.Tests\Tests\InterfaceTest.dll"
