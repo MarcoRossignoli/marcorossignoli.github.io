@@ -1,4 +1,5 @@
 ﻿public interface I
 {
-    void M();
+    void M1();
+    void M2();
 }

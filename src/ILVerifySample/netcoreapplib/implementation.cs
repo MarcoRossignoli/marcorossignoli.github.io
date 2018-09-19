@@ -1,7 +1,12 @@
 ﻿public class C : I
 {
-    public void M()
+    public void M1()
     {
-        throw new System.NotImplementedException();
+
+    }
+
+    public void M2()
+    {
+
     }
 }
