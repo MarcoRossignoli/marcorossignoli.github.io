@@ -50,70 +50,10 @@ msbuild /t:RebuildAndTest /p:Coverage=True /p:CodeCoverageAssemblies="System.Pri
 ## Benchmarking
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/benchmarking.md  
+Adam Sitnik https://github.com/dotnet/corefxlab/pull/2369#issuecomment-399122942  
+Andrey Akinshin https://github.com/dotnet/corefx/pull/32389#issuecomment-424642336  
+Viktor Hofer https://github.com/dotnet/corefx/pull/30632#issuecomment-399778513  
 corefx guide(my [PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-398237008)) https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/performance-tests.md  
-adamsitnik https://github.com/dotnet/corefxlab/pull/2369#issuecomment-399122942
-
-### Use corerun.exe
-
-From Viktor Hofer way https://github.com/dotnet/corefx/pull/30632#issuecomment-399778513
-
-From release build folder(after ..corefx\build -release) ..\corefx\bin\runtime\netcoreapp-Windows_NT-Release-x64  
-Copy BenchmarkDotNet.Core to release build folder from https://www.nuget.org/packages/BenchmarkDotNet.Core/  
-Copy BenchmarkDotNet.dll to release budil folder from https://www.nuget.org/packages/BenchmarkDotNet/  
-Add test in Program.cs
-```cs
- ...
- class MainConfig : ManualConfig
-    {
-        public MainConfig()
-        {
-            // Job #1
-            // Add(Job.Default
-            //     .With(Runtime.Core)
-            //     .With(CsProjCoreToolchain.From(NetCoreAppSettings
-            //         .NetCoreApp21
-            //         .WithCustomDotNetCliPath(@"C:\dotnet\dotnet.exe", "OutOfProcessToolchain")))
-            //     .WithId(".NET Core 2.1 master"));
-
-            // Job #2
-            Add(Job.Default
-                .With(InProcessToolchain.Instance)
-                 .With(Runtime.Core)
-                 .WithId(".NET Core 2.1 regex"));
-
-            Add(DefaultColumnProviders.Instance);
-            Add(MarkdownExporter.GitHub);
-            Add(new ConsoleLogger());
-            Add(new HtmlExporter());
-            Add(MemoryDiagnoser.Default);
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            new RegexBenchmark().RegexCtor();
-            BenchmarkRunner.Run<RegexBenchmark>(new MainConfig());
-        }
-    }
-```
-Compile and run benchmarks from From release build folder
-```
-corerun ..\..\..\tools\csc.dll /noconfig /noconfig /optimize /r:System.Private.Corelib.dll /r:System.Runtime.dll /r:System.Runtime.Extensions.dll /r:System.Console.dll /r:System.Text.RegularExpressions.dll /r:System.Collections.dll /r:BenchmarkDotNet.dll /r:BenchmarkDotNet.Core.dll  /out:Program.dll Program.cs
-corerun Program.dll
-```
-
-Change code recompile lib and re-run Program.dll 
-```
-? msbuild /t:rebuild /v:m /p:ConfigurationGroup=Release
-Microsoft (R) Build Engine version 15.7.179.6572 for .NET Framework
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-  System.Text.RegularExpressions -> ..corefx\bin\AnyOS.AnyCPU.Release\System.Text.RegularExpressions\netcoreapp\System.Text.RegularExpressions.dll
-```
-
-Build should move compilation to release build folder.
 
 ## Extras
 
