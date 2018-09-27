@@ -40,6 +40,7 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [SharpLab https://sharplab.io/](https://sharplab.io/)  
 [C# lang status https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md](https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md)  
 [Nuget package browser https://fuget.org/](https://fuget.org/)  
+[Dotnet download archives https://www.microsoft.com/net/download/archives ](https://www.microsoft.com/net/download/archives)  
 
 #### My merged PR
   
