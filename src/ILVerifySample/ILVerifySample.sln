@@ -13,10 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netcoreapplib", "netcoreapp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{92AD633A-F23D-479D-95FC-95D052A1173D}"
 	ProjectSection(SolutionItems) = preProject
+		InterfaceTestPEVerifiable.il = InterfaceTestPEVerifiable.il
+		InterfaceTestPEVerifiable.ilproj = InterfaceTestPEVerifiable.ilproj
 		run.cmd = run.cmd
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataPlayground", "MetadataPlayground\MetadataPlayground.csproj", "{9E55721D-098C-4C46-AEDF-8CF93F8AA732}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetadataPlayground", "MetadataPlayground\MetadataPlayground.csproj", "{9E55721D-098C-4C46-AEDF-8CF93F8AA732}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcoreappgenericinterface", "netcoreappgenericinterface\netcoreappgenericinterface.csproj", "{6F1F2C21-7FF4-4052-9AE3-A6EF675B3F7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +48,10 @@ Global
 		{9E55721D-098C-4C46-AEDF-8CF93F8AA732}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E55721D-098C-4C46-AEDF-8CF93F8AA732}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E55721D-098C-4C46-AEDF-8CF93F8AA732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1F2C21-7FF4-4052-9AE3-A6EF675B3F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1F2C21-7FF4-4052-9AE3-A6EF675B3F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1F2C21-7FF4-4052-9AE3-A6EF675B3F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1F2C21-7FF4-4052-9AE3-A6EF675B3F7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
