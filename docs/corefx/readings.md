@@ -1,4 +1,4 @@
-https://gist.github.com/mattwarren/e36204831c65cf0615495c860a53ff7b Matt Warren .NET internals  
+http://mattwarren.org/2018/01/22/Resources-for-Learning-about-.NET-Internals/ Matt Warren .NET internals  
 http://mattwarren.org/postsByYear/ Matt Warren by years  
 https://alexandrnikitin.github.io/blog/dotnet-generics-under-the-hood/  .NET memory layout/.NET Generics under the hood  
 https://github.com/adamsitnik/awesome-dot-net-performance Adam Sitnik Awesome .NET Performance  
