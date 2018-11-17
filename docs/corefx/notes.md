@@ -68,5 +68,6 @@ corefx guide(my [PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-3
 * area owner https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/issue-guide.md#areas
 * [MSBuild-Tips-&-Tricks.md](https://github.com/Microsoft/msbuild/blob/b657647d2e6f4ed20ce6cb3201a55ee02f09c062/documentation/wiki/MSBuild-Tips-%26-Tricks.md)
 * dotnet core release csv/json https://github.com/dotnet/core/tree/master/release-notes
-* dotnet core SDKs https://github.com/dotnet/core-sdk#installers-and-binaries
+* dotnet core SDKs https://github.com/dotnet/core-sdk#installers-and-binaries  
+* https://github.com/dotnet/platform-compat platform-compat
 
