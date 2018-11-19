@@ -19,7 +19,8 @@ namespace Test
                 // .WithWarmupCount(10)
                 // .WithIterationCount(300)
                 // .WithInvocationCount(2097152)
-                .WithOutlierMode(OutlierMode.None);
+                // .WithOutlierMode(OutlierMode.None)
+                ;
             Add(baseJob.With(new CoreRunToolchain(new FileInfo(
                     @"..\..\..\..\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe")))
                 .WithId("CoreFx")
