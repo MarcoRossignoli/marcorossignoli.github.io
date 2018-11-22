@@ -3,7 +3,6 @@
 git add .
 git commit -m %1
 git push
-
 @goto End
 
 :MissingCommitMessage
