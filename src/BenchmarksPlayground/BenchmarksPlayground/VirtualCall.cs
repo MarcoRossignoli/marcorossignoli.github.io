@@ -7,9 +7,9 @@ namespace BenchmarksPlayground
     [DisassemblyDiagnoser(printPrologAndEpilog: false)]
     public class VirtualCall
     {
-        private NoVirtualCallClass _nonVirtual;
-        private VirtualCallClass _virtual;
-        private ICall _interface;
+        public NoVirtualCallClass _nonVirtual;
+        public VirtualCallClass _virtual;
+        public ICall _interface;
         public VirtualCall()
         {
             _nonVirtual = new NoVirtualCallClass();
