@@ -9,11 +9,19 @@ namespace BenchmarksPlayground
     {
         private NoVirtualCallClass _nonVirtual;
         private VirtualCallClass _virtual;
-
+        private ICall _interface;
         public VirtualCall()
         {
             _nonVirtual = new NoVirtualCallClass();
             _virtual = new VirtualCallClass();
+            _interface = new InterfaceCallClass();
+        }
+
+        [Benchmark]
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public void InterfaceCall()
+        {
+            _interface.Method();
         }
 
         [Benchmark]
@@ -49,5 +57,20 @@ namespace BenchmarksPlayground
         {
             _i++;
         }
+    }
+
+    public class InterfaceCallClass : ICall
+    {
+        private int _i = 0;
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public virtual void Method()
+        {
+            _i++;
+        }
+    }
+
+    public interface ICall
+    {
+        void Method();
     }
 }
