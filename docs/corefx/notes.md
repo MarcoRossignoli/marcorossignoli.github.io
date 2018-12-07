@@ -3,7 +3,7 @@
 ## Build/Test
 ```
 build -framework netfx
-msbuild /t:rebuildandtest /v:m /p:TargetGroup=netfx
+msbuild /t:rebuildandtest /v:m /p:TargetGroup=netfx <- launch this command under `...\tests` folder of solutions
 
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj  
