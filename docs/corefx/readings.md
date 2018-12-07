@@ -4,7 +4,8 @@ https://alexandrnikitin.github.io/blog/dotnet-generics-under-the-hood/  .NET mem
 https://github.com/adamsitnik/awesome-dot-net-performance Adam Sitnik Awesome .NET Performance  
 https://github.com/dotnet/coreclr/blob/master/Documentation/deep-dive-blog-posts.md List of blog posts that provide a 'deep-dive' into the CoreCLR source code  
 http://mattwarren.org/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/ A Hitchhikers Guide to the CoreCLR Source Code  
-https://www.codemag.com/Article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T `Span<T> & Memory<T>`   
+https://www.codemag.com/Article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T `Span<T> & Memory<T>`  
+https://msdn.microsoft.com/en-us/magazine/mt814808.aspx `Span<T> & Memory<T>`  
 https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/ Unicode etc...  
 https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md Async guidance  
 https://gist.github.com/NickCraver/d6292c0c7f93767686e8c5c89ed45c54 ClrMD dump analysis by Nick Craver  
