@@ -1,21 +1,20 @@
 # marcorossignoli.github.io
 
 ## Build/Test
-
-
-https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md
-
-Build Pivot https://github.com/dotnet/corefx/blob/6cb23ac20696ab314d2b28e95af40c8454bd7c0d/Documentation/coding-guidelines/project-guidelines.md#build-pivots
-
-https://msdn.microsoft.com/en-us/library/ms164311.aspx MSBuild Command-Line Reference
-
 ```
+build -framework netfx
+msbuild /t:rebuildandtest /v:m /p:TargetGroup=netfx
+
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj  
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method *Impersonate_WindowsIdentity_Object_InvalidToken"
 ```
-Single test msbuild /p:XunitMethodName https://github.com/dotnet/corefx/wiki/Build-and-run-tests#run-and-debug-single-test-in-command-line
-trait dotnet test https://github.com/Microsoft/vstest-docs/blob/master/docs/filter.md
+Dev guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md  
+Build Pivot https://github.com/dotnet/corefx/blob/6cb23ac20696ab314d2b28e95af40c8454bd7c0d/Documentation/coding-guidelines/project-guidelines.md#build-pivots  
+MSBuild Command-Line Reference https://msdn.microsoft.com/en-us/library/ms164311.aspx  
+
+Single test msbuild /p:XunitMethodName https://github.com/dotnet/corefx/wiki/Build-and-run-tests#run-and-debug-single-test-in-command-line  
+trait dotnet test https://github.com/Microsoft/vstest-docs/blob/master/docs/filter.md  
 ```
 dotnet test --filter TraitName=TraitValue
 ```
