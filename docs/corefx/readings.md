@@ -11,3 +11,4 @@ https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuid
 https://gist.github.com/NickCraver/d6292c0c7f93767686e8c5c89ed45c54 ClrMD dump analysis by Nick Craver  
 https://blogs.msdn.microsoft.com/ericlippert/2010/09/30/the-truth-about-value-types/  The Truth About Value Types  
 https://github.com/dotnet/coreclr/issues/19754#issuecomment-426386742 Stephen Toub on starvation  
+https://www.youtube.com/playlist?list=PLtWrKx3nUGBfx-TBNymPp3WSpeHp7vxj9 DotNext Conf 2018
