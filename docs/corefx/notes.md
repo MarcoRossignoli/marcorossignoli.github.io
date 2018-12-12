@@ -5,7 +5,7 @@
 build -framework netfx
 msbuild /t:rebuildandtest /v:m /p:TargetGroup=netfx <- launch this command under `...\tests` folder of solutions
 
-// on unix create an alias to msbuild
+// on unix create an alias to "dotnet msbuild" verb
 alias msbuild="~/repos/corefx/.dotnet/dotnet msbuild"
 marco@Ubuntu1404:~/repos/corefx/src/System.Diagnostics.Process/tests$ msbuild /t:rebuildandtest /v:m
 
