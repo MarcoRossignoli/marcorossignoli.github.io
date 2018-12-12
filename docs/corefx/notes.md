@@ -8,6 +8,8 @@ msbuild /t:rebuildandtest /v:m /p:TargetGroup=netfx <- launch this command under
 // on unix create an alias to "dotnet msbuild" verb
 alias msbuild="~/repos/corefx/.dotnet/dotnet msbuild"
 marco@Ubuntu1404:~/repos/corefx/src/System.Diagnostics.Process/tests$ msbuild /t:rebuildandtest /v:m
+// or use https://github.com/dotnet/corefx/pull/33974#issuecomment-446295789
+corefx/eng/common/msbuild.sh
 
 
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
