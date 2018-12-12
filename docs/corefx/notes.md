@@ -5,6 +5,11 @@
 build -framework netfx
 msbuild /t:rebuildandtest /v:m /p:TargetGroup=netfx <- launch this command under `...\tests` folder of solutions
 
+// on unix create an alias to msbuild
+alias msbuild="~/repos/corefx/.dotnet/dotnet msbuild"
+marco@Ubuntu1404:~/repos/corefx/src/System.Diagnostics.Process/tests$ msbuild /t:rebuildandtest /v:m
+
+
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj  
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method *Impersonate_WindowsIdentity_Object_InvalidToken"
