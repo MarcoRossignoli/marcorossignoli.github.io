@@ -38,6 +38,8 @@ Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f
 @dotnet-bot test Outerloop UWP CoreCLR x64 Debug Build
 @dotnet-bot test Outerloop Linux x64 Release Build please
 @dotnet-bot test Outerloop Windows x86 Release Build please
+
+@dotnet-bot help // to get all available tests
 ```
 
 ## Coverage
