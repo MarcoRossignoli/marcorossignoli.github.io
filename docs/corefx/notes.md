@@ -30,6 +30,16 @@ Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f
 [XUnit method with msbuild](https://github.com/dotnet/buildtools/blob/master/Documentation/test-targets-usage.md#run-a-single-xunit-method)   
 [Test on Nano server](https://github.com/dotnet/corefx/pull/33645#issuecomment-442546012)  
 
+## Available Outerloop
+```
+@dotnet-bot test Outerloop Windows x64 Debug Build
+@dotnet-bot test Outerloop Linux x64 Debug Build
+@dotnet-bot test Outerloop NETFX x86 Debug Build
+@dotnet-bot test Outerloop UWP CoreCLR x64 Debug Build
+@dotnet-bot test Outerloop Linux x64 Release Build please
+@dotnet-bot test Outerloop Windows x86 Release Build please
+```
+
 ## Coverage
 
 Workflow https://github.com/dotnet/corefx/issues/23588#issuecomment-394055817
