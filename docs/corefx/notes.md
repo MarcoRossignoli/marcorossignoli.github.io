@@ -84,5 +84,6 @@ corefx guide(my [PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-3
 * dotnet core release csv/json https://github.com/dotnet/core/tree/master/release-notes
 * dotnet core SDKs https://github.com/dotnet/core-sdk#installers-and-binaries  
 * platform-compat https://github.com/dotnet/platform-compat  
-* DOTNET_MULTILEVEL_LOOKUP https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet?tabs=netcore21
+* DOTNET_MULTILEVEL_LOOKUP https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet?tabs=netcore21  
+* Recognize uap fail leg on tests https://github.com/dotnet/corefx/pull/33645#issuecomment-447518192  
 
