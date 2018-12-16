@@ -1,6 +1,12 @@
 Git useful links
 
 * Squash remote commits https://gist.github.com/patik/b8a9dc5cd356f9f6f980#combining-the-commits  
+i.e. squash last 2 commit  
+```
+git reset --soft HEAD~2
+git commit -m "commit message"
+git push origin +currentBranchName
+```
 * Replace local branch with remote branch entirely https://stackoverflow.com/questions/9210446/replace-local-branch-with-remote-branch-entirely   
 ```
 git reset --hard origin/<current branch name>
