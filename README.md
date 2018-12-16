@@ -13,6 +13,7 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 [Notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/corefx/notes.md)  
 [Cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/corefx/crossRepoManaged.md)  
+[git](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/git/notes.md)  
 
 
 #### Wish list
