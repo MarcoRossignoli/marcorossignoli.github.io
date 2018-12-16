@@ -2,6 +2,9 @@ Git useful links
 
 * Squash remote commits https://gist.github.com/patik/b8a9dc5cd356f9f6f980#combining-the-commits  
 * Replace local branch with remote branch entirely https://stackoverflow.com/questions/9210446/replace-local-branch-with-remote-branch-entirely   
+```
+git reset --hard origin/<current branch name>
+```  
 * Small guide https://medium.com/datadriveninvestor/git-for-beginner-f438adfc3599  
 * Update upstream/origin  
 ```
