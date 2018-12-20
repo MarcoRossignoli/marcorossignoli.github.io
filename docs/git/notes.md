@@ -12,6 +12,7 @@ git push origin +currentBranchName
 git reset --hard origin/<current branch name>
 ```  
 * Small guide https://medium.com/datadriveninvestor/git-for-beginner-f438adfc3599  
+* Configure upstream fork https://help.github.com/articles/configuring-a-remote-for-a-fork/  
 * Update upstream/origin  
 ```
     git fetch upstream
