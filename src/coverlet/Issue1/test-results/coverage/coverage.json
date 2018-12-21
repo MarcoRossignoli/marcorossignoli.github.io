@@ -1,0 +1,342 @@
+{
+  "Keys.Data.dll": {
+    "C:\\Users\\someUser\\Desktop\\keys\\src\\Keys.Data\\Repositories\\KeyRepository.cs": {
+      "Keys.Data.Repositories.KeyRepository": {
+        "System.Void Keys.Data.Repositories.KeyRepository::.ctor(Keys.Data.Context.Contracts.IDataContext,Keys.Data.Factories.Contracts.IKeyFactory)": {
+          "Lines": {
+            "20": 3,
+            "21": 3,
+            "22": 3,
+            "23": 3,
+            "24": 3
+          },
+          "Branches": []
+        }
+      },
+      "Keys.Data.Repositories.KeyRepository/<FindAsync>d__3": {
+        "System.Void Keys.Data.Repositories.KeyRepository/<FindAsync>d__3::MoveNext()": {
+          "Lines": {
+            "27": 2,
+            "28": 2,
+            "29": 2
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 61,
+              "EndOffset": 127,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 28,
+              "Offset": 61,
+              "EndOffset": 63,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Keys.Data.Repositories.KeyRepository/<AddAsync>d__4": {
+        "System.Void Keys.Data.Repositories.KeyRepository/<AddAsync>d__4::MoveNext()": {
+          "Lines": {
+            "33": 2,
+            "34": 2,
+            "35": 1,
+            "36": 1,
+            "39": 1,
+            "40": 1,
+            "41": 1
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 34,
+              "Offset": 26,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 98,
+              "EndOffset": 165,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 98,
+              "EndOffset": 100,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Keys.Data.Repositories.KeyRepository/<SaveChangesAsync>d__5": {
+        "System.Void Keys.Data.Repositories.KeyRepository/<SaveChangesAsync>d__5::MoveNext()": {
+          "Lines": {
+            "44": 1,
+            "45": 1,
+            "46": 1
+          },
+          "Branches": [
+            {
+              "Line": 45,
+              "Offset": 50,
+              "EndOffset": 116,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 45,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Keys.Data.Repositories.KeyRepository/<FindOrCreateAsync>d__6": {
+        "System.Void Keys.Data.Repositories.KeyRepository/<FindOrCreateAsync>d__6::MoveNext()": {
+          "Lines": {
+            "49": 2,
+            "50": 2,
+            "52": 2,
+            "53": 1,
+            "54": 1,
+            "57": 1,
+            "59": 1,
+            "61": 1,
+            "62": 2
+          },
+          "Branches": [
+            {
+              "Line": 49,
+              "Offset": 14,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 50,
+              "Offset": 315,
+              "EndOffset": 385,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 52,
+              "Offset": 437,
+              "EndOffset": 439,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 52,
+              "Offset": 437,
+              "EndOffset": 457,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 59,
+              "Offset": 538,
+              "EndOffset": 607,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 50,
+              "Offset": 315,
+              "EndOffset": 317,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 538,
+              "EndOffset": 540,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 49,
+              "Offset": 14,
+              "EndOffset": 578,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\someUser\\Desktop\\keys\\src\\Keys.Data\\Factories\\KeyFactory.cs": {
+      "Keys.Data.Factories.KeyFactory": {
+        "Keys.Data.Entities.Key Keys.Data.Factories.KeyFactory::Create(System.Guid,Keys.Data.Enums.KeyType)": {
+          "Lines": {
+            "12": 1,
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1
+          },
+          "Branches": []
+        },
+        "System.String Keys.Data.Factories.KeyFactory::GetRandomString()": {
+          "Lines": {
+            "23": 1,
+            "24": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "32": 1,
+            "33": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\someUser\\Desktop\\keys\\src\\Keys.Data\\Entities\\Key.cs": {
+      "Keys.Data.Entities.Key": {
+        "System.Void Keys.Data.Entities.Key::set_Id(System.Int32)": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Guid Keys.Data.Entities.Key::get_Uuid()": {
+          "Lines": {
+            "14": 6
+          },
+          "Branches": []
+        },
+        "System.Guid Keys.Data.Entities.Key::get_Kid()": {
+          "Lines": {
+            "17": 5
+          },
+          "Branches": []
+        },
+        "Keys.Data.Enums.KeyType Keys.Data.Entities.Key::get_KeyType()": {
+          "Lines": {
+            "20": 6
+          },
+          "Branches": []
+        },
+        "System.String Keys.Data.Entities.Key::get_ContentKey()": {
+          "Lines": {
+            "23": 2
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "Keys.Application.dll": {
+    "C:\\Users\\someUser\\Desktop\\keys\\src\\Keys.Application\\Services\\KeyProvider.cs": {
+      "Keys.Application.Services.KeyProvider": {
+        "System.Void Keys.Application.Services.KeyProvider::.ctor(Keys.Data.Repositories.Contracts.IKeyRepository)": {
+          "Lines": {
+            "16": 3,
+            "17": 3,
+            "18": 3,
+            "19": 3
+          },
+          "Branches": []
+        }
+      },
+      "Keys.Application.Services.KeyProvider/<GetByUuidAndTypeAsync>d__2": {
+        "System.Void Keys.Application.Services.KeyProvider/<GetByUuidAndTypeAsync>d__2::MoveNext()": {
+          "Lines": {
+            "22": 3,
+            "23": 3,
+            "24": 3
+          },
+          "Branches": [
+            {
+              "Line": 23,
+              "Offset": 62,
+              "EndOffset": 128,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 23,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Keys.Api.dll": {
+    "C:\\Users\\someUser\\Desktop\\keys\\src\\Keys.Api\\Controllers\\KeyController.cs": {
+      "Keys.Api.Controllers.KeyController": {
+        "System.Void Keys.Api.Controllers.KeyController::.ctor(Keys.Application.Services.Contracts.IKeyProvider)": {
+          "Lines": {
+            "16": 3,
+            "17": 3,
+            "18": 3,
+            "19": 3
+          },
+          "Branches": []
+        }
+      },
+      "Keys.Api.Controllers.KeyController/<Get>d__2": {
+        "System.Void Keys.Api.Controllers.KeyController/<Get>d__2::MoveNext()": {
+          "Lines": {
+            "23": 3,
+            "24": 3,
+            "25": 3
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 62,
+              "EndOffset": 128,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        }
+      }
+    }
+  }
+}
