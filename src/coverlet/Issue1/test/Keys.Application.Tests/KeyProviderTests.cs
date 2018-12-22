@@ -6,7 +6,6 @@ using Keys.Data.Enums;
 using Keys.Data.Repositories.Contracts;
 using Moq;
 using Xunit;
-using Key = Keys.Data.Entities.Key;
 
 namespace Keys.Application.Tests
 {
@@ -29,14 +28,7 @@ namespace Keys.Application.Tests
         [InlineData(KeyType.Enum2)]
         public async Task GetByUuidAndTypeAsync01(KeyType keyType)
         {
-            _keyRepositoryMock.Setup(kr =>
-                    kr.FindOrCreateAsync(_testGuid, keyType, It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new Key());
-
             await _keyProvider.GetByUuidAndTypeAsync(_testGuid, keyType, new CancellationToken());
-
-            _keyRepositoryMock.Verify(
-                kr => kr.FindOrCreateAsync(_testGuid, keyType, It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }
