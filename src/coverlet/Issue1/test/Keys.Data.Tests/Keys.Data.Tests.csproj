@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
 	<SonarQubeTestProject>True</SonarQubeTestProject>
   </PropertyGroup>
 
@@ -22,43 +22,19 @@
     <ThresholdStat Condition="$(ThresholdStat) == ''">minimum</ThresholdStat>
   </PropertyGroup>
 
-  <UsingTask TaskName="Coverlet.MSbuild.Tasks.InstrumentationTask" AssemblyFile="..\..\..\..\..\..\coverlet\build\Debug\coverlet.msbuild.tasks.dll"/>
-  <UsingTask TaskName="Coverlet.MSbuild.Tasks.CoverageResultTask" AssemblyFile="..\..\..\..\..\..\coverlet\build\Debug\coverlet.msbuild.tasks.dll"/>
+  <UsingTask TaskName="Coverlet.MSbuild.Tasks.InstrumentationTask" AssemblyFile="..\..\..\..\..\..\coverlet\build\Debug\coverlet.msbuild.tasks.dll" />
+  <UsingTask TaskName="Coverlet.MSbuild.Tasks.CoverageResultTask" AssemblyFile="..\..\..\..\..\..\coverlet\build\Debug\coverlet.msbuild.tasks.dll" />
 
   <Target Name="InstrumentModulesNoBuild" BeforeTargets="VSTest">
-    <Coverlet.MSbuild.Tasks.InstrumentationTask
-      Condition="'$(VSTestNoBuild)' == 'true' and $(CollectCoverage) == 'true'"
-      Path="$(TargetPath)"
-      Include="$(Include)"
-      IncludeDirectory="$(IncludeDirectory)"
-      Exclude="$(Exclude)"
-      ExcludeByFile="$(ExcludeByFile)"
-      ExcludeByAttribute="$(ExcludeByAttribute)"
-      MergeWith="$(MergeWith)"
-      UseSourceLink="$(UseSourceLink)" />
+    <Coverlet.MSbuild.Tasks.InstrumentationTask Condition="'$(VSTestNoBuild)' == 'true' and $(CollectCoverage) == 'true'" Path="$(TargetPath)" Include="$(Include)" IncludeDirectory="$(IncludeDirectory)" Exclude="$(Exclude)" ExcludeByFile="$(ExcludeByFile)" ExcludeByAttribute="$(ExcludeByAttribute)" MergeWith="$(MergeWith)" UseSourceLink="$(UseSourceLink)" />
   </Target>
 
   <Target Name="InstrumentModulesAfterBuild" AfterTargets="BuildProject">
-    <Coverlet.MSbuild.Tasks.InstrumentationTask
-      Condition="'$(VSTestNoBuild)' != 'true' and $(CollectCoverage) == 'true'"
-      Path="$(TargetPath)"
-      Include="$(Include)"
-      IncludeDirectory="$(IncludeDirectory)"
-      Exclude="$(Exclude)"
-      ExcludeByFile="$(ExcludeByFile)"
-      ExcludeByAttribute="$(ExcludeByAttribute)"
-      MergeWith="$(MergeWith)"
-      UseSourceLink="$(UseSourceLink)" />
+    <Coverlet.MSbuild.Tasks.InstrumentationTask Condition="'$(VSTestNoBuild)' != 'true' and $(CollectCoverage) == 'true'" Path="$(TargetPath)" Include="$(Include)" IncludeDirectory="$(IncludeDirectory)" Exclude="$(Exclude)" ExcludeByFile="$(ExcludeByFile)" ExcludeByAttribute="$(ExcludeByAttribute)" MergeWith="$(MergeWith)" UseSourceLink="$(UseSourceLink)" />
   </Target>
 
   <Target Name="GenerateCoverageResult" AfterTargets="VSTest">
-    <Coverlet.MSbuild.Tasks.CoverageResultTask
-      Condition="$(CollectCoverage) == 'true'"
-      Output="$(CoverletOutput)"
-      OutputFormat="$(CoverletOutputFormat)"
-      Threshold="$(Threshold)"
-      ThresholdType="$(ThresholdType)"
-      ThresholdStat="$(ThresholdStat)" />
+    <Coverlet.MSbuild.Tasks.CoverageResultTask Condition="$(CollectCoverage) == 'true'" Output="$(CoverletOutput)" OutputFormat="$(CoverletOutputFormat)" Threshold="$(Threshold)" ThresholdType="$(ThresholdType)" ThresholdStat="$(ThresholdStat)" />
   </Target>
   <!--end coverlet settings-->
   
@@ -68,7 +44,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>-->
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
-    <PackageReference Include="Moq" Version="4.8.1" />
+    <PackageReference Include="Moq" Version="4.10.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
