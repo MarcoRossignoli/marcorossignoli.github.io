@@ -17,7 +17,7 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 
 #### Wish list
-
+[ILVerify]Add '--tokens' switch(https://github.com/dotnet/corert/issues/6694)  
 WPF/Winforms support work https://github.com/dotnet/corefx/projects/5  
 [Reduce huge heap allocations during Regex instantiation](https://github.com/dotnet/corefx/issues/30507)  
 [[Uri] Uri.FindOrFetchAsUnknownV1Syntax is breaking thread-safety](https://github.com/dotnet/corefx/issues/29360)  
