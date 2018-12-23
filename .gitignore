@@ -278,3 +278,4 @@ config.ps1
 **/coverage.opencover.xml
 /src/RegExPerf/before/results
 **/before/results
+**/test-results
