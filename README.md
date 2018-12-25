@@ -45,6 +45,7 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [Nuget package browser https://fuget.org/](https://fuget.org/)  
 [Dotnet download archives https://www.microsoft.com/net/download/archives ](https://www.microsoft.com/net/download/archives)  
 [.Net core repos https://github.com/dotnet/core/blob/master/Documentation/core-repos.md](https://github.com/dotnet/core/blob/master/Documentation/core-repos.md)  
+[Paste bin](https://pastebin.com/)  
 
 #### My merged PR
   
