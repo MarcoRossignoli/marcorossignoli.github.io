@@ -48,6 +48,7 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [Dotnet download archives https://www.microsoft.com/net/download/archives ](https://www.microsoft.com/net/download/archives)  
 [.Net core repos https://github.com/dotnet/core/blob/master/Documentation/core-repos.md](https://github.com/dotnet/core/blob/master/Documentation/core-repos.md)  
 [Paste bin](https://pastebin.com/)  
+[Versionsof.net](https://versionsof.net)  
 
 #### My merged PR
   
