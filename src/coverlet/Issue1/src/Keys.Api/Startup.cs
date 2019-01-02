@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Keys.Application.Services;
 using Keys.Application.Services.Contracts;
 using Keys.Data.Context;
@@ -17,6 +18,7 @@ using Keys.Data.Repositories.Contracts;
 
 namespace Keys.Api
 {
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         public Startup(IConfiguration configuration)
