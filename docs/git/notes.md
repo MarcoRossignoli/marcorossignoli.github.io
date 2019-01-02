@@ -15,10 +15,10 @@ git reset --hard origin/<current branch name>
 * Configure upstream fork https://help.github.com/articles/configuring-a-remote-for-a-fork/  
 * Update upstream/origin  
 ```
-    git fetch upstream
-    git checkout master
-    git merge upstream/master
-    git push origin master
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push origin master
 ```
 
 Or rebase https://github.com/dotnet/corefx/pull/29751#issuecomment-390033889
