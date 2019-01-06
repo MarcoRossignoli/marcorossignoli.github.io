@@ -14,4 +14,4 @@ https://github.com/dotnet/coreclr/issues/19754#issuecomment-426386742 Stephen To
 https://www.youtube.com/playlist?list=PLtWrKx3nUGBfx-TBNymPp3WSpeHp7vxj9 DotNext Conf 2018  
 https://docs.microsoft.com/en-us/dotnet/core/porting/ Porting to .NET Core  
 https://blogs.msdn.microsoft.com/dotnet/2018/11/07/understanding-the-whys-whats-and-whens-of-valuetask/ Understanding the Whys, Whats, and Whens of ValueTask  
-
+https://natemcmaster.com/blog/2017/11/11/build-tools-in-nuget/ Bundling .NET build tools in NuGet
