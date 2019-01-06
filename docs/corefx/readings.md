@@ -1,9 +1,9 @@
-Matt Warren
+Matt Warren  
 http://mattwarren.org/2018/01/22/Resources-for-Learning-about-.NET-Internals/ Matt Warren .NET internals  
 http://mattwarren.org/postsByYear/ Matt Warren by years  
 http://mattwarren.org/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/ A Hitchhikers Guide to the CoreCLR Source Code  
 
-Nuget
+Nuget  
 https://natemcmaster.com/blog/2017/11/11/build-tools-in-nuget/ Bundling .NET build tools in NuGet  
 https://natemcmaster.com/blog/2017/07/05/msbuild-task-in-nuget/ Shipping a cross-platform MSBuild task in a NuGet package  
 
