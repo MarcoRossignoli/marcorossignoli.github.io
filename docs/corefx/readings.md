@@ -11,7 +11,7 @@ Span
 https://www.codemag.com/Article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T `Span<T> & Memory<T>`  
 https://msdn.microsoft.com/en-us/magazine/mt814808.aspx `Span<T> & Memory<T>`  
 
-Type Forward/Net standard  
+Type Forward/.NET Standard  
 https://github.com/dotnet/standard/blob/master/docs/history/evolution-of-design-time-assemblies.md
 
 https://alexandrnikitin.github.io/blog/dotnet-generics-under-the-hood/  .NET memory layout/.NET Generics under the hood  
