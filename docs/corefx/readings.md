@@ -26,4 +26,5 @@ https://www.youtube.com/playlist?list=PLtWrKx3nUGBfx-TBNymPp3WSpeHp7vxj9 DotNext
 https://docs.microsoft.com/en-us/dotnet/core/porting/ Porting to .NET Core  
 https://blogs.msdn.microsoft.com/dotnet/2018/11/07/understanding-the-whys-whats-and-whens-of-valuetask/ Understanding the Whys, Whats, and Whens of ValueTask  
 https://reubenbond.github.io/posts/dotnet-perf-tuning Performance Tuning for .NET Core  
+https://github.com/chrisnas/DebuggingExtensions  DebuggingExtensions ClrMD  
 
