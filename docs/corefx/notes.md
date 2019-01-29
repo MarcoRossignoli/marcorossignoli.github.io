@@ -72,6 +72,15 @@ Andrey Akinshin https://github.com/dotnet/corefx/pull/32389#issuecomment-4246423
 Viktor Hofer https://github.com/dotnet/corefx/pull/30632#issuecomment-399778513  
 corefx guide(my [PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-398237008)) https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/performance-tests.md  
 
+Performance repo https://github.com/dotnet/performance  
+https://github.com/dotnet/performance/tree/master/src/tools/ResultsComparer Comparer  
+
+Run benchmarks multi corerun.exe
+```
+.\scripts\benchmarks_ci.py --frameworks netcoreapp3.0 --filter *.Perf_Dictionary.* --corerun D:\git\corefxupstream\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe D:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --bdn-arguments="--join"
+```
+
+
 ## Extras
 
 * Find string on source
