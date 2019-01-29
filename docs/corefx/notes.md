@@ -3,6 +3,7 @@
 ## Build/Test
 ```
 build -framework netfx
+build -framework uap  
 msbuild /t:rebuildandtest /v:m /p:TargetGroup=netfx <- launch this command under `...\tests` folder of solutions
 
 // on unix create an alias to "dotnet msbuild" verb
