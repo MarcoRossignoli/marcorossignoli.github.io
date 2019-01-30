@@ -1,0 +1,13 @@
+﻿C:\git\coreclr (master -> origin)
+λ build -skiptests -release
+λ build -skiptests -skipnative -release
+
+C:\git\corefx (dicbackporting -> origin)
+λ build.cmd -Release /p:CoreCLROverridePath=c:\git\coreclr\bin\Product\Windows_NT.x64.Release\
+
+C:\git\corefx\src\System.Collections\tests (dicbackporting -> origin)
+λ msbuild /t:rebuildandtest /v:m /p:xunitoptions="-method *Dictionary*"
+
+C:\git\corefxupstream (master -> origin)
+λ build -Release
+
