@@ -42,12 +42,12 @@ First compile repo and link local build
 ### Win
 ```
 clean -all
-build.cmd -- /p:CoreCLROverridePath=d:\git\coreclr\bin\Product\Windows_NT.x64.Release\
+build.cmd /p:CoreCLROverridePath=d:\git\coreclr\bin\Product\Windows_NT.x64.Release\
 ```
 ### Linux
 ```
 clean -all
-./build.sh -- /p:CoreCLROverridePath=.../coreclr/bin/Product/Linux.x64.Release/
+./build.sh /p:CoreCLROverridePath=.../coreclr/bin/Product/Linux.x64.Release/
 ```
 You don't need to rebuild if CLR bits change but you can "relink" if you need
 ### Win
@@ -70,6 +70,7 @@ msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTest
 ../../Tools/msbuild.sh /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
 ../../Tools/msbuild.sh /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj
 ```
+Official guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits  
 Maryam Ariyan way https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957  
 CoreClr runtime Updated(on Corefx) https://github.com/dotnet/corefx/commits?author=dotnet-maestro-bot  
 Mirror changes from dotnet/coreclr https://github.com/dotnet/corefx/pulls?q=is%3Apr+author%3Adotnet-bot  
