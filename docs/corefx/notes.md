@@ -97,4 +97,5 @@ Run benchmarks multi corerun.exe
 * platform-compat https://github.com/dotnet/platform-compat  
 * DOTNET_MULTILEVEL_LOOKUP https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet?tabs=netcore21  
 * Recognize uap fail leg on tests https://github.com/dotnet/corefx/pull/33645#issuecomment-447518192  
-* Dogfooding .NET core app sample https://github.com/dotnet/coreclr/issues/21559#issuecomment-447976642
+* Dogfooding .NET core app sample https://github.com/dotnet/coreclr/issues/21559#issuecomment-447976642  
+* x86 and amd64 instruction reference https://www.felixcloutier.com/x86/
