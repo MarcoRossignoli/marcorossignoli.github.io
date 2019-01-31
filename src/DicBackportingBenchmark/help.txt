@@ -1,12 +1,13 @@
 ﻿C:\git\coreclr (master -> origin)
 λ build -skiptests -release
-λ build -skiptests -skipnative -release
+λ build -skiptests -skipnative -debug
 
 C:\git\corefx (dicbackporting -> origin)
-λ build.cmd -Release /p:CoreCLROverridePath=c:\git\coreclr\bin\Product\Windows_NT.x64.Release\
+λ build.cmd /p:CoreCLROverridePath=c:\git\coreclr\bin\Product\Windows_NT.x64.Debug\
 
 C:\git\corefx\src\System.Collections\tests (dicbackporting -> origin)
 λ msbuild /t:rebuildandtest /v:m /p:xunitoptions="-method *Dictionary*"
+λ msbuild /t:rebuildandtest /v:m /p:xunitoptions="-m *TryAdd_ItemAlreadyExists_DoesNotInvalidateEnumerator*"
 
 C:\git\corefxupstream (master -> origin)
 λ build -Release
