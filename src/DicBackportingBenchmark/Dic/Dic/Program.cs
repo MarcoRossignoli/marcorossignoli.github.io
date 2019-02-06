@@ -7,7 +7,7 @@
             System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();
             for (int i = 0; i < 100; i++)
             {
-                test.Add("V", "V");
+                test.Add("V_" + i, "V_" + i);
             }
         }
     }
