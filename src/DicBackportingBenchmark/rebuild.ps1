@@ -34,6 +34,7 @@ function LocateMsBuild {
   return $path
 }
 
+DownloadVsWhere
 $msbuild = LocateMsBuild
 
 $path = Join-Path -Path $driveLetter -ChildPath "git\coreclr\build.cmd"
