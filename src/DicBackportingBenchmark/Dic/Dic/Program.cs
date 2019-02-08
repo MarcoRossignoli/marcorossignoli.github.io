@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConsoleApp1
@@ -7,19 +8,32 @@ namespace ConsoleApp1
     {
         private static void Main(string[] args)
         {
-            System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();
-            for (int i = 0; i < 100; i++)
+            System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();            
+
+            bool exc = false;
+            try
             {
-                Console.WriteLine(i);
-                var key = Guid.NewGuid().ToString("D");
-                test.Add(key, "V_" + i);
-                var r = test[key];
+                var key = test["Key"];
+            }
+            catch(KeyNotFoundException)
+            {
+                exc = true;
             }
 
-            foreach (var item in test.ToArray())
+            List<string> keys = new List<string>();
+            for (int i = 0; i < 5; i++)
             {
-                test.Remove(item.Key);
+                // Console.WriteLine(i);
+                var key = Guid.NewGuid().ToString("D");
+                keys.Add(key);
+                test.Add(key, key);
+                System.Diagnostics.Debug.Assert(test[key] == key);
             }
+
+            //foreach (var item in test.ToArray())
+            //{
+            //    test.Remove(item.Key);
+            //}
         }
     }
 }

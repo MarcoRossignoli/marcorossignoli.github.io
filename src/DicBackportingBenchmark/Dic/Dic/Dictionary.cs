@@ -54,6 +54,7 @@ namespace System.Collections.Generic2
         private IEqualityComparer<TKey> _comparer;
         private KeyCollection _keys;
         private ValueCollection _values;
+        private static readonly Entry[] InitialEntries = new Entry[1];
 
         // constants for serialization
         private const string VersionName = "Version"; // Do not rename (binary serialization)
@@ -81,6 +82,10 @@ namespace System.Collections.Generic2
                 // To start, move off default comparer for string which is randomised
                 _comparer = (IEqualityComparer<TKey>)NonRandomizedStringEqualityComparer.Default;
             }
+
+            _buckets = HashHelpers.SizeOneIntArray;
+            _entries = InitialEntries;
+            _freeList = -1;
         }
 
         public Dictionary(IDictionary<TKey, TValue> dictionary) : this(dictionary, null) { }
@@ -475,11 +480,6 @@ namespace System.Collections.Generic2
                 ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
             }
 
-            if (_buckets == null)
-            {
-                Initialize(0);
-            }
-
             Entry[] entries = _entries;
             IEqualityComparer<TKey> comparer = _comparer;
 
@@ -719,33 +719,35 @@ namespace System.Collections.Generic2
             int[] buckets = new int[newSize];
             Entry[] entries = new Entry[newSize];
 
-            int count = _count;
-            Array.Copy(_entries, 0, entries, 0, count);
+            if (_entries != InitialEntries)
+            { 
+                int count = _count;
+                Array.Copy(_entries, 0, entries, 0, count);
 
-            if (default(TKey) == null && forceNewHashCodes)
-            {
+                if (default(TKey) == null && forceNewHashCodes)
+                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        if (entries[i].hashCode >= 0)
+                        {
+                            Debug.Assert(_comparer == null);
+                            entries[i].hashCode = (entries[i].key.GetHashCode() & 0x7FFFFFFF);
+                        }
+                    }
+                }
+
                 for (int i = 0; i < count; i++)
                 {
                     if (entries[i].hashCode >= 0)
                     {
-                        Debug.Assert(_comparer == null);
-                        entries[i].hashCode = (entries[i].key.GetHashCode() & 0x7FFFFFFF);
+                        int bucket = entries[i].hashCode % newSize;
+                        // Value in _buckets is 1-based
+                        entries[i].next = buckets[bucket] - 1;
+                        // Value in _buckets is 1-based
+                        buckets[bucket] = i + 1;
                     }
                 }
             }
-
-            for (int i = 0; i < count; i++)
-            {
-                if (entries[i].hashCode >= 0)
-                {
-                    int bucket = entries[i].hashCode % newSize;
-                    // Value in _buckets is 1-based
-                    entries[i].next = buckets[bucket] - 1;
-                    // Value in _buckets is 1-based
-                    buckets[bucket] = i + 1;
-                }
-            }
-
             _buckets = buckets;
             _entries = entries;
         }

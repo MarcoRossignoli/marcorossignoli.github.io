@@ -14,6 +14,9 @@ namespace System.Collections
         // This is the maximum prime smaller than Array.MaxArrayLength
         public const int MaxPrimeArrayLength = 0x7FEFFFFD;
 
+        // must never be written to
+        internal static readonly int[] SizeOneIntArray = new int[1];
+
         public const int HashPrime = 101;
 
         // Table of prime numbers to use as hash table sizes. 
