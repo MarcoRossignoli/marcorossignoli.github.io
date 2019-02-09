@@ -85,10 +85,13 @@ namespace System.Collections.Generic2
                 _comparer = (IEqualityComparer<TKey>)NonRandomizedStringEqualityComparer.Default;
             }
 
-            // Init with dummy entries to avoid null check for every TryAdd
-            _buckets = HashHelpers.SizeOneIntArray;
-            _entries = InitialEntries;
-            _freeList = -1;
+            if (_entries == null)
+            { 
+                // Init with dummy entries to avoid null check for every TryAdd
+                _buckets = HashHelpers.SizeOneIntArray;
+                _entries = InitialEntries;
+                _freeList = -1;
+            }
         }
 
         public Dictionary(IDictionary<TKey, TValue> dictionary) : this(dictionary, null) { }

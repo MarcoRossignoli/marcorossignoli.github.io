@@ -8,6 +8,26 @@ namespace ConsoleApp1
     {
         private static void Main(string[] args)
         {
+            Test();
+            Test2();
+        }
+
+        public static void Test2()
+        {
+            System.Collections.Generic2.Dictionary<string, string> dictionary;
+            
+            int currentCapacity = 3;
+
+            // assert capacity remains the same when ensuring a capacity smaller or equal than existing
+            for (int i = 0; i <= currentCapacity; i++)
+            {
+                dictionary = new System.Collections.Generic2.Dictionary<string, string>(currentCapacity);
+                Debug.Assert(currentCapacity == dictionary.EnsureCapacity(i));
+            }
+        }
+
+        public static void Test()
+        {
             System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();
 
             Debug.Assert(test.Count == 0);
@@ -29,7 +49,7 @@ namespace ConsoleApp1
             }
 
             List<string> keys = new List<string>();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5; i++)
             {
                 // Console.WriteLine(i);
                 var key = Guid.NewGuid().ToString("D");
@@ -40,16 +60,6 @@ namespace ConsoleApp1
 
             Debug.Assert(keys.Count == test.Count);
 
-            foreach (var item in keys)
-            {
-                Debug.Assert(test[item] == item);
-            }
-
-            foreach (KeyValuePair<string, string> item in System.Linq.Enumerable.ToArray(test))
-            {
-                test.Remove(item.Key);
-            }
-
             foreach (KeyValuePair<string, string> item in System.Linq.Enumerable.ToArray(test))
             {
                 test.Remove(item.Key);
@@ -57,5 +67,6 @@ namespace ConsoleApp1
 
             Debug.Assert(test.Count == 0);
         }
+
     }
 }
