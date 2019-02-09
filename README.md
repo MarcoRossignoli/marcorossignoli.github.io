@@ -41,6 +41,7 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [Paste bin](https://pastebin.com/)  
 [Versionsof.net](https://versionsof.net)  
 [SDK zip download](https://github.com/dotnet/core-sdk#installers-and-binaries)  
+https://try.dot.net/  
 
 #### My merged PRs
 Merged in [all repos](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+)  
