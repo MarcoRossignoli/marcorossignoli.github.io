@@ -625,7 +625,7 @@ namespace System.Collections.Generic2
             else
             {
                 int count = _count;
-                if (count == entries.Length)
+                if (count == entries.Length || _entries == InitialEntries)
                 {
                     Resize();
                     bucket = ref _buckets[hashCode % _buckets.Length];

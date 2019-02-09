@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -12,7 +11,7 @@ namespace ConsoleApp1
             System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();
 
             Debug.Assert(test.Count == 0);
-            Debug.Assert(test.ToArray().Length == 0);
+            Debug.Assert(System.Linq.Enumerable.ToArray(test).Length == 0);
 
             foreach (KeyValuePair<string, string> item in test)
             {
@@ -30,7 +29,7 @@ namespace ConsoleApp1
             }
 
             List<string> keys = new List<string>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 100; i++)
             {
                 // Console.WriteLine(i);
                 var key = Guid.NewGuid().ToString("D");
@@ -39,10 +38,24 @@ namespace ConsoleApp1
                 Debug.Assert(test[key] == key);
             }
 
-            foreach (KeyValuePair<string, string> item in test.ToArray())
+            Debug.Assert(keys.Count == test.Count);
+
+            foreach (var item in keys)
+            {
+                Debug.Assert(test[item] == item);
+            }
+
+            foreach (KeyValuePair<string, string> item in System.Linq.Enumerable.ToArray(test))
             {
                 test.Remove(item.Key);
             }
+
+            foreach (KeyValuePair<string, string> item in System.Linq.Enumerable.ToArray(test))
+            {
+                test.Remove(item.Key);
+            }
+
+            Debug.Assert(test.Count == 0);
         }
     }
 }
