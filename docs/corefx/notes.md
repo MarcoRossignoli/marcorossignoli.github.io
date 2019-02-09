@@ -16,7 +16,7 @@ corefx/eng/common/msbuild.sh
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj  
 msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method *Impersonate_WindowsIdentity_Object_InvalidToken"  
-msbuild /v:m /t:rebuildandtest /p:xunitoptions="-method %2ATestAsyncOutputStream%2A" /p:outerloop=true
+msbuild /v:m /t:rebuildandtest /p:ConfigurationGroup=Release /p:xunitoptions="-method %2ATestAsyncOutputStream%2A" /p:outerloop=true
 ```
 Dev guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md  
 Build Pivot https://github.com/dotnet/corefx/blob/6cb23ac20696ab314d2b28e95af40c8454bd7c0d/Documentation/coding-guidelines/project-guidelines.md#build-pivots  
