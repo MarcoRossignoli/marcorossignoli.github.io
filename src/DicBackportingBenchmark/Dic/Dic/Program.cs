@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace ConsoleApp1
@@ -8,16 +9,24 @@ namespace ConsoleApp1
     {
         private static void Main(string[] args)
         {
-            System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();            
+            System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();
 
-            bool exc = false;
+            Debug.Assert(test.Count == 0);
+            Debug.Assert(test.ToArray().Length == 0);
+
+            foreach (KeyValuePair<string, string> item in test)
+            {
+                Debug.Assert(false);
+            }
+
             try
             {
                 var key = test["Key"];
+                Debug.Assert(false);
             }
-            catch(KeyNotFoundException)
+            catch (KeyNotFoundException)
             {
-                exc = true;
+
             }
 
             List<string> keys = new List<string>();
@@ -27,13 +36,13 @@ namespace ConsoleApp1
                 var key = Guid.NewGuid().ToString("D");
                 keys.Add(key);
                 test.Add(key, key);
-                System.Diagnostics.Debug.Assert(test[key] == key);
+                Debug.Assert(test[key] == key);
             }
 
-            //foreach (var item in test.ToArray())
-            //{
-            //    test.Remove(item.Key);
-            //}
+            foreach (KeyValuePair<string, string> item in test.ToArray())
+            {
+                test.Remove(item.Key);
+            }
         }
     }
 }
