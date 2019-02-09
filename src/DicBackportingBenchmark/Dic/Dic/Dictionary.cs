@@ -54,6 +54,8 @@ namespace System.Collections.Generic2
         private IEqualityComparer<TKey> _comparer;
         private KeyCollection _keys;
         private ValueCollection _values;
+
+        // Dummy entry to avoid null check on every TryAdd
         private static readonly Entry[] InitialEntries = new Entry[1];
 
         // constants for serialization
@@ -83,6 +85,7 @@ namespace System.Collections.Generic2
                 _comparer = (IEqualityComparer<TKey>)NonRandomizedStringEqualityComparer.Default;
             }
 
+            // Init with dummy entries to avoid null check for every TryAdd
             _buckets = HashHelpers.SizeOneIntArray;
             _entries = InitialEntries;
             _freeList = -1;
@@ -625,6 +628,8 @@ namespace System.Collections.Generic2
             else
             {
                 int count = _count;
+
+                // if _entries == InitialEntries we have the first add that trigger resize
                 if (count == entries.Length || _entries == InitialEntries)
                 {
                     Resize();
