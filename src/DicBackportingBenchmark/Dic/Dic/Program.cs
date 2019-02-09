@@ -10,19 +10,36 @@ namespace ConsoleApp1
         {
             Test();
             Test2();
+            Test3();
+            Test4();
+        }
+
+        public static void Test4()
+        {
+            var dictionary = new System.Collections.Generic2.Dictionary<string, string>();
+            Debug.Assert(0 == dictionary.EnsureCapacity(0));
+            dictionary.TrimExcess();
+            Debug.Assert(0 == dictionary.EnsureCapacity(0));
+        }
+
+        public static void Test3()
+        {
+            var dictionary = new System.Collections.Generic2.Dictionary<string, string>();
+            Debug.Assert(dictionary.EnsureCapacity(0) == 0);
         }
 
         public static void Test2()
         {
             System.Collections.Generic2.Dictionary<string, string> dictionary;
-            
-            int currentCapacity = 3;
 
-            // assert capacity remains the same when ensuring a capacity smaller or equal than existing
-            for (int i = 0; i <= currentCapacity; i++)
+            foreach (var currentCapacity in new int[] { 3, 7 })
             {
-                dictionary = new System.Collections.Generic2.Dictionary<string, string>(currentCapacity);
-                Debug.Assert(currentCapacity == dictionary.EnsureCapacity(i));
+                // assert capacity remains the same when ensuring a capacity smaller or equal than existing
+                for (int i = 0; i <= currentCapacity; i++)
+                {
+                    dictionary = new System.Collections.Generic2.Dictionary<string, string>(currentCapacity);
+                    Debug.Assert(currentCapacity == dictionary.EnsureCapacity(i));
+                }
             }
         }
 

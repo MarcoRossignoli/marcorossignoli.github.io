@@ -979,7 +979,7 @@ namespace System.Collections.Generic2
         {
             if (capacity < 0)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity);
-            int currentCapacity = _entries == null ? 0 : _entries.Length;
+            int currentCapacity = _entries == InitialEntries ? 0 : _entries.Length;
             if (currentCapacity >= capacity)
                 return currentCapacity;
             _version++;
