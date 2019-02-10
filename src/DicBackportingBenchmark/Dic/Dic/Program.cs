@@ -47,6 +47,8 @@ namespace ConsoleApp1
         {
             System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();
 
+            test.TrimExcess();
+
             Debug.Assert(test.Count == 0);
             Debug.Assert(System.Linq.Enumerable.ToArray(test).Length == 0);
 

@@ -13,3 +13,6 @@ C:\git\corefx\src\System.Collections\tests (dicbackporting -> origin)
 C:\git\corefxupstream (master -> origin)
 λ build -Release
 
+D:\git\performance\src\benchmarks\micro (dicbackporting -> origin)
+λ ..\..\..\tools\dotnet\x64\dotnet.exe run -c release -f netcoreapp3.0 -- --filter System.Collections.Add*.Dictionary --cli ..\..\..\tools\dotnet\x64\dotnet.exe --coreRun d:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --join
+

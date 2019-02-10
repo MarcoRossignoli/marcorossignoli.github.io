@@ -1017,7 +1017,7 @@ namespace System.Collections.Generic2
             int newSize = HashHelpers.GetPrime(capacity);
 
             Entry[] oldEntries = _entries;
-            int currentCapacity = oldEntries == null ? 0 : oldEntries.Length;
+            int currentCapacity = oldEntries == InitialEntries ? 0 : oldEntries.Length;
             if (newSize >= currentCapacity)
                 return;
 
