@@ -1,6 +1,6 @@
 ﻿C:\git\coreclr (master -> origin)
 λ build -skiptests -release
-λ build -skiptests -skipnative -debug
+λ build -skiptests -skipnative -release
 
 C:\git\corefx (dicbackporting -> origin)
 λ build.cmd -Release /p:CoreCLROverridePath=c:\git\coreclr\bin\Product\Windows_NT.x64.Release\
