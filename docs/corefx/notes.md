@@ -39,6 +39,7 @@ For System.Private.CoreLib
 ```
 set COMPlus_TieredCompilation_Test_OptimizeTier0=1
 set COMPlus_ReadyToRun=0
+set COMPlus_JitDiffableDasm=1  
 set COMPlus_JitDisasm=TryInsert <- Dictionary sample
 ```
 
