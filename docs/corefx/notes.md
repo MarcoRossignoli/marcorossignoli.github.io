@@ -23,7 +23,6 @@ set DOTNET_MULTILEVEL_LOOKUP=0
 Dev guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md  
 Build Pivot https://github.com/dotnet/corefx/blob/6cb23ac20696ab314d2b28e95af40c8454bd7c0d/Documentation/coding-guidelines/project-guidelines.md#build-pivots  
 MSBuild Command-Line Reference https://msdn.microsoft.com/en-us/library/ms164311.aspx  
-Viewing jit dumps coreclr https://github.com/dotnet/coreclr/blob/2d2caa80996562936b146fbf81ab228a21b1f7b7/Documentation/building/viewing-jit-dumps.md  
 
 Single test msbuild /p:XunitMethodName https://github.com/dotnet/corefx/wiki/Build-and-run-tests#run-and-debug-single-test-in-command-line  
 trait dotnet test https://github.com/Microsoft/vstest-docs/blob/master/docs/filter.md  
@@ -34,6 +33,15 @@ Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f
 [MsBuild Command line for switches](https://msdn.microsoft.com/en-us/library/ms164311.aspx)  
 [XUnit method with msbuild](https://github.com/dotnet/buildtools/blob/master/Documentation/test-targets-usage.md#run-a-single-xunit-method)   
 [Test on Nano server](https://github.com/dotnet/corefx/pull/33645#issuecomment-442546012)  
+## Viewing jit dumps coreclr 
+https://github.com/dotnet/coreclr/blob/2d2caa80996562936b146fbf81ab228a21b1f7b7/Documentation/building/viewing-jit-dumps.md  
+For System.Private.CoreLib
+```
+set COMPlus_TieredCompilation_Test_OptimizeTier0=1
+set COMPlus_ReadyToRun=0
+set COMPlus_JitDisasm=TryInsert <- Dictionary sample
+```
+
 
 ## Available Outerloop
 ```
