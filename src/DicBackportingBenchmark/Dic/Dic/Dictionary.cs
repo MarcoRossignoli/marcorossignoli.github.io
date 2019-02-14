@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
-using System.Threading;
 
 namespace System.Collections.Generic2
 {
@@ -54,9 +53,7 @@ namespace System.Collections.Generic2
         private IEqualityComparer<TKey> _comparer;
         private KeyCollection _keys;
         private ValueCollection _values;
-
-        // Dummy entry to avoid null check on every TryAdd
-        private static readonly Entry[] InitialEntries = new Entry[1];
+        private static readonly Entry[] InitialEntries = new Entry[1] { new Entry() { hashCode = -1 } };
 
         // constants for serialization
         private const string VersionName = "Version"; // Do not rename (binary serialization)
@@ -72,8 +69,10 @@ namespace System.Collections.Generic2
 
         public Dictionary(int capacity, IEqualityComparer<TKey> comparer)
         {
-            if (capacity < 0) ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity);
-            if (capacity > 0) Initialize(capacity);
+            if (capacity < 0)
+                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity);
+            if (capacity > 0)
+                Initialize(capacity);
             if (comparer != EqualityComparer<TKey>.Default)
             {
                 _comparer = comparer;
@@ -85,9 +84,10 @@ namespace System.Collections.Generic2
                 _comparer = (IEqualityComparer<TKey>)NonRandomizedStringEqualityComparer.Default;
             }
 
-            if (_entries == null)
-            { 
-                // Init with dummy entries to avoid null check for every TryAdd
+            // Default initialization to avoid null check for every insert
+            // Reads will fail and first add cause a resize into a real array
+            if (_entries is null)
+            {
                 _buckets = HashHelpers.SizeOneIntArray;
                 _entries = InitialEntries;
                 _freeList = -1;
@@ -170,7 +170,8 @@ namespace System.Collections.Generic2
         {
             get
             {
-                if (_keys == null) _keys = new KeyCollection(this);
+                if (_keys == null)
+                    _keys = new KeyCollection(this);
                 return _keys;
             }
         }
@@ -179,7 +180,8 @@ namespace System.Collections.Generic2
         {
             get
             {
-                if (_keys == null) _keys = new KeyCollection(this);
+                if (_keys == null)
+                    _keys = new KeyCollection(this);
                 return _keys;
             }
         }
@@ -188,7 +190,8 @@ namespace System.Collections.Generic2
         {
             get
             {
-                if (_keys == null) _keys = new KeyCollection(this);
+                if (_keys == null)
+                    _keys = new KeyCollection(this);
                 return _keys;
             }
         }
@@ -197,7 +200,8 @@ namespace System.Collections.Generic2
         {
             get
             {
-                if (_values == null) _values = new ValueCollection(this);
+                if (_values == null)
+                    _values = new ValueCollection(this);
                 return _values;
             }
         }
@@ -206,7 +210,8 @@ namespace System.Collections.Generic2
         {
             get
             {
-                if (_values == null) _values = new ValueCollection(this);
+                if (_values == null)
+                    _values = new ValueCollection(this);
                 return _values;
             }
         }
@@ -215,7 +220,8 @@ namespace System.Collections.Generic2
         {
             get
             {
-                if (_values == null) _values = new ValueCollection(this);
+                if (_values == null)
+                    _values = new ValueCollection(this);
                 return _values;
             }
         }
@@ -225,7 +231,8 @@ namespace System.Collections.Generic2
             get
             {
                 int i = FindEntry(key);
-                if (i >= 0) return _entries[i].value;
+                if (i >= 0)
+                    return _entries[i].value;
                 ThrowHelper.ThrowKeyNotFoundException(key);
                 return default;
             }
@@ -290,7 +297,8 @@ namespace System.Collections.Generic2
             {
                 for (int i = 0; i < _count; i++)
                 {
-                    if (entries[i].hashCode >= 0 && entries[i].value == null) return true;
+                    if (entries[i].hashCode >= 0 && entries[i].value == null)
+                        return true;
                 }
             }
             else
@@ -300,7 +308,8 @@ namespace System.Collections.Generic2
                     // ValueType: Devirtualize with EqualityComparer<TValue>.Default intrinsic
                     for (int i = 0; i < _count; i++)
                     {
-                        if (entries[i].hashCode >= 0 && EqualityComparer<TValue>.Default.Equals(entries[i].value, value)) return true;
+                        if (entries[i].hashCode >= 0 && EqualityComparer<TValue>.Default.Equals(entries[i].value, value))
+                            return true;
                     }
                 }
                 else
@@ -311,7 +320,8 @@ namespace System.Collections.Generic2
                     EqualityComparer<TValue> defaultComparer = EqualityComparer<TValue>.Default;
                     for (int i = 0; i < _count; i++)
                     {
-                        if (entries[i].hashCode >= 0 && defaultComparer.Equals(entries[i].value, value)) return true;
+                        if (entries[i].hashCode >= 0 && defaultComparer.Equals(entries[i].value, value))
+                            return true;
                     }
                 }
             }
@@ -632,8 +642,8 @@ namespace System.Collections.Generic2
             {
                 int count = _count;
 
-                // if _entries == InitialEntries we have the first add that trigger resize
-                if (count == entries.Length || _entries == InitialEntries)
+                // _entries.Length == 1 is dummy entries
+                if (count == entries.Length || entries.Length == 1)
                 {
                     Resize();
                     bucket = ref _buckets[hashCode % _buckets.Length];
@@ -727,35 +737,33 @@ namespace System.Collections.Generic2
             int[] buckets = new int[newSize];
             Entry[] entries = new Entry[newSize];
 
-            if (_entries != InitialEntries)
-            { 
-                int count = _count;
-                Array.Copy(_entries, 0, entries, 0, count);
+            int count = _count;
+            Array.Copy(_entries, 0, entries, 0, count);
 
-                if (default(TKey) == null && forceNewHashCodes)
-                {
-                    for (int i = 0; i < count; i++)
-                    {
-                        if (entries[i].hashCode >= 0)
-                        {
-                            Debug.Assert(_comparer == null);
-                            entries[i].hashCode = (entries[i].key.GetHashCode() & 0x7FFFFFFF);
-                        }
-                    }
-                }
-
+            if (default(TKey) == null && forceNewHashCodes)
+            {
                 for (int i = 0; i < count; i++)
                 {
                     if (entries[i].hashCode >= 0)
                     {
-                        int bucket = entries[i].hashCode % newSize;
-                        // Value in _buckets is 1-based
-                        entries[i].next = buckets[bucket] - 1;
-                        // Value in _buckets is 1-based
-                        buckets[bucket] = i + 1;
+                        Debug.Assert(_comparer == null);
+                        entries[i].hashCode = (entries[i].key.GetHashCode() & 0x7FFFFFFF);
                     }
                 }
             }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (entries[i].hashCode >= 0)
+                {
+                    int bucket = entries[i].hashCode % newSize;
+                    // Value in _buckets is 1-based
+                    entries[i].next = buckets[bucket] - 1;
+                    // Value in _buckets is 1-based
+                    buckets[bucket] = i + 1;
+                }
+            }
+
             _buckets = buckets;
             _entries = entries;
         }
@@ -979,7 +987,9 @@ namespace System.Collections.Generic2
         {
             if (capacity < 0)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity);
-            int currentCapacity = _entries == InitialEntries ? 0 : _entries.Length;
+
+            // _entries.Length == 1 is dummy entries
+            int currentCapacity = _entries.Length == 1 ? 0 : _entries.Length;
             if (currentCapacity >= capacity)
                 return currentCapacity;
             _version++;
@@ -1017,7 +1027,9 @@ namespace System.Collections.Generic2
             int newSize = HashHelpers.GetPrime(capacity);
 
             Entry[] oldEntries = _entries;
-            int currentCapacity = oldEntries == InitialEntries ? 0 : oldEntries.Length;
+
+            // _entries.Length == 1 is dummy entries
+            int currentCapacity = _entries.Length == 1 ? 0 : oldEntries.Length;
             if (newSize >= currentCapacity)
                 return;
 
@@ -1318,7 +1330,8 @@ namespace System.Collections.Generic2
                 Entry[] entries = _dictionary._entries;
                 for (int i = 0; i < count; i++)
                 {
-                    if (entries[i].hashCode >= 0) array[index++] = entries[i].key;
+                    if (entries[i].hashCode >= 0)
+                        array[index++] = entries[i].key;
                 }
             }
 
@@ -1378,7 +1391,8 @@ namespace System.Collections.Generic2
                     {
                         for (int i = 0; i < count; i++)
                         {
-                            if (entries[i].hashCode >= 0) objects[index++] = entries[i].key;
+                            if (entries[i].hashCode >= 0)
+                                objects[index++] = entries[i].key;
                         }
                     }
                     catch (ArrayTypeMismatchException)
@@ -1501,7 +1515,8 @@ namespace System.Collections.Generic2
                 Entry[] entries = _dictionary._entries;
                 for (int i = 0; i < count; i++)
                 {
-                    if (entries[i].hashCode >= 0) array[index++] = entries[i].value;
+                    if (entries[i].hashCode >= 0)
+                        array[index++] = entries[i].value;
                 }
             }
 
@@ -1561,7 +1576,8 @@ namespace System.Collections.Generic2
                     {
                         for (int i = 0; i < count; i++)
                         {
-                            if (entries[i].hashCode >= 0) objects[index++] = entries[i].value;
+                            if (entries[i].hashCode >= 0)
+                                objects[index++] = entries[i].value;
                         }
                     }
                     catch (ArrayTypeMismatchException)
