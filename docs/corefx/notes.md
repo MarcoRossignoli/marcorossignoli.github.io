@@ -35,6 +35,7 @@ Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f
 [Test on Nano server](https://github.com/dotnet/corefx/pull/33645#issuecomment-442546012)  
 ## Viewing jit dumps coreclr 
 https://github.com/dotnet/coreclr/blob/master/Documentation/building/viewing-jit-dumps.md  
+If you don't find what method jit try this trick https://github.com/dotnet/corefx/issues/35219#issuecomment-463689480  
 For System.Private.CoreLib
 ```
 set COMPlus_TieredCompilation_Test_OptimizeTier0=1
