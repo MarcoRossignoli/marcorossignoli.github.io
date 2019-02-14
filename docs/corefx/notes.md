@@ -111,4 +111,5 @@ Run benchmarks multi corerun.exe
 * Recognize uap fail leg on tests https://github.com/dotnet/corefx/pull/33645#issuecomment-447518192  
 * Dogfooding .NET core app sample https://github.com/dotnet/coreclr/issues/21559#issuecomment-447976642  
 * x86 and amd64 instruction reference https://www.felixcloutier.com/x86/  
-* C# meetings https://github.com/dotnet/csharplang/tree/master/meetings
+* asm op code cost http://ithare.com/infographics-operation-costs-in-cpu-clock-cycles/  
+* C# meetings https://github.com/dotnet/csharplang/tree/master/meetings  
