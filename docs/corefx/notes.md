@@ -41,6 +41,8 @@ set COMPlus_TieredCompilation_Test_OptimizeTier0=1
 set COMPlus_ReadyToRun=0
 set COMPlus_JitDiffableDasm=1  
 set COMPlus_JitDisasm=TryInsert <- Dictionary sample
+set COMPlus_JitDisasm=Dictionary`2:.ctor <- Constructor
+set COMPlus_JitDisasm=.ctor <- Constructor
 ```
 
 
