@@ -48,6 +48,7 @@ set COMPlus_JitDisasm=.ctor <- Constructor
 
 
 ## Available Outerloop
+New Azure pipeline commands https://github.com/dotnet/corefx/issues/35121#issuecomment-462849658  
 ```
 @dotnet-bot test Outerloop Windows x64 Debug Build
 @dotnet-bot test Outerloop Linux x64 Debug Build
