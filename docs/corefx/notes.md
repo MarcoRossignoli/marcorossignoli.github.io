@@ -34,7 +34,7 @@ Debugging NETFX tests in Visual Studio https://github.com/dotnet/corefx/blob/a7f
 [XUnit method with msbuild](https://github.com/dotnet/buildtools/blob/master/Documentation/test-targets-usage.md#run-a-single-xunit-method)   
 [Test on Nano server](https://github.com/dotnet/corefx/pull/33645#issuecomment-442546012)  
 ## Viewing jit dumps coreclr 
-https://github.com/dotnet/coreclr/blob/2d2caa80996562936b146fbf81ab228a21b1f7b7/Documentation/building/viewing-jit-dumps.md  
+https://github.com/dotnet/coreclr/blob/master/Documentation/building/viewing-jit-dumps.md  
 For System.Private.CoreLib
 ```
 set COMPlus_TieredCompilation_Test_OptimizeTier0=1
