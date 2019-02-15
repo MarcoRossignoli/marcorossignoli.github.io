@@ -117,3 +117,4 @@ Run benchmarks multi corerun.exe
 * x86 and amd64 instruction reference https://www.felixcloutier.com/x86/  
 * asm op code cost http://ithare.com/infographics-operation-costs-in-cpu-clock-cycles/  
 * C# meetings https://github.com/dotnet/csharplang/tree/master/meetings  
+* Stacking the Deck -- Finding Your Way Through the Stack  http://www.osronline.com/article.cfm?id=202  
