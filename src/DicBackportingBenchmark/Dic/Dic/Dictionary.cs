@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading;
 
 namespace System.Collections.Generic2
 {
@@ -53,7 +54,6 @@ namespace System.Collections.Generic2
         private IEqualityComparer<TKey> _comparer;
         private KeyCollection _keys;
         private ValueCollection _values;
-        private static readonly Entry[] InitialEntries = new Entry[1] { new Entry() { hashCode = -1 } };
 
         // constants for serialization
         private const string VersionName = "Version"; // Do not rename (binary serialization)
@@ -82,15 +82,6 @@ namespace System.Collections.Generic2
             {
                 // To start, move off default comparer for string which is randomised
                 _comparer = (IEqualityComparer<TKey>)NonRandomizedStringEqualityComparer.Default;
-            }
-
-            // Default initialization to avoid null check for every insert
-            // Reads will fail and first add cause a resize into a real array
-            if (_entries is null)
-            {
-                _buckets = HashHelpers.SizeOneIntArray;
-                _entries = InitialEntries;
-                _freeList = -1;
             }
         }
 
@@ -496,6 +487,11 @@ namespace System.Collections.Generic2
                 ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
             }
 
+            if (_buckets == null)
+            {
+                Initialize(0);
+            }
+
             Entry[] entries = _entries;
             IEqualityComparer<TKey> comparer = _comparer;
 
@@ -641,9 +637,7 @@ namespace System.Collections.Generic2
             else
             {
                 int count = _count;
-
-                // _entries.Length == 1 is dummy entries
-                if (count == entries.Length || entries.Length == 1)
+                if (count == entries.Length)
                 {
                     Resize();
                     bucket = ref _buckets[hashCode % _buckets.Length];
@@ -987,9 +981,7 @@ namespace System.Collections.Generic2
         {
             if (capacity < 0)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity);
-
-            // _entries.Length == 1 is dummy entries
-            int currentCapacity = _entries.Length == 1 ? 0 : _entries.Length;
+            int currentCapacity = _entries == null ? 0 : _entries.Length;
             if (currentCapacity >= capacity)
                 return currentCapacity;
             _version++;
@@ -1027,9 +1019,7 @@ namespace System.Collections.Generic2
             int newSize = HashHelpers.GetPrime(capacity);
 
             Entry[] oldEntries = _entries;
-
-            // _entries.Length == 1 is dummy entries
-            int currentCapacity = _entries.Length == 1 ? 0 : oldEntries.Length;
+            int currentCapacity = oldEntries == null ? 0 : oldEntries.Length;
             if (newSize >= currentCapacity)
                 return;
 
