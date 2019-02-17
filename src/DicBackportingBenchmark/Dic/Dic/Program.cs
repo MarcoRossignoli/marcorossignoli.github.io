@@ -90,6 +90,10 @@ namespace ConsoleApp1
             }
 
             Debug.Assert(test.Count == 0, "test.Count == 0");
+
+            test.Clear();
+
+            Debug.Assert(test.Count == 0, "test.Count == 0 2");
         }
 
     }

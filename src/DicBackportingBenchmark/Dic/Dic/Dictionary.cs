@@ -49,7 +49,6 @@ namespace System.Collections.Generic2
         private Entry[] _entries;
         private int _count;
         private int _freeList;
-        private int _freeCount;
         private int _version;
         private IEqualityComparer<TKey> _comparer;
         private KeyCollection _keys;
@@ -154,7 +153,7 @@ namespace System.Collections.Generic2
 
         public int Count
         {
-            get { return _count - _freeCount; }
+            get { return _count; }
         }
 
         public KeyCollection Keys
@@ -273,7 +272,6 @@ namespace System.Collections.Generic2
 
                 _count = 0;
                 _freeList = -1;
-                _freeCount = 0;
                 Array.Clear(_entries, 0, count);
             }
         }
@@ -628,11 +626,10 @@ namespace System.Collections.Generic2
 
             bool updateFreeList = false;
             int index;
-            if (_freeCount > 0)
+            if (_freeList != -1)
             {
                 index = _freeList;
                 updateFreeList = true;
-                _freeCount--;
             }
             else
             {
@@ -809,7 +806,8 @@ namespace System.Collections.Generic2
                             entry.value = default;
                         }
                         _freeList = i;
-                        _freeCount++;
+
+                        _count--;
                         return true;
                     }
 
@@ -877,7 +875,6 @@ namespace System.Collections.Generic2
                             entry.value = default;
                         }
                         _freeList = i;
-                        _freeCount++;
                         return true;
                     }
 
@@ -1045,7 +1042,6 @@ namespace System.Collections.Generic2
                 }
             }
             _count = count;
-            _freeCount = 0;
         }
 
         bool ICollection.IsSynchronized => false;
