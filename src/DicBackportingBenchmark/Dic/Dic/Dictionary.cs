@@ -630,6 +630,7 @@ namespace System.Collections.Generic2
             {
                 index = _freeList;
                 updateFreeList = true;
+                _count++;
             }
             else
             {
@@ -875,6 +876,8 @@ namespace System.Collections.Generic2
                             entry.value = default;
                         }
                         _freeList = i;
+
+                        _count--;
                         return true;
                     }
 

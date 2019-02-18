@@ -13,6 +13,29 @@ namespace ConsoleApp1
             Test3();
             Test4();
             Test5();
+            Test6();
+        }
+
+        public static void Test6()
+        {
+            System.Collections.Generic2.Dictionary<string, string> test = new System.Collections.Generic2.Dictionary<string, string>();
+            //test.Add("A", "A");
+            //test.Add("B", "B");
+            //test.Add("C", "C");
+
+            test.Add("D", "D");
+            Debug.Assert(test.Remove("D", out string outValue1));
+            Debug.Assert("D" == outValue1);
+            Debug.Assert(!test.TryGetValue("D", out string outValue2));
+            Debug.Assert(test.Count == 0);
+
+            test.Add("D", "D");
+
+            Debug.Assert(test.Count == 1);
+
+            Debug.Assert(test.Remove("D", out string outValue3));
+
+            Debug.Assert(test.Count == 0);
         }
 
         public static void Test5()
