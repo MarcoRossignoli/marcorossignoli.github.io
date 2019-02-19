@@ -818,6 +818,8 @@ namespace System
         endIndex,
         elementType,
         arrayIndex,
+        keySelector,
+        elementSelector,
     }
 
     //

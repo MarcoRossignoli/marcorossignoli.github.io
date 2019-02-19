@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using Dic;
 
 namespace ConsoleApp1
 {
@@ -24,23 +25,32 @@ namespace ConsoleApp1
 
         public static void Test10()
         {
-            foreach (var item in GetCopyConstructorData<int>(i => i))
+            foreach (var item in CopyConstructorInt32Data)
             {
                 int size = (int)item[0];
                 Func<int, int> keyValueSelector = (Func<int, int>)item[1];
                 Func<IDictionary<int, int>, IDictionary<int, int>> dictionarySelector = (Func<IDictionary<int, int>, IDictionary<int, int>>)item[2];
 
-                IDictionary<int, int> expected = CreateDictionary(size, keyValueSelector);
-                IDictionary<int, int> input = dictionarySelector(CreateDictionary(size, keyValueSelector));
-
-                Debug.Assert(expected == new Dictionary<int, int>(input));
+                TestCopyConstructor(size, keyValueSelector, dictionarySelector);
             }
+        }
 
+        private static void TestCopyConstructor<T>(int size, Func<int, T> keyValueSelector, Func<IDictionary<T, T>, IDictionary<T, T>> dictionarySelector)
+        {
+            IDictionary<T, T> expected = CreateDictionary(size, keyValueSelector);
+            IDictionary<T, T> input = dictionarySelector(CreateDictionary(size, keyValueSelector));
+
+            Assert.Equal(expected, new Dictionary<T, T>(input));
+        }
+
+        public static IEnumerable<object[]> CopyConstructorInt32Data
+        {
+            get { return GetCopyConstructorData(i => i); }
         }
 
         private static IDictionary<T, T> CreateDictionary<T>(int size, Func<int, T> keyValueSelector, IEqualityComparer<T> comparer = null)
         {
-            Dictionary<T, T> dict = Enumerable.Range(0, size + 1).ToDictionary(keyValueSelector, keyValueSelector, comparer);
+            System.Collections.Generic2.Dictionary<T, T> dict = Enumerable.Range(0, size + 1).ToDictionary(keyValueSelector, keyValueSelector, comparer);
             // Remove first item to reduce Count to size and alter the contiguity of the dictionary
             dict.Remove(keyValueSelector(0));
             return dict;
@@ -242,6 +252,159 @@ namespace ConsoleApp1
                     Add(pair.Key, pair.Value);
                 }
             }
+        }
+    }
+
+    public static partial class MyEnumerable
+    {
+        public static System.Collections.Generic2.Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+            ToDictionary(source, keySelector, null);
+
+        public static System.Collections.Generic2.Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
+        {
+            if (source == null)
+            {
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.source);
+            }
+
+            if (keySelector == null)
+            {
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.keySelector);
+            }
+
+            int capacity = 0;
+            if (source is ICollection<TSource> collection)
+            {
+                capacity = collection.Count;
+                if (capacity == 0)
+                {
+                    return new System.Collections.Generic2.Dictionary<TKey, TSource>(comparer);
+                }
+
+                if (collection is TSource[] array)
+                {
+                    return ToDictionary(array, keySelector, comparer);
+                }
+
+                if (collection is List<TSource> list)
+                {
+                    return ToDictionary(list, keySelector, comparer);
+                }
+            }
+
+            System.Collections.Generic2.Dictionary<TKey, TSource> d = new System.Collections.Generic2.Dictionary<TKey, TSource>(capacity, comparer);
+            foreach (TSource element in source)
+            {
+                d.Add(keySelector(element), element);
+            }
+
+            return d;
+        }
+
+        private static System.Collections.Generic2.Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(TSource[] source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
+        {
+            System.Collections.Generic2.Dictionary<TKey, TSource> d = new System.Collections.Generic2.Dictionary<TKey, TSource>(source.Length, comparer);
+            for (int i = 0; i < source.Length; i++)
+            {
+                d.Add(keySelector(source[i]), source[i]);
+            }
+
+            return d;
+        }
+
+        private static System.Collections.Generic2.Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(List<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
+        {
+            System.Collections.Generic2.Dictionary<TKey, TSource> d = new System.Collections.Generic2.Dictionary<TKey, TSource>(source.Count, comparer);
+            foreach (TSource element in source)
+            {
+                d.Add(keySelector(element), element);
+            }
+
+            return d;
+        }
+
+        public static System.Collections.Generic2.Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector) =>
+            ToDictionary(source, keySelector, elementSelector, null);
+
+        public static System.Collections.Generic2.Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer)
+        {
+            if (source == null)
+            {
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.source);
+            }
+
+            if (keySelector == null)
+            {
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.keySelector);
+            }
+
+            if (elementSelector == null)
+            {
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.elementSelector);
+            }
+
+            int capacity = 0;
+            if (source is ICollection<TSource> collection)
+            {
+                capacity = collection.Count;
+                if (capacity == 0)
+                {
+                    return new System.Collections.Generic2.Dictionary<TKey, TElement>(comparer);
+                }
+
+                if (collection is TSource[] array)
+                {
+                    return ToDictionary(array, keySelector, elementSelector, comparer);
+                }
+
+                if (collection is List<TSource> list)
+                {
+                    return ToDictionary(list, keySelector, elementSelector, comparer);
+                }
+            }
+
+            System.Collections.Generic2.Dictionary<TKey, TElement> d = new System.Collections.Generic2.Dictionary<TKey, TElement>(capacity, comparer);
+            foreach (TSource element in source)
+            {
+                d.Add(keySelector(element), elementSelector(element));
+            }
+
+            return d;
+        }
+
+        private static System.Collections.Generic2.Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(TSource[] source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer)
+        {
+            System.Collections.Generic2.Dictionary<TKey, TElement> d = new System.Collections.Generic2.Dictionary<TKey, TElement>(source.Length, comparer);
+            for (int i = 0; i < source.Length; i++)
+            {
+                d.Add(keySelector(source[i]), elementSelector(source[i]));
+            }
+
+            return d;
+        }
+
+        private static System.Collections.Generic2.Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(List<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer)
+        {
+            System.Collections.Generic2.Dictionary<TKey, TElement> d = new System.Collections.Generic2.Dictionary<TKey, TElement>(source.Count, comparer);
+            foreach (TSource element in source)
+            {
+                d.Add(keySelector(element), elementSelector(element));
+            }
+
+            return d;
+        }
+
+        public static HashSet<TSource> ToHashSet<TSource>(this IEnumerable<TSource> source) => source.ToHashSet(comparer: null);
+
+        public static HashSet<TSource> ToHashSet<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
+        {
+            if (source == null)
+            {
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.source);
+            }
+
+            // Don't pre-allocate based on knowledge of size, as potentially many elements will be dropped.
+            return new HashSet<TSource>(source, comparer);
         }
     }
 }
