@@ -39,7 +39,7 @@ namespace System.Collections.Generic2
     {
         private struct Entry
         {
-            public int hashCode;    // Lower 31 bits of hash code, -1 if unused
+            public uint hashCode;
             // 0-based index of next entry in chain: -1 means end of chain
             // also encodes whether this entry _itself_ is part of the free list by changing sign and subtracting 3,
             // so -2 means end of free list, -3 means index 0 but on free list, -4 means index 1 but on free list, etc.
@@ -104,19 +104,13 @@ namespace System.Collections.Generic2
             if (dictionary.GetType() == typeof(Dictionary<TKey, TValue>))
             {
                 Dictionary<TKey, TValue> d = (Dictionary<TKey, TValue>)dictionary;
-
-                for (int i = 0; i < d._buckets.Length; i++)
+                int count = d._count;
+                Entry[] entries = d._entries;
+                for (int i = 0; i < count; i++)
                 {
-                    if (d._buckets[i] > 0)
+                    if (entries[i].hashCode >= 0)
                     {
-                        // Value in _buckets is 1-based
-                        int index = d._buckets[i] -1;
-                        while(index != -1)
-                        {
-                            ref Entry entry = ref d._entries[index];
-                            Add(entry.key, entry.value);
-                            index = entry.next;
-                        }
+                        Add(entries[i].key, entries[i].value);
                     }
                 }
                 return;
@@ -343,18 +337,13 @@ namespace System.Collections.Generic2
                 ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
             }
 
-            for (int i = 0; i < _buckets.Length; i++)
+            int count = _count;
+            Entry[] entries = _entries;
+            for (int i = 0; i < count; i++)
             {
-                if (_buckets[i] > 0)
+                if (entries[i].hashCode >= 0)
                 {
-                    // Value in _buckets is 1-based
-                    int entryIndex = _buckets[i] - 1;
-                    while (entryIndex != -1)
-                    {
-                        ref Entry entry = ref _entries[entryIndex];
-                        array[index++] = new KeyValuePair<TKey, TValue>(entry.key, entry.value);
-                        entryIndex = entry.next;
-                    }
+                    array[index++] = new KeyValuePair<TKey, TValue>(entries[i].key, entries[i].value);
                 }
             }
         }
@@ -400,7 +389,7 @@ namespace System.Collections.Generic2
                 IEqualityComparer<TKey> comparer = _comparer;
                 if (comparer == null)
                 {
-                    int hashCode = key.GetHashCode() & 0x7FFFFFFF;
+                    uint hashCode = (uint)key.GetHashCode();
                     // Value in _buckets is 1-based
                     i = buckets[hashCode % buckets.Length] - 1;
                     if (default(TKey) != null)
@@ -453,7 +442,7 @@ namespace System.Collections.Generic2
                 }
                 else
                 {
-                    int hashCode = comparer.GetHashCode(key) & 0x7FFFFFFF;
+                    uint hashCode = (uint)comparer.GetHashCode(key);
                     // Value in _buckets is 1-based
                     i = buckets[hashCode % buckets.Length] - 1;
                     do
@@ -507,7 +496,7 @@ namespace System.Collections.Generic2
             Entry[] entries = _entries;
             IEqualityComparer<TKey> comparer = _comparer;
 
-            int hashCode = ((comparer == null) ? key.GetHashCode() : comparer.GetHashCode(key)) & 0x7FFFFFFF;
+            uint hashCode = (uint)((comparer == null) ? key.GetHashCode() : comparer.GetHashCode(key));
 
             int collisionCount = 0;
             ref int bucket = ref _buckets[hashCode % _buckets.Length];
@@ -747,7 +736,7 @@ namespace System.Collections.Generic2
                     if (entries[i].hashCode >= 0)
                     {
                         Debug.Assert(_comparer == null);
-                        entries[i].hashCode = (entries[i].key.GetHashCode() & 0x7FFFFFFF);
+                        entries[i].hashCode = (uint)entries[i].key.GetHashCode();
                     }
                 }
             }
@@ -756,7 +745,7 @@ namespace System.Collections.Generic2
             {
                 if (entries[i].hashCode >= 0)
                 {
-                    int bucket = entries[i].hashCode % newSize;
+                    int bucket = (int)(entries[i].hashCode % newSize);
                     // Value in _buckets is 1-based
                     entries[i].next = buckets[bucket] - 1;
                     // Value in _buckets is 1-based
@@ -783,8 +772,8 @@ namespace System.Collections.Generic2
             int collisionCount = 0;
             if (buckets != null)
             {
-                int hashCode = (_comparer?.GetHashCode(key) ?? key.GetHashCode()) & 0x7FFFFFFF;
-                int bucket = hashCode % buckets.Length;
+                uint hashCode = (uint)(_comparer?.GetHashCode(key) ?? key.GetHashCode());
+                int bucket = (int)(hashCode % buckets.Length);
                 int last = -1;
                 // Value in buckets is 1-based
                 int i = buckets[bucket] - 1;
@@ -803,8 +792,7 @@ namespace System.Collections.Generic2
                         {
                             entries[last].next = entry.next;
                         }
-                        entry.hashCode = -1;
-                        entries[i].next = -3 - _freeList; // New head of free list
+                        entry.next = -3 - _freeList;
 
                         if (RuntimeHelpers.IsReferenceOrContainsReferences<TKey>())
                         {
@@ -849,8 +837,8 @@ namespace System.Collections.Generic2
             int collisionCount = 0;
             if (buckets != null)
             {
-                int hashCode = (_comparer?.GetHashCode(key) ?? key.GetHashCode()) & 0x7FFFFFFF;
-                int bucket = hashCode % buckets.Length;
+                uint hashCode = (uint)(_comparer?.GetHashCode(key) ?? key.GetHashCode());
+                int bucket = (int)(hashCode % buckets.Length);
                 int last = -1;
                 // Value in buckets is 1-based
                 int i = buckets[bucket] - 1;
@@ -872,8 +860,7 @@ namespace System.Collections.Generic2
 
                         value = entry.value;
 
-                        entry.hashCode = -1;
-                        entry.next = _freeList;
+                        entry.next = -3 - _freeList;
 
                         if (RuntimeHelpers.IsReferenceOrContainsReferences<TKey>())
                         {
@@ -1027,37 +1014,32 @@ namespace System.Collections.Generic2
             int newSize = HashHelpers.GetPrime(capacity);
 
             Entry[] oldEntries = _entries;
-            int[] oldbuckets = _buckets;
             int currentCapacity = oldEntries == null ? 0 : oldEntries.Length;
             if (newSize >= currentCapacity)
                 return;
 
+            int oldCount = _count;
             _version++;
             Initialize(newSize);
             Entry[] entries = _entries;
             int[] buckets = _buckets;
             int count = 0;
-
-            for (int i = 0; i < oldbuckets.Length; i++)
+            for (int i = 0; i < oldCount; i++)
             {
-                if (oldbuckets[i] > 0)
+                uint hashCode = oldEntries[i].hashCode;
+                if (hashCode >= 0)
                 {
-                    int index = oldbuckets[i] - 1;
-                    while(index != -1)
-                    {
-                        Entry oldEntry = oldEntries[index];
-                        ref Entry entry = ref entries[count];
-                        entry = oldEntry;
-                        int bucket = oldEntry.hashCode % newSize;
-                        // Value in _buckets is 1-based
-                        entry.next = buckets[bucket] - 1;
-                        // Value in _buckets is 1-based
-                        buckets[bucket] = count + 1;
-                        count++;
-                        index = oldEntry.next;
-                    }
+                    ref Entry entry = ref entries[count];
+                    entry = oldEntries[i];
+                    int bucket = (int)(hashCode % newSize);
+                    // Value in _buckets is 1-based
+                    entry.next = buckets[bucket] - 1;
+                    // Value in _buckets is 1-based
+                    buckets[bucket] = count + 1;
+                    count++;
                 }
             }
+            _count = count;
         }
 
         bool ICollection.IsSynchronized => false;
@@ -1189,8 +1171,8 @@ namespace System.Collections.Generic2
                 _version = dictionary._version;
                 _index = 0;
                 _getEnumeratorRetType = getEnumeratorRetType;
-                _current = new KeyValuePair<TKey, TValue>();
                 _count = _dictionary.Count;
+                _current = new KeyValuePair<TKey, TValue>();
             }
 
             public bool MoveNext()
@@ -1200,22 +1182,21 @@ namespace System.Collections.Generic2
                     ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumFailedVersion();
                 }
 
-                // Use unsigned comparison since we set index to dictionary.count+1 when the enumeration ends.
-                // dictionary.count+1 could be negative if dictionary.count is int.MaxValue
-                while ((uint)_index < (uint)_count)
+                if (_count == 0)
                 {
-                    ref Entry entry = ref _dictionary._entries[_index++];
-
-                    if (entry.hashCode >= 0)
-                    {
-                        _current = new KeyValuePair<TKey, TValue>(entry.key, entry.value);
-                        return true;
-                    }
+                    _current = default;
+                    return false;
                 }
 
-                _index = _dictionary._count + 1;
-                _current = new KeyValuePair<TKey, TValue>();
-                return false;
+                _count--;
+
+                while (_dictionary._entries[_index].next < -1)
+                    _index++;
+
+                _current = new KeyValuePair<TKey, TValue>(
+                    _dictionary._entries[_index].key,
+                    _dictionary._entries[_index++].value);
+                return true;
             }
 
             public KeyValuePair<TKey, TValue> Current => _current;
@@ -1330,19 +1311,12 @@ namespace System.Collections.Generic2
                     ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
                 }
 
-                for (int i = 0; i < _dictionary._buckets.Length; i++)
+                int count = _dictionary._count;
+                Entry[] entries = _dictionary._entries;
+                for (int i = 0; i < count; i++)
                 {
-                    if (_dictionary._buckets[i] > 0)
-                    {
-                        // Value in _buckets is 1-based
-                        int entryIndex = _dictionary._buckets[i] - 1;
-                        while (entryIndex != -1)
-                        {
-                            ref Entry entry = ref _dictionary._entries[entryIndex];
-                            array[index++] = entry.key;
-                            entryIndex = entry.next;
-                        }
-                    }
+                    if (entries[i].hashCode >= 0)
+                        array[index++] = entries[i].key;
                 }
             }
 
