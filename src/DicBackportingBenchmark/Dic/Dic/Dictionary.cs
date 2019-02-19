@@ -40,7 +40,10 @@ namespace System.Collections.Generic2
         private struct Entry
         {
             public int hashCode;    // Lower 31 bits of hash code, -1 if unused
-            public int next;        // Index of next entry, -1 if last
+            // 0-based index of next entry in chain: -1 means end of chain
+            // also encodes whether this entry _itself_ is part of the free list by changing sign and subtracting 3,
+            // so -2 means end of free list, -3 means index 0 but on free list, -4 means index 1 but on free list, etc.
+            public int next;
             public TKey key;           // Key of entry
             public TValue value;         // Value of entry
         }
@@ -110,7 +113,7 @@ namespace System.Collections.Generic2
                         int index = d._buckets[i] -1;
                         while(index != -1)
                         {
-                            Entry entry = d._entries[index];
+                            ref Entry entry = ref d._entries[index];
                             Add(entry.key, entry.value);
                             index = entry.next;
                         }
@@ -340,13 +343,18 @@ namespace System.Collections.Generic2
                 ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
             }
 
-            int count = _count;
-            Entry[] entries = _entries;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < _buckets.Length; i++)
             {
-                if (entries[i].hashCode >= 0)
+                if (_buckets[i] > 0)
                 {
-                    array[index++] = new KeyValuePair<TKey, TValue>(entries[i].key, entries[i].value);
+                    // Value in _buckets is 1-based
+                    int entryIndex = _buckets[i] - 1;
+                    while (entryIndex != -1)
+                    {
+                        ref Entry entry = ref _entries[entryIndex];
+                        array[index++] = new KeyValuePair<TKey, TValue>(entry.key, entry.value);
+                        entryIndex = entry.next;
+                    }
                 }
             }
         }
@@ -630,33 +638,27 @@ namespace System.Collections.Generic2
 
             }
 
-            bool updateFreeList = false;
             int index;
             if (_freeList != -1)
             {
                 index = _freeList;
-                updateFreeList = true;
-                _count++;
+                _freeList = -3 - entries[_freeList].next;
             }
             else
             {
-                int count = _count;
-                if (count == entries.Length)
+                if (_count == entries.Length)
                 {
                     Resize();
                     bucket = ref _buckets[hashCode % _buckets.Length];
                 }
-                index = count;
-                _count = count + 1;
+                index = _count;
                 entries = _entries;
             }
 
+            _count++;
+
             ref Entry entry = ref entries[index];
 
-            if (updateFreeList)
-            {
-                _freeList = entry.next;
-            }
             entry.hashCode = hashCode;
             // Value in _buckets is 1-based
             entry.next = bucket - 1;
@@ -802,7 +804,7 @@ namespace System.Collections.Generic2
                             entries[last].next = entry.next;
                         }
                         entry.hashCode = -1;
-                        entry.next = _freeList;
+                        entries[i].next = -3 - _freeList; // New head of free list
 
                         if (RuntimeHelpers.IsReferenceOrContainsReferences<TKey>())
                         {
@@ -1328,12 +1330,19 @@ namespace System.Collections.Generic2
                     ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
                 }
 
-                int count = _dictionary._count;
-                Entry[] entries = _dictionary._entries;
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < _dictionary._buckets.Length; i++)
                 {
-                    if (entries[i].hashCode >= 0)
-                        array[index++] = entries[i].key;
+                    if (_dictionary._buckets[i] > 0)
+                    {
+                        // Value in _buckets is 1-based
+                        int entryIndex = _dictionary._buckets[i] - 1;
+                        while (entryIndex != -1)
+                        {
+                            ref Entry entry = ref _dictionary._entries[entryIndex];
+                            array[index++] = entry.key;
+                            entryIndex = entry.next;
+                        }
+                    }
                 }
             }
 
