@@ -40,7 +40,8 @@ namespace ConsoleApp1
             IDictionary<T, T> expected = CreateDictionary(size, keyValueSelector);
             IDictionary<T, T> input = dictionarySelector(CreateDictionary(size, keyValueSelector));
 
-            Assert.Equal(expected, new Dictionary<T, T>(input));
+            var newDic = new System.Collections.Generic2.Dictionary<T, T>(input);
+            Assert.Equal(expected, newDic);
         }
 
         public static IEnumerable<object[]> CopyConstructorInt32Data
@@ -65,7 +66,13 @@ namespace ConsoleApp1
                 d => new ReadOnlyDictionary<T, T>(d)
             };
 
-            var sizes = new int[] { 0, 1, 2, 3 };
+            var sizes = new int[] 
+            { 
+                // 0, 
+                1, 
+                // 2, 
+                // 3 
+            };
 
             foreach (Func<IDictionary<T, T>, IDictionary<T, T>> dictionarySelector in dictionarySelectors)
             {

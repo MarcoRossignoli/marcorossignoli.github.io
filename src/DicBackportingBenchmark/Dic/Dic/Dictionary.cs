@@ -101,13 +101,19 @@ namespace System.Collections.Generic2
             if (dictionary.GetType() == typeof(Dictionary<TKey, TValue>))
             {
                 Dictionary<TKey, TValue> d = (Dictionary<TKey, TValue>)dictionary;
-                int count = d._count;
-                Entry[] entries = d._entries;
-                for (int i = 0; i < count; i++)
+
+                for (int i = 0; i < d._buckets.Length; i++)
                 {
-                    if (entries[i].hashCode >= 0)
+                    if (d._buckets[i] > 0)
                     {
-                        Add(entries[i].key, entries[i].value);
+                        // Value in _buckets is 1-based
+                        int index = d._buckets[i] -1;
+                        while(index != -1)
+                        {
+                            Entry entry = d._entries[index];
+                            Add(entry.key, entry.value);
+                            index = entry.next;
+                        }
                     }
                 }
                 return;
