@@ -37,6 +37,7 @@ namespace System.Collections.Generic2
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public class Dictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary, IReadOnlyDictionary<TKey, TValue>, ISerializable, IDeserializationCallback
     {
+        [DebuggerDisplay("{hashCode} {next} -> {-3 -next} [{key}:{value}]")]
         private struct Entry
         {
             public uint hashCode;
@@ -1018,28 +1019,31 @@ namespace System.Collections.Generic2
             if (newSize >= currentCapacity)
                 return;
 
-            int oldCount = _count;
             _version++;
             Initialize(newSize);
             Entry[] entries = _entries;
             int[] buckets = _buckets;
             int count = 0;
-            for (int i = 0; i < oldCount; i++)
-            {
-                uint hashCode = oldEntries[i].hashCode;
-                if (hashCode >= 0)
+            for (int i = 0; i < oldEntries.Length; i++)
+            {           
+                if (oldEntries[i].next < -1)
                 {
-                    ref Entry entry = ref entries[count];
-                    entry = oldEntries[i];
-                    int bucket = (int)(hashCode % newSize);
-                    // Value in _buckets is 1-based
-                    entry.next = buckets[bucket] - 1;
-                    // Value in _buckets is 1-based
-                    buckets[bucket] = count + 1;
-                    count++;
+                    continue;
+                }
+
+                ref Entry entry = ref entries[count];
+                entry = oldEntries[i];
+                int bucket = (int)(oldEntries[i].hashCode % newSize);
+                // Value in _buckets is 1-based
+                entry.next = buckets[bucket] - 1;
+                // Value in _buckets is 1-based
+                buckets[bucket] = count + 1;
+
+                if (Count == ++count)
+                {
+                    break;
                 }
             }
-            _count = count;
         }
 
         bool ICollection.IsSynchronized => false;

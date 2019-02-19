@@ -11,6 +11,7 @@ namespace ConsoleApp1
     {
         private static void Main(string[] args)
         {
+            D();
             Test();
             Test2();
             Test3();
@@ -21,6 +22,14 @@ namespace ConsoleApp1
             Test8();
             Test9();
             Test10();
+        }
+
+        public static void D()
+        {
+            var dictionary = new System.Collections.Generic2.Dictionary<int, int>();
+            dictionary.Add(1,0);
+            dictionary.Remove(1);
+            dictionary.Add(1, 0);
         }
 
         public static void Test10()
