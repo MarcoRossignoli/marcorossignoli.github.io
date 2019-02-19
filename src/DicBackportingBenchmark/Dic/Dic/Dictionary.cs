@@ -1023,16 +1023,15 @@ namespace System.Collections.Generic2
             if (newSize >= currentCapacity)
                 return;
 
-            int oldCount = _count;
             _version++;
             Initialize(newSize);
             Entry[] entries = _entries;
             int[] buckets = _buckets;
             int count = 0;
-            for (int i = 0; i < oldCount; i++)
+            for (int i = 0; i < oldEntries.Length; i++)
             {
                 int hashCode = oldEntries[i].hashCode;
-                if (hashCode >= 0)
+                if (hashCode > 0)
                 {
                     ref Entry entry = ref entries[count];
                     entry = oldEntries[i];
@@ -1044,7 +1043,6 @@ namespace System.Collections.Generic2
                     count++;
                 }
             }
-            _count = count;
         }
 
         bool ICollection.IsSynchronized => false;
@@ -1163,6 +1161,7 @@ namespace System.Collections.Generic2
             private readonly Dictionary<TKey, TValue> _dictionary;
             private readonly int _version;
             private int _index;
+            private int _count;
             private KeyValuePair<TKey, TValue> _current;
             private readonly int _getEnumeratorRetType;  // What should Enumerator.Current return?
 
@@ -1176,6 +1175,7 @@ namespace System.Collections.Generic2
                 _index = 0;
                 _getEnumeratorRetType = getEnumeratorRetType;
                 _current = new KeyValuePair<TKey, TValue>();
+                _count = _dictionary.Count;
             }
 
             public bool MoveNext()
@@ -1187,7 +1187,7 @@ namespace System.Collections.Generic2
 
                 // Use unsigned comparison since we set index to dictionary.count+1 when the enumeration ends.
                 // dictionary.count+1 could be negative if dictionary.count is int.MaxValue
-                while ((uint)_index < (uint)_dictionary._count)
+                while ((uint)_index < (uint)_count)
                 {
                     ref Entry entry = ref _dictionary._entries[_index++];
 
