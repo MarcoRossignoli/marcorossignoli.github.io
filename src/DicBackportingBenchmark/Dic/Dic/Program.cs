@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 
@@ -18,6 +19,61 @@ namespace ConsoleApp1
             Test7();
             Test8();
             Test9();
+            Test10();
+        }
+
+        public static void Test10()
+        {
+            foreach (var item in GetCopyConstructorData<int>(i => i))
+            {
+                int size = (int)item[0];
+                Func<int, int> keyValueSelector = (Func<int, int>)item[1];
+                Func<IDictionary<int, int>, IDictionary<int, int>> dictionarySelector = (Func<IDictionary<int, int>, IDictionary<int, int>>)item[2];
+
+                IDictionary<int, int> expected = CreateDictionary(size, keyValueSelector);
+                IDictionary<int, int> input = dictionarySelector(CreateDictionary(size, keyValueSelector));
+
+                Debug.Assert(expected == new Dictionary<int, int>(input));
+            }
+
+        }
+
+        private static IDictionary<T, T> CreateDictionary<T>(int size, Func<int, T> keyValueSelector, IEqualityComparer<T> comparer = null)
+        {
+            Dictionary<T, T> dict = Enumerable.Range(0, size + 1).ToDictionary(keyValueSelector, keyValueSelector, comparer);
+            // Remove first item to reduce Count to size and alter the contiguity of the dictionary
+            dict.Remove(keyValueSelector(0));
+            return dict;
+        }
+
+        private static IEnumerable<object[]> GetCopyConstructorData<T>(Func<int, T> keyValueSelector, IEqualityComparer<T>[] comparers = null)
+        {
+            var dictionarySelectors = new Func<IDictionary<T, T>, IDictionary<T, T>>[]
+            {
+                d => d,
+                d => new DictionarySubclass<T, T>(d),
+                d => new ReadOnlyDictionary<T, T>(d)
+            };
+
+            var sizes = new int[] { 0, 1, 2, 3 };
+
+            foreach (Func<IDictionary<T, T>, IDictionary<T, T>> dictionarySelector in dictionarySelectors)
+            {
+                foreach (int size in sizes)
+                {
+                    if (comparers != null)
+                    {
+                        foreach (IEqualityComparer<T> comparer in comparers)
+                        {
+                            yield return new object[] { size, keyValueSelector, dictionarySelector, comparer };
+                        }
+                    }
+                    else
+                    {
+                        yield return new object[] { size, keyValueSelector, dictionarySelector };
+                    }
+                }
+            }
         }
 
         public static void Test9()
@@ -177,5 +233,15 @@ namespace ConsoleApp1
             Debug.Assert(test.Count == 0, "test.Count == 0 2");
         }
 
+        private sealed class DictionarySubclass<TKey, TValue> : System.Collections.Generic2.Dictionary<TKey, TValue>
+        {
+            public DictionarySubclass(IDictionary<TKey, TValue> dictionary)
+            {
+                foreach (var pair in dictionary)
+                {
+                    Add(pair.Key, pair.Value);
+                }
+            }
+        }
     }
 }

@@ -1019,6 +1019,7 @@ namespace System.Collections.Generic2
             int newSize = HashHelpers.GetPrime(capacity);
 
             Entry[] oldEntries = _entries;
+            int[] oldbuckets = _buckets;
             int currentCapacity = oldEntries == null ? 0 : oldEntries.Length;
             if (newSize >= currentCapacity)
                 return;
@@ -1028,19 +1029,25 @@ namespace System.Collections.Generic2
             Entry[] entries = _entries;
             int[] buckets = _buckets;
             int count = 0;
-            for (int i = 0; i < oldEntries.Length; i++)
+
+            for (int i = 0; i < oldbuckets.Length; i++)
             {
-                int hashCode = oldEntries[i].hashCode;
-                if (hashCode > 0)
+                if (oldbuckets[i] > 0)
                 {
-                    ref Entry entry = ref entries[count];
-                    entry = oldEntries[i];
-                    int bucket = hashCode % newSize;
-                    // Value in _buckets is 1-based
-                    entry.next = buckets[bucket] - 1;
-                    // Value in _buckets is 1-based
-                    buckets[bucket] = count + 1;
-                    count++;
+                    int index = oldbuckets[i] - 1;
+                    while(index != -1)
+                    {
+                        Entry oldEntry = oldEntries[index];
+                        ref Entry entry = ref entries[count];
+                        entry = oldEntry;
+                        int bucket = oldEntry.hashCode % newSize;
+                        // Value in _buckets is 1-based
+                        entry.next = buckets[bucket] - 1;
+                        // Value in _buckets is 1-based
+                        buckets[bucket] = count + 1;
+                        count++;
+                        index = oldEntry.next;
+                    }
                 }
             }
         }
