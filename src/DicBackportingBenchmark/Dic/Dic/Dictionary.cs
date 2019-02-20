@@ -37,7 +37,7 @@ namespace System.Collections.Generic2
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public class Dictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary, IReadOnlyDictionary<TKey, TValue>, ISerializable, IDeserializationCallback
     {
-        [DebuggerDisplay("{hashCode} {next} -> {-3 -next} [{key}:{value}]")]
+        [DebuggerDisplay("Hashcode:{hashCode} NextValue:{next} Encodes(index in freelist):{-3 -next} IsOnFreeList:{next < -1} IsEndOfFreelist:{next == -2} KeyValue:[{key}:{value}]")]
         private struct Entry
         {
             public uint hashCode;
@@ -107,13 +107,16 @@ namespace System.Collections.Generic2
                 Dictionary<TKey, TValue> d = (Dictionary<TKey, TValue>)dictionary;
                 int count = d._count;
                 Entry[] entries = d._entries;
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < entries.Length && count != 0; i++)
                 {
-                    if (entries[i].hashCode >= 0)
+                    // entries < -1 are in freelist
+                    if (entries[i].next >= -1)
                     {
                         Add(entries[i].key, entries[i].value);
+                        count--;
                     }
                 }
+
                 return;
             }
 
@@ -340,11 +343,13 @@ namespace System.Collections.Generic2
 
             int count = _count;
             Entry[] entries = _entries;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < entries.Length && count != 0; i++)
             {
-                if (entries[i].hashCode >= 0)
+                // entries < -1 are in freelist
+                if (entries[i].next >= -1)
                 {
                     array[index++] = new KeyValuePair<TKey, TValue>(entries[i].key, entries[i].value);
+                    count--;
                 }
             }
         }
@@ -640,9 +645,9 @@ namespace System.Collections.Generic2
                 {
                     Resize();
                     bucket = ref _buckets[hashCode % _buckets.Length];
+                    entries = _entries;
                 }
                 index = _count;
-                entries = _entries;
             }
 
             _count++;
@@ -931,12 +936,15 @@ namespace System.Collections.Generic2
             }
             else if (array is DictionaryEntry[] dictEntryArray)
             {
+                int count = _count;
                 Entry[] entries = _entries;
-                for (int i = 0; i < _count; i++)
+                for (int i = 0; i < entries.Length && count != 0; i++)
                 {
-                    if (entries[i].hashCode >= 0)
+                    // entries < -1 are in freelist
+                    if (entries[i].next >= -1)
                     {
                         dictEntryArray[index++] = new DictionaryEntry(entries[i].key, entries[i].value);
+                        count--;
                     }
                 }
             }
@@ -952,11 +960,13 @@ namespace System.Collections.Generic2
                 {
                     int count = _count;
                     Entry[] entries = _entries;
-                    for (int i = 0; i < count; i++)
+                    for (int i = 0; i < entries.Length && count != 0; i++)
                     {
-                        if (entries[i].hashCode >= 0)
+                        // entries < -1 are in freelist
+                        if (entries[i].next >= -1)
                         {
                             objects[index++] = new KeyValuePair<TKey, TValue>(entries[i].key, entries[i].value);
+                            count--;
                         }
                     }
                 }
@@ -1024,24 +1034,19 @@ namespace System.Collections.Generic2
             Entry[] entries = _entries;
             int[] buckets = _buckets;
             int count = 0;
-            for (int i = 0; i < oldEntries.Length; i++)
-            {           
-                if (oldEntries[i].next < -1)
+            for (int i = 0; i < oldEntries.Length && count != Count; i++)
+            {
+                // if next < -1 is on free list
+                if (oldEntries[i].next >= -1)
                 {
-                    continue;
-                }
-
-                ref Entry entry = ref entries[count];
-                entry = oldEntries[i];
-                int bucket = (int)(oldEntries[i].hashCode % newSize);
-                // Value in _buckets is 1-based
-                entry.next = buckets[bucket] - 1;
-                // Value in _buckets is 1-based
-                buckets[bucket] = count + 1;
-
-                if (Count == ++count)
-                {
-                    break;
+                    ref Entry entry = ref entries[count];
+                    entry = oldEntries[i];
+                    int bucket = (int)(oldEntries[i].hashCode % newSize);
+                    // Value in _buckets is 1-based
+                    entry.next = buckets[bucket] - 1;
+                    // Value in _buckets is 1-based
+                    buckets[bucket] = count + 1;
+                    count++;
                 }
             }
         }
@@ -1213,7 +1218,7 @@ namespace System.Collections.Generic2
             {
                 get
                 {
-                    if (_index == 0 || (_index == _dictionary._count + 1))
+                    if (_count == _dictionary._count || (_index > _dictionary._count))
                     {
                         ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumOpCantHappen();
                     }
@@ -1237,14 +1242,15 @@ namespace System.Collections.Generic2
                 }
 
                 _index = 0;
-                _current = new KeyValuePair<TKey, TValue>();
+                _count = _dictionary._count;
+                _current = default;
             }
 
             DictionaryEntry IDictionaryEnumerator.Entry
             {
                 get
                 {
-                    if (_index == 0 || (_index == _dictionary._count + 1))
+                    if (_count == _dictionary._count || (_index > _dictionary._count))
                     {
                         ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumOpCantHappen();
                     }
@@ -1257,7 +1263,7 @@ namespace System.Collections.Generic2
             {
                 get
                 {
-                    if (_index == 0 || (_index == _dictionary._count + 1))
+                    if (_count == _dictionary._count || (_index > _dictionary._count))
                     {
                         ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumOpCantHappen();
                     }
@@ -1270,7 +1276,7 @@ namespace System.Collections.Generic2
             {
                 get
                 {
-                    if (_index == 0 || (_index == _dictionary._count + 1))
+                    if (_count == _dictionary._count || (_index > _dictionary._count))
                     {
                         ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumOpCantHappen();
                     }
@@ -1317,10 +1323,14 @@ namespace System.Collections.Generic2
 
                 int count = _dictionary._count;
                 Entry[] entries = _dictionary._entries;
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < entries.Length && count != 0; i++)
                 {
-                    if (entries[i].hashCode >= 0)
+                    // entries < -1 are in freelist
+                    if (entries[i].next >= -1)
+                    {
                         array[index++] = entries[i].key;
+                        count--;
+                    }
                 }
             }
 
@@ -1374,14 +1384,17 @@ namespace System.Collections.Generic2
                         ThrowHelper.ThrowArgumentException_Argument_InvalidArrayType();
                     }
 
-                    int count = _dictionary._count;
-                    Entry[] entries = _dictionary._entries;
                     try
                     {
+                        int count = _dictionary._count;
+                        Entry[] entries = _dictionary._entries;
                         for (int i = 0; i < count; i++)
                         {
-                            if (entries[i].hashCode >= 0)
+                            // entries < -1 are in freelist
+                            if (entries[i].next >= -1)
+                            {
                                 objects[index++] = entries[i].key;
+                            }
                         }
                     }
                     catch (ArrayTypeMismatchException)
@@ -1399,12 +1412,14 @@ namespace System.Collections.Generic2
             {
                 private readonly Dictionary<TKey, TValue> _dictionary;
                 private int _index;
+                private int _count;
                 private readonly int _version;
                 private TKey _currentKey;
 
                 internal Enumerator(Dictionary<TKey, TValue> dictionary)
                 {
                     _dictionary = dictionary;
+                    _count = dictionary._count;
                     _version = dictionary._version;
                     _index = 0;
                     _currentKey = default;
@@ -1421,20 +1436,19 @@ namespace System.Collections.Generic2
                         ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumFailedVersion();
                     }
 
-                    while ((uint)_index < (uint)_dictionary._count)
+                    if (_count == 0)
                     {
-                        ref Entry entry = ref _dictionary._entries[_index++];
-
-                        if (entry.hashCode >= 0)
-                        {
-                            _currentKey = entry.key;
-                            return true;
-                        }
+                        _currentKey = default;
+                        return false;
                     }
 
-                    _index = _dictionary._count + 1;
-                    _currentKey = default;
-                    return false;
+                    _count--;
+
+                    while (_dictionary._entries[_index].next < -1)
+                        _index++;
+
+                    _currentKey = _dictionary._entries[_index].key;
+                    return true;
                 }
 
                 public TKey Current => _currentKey;
@@ -1443,7 +1457,7 @@ namespace System.Collections.Generic2
                 {
                     get
                     {
-                        if (_index == 0 || (_index == _dictionary._count + 1))
+                        if (_count == _dictionary._count || (_index > _dictionary._count))
                         {
                             ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumOpCantHappen();
                         }
@@ -1460,6 +1474,7 @@ namespace System.Collections.Generic2
                     }
 
                     _index = 0;
+                    _count = _dictionary._count;
                     _currentKey = default;
                 }
             }
@@ -1502,10 +1517,14 @@ namespace System.Collections.Generic2
 
                 int count = _dictionary._count;
                 Entry[] entries = _dictionary._entries;
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < entries.Length && count != 0; i++)
                 {
-                    if (entries[i].hashCode >= 0)
+                    // entries < -1 are in freelist
+                    if (entries[i].next >= -1)
+                    {
                         array[index++] = entries[i].value;
+                        count--;
+                    }
                 }
             }
 
@@ -1563,10 +1582,14 @@ namespace System.Collections.Generic2
                     Entry[] entries = _dictionary._entries;
                     try
                     {
-                        for (int i = 0; i < count; i++)
+                        for (int i = 0; i < entries.Length && count != 0; i++)
                         {
-                            if (entries[i].hashCode >= 0)
+                            // entries < -1 are in freelist
+                            if (entries[i].next >= -1)
+                            {
                                 objects[index++] = entries[i].value;
+                                count--;
+                            }
                         }
                     }
                     catch (ArrayTypeMismatchException)
@@ -1584,6 +1607,7 @@ namespace System.Collections.Generic2
             {
                 private readonly Dictionary<TKey, TValue> _dictionary;
                 private int _index;
+                private int _count;
                 private readonly int _version;
                 private TValue _currentValue;
 
@@ -1592,6 +1616,7 @@ namespace System.Collections.Generic2
                     _dictionary = dictionary;
                     _version = dictionary._version;
                     _index = 0;
+                    _count = dictionary._count;
                     _currentValue = default;
                 }
 
@@ -1606,19 +1631,19 @@ namespace System.Collections.Generic2
                         ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumFailedVersion();
                     }
 
-                    while ((uint)_index < (uint)_dictionary._count)
+                    if (_count == 0)
                     {
-                        ref Entry entry = ref _dictionary._entries[_index++];
-
-                        if (entry.hashCode >= 0)
-                        {
-                            _currentValue = entry.value;
-                            return true;
-                        }
+                        _currentValue = default;
+                        return false;
                     }
-                    _index = _dictionary._count + 1;
-                    _currentValue = default;
-                    return false;
+
+                    _count--;
+
+                    while (_dictionary._entries[_index].next < -1)
+                        _index++;
+
+                    _currentValue = _dictionary._entries[_index++].value;
+                    return true;
                 }
 
                 public TValue Current => _currentValue;
@@ -1627,7 +1652,7 @@ namespace System.Collections.Generic2
                 {
                     get
                     {
-                        if (_index == 0 || (_index == _dictionary._count + 1))
+                        if (_count == _dictionary._count || (_index > _dictionary._count))
                         {
                             ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumOpCantHappen();
                         }
@@ -1643,6 +1668,7 @@ namespace System.Collections.Generic2
                         ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumFailedVersion();
                     }
                     _index = 0;
+                    _count = _dictionary._count;
                     _currentValue = default;
                 }
             }
