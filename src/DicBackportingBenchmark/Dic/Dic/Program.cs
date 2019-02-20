@@ -22,14 +22,35 @@ namespace ConsoleApp1
             Test8();
             Test9();
             Test10();
+            Test11();
         }
 
         public static void D()
         {
-            var dictionary = new System.Collections.Generic2.Dictionary<int, int>();
-            dictionary.Add(1,0);
-            dictionary.Remove(1);
-            dictionary.Add(1, 0);
+            var dictionary = new System.Collections.Generic2.Dictionary<string, int>();
+            dictionary.Add("System.Runtime.InteropServices.FieldOffsetAttribute", 0);
+            dictionary.Add("System.Runtime.InteropServices.MarshalAsAttribute", 0);
+            dictionary.Add("System.Runtime.InteropServices.ComImportAttribute", 0);
+            dictionary.Add("System.NonSerializedAttribute", 0);
+            dictionary.Add("System.Runtime.InteropServices.InAttribute", 0);
+            dictionary.Add("System.Runtime.InteropServices.OutAttribute", 0);
+            dictionary.Add("System.Runtime.InteropServices.OptionalAttribute", 0);
+            dictionary.Add("System.Runtime.InteropServices.DllImportAttribute", 0);
+            dictionary.Add("System.Runtime.InteropServices.PreserveSigAttribute", 0);
+            dictionary.Add("System.Runtime.CompilerServices.TypeForwardedToAttribute", 0);
+            dictionary.Add("xunit.console/99.99.99-dev", 0);
+        }
+
+        public static void Test11()
+        {
+            foreach (var item in CopyConstructorStringData)
+            {
+                int size = (int)item[0];
+                Func<int, string> keyValueSelector = (Func<int, string>)item[1];
+                Func<IDictionary<string, string>, IDictionary<string, string>> dictionarySelector = (Func<IDictionary<string, string>, IDictionary<string, string>>)item[2];
+
+                TestCopyConstructor(size, keyValueSelector, dictionarySelector);
+            }
         }
 
         public static void Test10()
@@ -51,6 +72,11 @@ namespace ConsoleApp1
 
             var newDic = new System.Collections.Generic2.Dictionary<T, T>(input);
             Assert.Equal(expected, newDic);
+        }
+
+        public static IEnumerable<object[]> CopyConstructorStringData
+        {
+            get { return GetCopyConstructorData(i => i.ToString()); }
         }
 
         public static IEnumerable<object[]> CopyConstructorInt32Data

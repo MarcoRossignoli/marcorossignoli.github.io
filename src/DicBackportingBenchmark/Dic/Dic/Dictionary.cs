@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
-using System.Threading;
 
 namespace System.Collections.Generic2
 {
@@ -40,7 +39,7 @@ namespace System.Collections.Generic2
         [DebuggerDisplay("Hashcode:{hashCode} NextValue:{next} Encodes(index in freelist):{-3 -next} IsOnFreeList:{next < -1} IsEndOfFreelist:{next == -2} KeyValue:[{key}:{value}]")]
         private struct Entry
         {
-            public uint hashCode;
+            public int hashCode;
             // 0-based index of next entry in chain: -1 means end of chain
             // also encodes whether this entry _itself_ is part of the free list by changing sign and subtracting 3,
             // so -2 means end of free list, -3 means index 0 but on free list, -4 means index 1 but on free list, etc.
@@ -279,7 +278,7 @@ namespace System.Collections.Generic2
 
                 _count = 0;
                 _freeList = -1;
-                Array.Clear(_entries, 0, count);
+                Array.Clear(_entries, 0, _entries.Length);
             }
         }
 
@@ -399,7 +398,7 @@ namespace System.Collections.Generic2
                 IEqualityComparer<TKey> comparer = _comparer;
                 if (comparer == null)
                 {
-                    uint hashCode = (uint)key.GetHashCode();
+                    int hashCode = key.GetHashCode() & 0x7FFFFFFF;
                     // Value in _buckets is 1-based
                     i = buckets[hashCode % buckets.Length] - 1;
                     if (default(TKey) != null)
@@ -452,7 +451,7 @@ namespace System.Collections.Generic2
                 }
                 else
                 {
-                    uint hashCode = (uint)comparer.GetHashCode(key);
+                    int hashCode = comparer.GetHashCode(key) & 0x7FFFFFFF;
                     // Value in _buckets is 1-based
                     i = buckets[hashCode % buckets.Length] - 1;
                     do
@@ -506,7 +505,7 @@ namespace System.Collections.Generic2
             Entry[] entries = _entries;
             IEqualityComparer<TKey> comparer = _comparer;
 
-            uint hashCode = (uint)((comparer == null) ? key.GetHashCode() : comparer.GetHashCode(key));
+            int hashCode = ((comparer == null) ? key.GetHashCode() : comparer.GetHashCode(key)) & 0x7FFFFFFF;
 
             int collisionCount = 0;
             ref int bucket = ref _buckets[hashCode % _buckets.Length];
@@ -748,7 +747,7 @@ namespace System.Collections.Generic2
                     if (entries[i].next >= -1)
                     {
                         Debug.Assert(_comparer == null);
-                        entries[rehashCount].hashCode = (uint)entries[rehashCount].key.GetHashCode();
+                        entries[i].hashCode = (entries[i].key.GetHashCode() & 0x7FFFFFFF);
                         rehashCount--;
                     }
                 }
@@ -759,7 +758,7 @@ namespace System.Collections.Generic2
                 // entries < -1 are in freelist
                 if (entries[i].next >= -1)
                 {
-                    int bucket = (int)(entries[i].hashCode % newSize);
+                    int bucket = entries[i].hashCode % newSize;
                     // Value in _buckets is 1-based
                     entries[i].next = buckets[bucket] - 1;
                     // Value in _buckets is 1-based
@@ -787,7 +786,7 @@ namespace System.Collections.Generic2
             int collisionCount = 0;
             if (buckets != null)
             {
-                uint hashCode = (uint)(_comparer?.GetHashCode(key) ?? key.GetHashCode());
+                int hashCode = (_comparer?.GetHashCode(key) ?? key.GetHashCode()) & 0x7FFFFFFF;
                 int bucket = (int)(hashCode % buckets.Length);
                 int last = -1;
                 // Value in buckets is 1-based
@@ -852,7 +851,7 @@ namespace System.Collections.Generic2
             int collisionCount = 0;
             if (buckets != null)
             {
-                uint hashCode = (uint)(_comparer?.GetHashCode(key) ?? key.GetHashCode());
+                int hashCode = (_comparer?.GetHashCode(key) ?? key.GetHashCode()) & 0x7FFFFFFF;
                 int bucket = (int)(hashCode % buckets.Length);
                 int last = -1;
                 // Value in buckets is 1-based
