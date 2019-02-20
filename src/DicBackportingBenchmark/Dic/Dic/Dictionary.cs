@@ -107,7 +107,7 @@ namespace System.Collections.Generic2
                 Dictionary<TKey, TValue> d = (Dictionary<TKey, TValue>)dictionary;
                 int count = d._count;
                 Entry[] entries = d._entries;
-                for (int i = 0; i < entries.Length && count != 0; i++)
+                for (int i = 0; i < entries.Length && count > 0; i++)
                 {
                     // entries < -1 are in freelist
                     if (entries[i].next >= -1)
@@ -289,12 +289,14 @@ namespace System.Collections.Generic2
         public bool ContainsValue(TValue value)
         {
             Entry[] entries = _entries;
+            int count = _count;
             if (value == null)
             {
-                for (int i = 0; i < _count; i++)
+                for (int i = 0; i < _entries.Length && _count > 0; i++)
                 {
-                    if (entries[i].hashCode >= 0 && entries[i].value == null)
+                    if (entries[i].next >= -1 && entries[i].value == null)
                         return true;
+                    _count--;
                 }
             }
             else
@@ -302,10 +304,11 @@ namespace System.Collections.Generic2
                 if (default(TValue) != null)
                 {
                     // ValueType: Devirtualize with EqualityComparer<TValue>.Default intrinsic
-                    for (int i = 0; i < _count; i++)
+                    for (int i = 0; i < _entries.Length && _count > 0; i++)
                     {
-                        if (entries[i].hashCode >= 0 && EqualityComparer<TValue>.Default.Equals(entries[i].value, value))
+                        if (entries[i].next >= -1 && EqualityComparer<TValue>.Default.Equals(entries[i].value, value))
                             return true;
+                        _count--;
                     }
                 }
                 else
@@ -314,10 +317,11 @@ namespace System.Collections.Generic2
                     // https://github.com/dotnet/coreclr/issues/17273
                     // So cache in a local rather than get EqualityComparer per loop iteration
                     EqualityComparer<TValue> defaultComparer = EqualityComparer<TValue>.Default;
-                    for (int i = 0; i < _count; i++)
+                    for (int i = 0; i < _entries.Length && _count > 0; i++)
                     {
-                        if (entries[i].hashCode >= 0 && defaultComparer.Equals(entries[i].value, value))
+                        if (entries[i].next >= -1 && defaultComparer.Equals(entries[i].value, value))
                             return true;
+                        _count--;
                     }
                 }
             }
@@ -343,7 +347,7 @@ namespace System.Collections.Generic2
 
             int count = _count;
             Entry[] entries = _entries;
-            for (int i = 0; i < entries.Length && count != 0; i++)
+            for (int i = 0; i < entries.Length && count > 0; i++)
             {
                 // entries < -1 are in freelist
                 if (entries[i].next >= -1)
@@ -737,25 +741,30 @@ namespace System.Collections.Generic2
 
             if (default(TKey) == null && forceNewHashCodes)
             {
-                for (int i = 0; i < count; i++)
+                int rehashCount = count;
+                for (int i = 0; i < entries.Length && rehashCount > 0; i++)
                 {
-                    if (entries[i].hashCode >= 0)
+                    // entries < -1 are in freelist
+                    if (entries[i].next >= -1)
                     {
                         Debug.Assert(_comparer == null);
-                        entries[i].hashCode = (uint)entries[i].key.GetHashCode();
+                        entries[rehashCount].hashCode = (uint)entries[rehashCount].key.GetHashCode();
+                        rehashCount--;
                     }
                 }
             }
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < entries.Length && count > 0; i++)
             {
-                if (entries[i].hashCode >= 0)
+                // entries < -1 are in freelist
+                if (entries[i].next >= -1)
                 {
                     int bucket = (int)(entries[i].hashCode % newSize);
                     // Value in _buckets is 1-based
                     entries[i].next = buckets[bucket] - 1;
                     // Value in _buckets is 1-based
                     buckets[bucket] = i + 1;
+                    count--;
                 }
             }
 
@@ -938,7 +947,7 @@ namespace System.Collections.Generic2
             {
                 int count = _count;
                 Entry[] entries = _entries;
-                for (int i = 0; i < entries.Length && count != 0; i++)
+                for (int i = 0; i < entries.Length && count > 0; i++)
                 {
                     // entries < -1 are in freelist
                     if (entries[i].next >= -1)
@@ -960,7 +969,7 @@ namespace System.Collections.Generic2
                 {
                     int count = _count;
                     Entry[] entries = _entries;
-                    for (int i = 0; i < entries.Length && count != 0; i++)
+                    for (int i = 0; i < entries.Length && count > 0; i++)
                     {
                         // entries < -1 are in freelist
                         if (entries[i].next >= -1)
@@ -1323,7 +1332,7 @@ namespace System.Collections.Generic2
 
                 int count = _dictionary._count;
                 Entry[] entries = _dictionary._entries;
-                for (int i = 0; i < entries.Length && count != 0; i++)
+                for (int i = 0; i < entries.Length && count > 0; i++)
                 {
                     // entries < -1 are in freelist
                     if (entries[i].next >= -1)
@@ -1517,7 +1526,7 @@ namespace System.Collections.Generic2
 
                 int count = _dictionary._count;
                 Entry[] entries = _dictionary._entries;
-                for (int i = 0; i < entries.Length && count != 0; i++)
+                for (int i = 0; i < entries.Length && count > 0; i++)
                 {
                     // entries < -1 are in freelist
                     if (entries[i].next >= -1)
@@ -1582,7 +1591,7 @@ namespace System.Collections.Generic2
                     Entry[] entries = _dictionary._entries;
                     try
                     {
-                        for (int i = 0; i < entries.Length && count != 0; i++)
+                        for (int i = 0; i < entries.Length && count > 0; i++)
                         {
                             // entries < -1 are in freelist
                             if (entries[i].next >= -1)
