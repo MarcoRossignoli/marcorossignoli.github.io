@@ -2,6 +2,7 @@ Matt Warren
 http://mattwarren.org/2018/01/22/Resources-for-Learning-about-.NET-Internals/ Matt Warren .NET internals  
 http://mattwarren.org/postsByYear/ Matt Warren by years  
 http://mattwarren.org/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/ A Hitchhikers Guide to the CoreCLR Source Code  
+https://gist.github.com/mattwarren/2d67b44b2eab0f19d58de6e0009bdfd1  low level .NET  
 
 Nuget  
 https://natemcmaster.com/blog/2017/11/11/build-tools-in-nuget/ Bundling .NET build tools in NuGet  
