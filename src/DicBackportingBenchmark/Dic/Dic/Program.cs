@@ -11,7 +11,6 @@ namespace ConsoleApp1
     {
         private static void Main(string[] args)
         {
-            D();
             Test();
             Test2();
             Test3();
@@ -23,22 +22,15 @@ namespace ConsoleApp1
             Test9();
             Test10();
             Test11();
+            Test12();
         }
 
-        public static void D()
+        public static void Test12()
         {
-            var dictionary = new System.Collections.Generic2.Dictionary<string, int>();
-            dictionary.Add("System.Runtime.InteropServices.FieldOffsetAttribute", 0);
-            dictionary.Add("System.Runtime.InteropServices.MarshalAsAttribute", 0);
-            dictionary.Add("System.Runtime.InteropServices.ComImportAttribute", 0);
-            dictionary.Add("System.NonSerializedAttribute", 0);
-            dictionary.Add("System.Runtime.InteropServices.InAttribute", 0);
-            dictionary.Add("System.Runtime.InteropServices.OutAttribute", 0);
-            dictionary.Add("System.Runtime.InteropServices.OptionalAttribute", 0);
-            dictionary.Add("System.Runtime.InteropServices.DllImportAttribute", 0);
-            dictionary.Add("System.Runtime.InteropServices.PreserveSigAttribute", 0);
-            dictionary.Add("System.Runtime.CompilerServices.TypeForwardedToAttribute", 0);
-            dictionary.Add("xunit.console/99.99.99-dev", 0);
+            ICollection<int> collection = new Dictionary<int, int>().Values;
+            int[] array = new int[collection.Count];
+            collection.CopyTo(array, 0);
+            Debug.Assert(Enumerable.SequenceEqual(collection, array));
         }
 
         public static void Test11()
@@ -101,7 +93,7 @@ namespace ConsoleApp1
                 d => new ReadOnlyDictionary<T, T>(d)
             };
 
-            var sizes = new int[] 
+            var sizes = new int[]
             { 
                 // 0, 
                 1, 
