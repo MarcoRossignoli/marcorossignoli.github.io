@@ -28,6 +28,7 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 
 #### Useful links
 
+[Toni announce of Coverlet submission to dotnet foundation](https://twitter.com/tonerdo/status/1090680711785402368)  
 [Apis of .Net https://apisof.net/](https://apisof.net/)  
 [.Net Api browser https://docs.microsoft.com/en-us/dotnet/api/](https://docs.microsoft.com/en-us/dotnet/api/)  
 [.Net netfx source https://referencesource.microsoft.com/](https://referencesource.microsoft.com/)  
