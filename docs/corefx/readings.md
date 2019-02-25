@@ -29,4 +29,5 @@ https://blogs.msdn.microsoft.com/dotnet/2018/11/07/understanding-the-whys-whats-
 https://reubenbond.github.io/posts/dotnet-perf-tuning Performance Tuning for .NET Core  
 https://github.com/chrisnas/DebuggingExtensions  DebuggingExtensions ClrMD  
 http://graphics.stanford.edu/~seander/bithacks.html  Bit Twiddling Hacks  
-https://michaelscodingspot.com/how-to-create-use-and-debug-net-application-crash-dumps-in-2019/ How to Create, Use, and Debug .NET application Crash Dumps in 2019
+https://michaelscodingspot.com/how-to-create-use-and-debug-net-application-crash-dumps-in-2019/ How to Create, Use, and Debug .NET application Crash Dumps in 2019  
+http://xoofx.com/blog/2015/10/08/stackalloc-for-class-with-roslyn-and-coreclr/  Performance is almost all about memory  
