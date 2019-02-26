@@ -47,7 +47,7 @@ http://didattica.claudiomagni.com/convertitore-binario.html hex/dec/bin converte
 http://www.binaryconvert.com/ Online Binary-Decimal Converter  
 
 #### My merged PRs
-Merged in [all repos](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+)  
+Merged in [all repos](https://github.com/pulls?q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+sort%3Aupdated-desc)  
 [CoreFX](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorefx)  
 [CoreCLR](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcoreclr)  
 [CoreRT](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorert)  
