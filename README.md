@@ -51,5 +51,7 @@ Merged in [all repos](https://github.com/pulls?q=is%3Amerged+is%3Apr+author%3AMa
 [CoreFX](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorefx)  
 [CoreCLR](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcoreclr)  
 [CoreRT](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorert)  
+[Performance](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fperformance)  
 [Coverlet](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Atonerdo%2Fcoverlet)  
+
 
