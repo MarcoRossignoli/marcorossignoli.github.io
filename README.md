@@ -1,5 +1,14 @@
 # marcorossignoli.github.io
-My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignoli">https://twitter.com/MarcoRossignoli</a>
+My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignoli">https://twitter.com/MarcoRossignoli</a>  
+
+#### My merged PRs
+Merged in [all repos](https://github.com/pulls?q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+sort%3Aupdated-desc)  
+[CoreFX](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorefx)  
+[CoreCLR](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcoreclr)  
+[CoreRT](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorert)  
+[Performance](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fperformance)  
+[Coverlet](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Atonerdo%2Fcoverlet)  
+
 
 #### Help shortcuts
 
@@ -45,13 +54,5 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 https://try.dot.net/  
 http://didattica.claudiomagni.com/convertitore-binario.html hex/dec/bin converter  
 http://www.binaryconvert.com/ Online Binary-Decimal Converter  
-
-#### My merged PRs
-Merged in [all repos](https://github.com/pulls?q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+sort%3Aupdated-desc)  
-[CoreFX](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorefx)  
-[CoreCLR](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcoreclr)  
-[CoreRT](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorert)  
-[Performance](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fperformance)  
-[Coverlet](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Atonerdo%2Fcoverlet)  
 
 
