@@ -1,7 +1,8 @@
 x86
 
-https://www.aldeid.com/wiki/Category:Architecture/x86-assembly
-https://defuse.ca/online-x86-assembler.htm 
+https://www.aldeid.com/wiki/Category:Architecture/x86-assembly  
+https://defuse.ca/online-x86-assembler.htm  
+
 
 Book sample
 
