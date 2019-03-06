@@ -115,4 +115,3 @@ Run benchmarks multi corerun.exe
 * Recognize uap fail leg on tests https://github.com/dotnet/corefx/pull/33645#issuecomment-447518192  
 * Dogfooding .NET core app sample https://github.com/dotnet/coreclr/issues/21559#issuecomment-447976642  
 * C# meetings https://github.com/dotnet/csharplang/tree/master/meetings  
-* Stacking the Deck -- Finding Your Way Through the Stack  http://www.osronline.com/article.cfm?id=202  
