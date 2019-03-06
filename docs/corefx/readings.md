@@ -31,3 +31,5 @@ https://github.com/chrisnas/DebuggingExtensions  DebuggingExtensions ClrMD
 http://graphics.stanford.edu/~seander/bithacks.html  Bit Twiddling Hacks  
 https://michaelscodingspot.com/how-to-create-use-and-debug-net-application-crash-dumps-in-2019/ How to Create, Use, and Debug .NET application Crash Dumps in 2019  
 http://xoofx.com/blog/2015/10/08/stackalloc-for-class-with-roslyn-and-coreclr/  Performance is almost all about memory  
+http://www.osronline.com/article.cfm?id=202  Stacking the Deck -- Finding Your Way Through the Stack  
+https://blogs.msdn.microsoft.com/seteplia/2017/09/12/managed-object-internals-part-3-the-layout-of-a-managed-array-3/ Array Layout   
