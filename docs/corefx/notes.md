@@ -50,6 +50,14 @@ set COMPlus_JitDisasm=.ctor <- Constructor
 ## Available Outerloop
 New Azure pipeline commands https://github.com/dotnet/corefx/issues/35121#issuecomment-462849658  
 ```
+/azp run corefx-ci
+/azp run corefx-outerloop-linux
+/azp run corefx-outerloop-osx
+/azp run corefx-outerloop-windows
+
+Also, to run all the above, you can just do:
+/azp run
+
 @dotnet-bot test Outerloop Windows x64 Debug Build
 @dotnet-bot test Outerloop Linux x64 Debug Build
 @dotnet-bot test Outerloop NETFX x86 Debug Build
