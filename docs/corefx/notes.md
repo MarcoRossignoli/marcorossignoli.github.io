@@ -91,7 +91,11 @@ msbuild /t:RebuildAndTest /p:Coverage=True /p:CodeCoverageAssemblies="System.Pri
 ## Benchmarking
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/benchmarking.md  
-Adam Sitnik https://github.com/dotnet/corefxlab/pull/2369#issuecomment-399122942  
+
+Adam Sitnik  
+https://github.com/dotnet/corefxlab/pull/2369#issuecomment-399122942  
+https://github.com/dotnet/coreclr/pull/22832#issuecomment-471991845  
+
 Andrey Akinshin https://github.com/dotnet/corefx/pull/32389#issuecomment-424642336  
 Viktor Hofer https://github.com/dotnet/corefx/pull/30632#issuecomment-399778513  
 corefx guide(my [PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-398237008)) https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/performance-tests.md  
