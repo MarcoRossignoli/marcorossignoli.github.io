@@ -55,6 +55,7 @@ SET COMPlus_DumpJittedMethods=1 <- list jitted methods
 SET COMPlus_JitDisasm=ContainsValue <- methods to dump comma separated
 SET COMPlus_ReadyToRun=0 <- disable crossgen
 SET COMPlus_TieredCompilation_Test_OptimizeTier0=1 <- enable Tier 1
+SET COMPlus_JitDiffableDasm=1 <- to produce comparable disasm
 ```
 
 6) Run app
