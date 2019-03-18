@@ -6,70 +6,48 @@ First compile repo
 
 ### Win
 ```
-clean -all
+git clean -fdx
 build -skiptests -release
 ```
 ### Linux
 ```
-./clean.sh -all
+git clean -fdx
 ./build.sh -skiptests -release
 ```
-
 
 After every change recompile only managed part
 ### Win
 ```
-build -skiptests -skipnative -release
+build -release -skiptests -skipnative -skipbuildpackages
 ```
 ### Linux
 ```
-./build.sh -skiptests -skipnative -release
+./build.sh -release -skiptests -skipnative -skipbuildpackages
 ```
-## Update CLR repo after coding
-### Win
-```
-build -skiptests -skipnative -release
-```
-### Linux
-```
-./build.sh -skiptests -skipnative -release
-```
-
 
 ## CoreFx repo
 
 First compile repo and link local build
 ### Win
 ```
-clean -all
-build.cmd /p:CoreCLROverridePath=d:\git\coreclr\bin\Product\Windows_NT.x64.Release\
+git clean -fdx
+build.cmd -c Release /p:CoreCLROverridePath=C:\Projects\coreclr\bin\Product\Windows_NT.x64.Release
 ```
 ### Linux
 ```
 clean -all
-./build.sh /p:CoreCLROverridePath=.../coreclr/bin/Product/Linux.x64.Release/
+./build.sh -c Release /p:CoreCLROverridePath=C:\Projects\coreclr\bin\Product\Windows_NT.x64.Release
 ```
 You don't need to rebuild if CLR bits change but you can "relink" if you need
 ### Win
 ```
-msbuild /p:CoreCLROverridePath=d:\git\coreclr\bin\Product\Windows_NT.x64.Release\ ./external/runtime/runtime.depproj
+build.cmd -restore -c Release /p:CoreCLROverridePath=C:\Projects\coreclr\bin\Product\Windows_NT.x64.Release
 ```
 ### Linux
 ```
-../Tool/msbuild.sh /p:CoreCLROverridePath=.../coreclr/bin/Product/Linux.x64.Release/ ./external/runtime/runtime.depproj
+../Tool/msbuild.sh -restore -c Release /p:CoreCLROverridePath=C:\Projects\coreclr\bin\Product\Windows_NT.x64.Release
 ```
 
-## Tests with msbuild
-### Win
-```
-msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
-msbuild /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj
-```
-### Linux
-```
-../../Tools/msbuild.sh /v:m /t:RebuildAndTest "/p:XunitOptions=-trait MyTrait=MyTrait"  System.Runtime.Extensions.Tests.csproj
-../../Tools/msbuild.sh /v:m /t:RebuildAndTest "/p:XunitOptions=-method System.IO.Tests.PathTests.Try_GetTempPath_Default"  System.Runtime.Extensions.Tests.csproj
-```
 Official guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits  
 Maryam Ariyan way https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957  
 CoreClr runtime Updated(on Corefx) https://github.com/dotnet/corefx/commits?author=dotnet-maestro-bot  
