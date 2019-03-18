@@ -43,10 +43,6 @@ You don't need to rebuild if CLR bits change but you can "relink" if you need
 ```
 build.cmd -restore -c Release /p:CoreCLROverridePath=C:\Projects\coreclr\bin\Product\Windows_NT.x64.Release
 ```
-### Linux
-```
-../Tool/msbuild.sh -restore -c Release /p:CoreCLROverridePath=C:\Projects\coreclr\bin\Product\Windows_NT.x64.Release
-```
 
 Official guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits  
 Maryam Ariyan way https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957  
