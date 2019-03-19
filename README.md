@@ -41,7 +41,6 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [.Net netfx source https://referencesource.microsoft.com/](https://referencesource.microsoft.com/)  
 [.Net netcoreapp source https://source.dot.net/](https://source.dot.net/)  
 [.Net SDKs for Visual Studio https://www.microsoft.com/net/download/visual-studio-sdks](https://www.microsoft.com/net/download/visual-studio-sdks)  
-[SharpLab https://sharplab.io/](https://sharplab.io/)  
 [C# lang status https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md](https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md)  
 [Nuget package browser https://fuget.org/](https://fuget.org/)  
 [Dotnet download archives https://www.microsoft.com/net/download/archives ](https://www.microsoft.com/net/download/archives)  
@@ -49,9 +48,14 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [Paste bin](https://pastebin.com/)  
 [Versionsof.net](https://versionsof.net)  
 [SDK zip download](https://github.com/dotnet/core-sdk#installers-and-binaries)  
-https://try.dot.net/  
-https://www.ideone.com  
+  
 http://didattica.claudiomagni.com/convertitore-binario.html hex/dec/bin converter  
 http://www.binaryconvert.com/ Online Binary-Decimal Converter  
+
+### Web compiler/decompiler/runner
+
+https://sharplab.io/  
+https://try.dot.net/  
+https://www.ideone.com  
 
 
