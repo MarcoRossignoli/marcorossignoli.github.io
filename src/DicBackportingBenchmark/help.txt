@@ -14,5 +14,6 @@ C:\git\corefxupstream (master -> origin)
 λ build -Release
 
 D:\git\performance\src\benchmarks\micro (dicbackporting -> origin)
-λ ..\..\..\tools\dotnet\x64\dotnet.exe run -c release -f netcoreapp3.0 -- --filter System.Collections.Add*.Dictionary --cli ..\..\..\tools\dotnet\x64\dotnet.exe --coreRun d:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --join
+λ dotnet.exe run -c release -f netcoreapp3.0 -- --filter System.Collections*.Dictionary *Perf_Dictionary* *DictionaryMappingFunction* --coreRun c:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe c:\git\corefxupstream\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --join
+λ "c:\Program Files (x86)\dotnet\dotnet.exe" run -c release -f netcoreapp3.0 -- --filter System.Collections*.Dictionary *Perf_Dictionary* *DictionaryMappingFunction* --coreRun c:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x86\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe c:\git\corefxupstream\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x86\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --join
 
