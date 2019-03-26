@@ -88,7 +88,7 @@ cd src\System.Collections\tests
 msbuild /t:RebuildAndTest /p:Coverage=True /p:CodeCoverageAssemblies="System.Private.CoreLib"
 ```
 
-## Benchmarking
+## Benchmarking/Profiling
 
 https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/benchmarking.md  
 
@@ -108,6 +108,7 @@ Run benchmarks multi corerun.exe
 .\scripts\benchmarks_ci.py --frameworks netcoreapp3.0 --filter *.Perf_Dictionary.* --corerun D:\git\corefxupstream\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe D:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --bdn-arguments="--join"
 ```
 
+Stephen's way to profile allocation https://github.com/dotnet/corefx/pull/36056#issuecomment-476671769  
 
 ## Extras
 
