@@ -48,10 +48,7 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [Paste bin](https://pastebin.com/)  
 [Versionsof.net](https://versionsof.net)  
 [SDK zip download](https://github.com/dotnet/core-sdk#installers-and-binaries)  
-  
-http://didattica.claudiomagni.com/convertitore-binario.html hex/dec/bin converter  
-https://www.rapidtables.com/convert/number/hex-to-decimal.html  Hex to Decimal converter  
-http://www.binaryconvert.com/ Online Binary-Decimal Converter  
+https://www.rapidtables.com/convert/number/index.html converters  
 
 ### Web compiler/decompiler/runner
 
