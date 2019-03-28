@@ -48,6 +48,7 @@ set COMPlus_JitDisasm=.ctor <- Constructor
 
 
 ## Available Outerloop
+Guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/pullrequest-builds.md  
 New Azure pipeline commands https://github.com/dotnet/corefx/issues/35121#issuecomment-462849658  
 ```
 /azp run corefx-ci
