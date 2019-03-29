@@ -15,6 +15,7 @@ Merged in [.NET Core codebases(corefx, coreclr, corert, performance)](https://gi
 
 [Commented: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=commenter%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 [Mentions: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=mentions%3AMarcoRossignoli+sort%3Aupdated-desc+)  
+https://github.com/dotnet/corert/pull/6965#discussion_r255924605  
 
 ---
 
