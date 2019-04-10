@@ -12,4 +12,5 @@ https://github.com/Apress/modern-x86-assembly-language-programming
 
 Blogs/Articles
 
-https://eli.thegreenplace.net/tag/assembly
+https://eli.thegreenplace.net/tag/assembly  
+http://www.rdrop.com/users/paulmck/scalability/paper/whymb.2010.07.23a.pdf Memory Barriers: a Hardware View for Software Hackers
