@@ -49,7 +49,7 @@ coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%
 [Versionsof.net](https://versionsof.net)  
 [SDK zip download](https://github.com/dotnet/core-sdk#installers-and-binaries)  
 https://www.rapidtables.com/convert/number/index.html converters  
-
+https://roslynquoter.azurewebsites.net/ Roslynquoter
 ### Web compiler/decompiler/runner
 
 https://sharplab.io/  
