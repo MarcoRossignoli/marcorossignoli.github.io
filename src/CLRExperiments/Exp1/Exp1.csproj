@@ -6,5 +6,11 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="build.cmd">
+      <Generator></Generator>
+    </None>
+  </ItemGroup>
+
 
 </Project>
