@@ -1,0 +1,19 @@
+﻿C:\git\coreclr (master -> origin)
+λ build -skiptests -release
+λ build -skiptests -skipnative -release
+
+C:\git\corefx (dicbackporting -> origin)
+λ build.cmd -Release /p:CoreCLROverridePath=c:\git\coreclr\bin\Product\Windows_NT.x64.Release\
+λ  msbuild /p:ConfigurationGroup=Release /p:CoreCLROverridePath=f:\git\coreclr\bin\Product\Windows_NT.x64.Release\ ./external/runtime/runtime.depproj
+
+C:\git\corefx\src\System.Collections\tests (dicbackporting -> origin)
+λ msbuild /t:rebuildandtest /v:m /p:xunitoptions="-method *Dictionary*"
+λ msbuild /t:rebuildandtest /v:m /p:xunitoptions="-m *TryAdd_ItemAlreadyExists_DoesNotInvalidateEnumerator*"
+
+C:\git\corefxupstream (master -> origin)
+λ build -Release
+
+D:\git\performance\src\benchmarks\micro (dicbackporting -> origin)
+λ dotnet.exe run -c release -f netcoreapp3.0 -- --filter System.Collections*.Dictionary *Perf_Dictionary* *DictionaryMappingFunction* --coreRun c:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe c:\git\corefxupstream\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --join
+λ "c:\Program Files (x86)\dotnet\dotnet.exe" run -c release -f netcoreapp3.0 -- --filter System.Collections*.Dictionary *Perf_Dictionary* *DictionaryMappingFunction* --coreRun c:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x86\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe c:\git\corefxupstream\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x86\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --join
+
