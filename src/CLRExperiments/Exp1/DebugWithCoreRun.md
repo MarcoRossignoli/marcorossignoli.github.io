@@ -7,5 +7,5 @@ VS options
 ![File](file.png)
 
 Command: `$(SolutionDir)..\..\product\Windows_NT.$(Platform).$(Configuration)\corerun.exe`  
-Command Arguments: `...\Exp1.dll /v`  <-- .net main dll to debug
+Command Arguments: `...\Exp1.dll /v`  <-- .net main dll to debug  
 WorkingDirectory: `$(SolutionDir)..\..\product\Windows_NT.$(Platform).$(Configuration)`
