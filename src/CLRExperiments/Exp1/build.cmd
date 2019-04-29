@@ -1,4 +1,4 @@
-SET COMPlus_JitDisasm=Check
+SET COMPlus_JitDisasm=Check CheckOptimized
 SET COMPlus_JitDump=
 SET COMPlus_TieredCompilation_Test_OptimizeTier0=1
 SET COMPlus_JitDiffableDasm=1
@@ -9,7 +9,7 @@ start notepad.exe %~dp0bin\Release\netcoreapp3.0\win-x64\publish\jitdasm.txt
 
 
 SET COMPlus_JitDisasm=
-SET COMPlus_JitDump=Check
+SET COMPlus_JitDump=Check CheckOptimized
 SET COMPlus_TieredCompilation_Test_OptimizeTier0=1
 SET COMPlus_JitDiffableDasm=1
 dotnet publish -c release

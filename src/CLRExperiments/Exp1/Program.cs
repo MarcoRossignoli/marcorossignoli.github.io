@@ -10,6 +10,7 @@ namespace Clr
         {
             MyTest mt = new MyTest();
             Console.WriteLine(mt.Check(new string[5], 6));
+            Console.WriteLine(mt.CheckOptimized(new string[5], 6));
         }
     }
 }
