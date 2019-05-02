@@ -35,3 +35,4 @@ http://www.osronline.com/article.cfm?id=202  Stacking the Deck -- Finding Your W
 https://blogs.msdn.microsoft.com/seteplia/2017/09/12/managed-object-internals-part-3-the-layout-of-a-managed-array-3/ Array Layout   
 https://michaelscodingspot.com/how-to-create-use-and-debug-net-application-crash-dumps-in-2019/ DUMP .NET CORE + WinDBG setups  
 https://gist.github.com/davidfowl/ed7564297c61fe9ab814 .NET folders projects name  
+https://medium.com/@MStrehovsky/fight-the-global-warming-compile-your-c-apps-ahead-of-time-9997e953645b CoreRT AOT .NET  Explained  
