@@ -47,5 +47,5 @@ build.cmd -restore -c Release /p:CoreCLROverridePath=C:\Projects\coreclr\bin\Pro
 Official guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md#testing-with-private-coreclr-bits  
 Maryam Ariyan way https://github.com/dotnet/coreclr/pull/16151#issuecomment-362356957  
 CoreClr runtime Updated(on Corefx) https://github.com/dotnet/corefx/commits?author=dotnet-maestro-bot  
-Mirror changes from dotnet/coreclr https://github.com/dotnet/corefx/pulls?q=is%3Apr+author%3Adotnet-bot  
+Mirror changes from dotnet/coreclr https://github.com/dotnet/corefx/pulls?utf8=%E2%9C%93&q=is%3Apr+%40dotnet-maestro
 If build with local clr coreclr fail one solution could be https://github.com/dotnet/coreclr/pull/18524#issuecomment-398396986  
