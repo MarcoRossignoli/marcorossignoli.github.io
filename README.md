@@ -3,7 +3,7 @@ My notes repo - follow me on twitter <a href="https://twitter.com/MarcoRossignol
 
 #### My merged PRs
 Merged in [all repos](https://github.com/pulls?q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+sort%3Aupdated-desc)  
-Merged in [.NET Core codebases(corefx, coreclr, corert, performance)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorefx+repo%3Adotnet%2Fcoreclr+repo%3Adotnet%2Fcorert+repo%3Adotnet%2Fperformance)  
+Merged in [.NET Core codebases(corefx, coreclr, corert, performance)](https://github.com/pulls?q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorefx+repo%3Adotnet%2Fcoreclr+repo%3Adotnet%2Fcorert+repo%3Adotnet%2Fperformance+sort%3Aupdated-desc)  
 [CoreFX](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorefx)  
 [CoreCLR](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcoreclr)  
 [CoreRT](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+is%3Apr+author%3AMarcoRossignoli+-repo%3AMarcoRossignoli%2Fmarcorossignoli.github.io+repo%3Adotnet%2Fcorert)  
