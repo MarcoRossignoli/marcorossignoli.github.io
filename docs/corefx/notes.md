@@ -125,7 +125,7 @@ Stephen's way to profile allocation https://github.com/dotnet/corefx/pull/36056#
 * dotnet core release csv/json https://github.com/dotnet/core/tree/master/release-notes
 * dotnet core SDKs https://github.com/dotnet/core-sdk#installers-and-binaries  
 * platform-compat https://github.com/dotnet/platform-compat  
-* DOTNET_MULTILEVEL_LOOKUP=0 https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet?tabs=netcore21  
+* set DOTNET_MULTILEVEL_LOOKUP=0 https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet?tabs=netcore21  
 * Recognize uap fail leg on tests https://github.com/dotnet/corefx/pull/33645#issuecomment-447518192  
 * Dogfooding .NET core app sample https://github.com/dotnet/coreclr/issues/21559#issuecomment-447976642  
 * C# meetings https://github.com/dotnet/csharplang/tree/master/meetings  
