@@ -6,7 +6,7 @@ namespace Interview
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            BigO.Permutation();
         }
     }
 }
