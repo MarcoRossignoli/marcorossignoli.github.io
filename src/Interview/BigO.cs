@@ -6,6 +6,7 @@ namespace Interview
 {
     public static class BigO
     {
+        // https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
         public static void Permutation()
         {
             string val = "va";
@@ -14,7 +15,7 @@ namespace Interview
 
             return;
 
-            void Permutation(string str, string prefix)
+            static void Permutation(string str, string prefix)
             {
                 if (str.Length == 0)
                 {
@@ -28,6 +29,43 @@ namespace Interview
                         Permutation(rem, prefix + str[i]);
                     }
                 }
+            }
+        }
+
+        public static void FibonacciNth()
+        {
+            Console.WriteLine(Fib(4));
+
+            return;
+
+            static int Fib(int n)
+            {
+                if (n <= 0)
+                    return 0;
+                else if (n == 1)
+                    return 1;
+
+                return Fib(n - 1) + Fib(n - 2);
+            }
+        }
+
+        public static void PrintFibonacci()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine(Fib(i));
+            }
+
+            return;
+
+            static int Fib(int n)
+            {
+                if (n <= 0)
+                    return 0;
+                else if (n == 1)
+                    return 1;
+
+                return Fib(n - 1) + Fib(n - 2);
             }
         }
     }

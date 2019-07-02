@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace Interview
+﻿namespace Interview
 {
     class Program
     {
         static void Main(string[] args)
         {
-            BigO.Permutation();
+            // BigO.Permutation();
+            BigO.FibonacciNth();
+            // BigO.PrintFibonacci();
         }
     }
 }
