@@ -68,5 +68,31 @@ namespace Interview
                 return Fib(n - 1) + Fib(n - 2);
             }
         }
+
+        public static void Factorial()
+        {
+            int f = 5;
+            int res = 1;
+            for (int i = 1; i <= f; i++)
+            {
+                res *= i;
+            }
+            Console.WriteLine(res);
+        }
+
+        public static void FactorialRecoursive()
+        {
+            Console.WriteLine(Factorial(5));
+
+            return;
+
+            static int Factorial(int n)
+            {
+                if (n == 1)
+                    return 1;
+
+                return n * Factorial(n - 1);
+            }
+        }
     }
 }

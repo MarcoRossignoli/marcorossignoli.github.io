@@ -5,8 +5,10 @@
         static void Main(string[] args)
         {
             // BigO.Permutation();
-            BigO.FibonacciNth();
+            // BigO.FibonacciNth();
             // BigO.PrintFibonacci();
+            // BigO.Factorial();
+            BigO.FactorialRecoursive();
         }
     }
 }
