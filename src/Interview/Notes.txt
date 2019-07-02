@@ -1,6 +1,16 @@
 ﻿https://riptutorial.com/algorithm/topic/757/getting-started-with-algorithm
 https://karelz.github.io/interview_prep/
 
+-Basic O-notation cost analysis of algorithms and solutions.
+-Knowledge of basic data structures and their algorithms like working with 
+    * strings, 
+    * lists
+    * binary trees
+    * basic graph algorithms (search)
+    * basic sorting.
+-Ability to understand and analyze problems, identify the right basic data structures and algorithms in them.
+
+
 Big O(49)
 
 sum of 1 to n = n(n+1)/2
