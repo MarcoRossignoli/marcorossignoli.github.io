@@ -8,7 +8,10 @@
             // BigO.FibonacciNth();
             // BigO.PrintFibonacci();
             // BigO.Factorial();
-            BigO.FactorialRecoursive();
+            // BigO.FactorialRecoursive();
+
+            ArrayAndString.ArrayAndString.TestArrayList();
+
         }
     }
 }
