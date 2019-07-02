@@ -13,6 +13,8 @@ https://karelz.github.io/interview_prep/
 - Concepts and Algorithms - While I don’t think most of these are good interview questions (some Bit Manipulation questions are rather ugly), 
 it is worth going through them all to ensure yourself you understand basic concepts and some “known” tricks (e.g. in Brain Teasers).
 
+---------------------------------------------------------------------------------------------------------------------------------------------
+
 Big O(49)
 
 sum of 1 to n = n(n+1)/2
@@ -32,4 +34,6 @@ Fibonacci tree
     2   1  1  0
    / \
   1   0
-  <
+
+Array and String(88)
+
