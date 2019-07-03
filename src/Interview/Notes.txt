@@ -1,4 +1,5 @@
 ﻿https://riptutorial.com/algorithm/topic/757/getting-started-with-algorithm
+https://en.wikipedia.org/wiki/SOLID
 https://karelz.github.io/interview_prep/
 
 -Basic O-notation cost analysis of algorithms and solutions.

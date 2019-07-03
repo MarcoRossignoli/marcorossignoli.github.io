@@ -11,8 +11,8 @@
             // BigO.FactorialRecoursive();
 
             // ArrayAndString.ArrayAndString.TestArrayList();
-            ArrayAndString.ArrayAndString_HashTable.TestHashTable();
-
+            // ArrayAndString.ArrayAndString_HashTable.TestHashTable();
+            ArrayAndString.ArrayAndString_StringBuilder.TestStringbuilder();
         }
     }
 }
