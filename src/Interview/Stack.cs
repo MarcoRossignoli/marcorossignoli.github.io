@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Interview
 {
@@ -16,7 +14,7 @@ namespace Interview
 
             Console.WriteLine(stack.Peek());
 
-            while(!stack.IsEmpty())
+            while (!stack.IsEmpty())
             {
                 Console.WriteLine(stack.Pop());
             }
