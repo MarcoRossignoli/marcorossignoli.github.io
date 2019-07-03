@@ -16,7 +16,8 @@
             // ArrayAndString.ArrayAndString_Exercise.IsUnique();
             // ArrayAndString.ArrayAndString_Exercise.Permutation();
 
-            Lists_LinkedList.LinkedListTest();
+            // Lists_LinkedList.LinkedListTest();
+            Lists_Stack.StackTest();
         }
     }
 }
