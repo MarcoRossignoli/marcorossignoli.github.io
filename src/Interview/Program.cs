@@ -10,7 +10,8 @@
             // BigO.Factorial();
             // BigO.FactorialRecoursive();
 
-            ArrayAndString.ArrayAndString.TestArrayList();
+            // ArrayAndString.ArrayAndString.TestArrayList();
+            ArrayAndString.ArrayAndString_HashTable.TestHashTable();
 
         }
     }
