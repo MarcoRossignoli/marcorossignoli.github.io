@@ -19,7 +19,7 @@ Big O(49)
 
 sum of 1 to n = n(n+1)/2
 sum of 1 to n-1 = n(n-1)/2
-sum of 2^n(power of 2) 2^(n+1)-1
+sum of 2^n(power of 2) = 1 + 2 + 4 + 8 = 2^(n+1)-1
 
 O(log n), O(n) , O(n log n) , O(n^2) , O(2^x) , O(n!)
 
