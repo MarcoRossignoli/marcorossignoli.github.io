@@ -14,7 +14,9 @@
             // ArrayAndString.ArrayAndString_HashTable.TestHashTable();
             // ArrayAndString.ArrayAndString_StringBuilder.TestStringbuilder();
             // ArrayAndString.ArrayAndString_Exercise.IsUnique();
-            ArrayAndString.ArrayAndString_Exercise.Permutation();
+            // ArrayAndString.ArrayAndString_Exercise.Permutation();
+
+            Lists_LinkedList.LinkedListTest();
         }
     }
 }
