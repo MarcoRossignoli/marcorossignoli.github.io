@@ -21,11 +21,16 @@ namespace Interview
 
     public class Queue<T>
     {
-        QueueNode<T> _last;
         QueueNode<T> _first;
+        QueueNode<T> _last;
 
         public void Add(T item)
         {
+            if (item is null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
             QueueNode<T> node = new QueueNode<T>() { Data = item };
 
             if (_last != null)
@@ -45,31 +50,34 @@ namespace Interview
         {
             if (_first is null)
             {
-                throw new InvalidOperationException("Empty");
+                throw new InvalidOperationException("Is empty");
             }
 
-            T item = _first.Data;
+            T data = _first.Data;
             _first = _first.Next;
+
             if (_first is null)
             {
                 _last = null;
             }
-            return item;
+
+            return data;
         }
 
         public T Peek()
         {
             if (_first is null)
             {
-                throw new InvalidOperationException("Empty");
+                throw new InvalidOperationException("Is empty");
             }
 
             return _first.Data;
         }
 
+
         public bool IsEmpty()
         {
-            return _first is null;
+            return _first == null;
         }
 
         class QueueNode<TValue>
