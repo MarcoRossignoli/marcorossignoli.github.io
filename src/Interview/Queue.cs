@@ -43,6 +43,11 @@ namespace Interview
 
         public T Remove()
         {
+            if (_first is null)
+            {
+                throw new InvalidOperationException("Empty");
+            }
+
             T item = _first.Data;
             _first = _first.Next;
             if (_first is null)
@@ -54,6 +59,11 @@ namespace Interview
 
         public T Peek()
         {
+            if (_first is null)
+            {
+                throw new InvalidOperationException("Empty");
+            }
+
             return _first.Data;
         }
 
