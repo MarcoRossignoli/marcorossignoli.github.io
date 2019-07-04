@@ -4,8 +4,8 @@ https://karelz.github.io/interview_prep/
 
 -Basic O-notation cost analysis of algorithms and solutions.
 -Knowledge of basic data structures and their algorithms like working with 
-    * strings
-    * lists
+    * strings 99
+    * lists 92 96
     * binary trees
     * basic graph algorithms (search)
     * basic sorting.
