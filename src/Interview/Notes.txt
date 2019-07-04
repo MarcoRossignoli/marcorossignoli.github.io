@@ -6,7 +6,7 @@ https://karelz.github.io/interview_prep/
 -Knowledge of basic data structures and their algorithms like working with 
     * strings 99
     * lists 92 96
-    * binary trees 100
+    * binary trees 111
     * basic graph algorithms (search)
     * basic sorting.
 -Ability to understand and analyze problems, identify the right basic data structures and algorithms in them.
@@ -37,4 +37,27 @@ Fibonacci tree
   1   0
 
 Array and String(99)
+
+Tree and graphs (111)
+
+-Tree is a type of graph
+-Tree
+    * Has one root node
+    * Root node has zero or more than one child nodes
+    * Each child node has zero or more nodes
+-Binary tree: tree where every node has max 2 children
+-Binary search tree MUST respect rule "all left descendant nodes <= currentNode < all right descendant nodes"
+-Balanced tree is a tree where INSERT and FIND complexity is O(log n) or not terribly imbalanced
+-Binary tree types
+    * COMPLETE binary tree is a tree where all every level is fully filled or except for last level(if we've at least left node present)
+      "fully filled" mean left from right.
+    * FULL BINARY tree is tree where every node has zero o two children
+    * A PERFECT BINARY tree is a complete and full tree with all leaf node on the same level and last level has maximum number of nodes, 
+      2^k-1 nodes where k is number of levels
+
+
+
+
+
+
 

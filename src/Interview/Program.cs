@@ -18,7 +18,8 @@
 
             // Lists_LinkedList.LinkedListTest();
             // Lists_Stack.StackTest();
-            Lists_Queue.QueueTest();
+            // Lists_Queue.QueueTest();
+            TreeAndGraphs_BinaryTree.BinaryTree_Visiting();
         }
     }
 }
