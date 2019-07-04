@@ -1,8 +1,10 @@
-﻿namespace Interview
+﻿using System.Threading.Tasks;
+
+namespace Interview
 {
     class Program
     {
-        static void Main(string[] args)
+        async static Task Main(string[] args)
         {
             // BigO.Permutation();
             // BigO.FibonacciNth();
@@ -19,7 +21,10 @@
             // Lists_LinkedList.LinkedListTest();
             // Lists_Stack.StackTest();
             // Lists_Queue.QueueTest();
-            TreeAndGraphs_BinaryTree.BinaryTree_Visiting();
+
+            // TreeAndGraphs_BinaryTree.BinaryTree_Visiting();
+
+            await HttpClient.Http1();
         }
     }
 }
