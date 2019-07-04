@@ -6,7 +6,7 @@ https://karelz.github.io/interview_prep/
 -Knowledge of basic data structures and their algorithms like working with 
     * strings 99
     * lists 92 96
-    * binary trees
+    * binary trees 100
     * basic graph algorithms (search)
     * basic sorting.
 -Ability to understand and analyze problems, identify the right basic data structures and algorithms in them.
