@@ -13,7 +13,7 @@ namespace Interview
         async public static Task Http1()
         {
             Http1 client = new Http1();
-            Console.WriteLine(await client.Get("http://www.univr.it"));
+            Console.WriteLine(await client.Get("https://www.univr.it"));
         }
     }
 
