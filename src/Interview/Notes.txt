@@ -77,6 +77,7 @@ Graph Search(118)
 -Depth-first search(DFS): we start at the root(or another node) and explore EVERY BRANCH COMPLETELY before move to next branch
 -Breadth-first search(BFS): we start at the root(or another node) and explore NEIGHBOR before go to children
     * better for shortest path between two node(we stay close as possible to starting node)
+-Bidirectional Search: used to find shortest path between a source and destination
 
 
 
