@@ -40,7 +40,7 @@ Array and String(99)
 
 Tree and graphs (111)
 
--Tree is a type of graph
+-Tree is a type of graph, tree is a connected graph without cycles.
 -Tree
     * Has one root node
     * Root node has zero or more than one child nodes
@@ -54,9 +54,29 @@ Tree and graphs (111)
     * FULL BINARY tree is tree where every node has zero o two children
     * A PERFECT BINARY tree is a complete and full tree with all leaf node on the same level and last level has maximum number of nodes, 
       2^k-1 nodes where k is number of levels
+-Binary heaps(min heap, max heap): COMPLETE BINARY TREE where EVERY NODE IS SMALLER THAN CHILDREN, root is the minimum
+    * Insert: insert to botton and swap(to top) node until we find appropriate spot.
+    * Exact minimum: simple is the root
+    * Remove minimum: remove top and swap with last element(bottommost rightmost element) and swap down the element untile the min-heap
+      property is restored.
+-Trie/s(Prefix trees): n-ary tree in which characters are stored at each node. Each path down the tree may rapresent a word, * on leaf 
+                       indicate complete word.
+                       Check if a string is a valid prefix cost O(K) like hashtable(usually we state that cost of hashtable is O(1) but actually
+                       we pay the cost of "key" analysis to generate hashcode)
 
+-Graph(116): simply collection of nodes with edges between(some of) them.
+    * Can be either directed or undirected. Directed are one-way, undirected are two-way
+    * Might consist of multiple isolted subgraphs
+    * Graph can have cycles. An "acyclic graph" is a graph without cycles
+-We can represent a graph in two common way:
+    * Adjacency list: every vertex(node) stores a list of adjacent vertices.
+    * Adjacency matrices: the edge are stored in a NxN matrix, graph algorithms used in adjacency(breadth first search) can be performed
+      also with adjacency matrices but is less efficient because we need to iterate throught all nodes to identify node's neighbors
 
-
+Graph Search(118)
+-Depth-first search(DFS): we start at the root(or another node) and explore EVERY BRANCH COMPLETELY before move to next branch
+-Breadth-first search(BFS): we start at the root(or another node) and explore NEIGHBOR before go to children
+    * better for shortest path between two node(we stay close as possible to starting node)
 
 
 

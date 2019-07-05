@@ -23,8 +23,10 @@ namespace Interview
             // Lists_Queue.QueueTest();
 
             // TreeAndGraphs_BinaryTree.BinaryTree_Visiting();
+            // TreeAndGraphs_Graphs.Graph_DFS();
+            TreeAndGraphs_Graphs.Graph_BFS();
 
-            await HttpClient.Http1();
+            // await HttpClient.Http1();
         }
     }
 }
