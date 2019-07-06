@@ -41,7 +41,8 @@ namespace Interview
                 {
                     return;
                 }
-                Visit(node, visited);
+                Visit(node);
+                visited.Add(node);
                 if (node.Children != null)
                 {
                     foreach (GraphNode<T> child in node.Children)
@@ -67,15 +68,18 @@ namespace Interview
 
             static void BFS<T>(GraphNode<T> root, HashSet<GraphNode<T>> visited)
             {
-               Queue<GraphNode<T>> queue = new Queue<GraphNode<T>>();
+                Queue<GraphNode<T>> queue = new Queue<GraphNode<T>>();
+
+                visited.Add(root);
                 queue.Add(root);
+
                 while (!queue.IsEmpty())
                 {
                     GraphNode<T> node = queue.Remove();
-                    Visit(node, visited);
+                    Visit(node);
                     for (int i = 0; node.Children != null && i < node.Children.Length; i++)
                     {
-                        if(!visited.Contains(node.Children[i]))
+                        if (!visited.Contains(node.Children[i]))
                         {
                             visited.Add(node.Children[i]);
                             queue.Add(node.Children[i]);
@@ -85,7 +89,7 @@ namespace Interview
             }
         }
 
-        static void Visit<T>(GraphNode<T> node, HashSet<GraphNode<T>> visited)
+        static void Visit<T>(GraphNode<T> node)
         {
             Console.WriteLine($"Visit {node.Value}");
         }
