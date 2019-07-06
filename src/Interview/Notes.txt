@@ -107,3 +107,6 @@ Convert binary complement to negative integer
     * Arithmetical shift: >> right shift bit and keep same sign bit value 1001(positive is signed) >> 1 = 0100 is like divide by 2
 
 Sorting and searching(157)
+- Bubble sorting: iterate through collection and swap a pair if first is greater than second.
+  We do this until we swap something
+  Average and worste case O(n^2), space O(1) <- we move on element a time
