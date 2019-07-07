@@ -4,6 +4,59 @@ namespace Interview
 {
     public class Sorting
     {
+        public static void QuickSort()
+        {
+            int[] array = new int[] { 5, 2, 4, 7, 3 };
+
+            PrintArray(array, "Quick sort pre");
+
+            QuickSort(array, 0, array.Length - 1);
+
+            PrintArray(array, "Quick sort post");
+
+            static void QuickSort(int[] array, int left, int right)
+            {
+                int index = Partition(array, left, right);
+                if (left < index - 1)
+                {
+                    QuickSort(array, left, index - 1); // sort left
+                }
+                if (index < right)
+                {
+                    QuickSort(array, index, right); // sort right
+                }
+            }
+
+            static int Partition(int[] array, int left, int right)
+            {
+                int pivot = array[(left + right) / 2];
+
+                while (left <= right)
+                {
+                    // Find element on left should be on right
+                    while (array[left] < pivot)
+                        left++;
+
+                    // Find element on right should be on left
+                    while (array[right] > pivot)
+                        right--;
+
+                    if (left <= right)
+                    {
+                        int tmp = array[left];
+                        array[left] = array[right];
+                        array[right] = tmp;
+
+                        left++;
+                        right--;
+                    }
+                }
+
+                return left;
+            }
+
+        }
+
         public static void MergeSort()
         {
             int[] array = new int[] { 38, 27, 43, 3, 9, 82, 10 };

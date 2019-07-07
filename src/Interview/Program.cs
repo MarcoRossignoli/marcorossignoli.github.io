@@ -29,7 +29,8 @@ namespace Interview
             // BitManipulations.Test();
             // Sorting.BubbleSort();
             // Sorting.SelectionSort();
-            Sorting.MergeSort();
+            // Sorting.MergeSort();
+            Sorting.QuickSort();
 
             // await HttpClient.Http1();
         }

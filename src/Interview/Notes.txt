@@ -107,12 +107,16 @@ Convert binary complement to negative integer
     * Arithmetical shift: >> right shift bit and keep same sign bit value 1001(positive is signed) >> 1 = 0100 is like divide by 2
 
 Sorting and searching(157)
-- Bubble sorting: iterate through collection and swap a pair if first is greater than second.
+-Bubble sorting: iterate through collection and swap a pair if first is greater than second.
   We do this until we swap something
   Average and worste case O(n^2), space O(1) <- we move on element a time
 
-- Selection sort: iterate collection and find smallest item and move on top until we reach end of list
+-Selection sort: iterate collection and find smallest item and move on top until we reach end of list
                   O(n^2), space O(1)
 
--Merge sort: merge sort divide array in half and sort these half and after merge those togheter
-                 O(n log n) , depends on alg...books one O(n)
+-Merge sort: merge sort divide array in half and sort these half until we've only one element on leaf and after merge those togheter,
+             every halves will have same order
+             O(n log n) , depends on alg...books one O(n)
+
+-Quick sort: 
+https://www.guru99.com/quicksort-in-javascript.html
