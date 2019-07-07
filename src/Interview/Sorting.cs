@@ -6,7 +6,7 @@ namespace Interview
     {
         public static void QuickSort()
         {
-            int[] array = new int[] { 5, 2, 4, 7, 3 };
+            int[] array = new int[] { 4, 3, 7, 5, 2 };
 
             PrintArray(array, "Quick sort pre");
 
@@ -19,25 +19,22 @@ namespace Interview
                 int index = Partition(array, left, right);
                 if (left < index - 1)
                 {
-                    QuickSort(array, left, index - 1); // sort left
+                    QuickSort(array, left, index - 1);
                 }
                 if (index < right)
                 {
-                    QuickSort(array, index, right); // sort right
+                    QuickSort(array, index, right);
                 }
             }
 
             static int Partition(int[] array, int left, int right)
             {
                 int pivot = array[(left + right) / 2];
-
                 while (left <= right)
                 {
-                    // Find element on left should be on right
                     while (array[left] < pivot)
                         left++;
 
-                    // Find element on right should be on left
                     while (array[right] > pivot)
                         right--;
 
@@ -51,7 +48,6 @@ namespace Interview
                         right--;
                     }
                 }
-
                 return left;
             }
 

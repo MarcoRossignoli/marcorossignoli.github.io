@@ -30,7 +30,9 @@ namespace Interview
             // Sorting.BubbleSort();
             // Sorting.SelectionSort();
             // Sorting.MergeSort();
-            Sorting.QuickSort();
+            // Sorting.QuickSort();
+
+            SearchingAlg.BinarySearch();
 
             // await HttpClient.Http1();
         }

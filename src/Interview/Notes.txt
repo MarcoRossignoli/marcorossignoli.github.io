@@ -116,7 +116,12 @@ Sorting and searching(157)
 
 -Merge sort: merge sort divide array in half and sort these half until we've only one element on leaf and after merge those togheter,
              every halves will have same order
-             O(n log n) , depends on alg...books one O(n)
+             O(n log n) , space depends on alg...books one O(n)
 
--Quick sort: 
+-Quick sort: We pick "pivot" random element and swap value left(from first) to right(last) if are not in correct order until left index and right index cross each other.
+             We iterate in reordering until all subarray are ordered.
+             O(n log n) average O(N^2) worste, O(log n) space
 https://www.guru99.com/quicksort-in-javascript.html
+
+-Radix sort: is a sorting alg for integers 
+            O(kn) where n number of elements and k number of passes
