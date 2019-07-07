@@ -27,7 +27,9 @@ namespace Interview
             // TreeAndGraphs_Graphs.Graph_BFS();
 
             // BitManipulations.Test();
-            Sorting.BubbleSort();
+            // Sorting.BubbleSort();
+            // Sorting.SelectionSort();
+            Sorting.MergeSort();
 
             // await HttpClient.Http1();
         }
