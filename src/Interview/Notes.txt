@@ -125,3 +125,8 @@ https://www.guru99.com/quicksort-in-javascript.html
 
 -Radix sort: is a sorting alg for integers 
             O(kn) where n number of elements and k number of passes
+
+-Searching algorithms
+* Binary search: we look for an element x in a sorted array, we compare x with midpoint and if x is less than mid point we
+                 search element in the left half, we compare x with new midpoint and so on untile the mid point is equal to x
+                 or we cannot split subarray anymore, subarray lenght is zero

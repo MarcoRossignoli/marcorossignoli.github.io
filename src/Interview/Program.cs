@@ -32,7 +32,8 @@ namespace Interview
             // Sorting.MergeSort();
             // Sorting.QuickSort();
 
-            SearchingAlg.BinarySearch();
+            // SearchingAlg.BinarySearch();
+            SearchingAlg.BinarySearch_Recoursive();
 
             // await HttpClient.Http1();
         }
