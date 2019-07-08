@@ -32,10 +32,12 @@ namespace Interview
             // Sorting.SelectionSort();
             // Sorting.MergeSort();
             // Sorting.QuickSort();
-            Sorting.RadixSort();
+            // Sorting.RadixSort();
 
             // SearchingAlg.BinarySearch();
             // SearchingAlg.BinarySearch_Recoursive();
+
+            BasicCalculator.BasicCalculator.Calculator();
 
             // await HttpClient.Http1();
         }
