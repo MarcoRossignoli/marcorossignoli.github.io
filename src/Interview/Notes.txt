@@ -7,8 +7,8 @@ https://karelz.github.io/interview_prep/
     * strings 99
     * lists 92 96
     * binary trees 111
-    * basic graph algorithms (search) (118)
-    * basic sorting.
+    * basic graph algorithms (search) 118
+    * basic sorting 157
 -Ability to understand and analyze problems, identify the right basic data structures and algorithms in them.
 
 -Concepts and Algorithms - While I don’t think most of these are good interview questions (some Bit Manipulation questions are rather ugly), 
@@ -109,10 +109,10 @@ Convert binary complement to negative integer
 Sorting and searching(157)
 -Bubble sorting: iterate through collection and swap a pair if first is greater than second.
   We do this until we swap something
-  Average and worste case O(n^2), space O(1) <- we move on element a time
+  Average and worste case O(n^2), space O(1) <- we move one element a time
 
 -Selection sort: iterate collection and find smallest item and move on top until we reach end of list
-                  O(n^2), space O(1)
+                  O(n^2), space O(1) <- we move one element a time
 
 -Merge sort: merge sort divide array in half and sort these half until we've only one element on leaf and after merge those togheter,
              every halves will have same order
@@ -124,7 +124,7 @@ Sorting and searching(157)
 https://www.guru99.com/quicksort-in-javascript.html
 
 -Radix sort: is a sorting alg for integers 
-            O(kn) where n number of elements and k number of passes
+            O(kn) where n number of elements and k number of digit of largest number
 
 -Searching algorithms
 * Binary search: we look for an element x in a sorted array, we compare x with midpoint and if x is less than mid point we

@@ -1,9 +1,75 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Interview
 {
     public class Sorting
     {
+        public static void RadixSort()
+        {
+            int[] array = new int[] { 38, 27, 43, 3, 9, 82, 102 };
+
+            PrintArray(array, "Radix sort pre");
+
+            RadixSort(array);
+
+            PrintArray(array, "Radix sort post");
+
+            static int[] RadixSort(int[] array)
+            {
+                bool isFinished = false;
+                int digitPosition = 0;
+
+                List<System.Collections.Generic.Queue<int>> buckets = new List<System.Collections.Generic.Queue<int>>();
+                InitializeBuckets(buckets);
+
+                while (!isFinished)
+                {
+                    isFinished = true;
+
+                    foreach (int value in array)
+                    {
+                        int bucketNumber = GetBucketNumber(value, digitPosition);
+                        if (bucketNumber > 0)
+                        {
+                            isFinished = false;
+                        }
+
+                        buckets[bucketNumber].Enqueue(value);
+                    }
+
+                    int i = 0;
+                    foreach (System.Collections.Generic.Queue<int> bucket in buckets)
+                    {
+                        while (bucket.Count > 0)
+                        {
+                            array[i] = bucket.Dequeue();
+                            i++;
+                        }
+                    }
+
+                    digitPosition++;
+                }
+
+                return array;
+            }
+
+            static int GetBucketNumber(int value, int digitPosition)
+            {
+                int bucketNumber = (value / (int)Math.Pow(10, digitPosition)) % 10;
+                return bucketNumber;
+            }
+
+            static void InitializeBuckets(List<System.Collections.Generic.Queue<int>> buckets)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    System.Collections.Generic.Queue<int> q = new System.Collections.Generic.Queue<int>();
+                    buckets.Add(q);
+                }
+            }
+        }
+
         public static void QuickSort()
         {
             int[] array = new int[] { 4, 3, 7, 5, 2 };
