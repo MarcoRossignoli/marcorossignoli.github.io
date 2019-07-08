@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Interview.BasicCalculator
+namespace Interview.Games
 {
     public class BasicCalculator
     {
