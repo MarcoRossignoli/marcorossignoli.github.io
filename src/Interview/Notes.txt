@@ -75,8 +75,10 @@ Tree and graphs (111)
 
 Graph Search(118)
 -Depth-first search(DFS): we start at the root(or another node) and explore EVERY BRANCH COMPLETELY before move to next branch
+                          O(N).
 -Breadth-first search(BFS): we start at the root(or another node) and explore NEIGHBOR before go to children
     * better for shortest path between two node(we stay close as possible to starting node)
+    The time complexity of BFS is O(V + E), where V is the number of nodes and E is the number of edges.
 -Bidirectional Search: used to find shortest path between a source and destination
     * simultaneous breadth search from s to t and from t to s with distance d
       if we've at most k adjacents we have  

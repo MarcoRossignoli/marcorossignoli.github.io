@@ -13,7 +13,7 @@ namespace Interview.Games
         }
     }
 
-    public class Solution
+    public partial class Solution
     {
         public int Calculate(string s)
         {
