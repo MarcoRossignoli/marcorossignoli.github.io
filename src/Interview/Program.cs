@@ -38,9 +38,9 @@ namespace Interview
             // SearchingAlg.BinarySearch_Recoursive();
 
             // Games.BasicCalculator.Calculator();
-            Games.JumpGame.Play();
+            // Games.JumpGame.Play();
 
-            // await HttpClient.Http1();
+            await HttpClient.Http1();
         }
     }
 }
