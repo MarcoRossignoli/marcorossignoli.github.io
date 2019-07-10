@@ -47,7 +47,7 @@ namespace Interview
 
             static ObjToSearch BinarySearch(ObjToSearch[] list, int value)
             {
-                int low = 1;
+                int low = 0;
                 int high = list.Length - 1;
 
                 while (low <= high)
