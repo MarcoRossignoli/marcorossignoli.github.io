@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Interview.Http11
 {
-    public class HttpClientTest
+    public class Http1Test
     {
-        async public static Task Http11Test()
+        async public static Task Test()
         {
             var header = new Dictionary<string, string>
             {
