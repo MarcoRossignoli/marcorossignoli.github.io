@@ -40,7 +40,7 @@ namespace Interview
             // Games.BasicCalculator.Calculator();
             // Games.JumpGame.Play();
 
-            await HttpClient.Http1();
+            await Http11.HttpClientTest.Http11Test();
         }
     }
 }
