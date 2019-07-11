@@ -58,6 +58,13 @@ namespace Interview.Http2
         async public static Task Test(string[] args)
         {
             StartKestrel(args);
+
+            Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(10000);
+                kestrel.Dispose();
+            });
+
             await Http2.SomeTest();
         }
     }
@@ -77,7 +84,7 @@ namespace Interview.Http2
                 throw new SocketException();
             }
 
-            using NetworkStream ns = new NetworkStream(socket, true);
+            using NetworkStream ns = new NetworkStream(socket);
 
             byte[] testh2support = Encoding.ASCII.GetBytes("PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n");
             byte[] settings = GetSetting();
