@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Interview
 {
@@ -41,7 +42,9 @@ namespace Interview
             // Games.JumpGame.Play();
 
             // await Http11.Http1Test.Http11Test();
-            await Http2.Http2Test.Test();
+            await Http2.Http2Test.Test(args);
+
+            Console.ReadKey();
         }
     }
 }
