@@ -42,7 +42,12 @@ namespace Interview
             // Games.JumpGame.Play();
 
             // await Http11.Http1Test.Http11Test();
-            await Http2.Http2Test.Test(args);
+            // await Http2.Http2Test.Test(args);
+
+            // RandomExercise.TrappingRainWater();
+            // RandomExercise.CountMatrixPath();
+            // RandomExercise.PrintMatrix();
+            RandomExercise.PrintPattern();
 
             Console.ReadKey();
         }
