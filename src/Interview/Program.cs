@@ -47,7 +47,8 @@ namespace Interview
             // RandomExercise.TrappingRainWater();
             // RandomExercise.CountMatrixPath();
             // RandomExercise.PrintMatrix();
-            RandomExercise.PrintPattern();
+            // RandomExercise.PrintPattern();
+            HuffmanCoding.Test();
 
             Console.ReadKey();
         }
