@@ -51,7 +51,7 @@ Tree and graphs (111)
 -Binary tree types
     * COMPLETE binary tree is a tree where all every level is fully filled or except for last level(if we've at least left node present)
       "fully filled" mean left from right.
-    * FULL BINARY tree is tree where every node has zero o two children
+    * FULL BINARY tree is tree where every node has ZERO o TWO CHILDREN
     * A PERFECT BINARY tree is a complete and full tree with all leaf node on the same level and last level has maximum number of nodes, 
       2^k-1 nodes where k is number of levels
 -Binary heaps(min heap, max heap): COMPLETE BINARY TREE where EVERY NODE IS SMALLER THAN CHILDREN, root is the minimum

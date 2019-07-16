@@ -57,6 +57,8 @@ namespace Interview
             // RandomExercise.CountChangeCoin();
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
+            // RandomExercise.PrintPattern();
+            HuffmanCoding.Test();
 
             Console.ReadKey();
         }
