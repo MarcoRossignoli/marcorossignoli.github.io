@@ -5,6 +5,74 @@ namespace Interview
 {
     public class TreeAndGraphs_BinaryTree
     {
+        public static void BinaryTree_Insertion()
+        {
+            TreeNode<int> root = null;
+
+            root = Insert(root, 10);
+            root = Insert(root, 20);
+            root = Insert(root, 30);
+            root = Insert(root, 40);
+            root = Insert(root, 50);
+            root = Insert(root, 60);
+            root = Insert(root, 70);
+
+            List<TreeNode<int>> nodes = new List<TreeNode<int>>();
+
+            StoreNodeInOrder(nodes, root);
+
+            root = Rebalance(nodes, 0, nodes.Count - 1);
+
+            return;
+
+            static TreeNode<int> Rebalance(List<TreeNode<int>> nodes, int start, int end)
+            {
+                if (start > end)
+                {
+                    return null;
+                }
+
+                int mid = (start + end) / 2;
+                TreeNode<int> node = nodes[mid];
+
+                node.Left = Rebalance(nodes, start, mid - 1);
+                node.Right = Rebalance(nodes, mid + 1, end);
+
+                return node;
+            }
+
+            static void StoreNodeInOrder(List<TreeNode<int>> nodes, TreeNode<int> root)
+            {
+                if (root is null)
+                {
+                    return;
+                }
+
+                StoreNodeInOrder(nodes, root.Left);
+                nodes.Add(root);
+                StoreNodeInOrder(nodes, root.Right);
+            }
+
+            static TreeNode<int> Insert(TreeNode<int> root, int value)
+            {
+                if (root == null)
+                {
+                    return new TreeNode<int>() { Data = value };
+                }
+
+                if (root.Data <= value)
+                {
+                    root.Left = Insert(root.Left, value);
+                }
+                else
+                {
+                    root.Right = Insert(root.Right, value);
+                }
+
+                return root;
+            }
+        }
+
         public static void BinaryTree_Visiting()
         {
             int n = 10;
