@@ -54,7 +54,6 @@ namespace Interview
             }
         }
 
-        public static void RadixSort()
         public static void MyMergeSort()
         {
             int[] array = new int[] { 4, 7, 3, 2, 3, 6, 2, 3, 6, 657, 233, 4, 3, 5, };
