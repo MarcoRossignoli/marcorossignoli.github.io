@@ -36,6 +36,7 @@ namespace Interview
             // Sorting.MergeSort();
             // Sorting.QuickSort();
             // Sorting.RadixSort();
+            Sorting.QuickSort2();
 
             // SearchingAlg.BinarySearch();
             // SearchingAlg.BinarySearch_Recoursive();
