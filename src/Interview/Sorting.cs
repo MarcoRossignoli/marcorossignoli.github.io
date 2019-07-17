@@ -5,6 +5,55 @@ namespace Interview
 {
     public class Sorting
     {
+        public static void QuickSort2()
+        {
+            // https://medium.com/karuna-sehgal/a-quick-explanation-of-quick-sort-7d8e2563629b
+            int[] array = new int[] { 66254, 3, 2, 1, 11, 33, 55, 435 };
+
+            QuickSort(array, 0, array.Length - 1);
+
+            return;
+
+            static void QuickSort(int[] array, int leftIndex, int rightIndex)
+            {
+                int pivotFinalPosition = Partition(array, leftIndex, rightIndex);
+
+                if (pivotFinalPosition - 1 > 0)
+                {
+                    QuickSort(array, leftIndex, pivotFinalPosition - 1);
+                }
+
+                if (rightIndex > pivotFinalPosition + 1)
+                {
+                    QuickSort(array, pivotFinalPosition + 1, rightIndex);
+                }
+            }
+
+
+            static int Partition(int[] array, int leftIndex, int rightIndex)
+            {
+                int pivot = array[rightIndex];
+
+                int j = 0;
+                for (int i = 0; i < rightIndex; i++)
+                {
+                    if (array[i] < pivot)
+                    {
+                        int tmp = array[i];
+                        array[i] = array[j];
+                        array[j] = tmp;
+                        j++;
+                    }
+                }
+
+                // swap pivot to right position
+                array[rightIndex] = array[j];
+                array[j] = pivot;
+
+                return j;
+            }
+        }
+
         public static void RadixSort()
         {
             int[] array = new int[] { 38, 27, 43, 3, 9, 82, 102 };
