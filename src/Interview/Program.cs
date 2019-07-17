@@ -26,10 +26,11 @@ namespace Interview
             // TreeAndGraphs_BinaryTree.BinaryTree_Visiting();
             // TreeAndGraphs_Graphs.Graph_DFS();
             // TreeAndGraphs_Graphs.Graph_BFS();
-            TreeAndGraphs_BinaryTree.BinaryTree_Insertion();
+            // TreeAndGraphs_BinaryTree.BinaryTree_Insertion();
 
             // BitManipulations.Test();
 
+            Sorting.MyMergeSort();
             // Sorting.BubbleSort();
             // Sorting.SelectionSort();
             // Sorting.MergeSort();
@@ -58,7 +59,7 @@ namespace Interview
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
             // RandomExercise.PrintPattern();
-            HuffmanCoding.Test();
+            // HuffmanCoding.Test();
 
             Console.ReadKey();
         }

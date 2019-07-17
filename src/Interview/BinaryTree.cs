@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Interview
 {
@@ -21,9 +23,62 @@ namespace Interview
 
             StoreNodeInOrder(nodes, root);
 
+            MergeSortTop(nodes);
+
             root = Rebalance(nodes, 0, nodes.Count - 1);
 
             return;
+
+            static void MergeSortTop(List<TreeNode<int>> nodes)
+            {
+                TreeNode<int>[] helper = new TreeNode<int>[nodes.Count];
+                MergeSort(nodes, helper, 0, nodes.Count - 1);
+            }
+
+            static void MergeSort(List<TreeNode<int>> nodes, TreeNode<int>[] helper, int low, int high)
+            {
+                if (low < high)
+                {
+                    int mid = (low + high) / 2;
+                    MergeSort(nodes, helper, low, mid);
+                    MergeSort(nodes, helper, mid + 1, high);
+                    Merge(nodes, helper, low, mid, high);
+                }
+            }
+
+            static void Merge(List<TreeNode<int>> nodes, TreeNode<int>[] helper, int low, int middle, int high)
+            {
+                for (int i = low; i <= high; i++)
+                {
+                    helper[i] = nodes[i];
+                }
+
+                int leftHelper = low;
+                int rightHelper = middle + 1;
+                int current = low;
+
+                while (leftHelper <= middle && rightHelper <= high)
+                {
+                    if (helper[leftHelper].Data < helper[rightHelper].Data)
+                    {
+                        nodes[current] = helper[leftHelper];
+                        leftHelper++;
+                    }
+                    else
+                    {
+                        nodes[current] = helper[rightHelper];
+                        rightHelper++;
+                    }
+                    current++;
+                }
+
+                int remaining = middle - leftHelper;
+                for (int i = 0; i <= remaining; i++)
+                {
+                    nodes[current + i] = helper[leftHelper + i];
+                }
+
+            }
 
             static TreeNode<int> Rebalance(List<TreeNode<int>> nodes, int start, int end)
             {
@@ -60,7 +115,7 @@ namespace Interview
                     return new TreeNode<int>() { Data = value };
                 }
 
-                if (root.Data <= value)
+                if (value > root.Data)
                 {
                     root.Left = Insert(root.Left, value);
                 }
@@ -157,6 +212,7 @@ namespace Interview
         }
     }
 
+    [DebuggerDisplay("Data = {Data}")]
     public class TreeNode<T>
     {
         public T Data { get; set; }

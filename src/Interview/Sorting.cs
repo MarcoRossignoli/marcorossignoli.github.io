@@ -5,6 +5,74 @@ namespace Interview
 {
     public class Sorting
     {
+        public static void MyMergeSort()
+        {
+            int[] array = new int[] { 4, 7, 3, 2, 3, 6, 2, 3, 6, 657, 233, 4, 3, 5, };
+
+            MergeSort(array, 0, array.Length - 1);
+
+            return;
+
+            static void MergeSort(int[] array, int low, int high)
+            {
+                if (low < high)
+                {
+                    int mid = (low + high) / 2;
+                    MergeSort(array, low, mid);
+                    MergeSort(array, mid + 1, high);
+                    Merge(array, low, mid, high);
+                }
+            }
+
+            static void Merge(int[] array, int low, int middle, int high)
+            {
+                int[] leftArray = new int[middle - low + 1];
+                for (int i = 0; i < leftArray.Length; i++)
+                {
+                    leftArray[i] = array[low + i];
+                }
+
+                int[] rightArray = new int[high - middle];
+                for (int i = 0; i < rightArray.Length; i++)
+                {
+                    rightArray[i] = array[middle + i + 1];
+                }
+
+                int leftIndex = 0;
+                int rightIndex = 0;
+                int current = low;
+
+                while (leftIndex < leftArray.Length && rightIndex < rightArray.Length)
+                {
+                    if (leftArray[leftIndex] < rightArray[rightIndex])
+                    {
+                        array[current] = leftArray[leftIndex];
+                        leftIndex++;
+                    }
+                    else
+                    {
+                        array[current] = rightArray[rightIndex];
+                        rightIndex++;
+                    }
+                    current++;
+                }
+
+                for (int i = leftIndex; i < leftArray.Length; i++)
+                {
+                    array[current] = leftArray[i];
+                    current++;
+                }
+
+                for (int i = rightIndex; i < rightArray.Length; i++)
+                {
+                    array[current] = rightArray[i];
+                    current++;
+                }
+
+            }
+
+        }
+
         public static void RadixSort()
         {
             int[] array = new int[] { 38, 27, 43, 3, 9, 82, 102 };
@@ -122,12 +190,6 @@ namespace Interview
         public static void MergeSort()
         {
             int[] array = new int[] { 38, 27, 43, 3, 9, 82, 10 };
-
-            //Random r = new Random();
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    array[i] = r.Next(0, 20);
-            //}
 
             PrintArray(array, "Merge sort pre");
 
