@@ -60,7 +60,9 @@ namespace Interview
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
             // RandomExercise.PrintPattern();
-            RandomExercise.ReverseStringInPlace();
+            // RandomExercise.ReverseStringInPlace();
+            // RandomExercise.SumOfTwo();
+            RandomExercise.UniquePaths();
 
             // HuffmanCoding.Test();
 

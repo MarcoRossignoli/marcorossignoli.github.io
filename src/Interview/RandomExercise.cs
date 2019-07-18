@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -6,6 +7,89 @@ namespace Interview
 {
     public static class RandomExercise
     {
+        public static void UniquePaths()
+        {
+            int[][] obstacleGrid = new int[][]
+            {
+                new int[] { 0 ,0 },
+                new int[] { 1 ,1 },
+                new int[] { 0 ,0 }
+            };
+
+            int m = obstacleGrid.Length;
+            int n = obstacleGrid[0].Length;
+
+            if (obstacleGrid[m - 1][n - 1] == 1)
+            {
+                return;
+            }
+
+            int count = 0;;
+
+            UniquePathsWithObstaclesInternal(obstacleGrid, 0, 0, m, n, ref count);
+
+            return;
+
+            static void UniquePathsWithObstaclesInternal(int[][] obstacleGrid, int cm, int cn, int m, int n, ref int count)
+            {
+                if (obstacleGrid[cm][cn] == 1)
+                {
+                    return;
+                }
+
+                if (cm == m - 1)
+                {
+                    for (int i = 0; i < n; i++)
+                    {
+                        if (obstacleGrid[cm][i] == 1)
+                        {
+                            return;
+                        }
+                    }
+                    count++;
+                    return;
+                }
+
+                if (cn == n - 1)
+                {
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (obstacleGrid[i][cn] == 1)
+                        {
+                            return;
+                        }
+                    }
+                    count++;
+                    return;
+                }
+
+                UniquePathsWithObstaclesInternal(obstacleGrid, cm + 1, cn, m, n, ref count);
+                UniquePathsWithObstaclesInternal(obstacleGrid, cm, cn + 1, m, n, ref count);
+            }
+        }
+
+        public static int[] SumOfTwo()
+        {
+            int target = 6;
+            int[] nums = new int[] { 3, 2, 4 };
+
+            Dictionary<int, int> numbers = new Dictionary<int, int>();
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int diff = target - nums[i];
+
+                if (numbers.ContainsKey(diff))
+                {
+                    return new int[] { numbers[diff], i };
+                }
+
+                numbers.Add(nums[i], i);
+            }
+
+            return new int[0];
+        }
+
         public static void ReverseStringInPlace()
         {
             string str = "this is a string";
