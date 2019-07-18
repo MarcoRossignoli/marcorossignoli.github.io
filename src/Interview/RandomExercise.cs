@@ -6,6 +6,26 @@ namespace Interview
 {
     public static class RandomExercise
     {
+        public static void ReverseStringInPlace()
+        {
+            string str = "this is a string";
+
+            char[] strReversed = new char[str.Length];
+
+            int l = 0;
+            int r = str.Length - 1;
+
+            while (l < r)
+            {
+                strReversed[r] = str[l];
+                strReversed[l] = str[r];
+                l++;
+                r--;
+            }
+
+            Console.WriteLine(new string(strReversed));
+        }
+
         public static void AddTwoNumbersRepresentedByLinkedLists()
         {
             // creating first list 

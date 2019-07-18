@@ -30,13 +30,13 @@ namespace Interview
 
             // BitManipulations.Test();
 
-            Sorting.MyMergeSort();
+            // Sorting.MyMergeSort();
             // Sorting.BubbleSort();
             // Sorting.SelectionSort();
             // Sorting.MergeSort();
             // Sorting.QuickSort();
             // Sorting.RadixSort();
-            Sorting.QuickSort2();
+            // Sorting.QuickSort2();
 
             // SearchingAlg.BinarySearch();
             // SearchingAlg.BinarySearch_Recoursive();
@@ -60,6 +60,8 @@ namespace Interview
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
             // RandomExercise.AddTwoNumbersRepresentedByLinkedLists();
             // RandomExercise.PrintPattern();
+            RandomExercise.ReverseStringInPlace();
+
             // HuffmanCoding.Test();
 
             Console.ReadKey();
