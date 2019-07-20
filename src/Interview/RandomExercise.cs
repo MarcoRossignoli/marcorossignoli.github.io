@@ -532,10 +532,10 @@ namespace Interview
 
         public static void Shortener()
         {
-            string map = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string map = "abcdefghijklmnopqr";
 
             string url;
-            Console.WriteLine((url = GenerateName(1234678, map)));
+            Console.WriteLine((url = GenerateName(10, map)));
 
             Console.WriteLine(GenerateInt(url, map).ToString());
 

@@ -28,6 +28,7 @@ namespace Interview
             // TreeAndGraphs_Graphs.Graph_BFS();
             // TreeAndGraphs_BinaryTree.BinaryTree_Insertion();
 
+
             // BitManipulations.Test();
 
             // Sorting.MyMergeSort();
@@ -51,7 +52,7 @@ namespace Interview
             // RandomExercise.CountMatrixPath();
             // RandomExercise.PrintMatrix();
             // RandomExercise.PrintPattern();
-            // RandomExercise.Shortener();
+            RandomExercise.Shortener();
             // RandomExercise.IdenticalTree();
             // RandomExercise.PermutationDivisible();
             // RandomExercise.MaxSubarraySum();
@@ -62,7 +63,7 @@ namespace Interview
             // RandomExercise.PrintPattern();
             // RandomExercise.ReverseStringInPlace();
             // RandomExercise.SumOfTwo();
-            RandomExercise.UniquePaths();
+            // RandomExercise.UniquePaths();
 
             // HuffmanCoding.Test();
 
