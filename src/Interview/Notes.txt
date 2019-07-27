@@ -1,0 +1,134 @@
+﻿https://riptutorial.com/algorithm/topic/757/getting-started-with-algorithm
+https://en.wikipedia.org/wiki/SOLID
+https://karelz.github.io/interview_prep/
+
+-Basic O-notation cost analysis of algorithms and solutions.(49)
+-Knowledge of basic data structures and their algorithms like working with 
+    * strings 99
+    * lists 103
+    * binary trees 111
+    * basic graph algorithms (search) 118
+    * basic sorting 157
+-Ability to understand and analyze problems, identify the right basic data structures and algorithms in them.
+
+-Concepts and Algorithms - While I don’t think most of these are good interview questions (some Bit Manipulation questions are rather ugly), 
+it is worth going through them all to ensure yourself you understand basic concepts and some “known” tricks (e.g. in Brain Teasers).
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Big O(49)
+
+sum of 1 to n = n(n+1)/2 = n^2
+sum of 1 to n-1 = n(n-1)/2 = n^2
+sum of 2^n(power of 2) = 1 + 2 + 4 + 8 = 2^(n+1)-1 2^n
+
+O(log n), O(n) , O(n log n) , O(n^2) , O(2^x) , O(n!)
+
+https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/
+
+Fibonacci tree
+
+        4
+       /  \
+      3    2    = sum of non 0 leafs 3
+     / \  / \
+    2   1  1  0
+   / \
+  1   0
+
+Array and String(99)
+
+Tree and graphs (111)
+
+-Tree is a type of graph, tree is a connected graph without cycles.
+-Tree
+    * Has one root node
+    * Root node has zero or more than one child nodes
+    * Each child node has zero or more nodes
+-Binary tree: tree where every node has max 2 children
+-Binary search tree MUST respect rule "all left descendant nodes <= currentNode < all right descendant nodes"
+-Balanced tree is a tree where INSERT and FIND complexity is O(log n) or not terribly imbalanced
+-Binary tree types
+    * COMPLETE binary tree is a tree where all every level is fully filled or except for last level(if we've at least left node present)
+      "fully filled" mean left from right.
+    * FULL BINARY tree is tree where every node has ZERO o TWO CHILDREN
+    * A PERFECT BINARY tree is a complete and full tree with all leaf node on the same level and last level has maximum number of nodes, 
+      2^k-1 nodes where k is number of levels
+-Binary heaps(min heap, max heap): COMPLETE BINARY TREE where EVERY NODE IS SMALLER THAN CHILDREN, root is the minimum
+    * Insert: insert to botton and swap(to top) node until we find appropriate spot.
+    * Exact minimum: simple is the root
+    * Remove minimum: remove top and swap with last element(bottommost rightmost element) and swap down the element untile the min-heap
+      property is restored.
+-Trie/s(Prefix trees): n-ary tree in which characters are stored at each node. Each path down the tree may rapresent a word, * on leaf 
+                       indicate complete word.
+                       Check if a string is a valid prefix cost O(K) like hashtable(usually we state that cost of hashtable is O(1) but actually
+                       we pay the cost of "key" analysis to generate hashcode)
+
+-Graph(116): simply collection of nodes with edges between(some of) them.
+    * Can be either directed or undirected. Directed are one-way, undirected are two-way
+    * Might consist of multiple isolted subgraphs
+    * Graph can have cycles. An "acyclic graph" is a graph without cycles
+-We can represent a graph in two common way:
+    * Adjacency list: every vertex(node) stores a list of adjacent vertices.
+    * Adjacency matrices: the edge are stored in a NxN matrix, graph algorithms used in adjacency(breadth first search) can be performed
+      also with adjacency matrices but is less efficient because we need to iterate throught all nodes to identify node's neighbors
+
+Graph Search(118)
+-Depth-first search(DFS): we start at the root(or another node) and explore EVERY BRANCH COMPLETELY before move to next branch
+                          O(N).
+-Breadth-first search(BFS): we start at the root(or another node) and explore NEIGHBOR before go to children
+    * better for shortest path between two node(we stay close as possible to starting node)
+    The time complexity of BFS is O(V + E), where V is the number of nodes and E is the number of edges.
+-Bidirectional Search: used to find shortest path between a source and destination
+    * simultaneous breadth search from s to t and from t to s with distance d
+      if we've at most k adjacents we have  
+      s -> t = O(K^d) 
+      two simultaneous search O(K^d/2)
+      O(2K^d/2) = O(K^d/2) * O(K^d/2) = K^d 
+      Bidirectional search is faster than a K^d/2 factor
+
+Bit Manupulation(123) https://www.tutorialspoint.com/computer_logical_organization/binary_arithmetic.htm
+
+-Positive number are rapresented as self while negative is rapresented as the two complement's of it's absolute value with 1 as sign bit
+
+Convert negative to complement of N bit
+
+-K = (2^N-1 - K)
+N=4 K=-3 = (2^(4-1)-3) = 8-3 = 5 = 1(sign) 101
+
+or
+
+-3 = 3 in binary = 011 = flip bits = 100 plus 1 = 101 = 1(sign) 101
+
+Convert binary complement to negative integer
+
+-3 = 1101 -> flip bits = 0010 plus 1 = 0011 = convert to decimal = 3 add sign = -3
+
+-Shift Operator
+    * Logical shift: >>> right shift bit and add 0 as new bit 1001 >>> 1 = 0100
+    * Arithmetical shift: >> right shift bit and keep same sign bit value 1001(positive is signed) >> 1 = 0100 is like divide by 2
+
+Sorting and searching(157)
+-Bubble sorting: iterate through collection and swap a pair if first is greater than second.
+  We do this until we swap something
+  Average and worste case O(n^2), space O(1) <- we move one element a time
+
+-Selection sort: iterate collection and find smallest item and move on top until we reach end of list
+                  O(n^2), space O(1) <- we move one element a time
+
+-Merge sort: merge sort divide array in half and sort these half until we've only one element on leaf and after merge those togheter,
+             every halves will have same order
+             O(n log n) , space depends on alg...books one O(n)
+
+-Quick sort: We pick "pivot" random element and swap value left(from first) to right(last) if are not in correct order until left index and right index cross each other.
+             We iterate in reordering until all subarray are ordered.
+             O(n log n) average O(N^2) worste, O(log n) space
+https://www.guru99.com/quicksort-in-javascript.html
+
+-Radix sort: is a sorting alg for integers 
+            O(kn) where n number of elements and k number of digit of largest number
+
+-Searching algorithms
+* Binary search: we look for an element x in a sorted array, we compare x with midpoint and if x is less than mid point we
+                 search element in the left half, we compare x with new midpoint and so on untile the mid point is equal to x
+                 or we cannot split subarray anymore, subarray lenght is zero
