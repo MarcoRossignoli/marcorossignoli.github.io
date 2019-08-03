@@ -18,7 +18,6 @@ Merged in [.NET Core codebases(corefx, coreclr, corert, performance)](https://gi
 
 #### Interesting issues
 https://github.com/dotnet/corefx/issues/39683  
-https://github.com/dotnet/corefx/issues/39967  
 https://github.com/dotnet/corert/pull/6965#discussion_r255924605  
 
 ---
