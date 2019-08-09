@@ -27,16 +27,12 @@ namespace Interview
                     return mem[n];
                 }
 
-                int lowerSolutionFound = 0;
-
                 for (int i = 0; i < steps.Length; i++)
                 {
-                    lowerSolutionFound += F(n - steps[i], steps, mem);
+                    mem[n] += F(n - steps[i], steps, mem);
                 }
 
-                mem[n] = lowerSolutionFound;
-
-                return lowerSolutionFound;
+                return mem[n];
             }
         }
     }
