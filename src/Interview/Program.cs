@@ -52,7 +52,7 @@ namespace Interview
             // RandomExercise.CountMatrixPath();
             // RandomExercise.PrintMatrix();
             // RandomExercise.PrintPattern();
-            RandomExercise.Shortener();
+            // RandomExercise.Shortener();
             // RandomExercise.IdenticalTree();
             // RandomExercise.PermutationDivisible();
             // RandomExercise.MaxSubarraySum();
@@ -66,6 +66,8 @@ namespace Interview
             // RandomExercise.UniquePaths();
 
             // HuffmanCoding.Test();
+
+            DynamicProgramming.TripleStep_TopDown();
 
             Console.ReadKey();
         }
