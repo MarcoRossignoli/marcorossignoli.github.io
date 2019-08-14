@@ -9,6 +9,7 @@ https://karelz.github.io/interview_prep/
     * binary trees 111
     * basic graph algorithms (search) 118
     * basic sorting 157
+    * recursion and dynamic programming 130
 -Ability to understand and analyze problems, identify the right basic data structures and algorithms in them.
 
 -Concepts and Algorithms - While I don’t think most of these are good interview questions (some Bit Manipulation questions are rather ugly), 
