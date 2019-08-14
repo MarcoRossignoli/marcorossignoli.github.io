@@ -68,8 +68,9 @@ namespace Interview
             // HuffmanCoding.Test();
 
             // DynamicProgramming.TripleStep_TopDown();
-            DynamicProgramming.TripleStep_BottomUp();
-            DynamicProgramming.RobotInAGrid();
+            // DynamicProgramming.TripleStep_BottomUp();
+            // DynamicProgramming.RobotInAGrid();
+            DynamicProgramming.PowerSet();
 
             Console.ReadKey();
         }

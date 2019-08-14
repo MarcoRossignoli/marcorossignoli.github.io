@@ -1,9 +1,74 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Interview
 {
     public class DynamicProgramming
     {
+        public static void PowerSet()
+        {
+            int[] set = new int[] { 1, 2 };
+            List<int[]> sets = new List<int[]>
+            {
+                null
+            };
+            for (int i = 0; i < set.Length; i++)
+            {
+                sets.Add(new int[] { set[i] });
+            }
+
+            Fun(set, sets);
+
+            foreach (var fs in sets)
+            {
+                if (fs is null)
+                {
+                    Console.WriteLine("Null");
+                    continue;
+                }
+
+                foreach (var v in fs)
+                {
+                    Console.Write(v + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine($"Total: {sets.Count}");
+
+            return;
+
+            static void Fun(int[] set, List<int[]> sets)
+            {
+
+                if (set.Length == 1)
+                    return;
+
+                sets.Add(set);
+
+                if (set.Length - 1 == 1)
+                    return;
+
+                for (int i = 0; i < set.Length; i++)
+                {
+                    int[] subset = new int[set.Length - 1];
+
+                    int nextIndex = 0;
+                    for (int k = 0; k < set.Length; k++)
+                    {
+                        if (k == i)
+                            continue;
+
+                        subset[nextIndex++] = set[k];
+                    }
+
+                    Fun(subset, sets);
+                }
+
+            }
+
+        }
+
         // Page 134
         public static void TripleStep_TopDown()
         {
