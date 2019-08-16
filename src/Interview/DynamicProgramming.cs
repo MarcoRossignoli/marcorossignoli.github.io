@@ -1,11 +1,50 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Interview
 {
     public class DynamicProgramming
     {
-        public static void PowerSet()
+        public static void PowerSet_BottomUp_Page349()
+        {
+            List<int> arr = new List<int>
+            {
+                1,
+                2,
+                3
+            };
+
+            var res = getSubsets(arr, 0);
+
+            return;
+
+            static List<List<int>> getSubsets(List<int> set, int index)
+            {
+                List<List<int>> allsubsets;
+                if (set.Count == index)
+                {
+                    allsubsets = new List<List<int>>();
+                    allsubsets.Add(new List<int>()); // empty set
+                }
+                else
+                {
+                    allsubsets = getSubsets(set, index + 1);
+                    int item = set[index];
+                    foreach (List<int> subset in allsubsets.ToArray())
+                    {
+                        List<int> newsubset = new List<int>();
+                        newsubset.AddRange(subset);
+                        newsubset.Add(item);
+                        allsubsets.Add(newsubset);
+                    }
+                }
+                return allsubsets;
+            }
+
+        }
+
+        public static void PowerSet_TopDown()
         {
             int[] set = new int[] { 1, 2 };
             List<int[]> sets = new List<int[]>

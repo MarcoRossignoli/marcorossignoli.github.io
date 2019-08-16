@@ -70,7 +70,8 @@ namespace Interview
             // DynamicProgramming.TripleStep_TopDown();
             // DynamicProgramming.TripleStep_BottomUp();
             // DynamicProgramming.RobotInAGrid();
-            DynamicProgramming.PowerSet();
+            // DynamicProgramming.PowerSet();
+            DynamicProgramming.PowerSet_Page349();
 
             Console.ReadKey();
         }
