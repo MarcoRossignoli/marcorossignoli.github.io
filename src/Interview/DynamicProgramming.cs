@@ -1,10 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Interview
 {
     public class DynamicProgramming
     {
+        public static void TowerOfHanoi()
+        {
+            int towerNumber = 3;
+            TowerOfHanoi[] towers = new TowerOfHanoi[towerNumber];
+            for (int i = 0; i < towerNumber; i++)
+            {
+                towers[i] = new TowerOfHanoi(i);
+            }
+
+            int totalDisk = 64;
+            for (int i = totalDisk - 1; i >= 0; i--)
+            {
+                towers[0].Add(i);
+            }
+
+            towers[0].MoveDisks(totalDisk, towers[2], towers[1]);
+        }
+
         public static void PowerSet_BottomUp_Page349()
         {
             List<int> arr = new List<int>
@@ -189,6 +208,51 @@ namespace Interview
                 return Routes(grid, r + 1, c) + Routes(grid, r, c + 1);
             }
 
+        }
+    }
+
+    [DebuggerDisplay("Index={index}")]
+    public class TowerOfHanoi
+    {
+        System.Collections.Generic.Stack<int> _disks;
+        int index;
+        public TowerOfHanoi(int i)
+        {
+            _disks = new System.Collections.Generic.Stack<int>();
+            index = i;
+        }
+
+        public int Index()
+        {
+            return index;
+        }
+
+        public void Add(int d)
+        {
+            if (_disks.Count != 0 && _disks.Peek() <= d)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                _disks.Push(d);
+            }
+        }
+
+        public void MoveTopTo(TowerOfHanoi t)
+        {
+            int top = _disks.Pop();
+            t.Add(top);
+        }
+
+        public void MoveDisks(int n, TowerOfHanoi destination, TowerOfHanoi buffer)
+        {
+            if (n > 0)
+            {
+                MoveDisks(n - 1, buffer, destination);
+                MoveTopTo(destination);
+                buffer.MoveDisks(n - 1, destination, this);
+            }
         }
     }
 }

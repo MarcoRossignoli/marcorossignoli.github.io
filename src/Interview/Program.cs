@@ -71,7 +71,8 @@ namespace Interview
             // DynamicProgramming.TripleStep_BottomUp();
             // DynamicProgramming.RobotInAGrid();
             // DynamicProgramming.PowerSet();
-            DynamicProgramming.PowerSet_Page349();
+            // DynamicProgramming.PowerSet_Page349();
+            DynamicProgramming.TowerOfHanoi();
 
             Console.ReadKey();
         }
