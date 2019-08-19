@@ -8,20 +8,18 @@ namespace Interview
     {
         public static void TowerOfHanoi()
         {
-            int towerNumber = 3;
-            TowerOfHanoi[] towers = new TowerOfHanoi[towerNumber];
-            for (int i = 0; i < towerNumber; i++)
+            TowerOfHanoi origin = new TowerOfHanoi(0, "Origin");
+            TowerOfHanoi buffer = new TowerOfHanoi(1, "Buffer");
+            TowerOfHanoi destination = new TowerOfHanoi(2, "Destination");
+
+
+            int totalDisk = 3;
+            for (int i = totalDisk; i > 0; i--)
             {
-                towers[i] = new TowerOfHanoi(i);
+                origin.Add(i);
             }
 
-            int totalDisk = 64;
-            for (int i = totalDisk - 1; i >= 0; i--)
-            {
-                towers[0].Add(i);
-            }
-
-            towers[0].MoveDisks(totalDisk, towers[2], towers[1]);
+            origin.MoveDisks(totalDisk, destination, buffer);
         }
 
         public static void PowerSet_BottomUp_Page349()
@@ -211,20 +209,22 @@ namespace Interview
         }
     }
 
-    [DebuggerDisplay("Index={index}")]
+    [DebuggerDisplay("Name={_name}")]
     public class TowerOfHanoi
     {
         System.Collections.Generic.Stack<int> _disks;
-        int index;
-        public TowerOfHanoi(int i)
+        int _index;
+        string _name;
+        public TowerOfHanoi(int i, string name)
         {
             _disks = new System.Collections.Generic.Stack<int>();
-            index = i;
+            _name = name;
+            _index = i;
         }
 
         public int Index()
         {
-            return index;
+            return _index;
         }
 
         public void Add(int d)
