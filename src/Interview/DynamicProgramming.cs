@@ -6,6 +6,89 @@ namespace Interview
 {
     public class DynamicProgramming
     {
+        public static void Permutation_NoDup_355_2()
+        {
+
+            foreach (var item in Perm("ABC"))
+            {
+                Console.WriteLine(item);
+            }
+
+            return;
+
+            static List<string> Perm(string remainder)
+            {
+                int len = remainder.Length;
+
+                List<string> result = new List<string>();
+
+                if (len == 0)
+                {
+                    result.Add("");
+                    return result;
+                }
+
+                for (int i = 0; i < len; i++)
+                {
+                    string before = remainder.Substring(0, i);
+                    string after = remainder.Substring(i + 1);
+                    List<string> partials = Perm(before + after);
+
+                    foreach (var s in partials)
+                    {
+                        result.Add(remainder[i] + s);
+                    }
+                }
+
+                return result;
+            }
+
+        }
+
+        public static void Permutation_NoDup_355_1()
+        {
+
+            foreach (var item in Perm("ABC"))
+            {
+                Console.WriteLine(item);
+            }
+
+            return;
+
+            static List<string> Perm(string str)
+            {
+                if (str is null)
+                    return null;
+
+                List<string> permutations = new List<string>();
+
+                if (str.Length == 0)
+                {
+                    permutations.Add(""); // base case
+                    return permutations;
+                }
+
+                char first = str[0];
+                string remain = str.Substring(1);
+
+                List<string> words = Perm(remain);
+
+                foreach (var word in words)
+                {
+                    for (int i = 0; i <= word.Length; i++)
+                    {
+                        // Insert at
+                        string start = word.Substring(0, i);
+                        string end = word.Substring(i);
+                        permutations.Add(start + first + end);
+                    }
+                }
+
+                return permutations;
+            }
+
+        }
+
         public static void TowerOfHanoi()
         {
             TowerOfHanoi origin = new TowerOfHanoi(0, "Origin");
