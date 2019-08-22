@@ -6,6 +6,36 @@ namespace Interview
 {
     public class DynamicProgramming
     {
+        public static void Permutation_NoDup_355_3()
+        {
+            List<string> result = new List<string>();
+            getPerms("", "ABC", result);
+
+            foreach (var v in result)
+            {
+                Console.WriteLine(v);
+            }
+
+            return;
+
+            static void getPerms(string prefix, string remainder, List<string> result)
+            {
+                if (remainder.Length == 0)
+                {
+                    result.Add(prefix);
+                }
+
+                int len = remainder.Length;
+                for (int i = 0; i < len; i++)
+                {
+                    string before = remainder.Substring(0, i);
+                    string after = remainder.Substring(i + 1);
+                    char c = remainder[i];
+                    getPerms(prefix + c, before + after, result);
+                }
+            }
+        }
+
         public static void Permutation_NoDup_355_2()
         {
 

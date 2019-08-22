@@ -74,7 +74,8 @@ namespace Interview
             // DynamicProgramming.PowerSet_Page349();
             // DynamicProgramming.TowerOfHanoi();
             // DynamicProgramming.Permutation_NoDup_355_1();
-            DynamicProgramming.Permutation_NoDup_355_2();
+            // DynamicProgramming.Permutation_NoDup_355_2();
+            DynamicProgramming.Permutation_NoDup_355_3();
 
             Console.ReadKey();
         }
