@@ -17,6 +17,14 @@ it is worth going through them all to ensure yourself you understand basic conce
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
+2nd
+Array and string pg. 88
+Linked List pg. 92
+Stack and queue pg. 96
+Tree and graphs pg. 100
+Bit manipulation pg. 112
+Recursion and Dynamic programming pg.130 -> 14 done
+
 Big O(49)
 
 sum of 1 to n = n(n+1)/2 = n^2
