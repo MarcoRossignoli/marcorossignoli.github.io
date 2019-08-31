@@ -77,8 +77,9 @@ namespace Interview
             // DynamicProgramming.Permutation_NoDup_355_2();
             // DynamicProgramming.Permutation_NoDup_355_3();
             // DynamicProgramming.BooleanEvaluation();
-            
-            ArrayAndStrings.IsUnique1_1();
+
+            // ArrayAndStrings.IsUnique();
+            ArrayAndStrings.IsUniqueBinarySearch();
 
             Console.ReadKey();
         }
