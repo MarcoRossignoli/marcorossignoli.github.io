@@ -6,6 +6,67 @@ namespace Interview
 {
     public class DynamicProgramming
     {
+        public static void BooleanEvaluation()
+        {
+            string expression = "1^0|0|1";
+            Console.WriteLine(CountEval(expression, false));
+            // Console.WriteLine(CountEval(expression, true));
+
+            return;
+
+            static int CountEval(string s, bool result)
+            {
+                if (s.Length == 0)
+                    return 0;
+                if (s.Length == 1)
+                {
+                    return stringToBool(s) == result ? 1 : 0;
+                }
+
+                int ways = 0;
+
+                for (int i = 1; i < s.Length; i += 2)
+                {
+                    char c = s[i];
+                    string left = s.Substring(0, i);
+                    string right = s.Substring(i + 1);
+
+                    Console.WriteLine("Left " + left + " Right " + right + " op " + c + " i " + i);
+
+                    int leftTrue = CountEval(left, true);
+                    int leftFalse = CountEval(left, false);
+                    int rightTrue = CountEval(right, true);
+                    int rightFalse = CountEval(right, false);
+
+                    int total = (leftTrue + leftFalse) * (rightTrue + rightFalse);
+
+                    int totalTrue = 0;
+                    if (c == '^')
+                    {
+                        totalTrue = leftTrue * rightFalse + leftFalse * rightTrue;
+                    }
+                    else if (c == '&')
+                    {
+                        totalTrue = leftTrue * rightTrue;
+                    }
+                    else if (c == '|')
+                    {
+                        totalTrue = leftTrue * rightTrue + leftFalse * rightTrue + leftTrue * rightFalse;
+                    }
+
+                    int subways = result ? totalTrue : total - totalTrue;
+                    ways += subways;
+                }
+
+                return ways;
+            }
+
+            static bool stringToBool(string c)
+            {
+                return c.Equals("1");
+            }
+        }
+
         public static void Permutation_NoDup_355_3()
         {
             List<string> result = new List<string>();
