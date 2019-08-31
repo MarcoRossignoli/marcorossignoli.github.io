@@ -8,7 +8,7 @@ namespace Interview
     {
         public static void BooleanEvaluation()
         {
-            string expression = "1^0|0|1";
+            string expression = "0&0|1";
             Console.WriteLine(CountEval(expression, false));
             // Console.WriteLine(CountEval(expression, true));
 
