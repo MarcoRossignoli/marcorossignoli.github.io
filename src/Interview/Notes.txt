@@ -25,7 +25,7 @@ Tree and graphs pg. 100
 Bit manipulation pg. 112
 Recursion and Dynamic programming pg.130 -> 14 done
 
-Big O(49)
+Big O(49) https://www.bigocheatsheet.com/
 
 sum of 1 to n = n(n+1)/2 = n^2
 sum of 1 to n-1 = n(n-1)/2 = n^2
