@@ -4,6 +4,98 @@ namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void IsUniqueBookSolution_3()
+        {
+            Console.WriteLine(IsUnique(""));
+            Console.WriteLine(IsUnique("A"));
+            Console.WriteLine(IsUnique(null));
+            Console.WriteLine(IsUnique("ABC"));
+            Console.WriteLine(IsUnique("ABBC"));
+
+            return;
+
+            static bool IsUnique(string str)
+            {
+                if (str is null || str.Length <= 1)
+                    return true;
+
+                char[] charArray = str.ToCharArray();
+                Array.Sort(charArray);
+                str = new string(charArray);
+
+                for (int i = 0; i < str.Length - 1; i++)
+                {
+                    if (str[i] == str[i + 1])
+                        return false;
+                }
+
+                return true;
+            }
+        }
+
+        public static void IsUniqueBookSolution_2()
+        {
+            Console.WriteLine(IsUnique(""));
+            Console.WriteLine(IsUnique("A"));
+            Console.WriteLine(IsUnique(null));
+            Console.WriteLine(IsUnique("ABC"));
+            Console.WriteLine(IsUnique("ABBC"));
+
+            return;
+
+            static bool IsUnique(string str)
+            {
+                if (str is null)
+                    return true;
+
+                if (str.Length > 128)
+                    return false;
+
+                int checker = 0;
+
+                for (int i = 0; i < str.Length; i++)
+                {
+                    int val = str[i] - (int)'A';
+                    if ((checker & (1 << val)) != 0)
+                        return false;
+                    checker |= (1 << val);
+                }
+                return true;
+            }
+        }
+
+        public static void IsUniqueBookSolution_1()
+        {
+            Console.WriteLine(IsUnique(""));
+            Console.WriteLine(IsUnique("A"));
+            Console.WriteLine(IsUnique(null));
+            Console.WriteLine(IsUnique("ABC"));
+            Console.WriteLine(IsUnique("ABBC"));
+
+            return;
+
+            static bool IsUnique(string str)
+            {
+                if (str is null)
+                    return true;
+
+                if (str.Length > 128)
+                    return false;
+
+                bool[] found = new bool[128];
+                for (int i = 0; i < str.Length; i++)
+                {
+                    int val = str[i];
+                    if (found[val])
+                    {
+                        return false;
+                    }
+                    found[val] = true;
+                }
+                return true;
+            }
+        }
+
         public static void IsUniqueBinarySearch()
         {
             Console.WriteLine(IsUnique(""));

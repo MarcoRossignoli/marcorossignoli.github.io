@@ -79,7 +79,10 @@ namespace Interview
             // DynamicProgramming.BooleanEvaluation();
 
             // ArrayAndStrings.IsUnique();
-            ArrayAndStrings.IsUniqueBinarySearch();
+            // ArrayAndStrings.IsUniqueBinarySearch();
+            // ArrayAndStrings.IsUniqueBookSolution_1();
+            // ArrayAndStrings.IsUniqueBookSolution_2();
+            ArrayAndStrings.IsUniqueBookSolution_3();
 
             Console.ReadKey();
         }
