@@ -4,6 +4,44 @@ namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void URLify()
+        {
+            char[] str = new char[] { 'M', 'r', ' ', 'J', 'o', 'h', 'n', ' ', 'S', 'm', 'i', 't', 'h', ' ', ' ', ' ', ' ' };
+            Console.WriteLine(new string(str) + " " + new string(str).Length);
+            Urlfy(str, 13);
+            Console.WriteLine(new string(str) + " " + new string(str).Length);
+            return;
+
+            static int CountSpace(char[] str, int len)
+            {
+                int s = 0;
+                for (int i = 0; i < len; i++)
+                {
+                    if (str[i] == ' ')
+                        s++;
+                }
+                return s;
+            }
+
+            static void Urlfy(char[] str, int len)
+            {
+                int p = (CountSpace(str, len) * 2 + len) - 1;
+                for (int i = len - 1; i >= 0; i--)
+                {
+                    if (str[i] != ' ')
+                    {
+                        str[p--] = str[i];
+                    }
+                    else
+                    {
+                        str[p--] = '0';
+                        str[p--] = '2';
+                        str[p--] = '%';
+                    }
+                }
+            }
+        }
+
         public static void IsUniqueBookSolution_3()
         {
             Console.WriteLine(IsUnique(""));

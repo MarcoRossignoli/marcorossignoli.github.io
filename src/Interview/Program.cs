@@ -82,7 +82,8 @@ namespace Interview
             // ArrayAndStrings.IsUniqueBinarySearch();
             // ArrayAndStrings.IsUniqueBookSolution_1();
             // ArrayAndStrings.IsUniqueBookSolution_2();
-            ArrayAndStrings.IsUniqueBookSolution_3();
+            // ArrayAndStrings.IsUniqueBookSolution_3();
+            ArrayAndStrings.URLify();
 
             Console.ReadKey();
         }
