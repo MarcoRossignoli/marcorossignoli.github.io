@@ -4,6 +4,58 @@ namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void Perm()
+        {
+            Console.WriteLine(IsPalindromePerm("Tact Coa", ""));
+            // Console.WriteLine(IsPalindromePerm("BB A", ""));
+
+            return;
+
+            static bool IsPalindrome(string str)
+            {
+                int h = 0;
+                int t = str.Length - 1;
+                while (h < t)
+                {
+                    if (str[h] == ' ')
+                    {
+                        h++;
+                        continue;
+                    }
+
+                    if (str[t] == ' ')
+                    {
+                        t--;
+                        continue;
+                    }
+
+                    if (char.ToLower(str[h]) != char.ToLower(str[t]))
+                        return false;
+                    h++;
+                    t--;
+                }
+                return true;
+            }
+
+            static bool IsPalindromePerm(string str, string prefix)
+            {
+                if (str.Length == 0)
+                {
+                    return IsPalindrome(prefix);
+                }
+
+                for (int i = 0; i < str.Length; i++)
+                {
+                    string before = str.Substring(0, i);
+                    string after = str.Substring(i + 1);
+                    if (IsPalindromePerm(before + after, prefix + str[i]))
+                        return true;
+                }
+
+                return false;
+            }
+        }
+
         public static void URLify()
         {
             char[] str = new char[] { 'M', 'r', ' ', 'J', 'o', 'h', 'n', ' ', 'S', 'm', 'i', 't', 'h', ' ', ' ', ' ', ' ' };
