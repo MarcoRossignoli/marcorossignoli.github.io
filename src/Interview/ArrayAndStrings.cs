@@ -1,9 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void OneAway()
+        {
+
+            Console.WriteLine(IsOneAway("PALE", "PLE"));
+            Console.WriteLine(IsOneAway("PALES", "PALE"));
+            Console.WriteLine(IsOneAway("PALE", "BALE"));
+            Console.WriteLine(IsOneAway("PALE", "BAKE"));
+            Console.WriteLine(IsOneAway("PPALE", "PAPLE"));
+            Console.WriteLine(IsOneAway("PALE", "BAKEE"));
+            Console.WriteLine(IsOneAway("AB", "B"));
+            Console.WriteLine(IsOneAway("AB", ""));
+            Console.WriteLine(IsOneAway("A", "B"));
+            Console.WriteLine(IsOneAway("A", "BC"));
+
+            return;
+
+            static bool IsOneAway(string a, string b)
+            {
+                if (Math.Abs(a.Length - b.Length) > 1)
+                    return false;
+
+                string smaller = a.Length < b.Length ? a : b;
+                string bigger = smaller == a ? b : a;
+
+                int indexBigger = 0;
+                int indexSmaller = 0;
+                int diff = 0;
+
+                while (indexBigger < bigger.Length && indexSmaller < smaller.Length && diff <= 1)
+                {
+                    if (smaller[indexSmaller] != bigger[indexBigger])
+                    {
+                        diff++;
+                        if (smaller.Length != bigger.Length)
+                        {
+                            indexBigger++;
+                            continue;
+                        }
+                    }
+
+                    indexBigger++;
+                    indexSmaller++;
+                }
+
+                return diff <= 1;
+            }
+
+        }
+
         public static void Perm()
         {
             Console.WriteLine(IsPalindromePerm("Tact Coa", ""));
