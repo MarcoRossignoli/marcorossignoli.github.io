@@ -1,10 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void StringCompress()
+        {
+            Console.WriteLine(StringCompress("aabcccccaaa"));
+            Console.WriteLine(StringCompress("a"));
+            Console.WriteLine(StringCompress(""));
+
+            return;
+
+            static string StringCompress(string str)
+            {
+                if (str is null || str.Length <= 1)
+                    return str;
+
+                int c = 0;
+                int i = 1;
+                StringBuilder final = new StringBuilder();
+                final.Append(str[0]);
+
+                while (i < str.Length)
+                {
+                    if (str[i] == final[final.Length - 1])
+                    {
+                        c++;
+                    }
+                    else
+                    {
+                        final.Append(c + 1);
+                        final.Append(str[i]);
+                        c = 0;
+                    }
+                    i++;
+                }
+
+                final.Append(c + 1);
+
+                return str.Length <= final.Length ? str : final.ToString();
+            }
+
+        }
+
         public static void OneAway()
         {
 
