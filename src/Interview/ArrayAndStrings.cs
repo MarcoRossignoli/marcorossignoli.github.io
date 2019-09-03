@@ -11,6 +11,7 @@ namespace Interview
             Console.WriteLine(StringCompress("aabcccccaaa"));
             Console.WriteLine(StringCompress("a"));
             Console.WriteLine(StringCompress(""));
+            Console.WriteLine(StringCompress(null));
 
             return;
 
