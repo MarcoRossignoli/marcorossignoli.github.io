@@ -86,7 +86,8 @@ namespace Interview
             // ArrayAndStrings.URLify();
             // ArrayAndStrings.Perm();
             // ArrayAndStrings.OneAway();
-            ArrayAndStrings.StringCompress();
+            // ArrayAndStrings.StringCompress();
+            ArrayAndStrings.RotateMatrix();
 
             Console.ReadKey();
         }

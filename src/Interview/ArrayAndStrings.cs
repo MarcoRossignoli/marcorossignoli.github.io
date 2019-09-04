@@ -6,6 +6,61 @@ namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void RotateMatrix()
+        {
+            int[][] m = new int[][]
+            {
+                new[] { 1, 2, 3, 4, 5},
+                new[] { 6 ,7 ,8 , 9 , 10 },
+                new[] { 11 ,12, 13, 14 ,15 },
+                new[] { 16, 17, 18, 19, 20 },
+                new[] { 21, 22, 23, 24, 25 }
+            };
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                for (int k = 0; k < m.Length; k++)
+                {
+                    Console.Write(m[i][k] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+
+            var res = Rotate(m);
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                for (int k = 0; k < m.Length; k++)
+                {
+                    Console.Write(res[i][k] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            return;
+
+            static int[][] Rotate(int[][] m)
+            {
+                int[][] m2 = new int[m.Length][];
+                for (int i = 0; i < m.Length; i++)
+                {
+                    m2[i] = new int[m.Length];
+                }
+
+                for (int i = m.Length - 1; i >= 0; i--)
+                {
+                    for (int k = 0; k < m.Length; k++)
+                    {
+                        m2[k][i] = m[(m.Length - 1) - i][k];
+                    }
+                }
+
+                return m2;
+            }
+        }
+
         public static void StringCompress()
         {
             Console.WriteLine(StringCompress("aabcccccaaa"));
