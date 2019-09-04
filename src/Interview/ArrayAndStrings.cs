@@ -6,6 +6,71 @@ namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void RotateMatrix_Pg203()
+        {
+            int[][] m = new int[][]
+            {
+                new[] { 1, 2, 3, 4},
+                new[] { 5, 6, 7, 8},
+                new[] { 9, 10, 11, 12},
+                new[] { 13, 14, 15, 16}
+            };
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                for (int k = 0; k < m.Length; k++)
+                {
+                    Console.Write(m[i][k] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Rotate(m);
+
+            Console.WriteLine();
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                for (int k = 0; k < m.Length; k++)
+                {
+                    Console.Write(m[i][k] + " ");
+                }
+                Console.WriteLine();
+            }
+
+
+            return;
+
+            static void Rotate(int[][] m)
+            {
+                int n = m.Length;
+
+                for (int layer = 0; layer < n / 2; layer++)
+                {
+                    int first = layer;
+                    int last = n - 1 - layer;
+                    for (int i = first; i < last; i++)
+                    {
+                        int offset = i - first;
+
+                        // save tmp
+                        int top = m[first][i];
+
+                        // left -> top
+                        m[first][i] = m[last - offset][first];
+                        // bottom -> left
+                        m[last - offset][first] = m[last][last - offset];
+                        // right -> bottom
+                        m[last][last - offset] = m[i][last];
+                        // top -> right
+                        m[i][last] = top;
+                    }
+                }
+
+            }
+
+        }
+
         public static void RotateMatrix()
         {
             int[][] m = new int[][]
