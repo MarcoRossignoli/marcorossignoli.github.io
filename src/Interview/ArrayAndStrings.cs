@@ -6,6 +6,66 @@ namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void ZeroMatrix()
+        {
+            int[][] m = new int[][]
+            {
+                    new[] { 1, 1, 1, 1},
+                    new[] { 1, 1, 1, 1},
+                    new[] { 1, 1, 1, 1},
+                    new[] { 1, 1, 1, 1},
+                    new[] { 1, 1, 1, 1},
+                    new[] { 1, 1, 1, 1}
+            };
+
+            Zero(m, 5, 0);
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                for (int k = 0; k < m[0].Length; k++)
+                {
+                    Console.Write(m[i][k] + " ");
+                }
+                Console.WriteLine();
+            }
+
+
+            return;
+
+            static void Zero(int[][] m, int r, int c)
+            {
+                m[r][c] = 0;
+                int s = Math.Max(Math.Max(r, m.Length - r), Math.Max(c, Math.Max(c, c - m[0].Length)));
+                if (s == 0)
+                    return;
+
+                while (s > 0)
+                {
+                    // top
+                    int t = r - s;
+                    if (t >= 0)
+                        m[t][c] = 0;
+
+                    // bottom
+                    int b = r + s;
+                    if (b <= m.Length - 1)
+                        m[b][c] = 0;
+
+                    // right
+                    int ri = c + s;
+                    if (ri <= m[0].Length - 1)
+                        m[r][ri] = 0;
+
+                    // left
+                    int l = c - s;
+                    if (l >= 0)
+                        m[r][l] = 0;
+
+                    s--;
+                }
+            }
+
+        }
         public static void RotateMatrix_Pg203()
         {
             int[][] m = new int[][]
