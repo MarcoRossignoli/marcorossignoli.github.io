@@ -89,7 +89,8 @@ namespace Interview
             // ArrayAndStrings.StringCompress();
             // ArrayAndStrings.RotateMatrix();
             // ArrayAndStrings.RotateMatrix_Pg203();
-            ArrayAndStrings.ZeroMatrix();
+            // ArrayAndStrings.ZeroMatrix();
+            ArrayAndStrings.ZeroMatrix_pg204();
 
             Console.ReadKey();
         }

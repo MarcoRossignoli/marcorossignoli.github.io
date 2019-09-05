@@ -6,6 +6,122 @@ namespace Interview
 {
     public class ArrayAndStrings
     {
+        public static void ZeroMatrix_pg204()
+        {
+            int[][] m = new int[][]
+            {
+                    new[] { 1, 1, 1, 1},
+                    new[] { 0, 1, 0, 1},
+                    new[] { 1, 1, 1, 1},
+                    new[] { 1, 1, 0, 1},
+            };
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                for (int k = 0; k < m[0].Length; k++)
+                {
+                    Console.Write(m[i][k] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+
+            Zero(m);
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                for (int k = 0; k < m[0].Length; k++)
+                {
+                    Console.Write(m[i][k] + " ");
+                }
+                Console.WriteLine();
+            }
+
+
+            static void Zero(int[][] m)
+            {
+                bool firstRowHasZero = false;
+                bool firstColumnHasZero = false;
+
+                for (int i = 0; i < m[0].Length; i++)
+                {
+                    if (m[0][i] == 0)
+                    {
+                        firstRowHasZero = true;
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < m.Length; i++)
+                {
+                    if (m[i][0] == 0)
+                    {
+                        firstColumnHasZero = true;
+                        break;
+                    }
+                }
+
+                // register zeros on first row/col
+                for (int r = 1; r < m.Length; r++)
+                {
+                    for (int k = 1; k < m[0].Length; k++)
+                    {
+                        if (m[r][k] == 0)
+                        {
+                            m[r][0] = 0;
+                            m[0][k] = 0;
+                        }
+                    }
+                }
+
+                // null rows
+                for (int i = 0; i < m.Length; i++)
+                {
+                    if (m[i][0] == 0)
+                    {
+                        NullRows(m, i);
+                    }
+                }
+
+                // null cols
+                for (int i = 0; i < m[0].Length; i++)
+                {
+                    if (m[0][i] == 0)
+                    {
+                        NullCols(m, i);
+                    }
+                }
+
+                if (firstRowHasZero)
+                {
+                    NullRows(m, 0);
+                }
+                if (firstColumnHasZero)
+                {
+                    NullCols(m, 0);
+                }
+
+            }
+
+            static void NullRows(int[][] m, int row)
+            {
+                for (int i = 0; i < m[0].Length; i++)
+                {
+                    m[row][i] = 0;
+                }
+            }
+
+            static void NullCols(int[][] m, int col)
+            {
+                for (int i = 0; i < m.Length; i++)
+                {
+                    m[i][col] = 0;
+                }
+            }
+
+        }
+
         public static void ZeroMatrix()
         {
             int[][] m = new int[][]
