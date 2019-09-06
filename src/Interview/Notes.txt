@@ -18,7 +18,7 @@ it is worth going through them all to ensure yourself you understand basic conce
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
 2nd
-Array and string pg. 88
+Array and string pg. 88 -> 9 done
 Linked List pg. 92
 Stack and queue pg. 96
 Tree and graphs pg. 100
