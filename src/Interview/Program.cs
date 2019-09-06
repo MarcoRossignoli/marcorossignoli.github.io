@@ -90,7 +90,11 @@ namespace Interview
             // ArrayAndStrings.RotateMatrix();
             // ArrayAndStrings.RotateMatrix_Pg203();
             // ArrayAndStrings.ZeroMatrix();
-            ArrayAndStrings.ZeroMatrix_pg204();
+            // ArrayAndStrings.ZeroMatrix_pg204();
+            // LinkedList.Excercise.LinkedList.RemoveDups_WithBuffer();
+            // LinkedList.Excercise.LinkedList.RemoveDups_NoBuffer();
+            // LinkedList.Excercise.LinkedList.RemoveDup_ON_Pg208();
+            LinkedList.Excercise.LinkedList.RemoveDup_NoBuffer_Pg208_Runner();
 
             Console.ReadKey();
         }
