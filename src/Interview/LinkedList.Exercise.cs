@@ -8,6 +8,64 @@ namespace Interview.LinkedList.Excercise
 {
     public class LinkedList
     {
+        public static void KthToLast_Runner()
+        {
+            var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6 });
+            int kth = 5;
+            Node n = KthToLast(nodes, ref kth);
+            Console.WriteLine(n != null ? n.Val.ToString() : "null");
+
+            return;
+
+            static Node KthToLast(Node n, ref int kth)
+            {
+                if (n is null)
+                    return null;
+
+                Node c = n;
+                Node r = c;
+                int m = kth;
+
+                while (r.Next != null)
+                {
+                    if (m <= 0)
+                    {
+                        c = c.Next;
+                    }
+                    r = r.Next;
+                    m--;
+                }
+
+                return m <= 0 ? c : null;
+            }
+        }
+
+        public static void KthToLast()
+        {
+            var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6 });
+            int kth = 5;
+            Node n = KthToLast(nodes, ref kth);
+            Console.WriteLine(n != null ? n.Val.ToString() : "null");
+
+            return;
+
+            static Node KthToLast(Node n, ref int kth)
+            {
+                if (n == null)
+                    return null;
+
+                Node n2 = KthToLast(n.Next, ref kth);
+
+                if (n2 != null)
+                    return n2;
+
+                if (--kth == 0)
+                    return n;
+                else
+                    return null;
+            }
+        }
+
         public static void RemoveDup_NoBuffer_Pg208_Runner()
         {
             var nodes = Node.Create(new int[] { 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 5, 5, 6 });
