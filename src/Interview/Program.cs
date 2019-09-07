@@ -96,7 +96,8 @@ namespace Interview
             // LinkedList.Excercise.LinkedList.RemoveDup_ON_Pg208();
             // LinkedList.Excercise.LinkedList.RemoveDup_NoBuffer_Pg208_Runner();
             // LinkedList.Excercise.LinkedList.KthToLast();
-            LinkedList.Excercise.LinkedList.KthToLast_Runner();
+            // LinkedList.Excercise.LinkedList.KthToLast_Runner();
+            LinkedList.Excercise.LinkedList.RemoveMiddle();
 
             Console.ReadKey();
         }

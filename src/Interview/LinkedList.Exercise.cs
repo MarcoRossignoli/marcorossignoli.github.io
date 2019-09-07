@@ -8,6 +8,49 @@ namespace Interview.LinkedList.Excercise
 {
     public class LinkedList
     {
+        public static void RemoveMiddleFromHead()
+        {
+            // var nodes = Node.Create(new int[] { 1, 2, 3 });
+            // var nodes = Node.Create(new int[] { 1, 2 });
+            // var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5 });
+            // var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6, 7 });
+            // var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+            nodes.Print();
+
+            Remove(nodes);
+
+            nodes.Print();
+
+            return;
+
+            static void Remove(Node head)
+            {
+                Node c = head;
+                Node r = head;
+
+                int m = 0;
+                while (r.Next != null)
+                {
+                    if (m != 0 && m % 3 == 0)
+                    {
+                        c = c.Next;
+                    }
+                    else
+                    {
+                        r = r.Next;
+                    }
+                    m++;
+                }
+
+                if (c.Next != r)
+                {
+                    c.Next = c.Next.Next;
+                }
+            }
+        }
+
         public static void KthToLast_Runner()
         {
             var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6 });
