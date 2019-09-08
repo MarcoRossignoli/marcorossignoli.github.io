@@ -6,6 +6,55 @@ namespace Interview.LinkedList.Excercise
 {
     public class LinkedList
     {
+        public static void SumListRecoursive()
+        {
+            Node a = Node.Create(7, 1, 6);
+            Node b = Node.Create(5, 9, 2);
+
+            Sum(a, b).Print();
+
+            return;
+
+            static Node Sum(Node a, Node b)
+            {
+                Node n = SumInt(a, b, out bool carry);
+                if (carry)
+                {
+                    Node c = new Node(1);
+                    c.Next = n;
+                    return c;
+                }
+                else
+                {
+                    return n;
+                }
+            }
+
+            static Node SumInt(Node a, Node b, out bool carry)
+            {
+                if (a is null && b is null)
+                {
+                    carry = false;
+                    return null;
+                }
+
+                Node r = SumInt(a.Next, b.Next, out bool carryi);
+                int sum = a.Val + b.Val + (carryi ? 1 : 0);
+                carry = sum >= 10;
+                Node c = new Node(carry ? sum % 10 : sum);
+
+                if (r is null)
+                {
+                    return c;
+                }
+                else
+                {
+                    c.Next = r;
+                    return c;
+                }
+            }
+        }
+
         public static void SumLists()
         {
             Node a = Node.Create(7, 1, 6);

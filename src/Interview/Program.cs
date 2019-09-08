@@ -103,7 +103,7 @@ namespace Interview
             // LinkedList.Excercise.LinkedList.RemoveMiddle_Pg211();
             // LinkedList.Excercise.LinkedList.Partition_Pg212();
             // LinkedList.Excercise.LinkedList.Partition_Pg212();
-            LinkedList.Excercise.LinkedList.SumLists();
+            LinkedList.Excercise.LinkedList.SumListRecoursive();
 
             Console.ReadKey();
         }
