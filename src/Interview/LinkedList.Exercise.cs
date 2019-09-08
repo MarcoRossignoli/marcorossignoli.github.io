@@ -8,8 +8,8 @@ namespace Interview.LinkedList.Excercise
     {
         public static void SumListRecoursive()
         {
-            Node a = Node.Create(7, 1, 6);
-            Node b = Node.Create(5, 9, 2);
+            Node a = Node.Create(1, 0, 0);
+            Node b = Node.Create(9, 9, 2);
 
             Sum(a, b).Print();
 
