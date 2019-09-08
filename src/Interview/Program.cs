@@ -97,7 +97,13 @@ namespace Interview
             // LinkedList.Excercise.LinkedList.RemoveDup_NoBuffer_Pg208_Runner();
             // LinkedList.Excercise.LinkedList.KthToLast();
             // LinkedList.Excercise.LinkedList.KthToLast_Runner();
-            LinkedList.Excercise.LinkedList.RemoveMiddle();
+            // LinkedList.Excercise.LinkedList.RemoveMiddle();
+            // LinkedList.Excercise.LinkedList.RemoveMiddle();
+            // LinkedList.Excercise.LinkedList.RemoveMiddle_Pg211();
+            // LinkedList.Excercise.LinkedList.RemoveMiddle_Pg211();
+            // LinkedList.Excercise.LinkedList.Partition_Pg212();
+            // LinkedList.Excercise.LinkedList.Partition_Pg212();
+            LinkedList.Excercise.LinkedList.SumLists();
 
             Console.ReadKey();
         }

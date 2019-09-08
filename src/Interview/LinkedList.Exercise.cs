@@ -1,13 +1,153 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Interview.LinkedList.Excercise
 {
     public class LinkedList
     {
+        public static void SumLists()
+        {
+            Node a = Node.Create(7, 1, 6);
+            // Node b = Node.Create(5, 9, 2);
+            // Node b = Node.Create(5, 9);
+            Node b = Node.Create(5, 9, 6);
+
+            Sum(a, b).Print();
+
+            return;
+
+            static Node Sum(Node a, Node b)
+            {
+                int carry = 0;
+                Node total = null;
+                Node last = null;
+
+                while (a != null || b != null)
+                {
+                    int valA = a == null ? 0 : a.Val;
+                    int valB = b == null ? 0 : b.Val;
+                    int sum = valA + valB + carry;
+                    carry = sum >= 10 ? 1 : 0;
+                    int nodeVal = carry > 0 ? (sum % 10) : sum;
+                    if (total is null)
+                    {
+                        total = new Node(nodeVal);
+                        last = total;
+                    }
+                    else
+                    {
+                        last.Next = new Node(nodeVal);
+                        last = last.Next;
+                    }
+                    a = a?.Next;
+                    b = b?.Next;
+                }
+
+                if (carry > 0)
+                {
+                    last.Next = new Node(1);
+                }
+
+                return total;
+            }
+
+        }
+
+        public static void Partition_Pg212()
+        {
+            var nodes = Node.Create(new int[] { 5, 6, 7, 10, 2, 4 });
+            // var nodes = Node.Create(new int[] { 5 });
+            int x = 8;
+            nodes.Print();
+
+            Partition(nodes, x).Print();
+
+            return;
+
+            static Node Partition(Node node, int x)
+            {
+                Node head = node;
+                Node tail = node;
+
+                while (node != null)
+                {
+                    Node next = node.Next;
+                    if (node.Val < x)
+                    {
+                        node.Next = head;
+                        head = node;
+                    }
+                    else
+                    {
+                        tail.Next = node;
+                        tail = tail.Next;
+                    }
+                    node = next;
+                }
+                tail.Next = null;
+                return head;
+            }
+        }
+
+        public static void RemoveMiddle_Pg211()
+        {
+            // var nodes = Node.Create(new int[] { 1, 2, 3 });
+            var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            nodes.Print();
+
+            var node = nodes.ToList()[2];
+
+            Remove(node);
+
+            nodes.Print();
+
+            return;
+
+
+            static void Remove(Node n)
+            {
+                if (n is null || n.Next is null)
+                    throw new InvalidOperationException();
+
+                n.Val = n.Next.Val;
+                n.Next = n.Next.Next;
+            }
+
+        }
+
+        public static void RemoveMiddle()
+        {
+            // var nodes = Node.Create(new int[] { 1, 2, 3 });
+            var nodes = Node.Create(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            nodes.Print();
+
+            var node = nodes.ToList()[2];
+
+            Remove(node);
+
+            nodes.Print();
+
+            return;
+
+            static void Remove(Node n)
+            {
+                while (n != null)
+                {
+                    int tmp = n.Val;
+                    n.Val = n.Next.Val;
+                    n.Next.Val = tmp;
+                    if (n.Next.Next is null)
+                    {
+                        n.Next = null;
+                        break;
+                    }
+                    n = n.Next;
+                }
+            }
+
+        }
+
         public static void RemoveMiddleFromHead()
         {
             // var nodes = Node.Create(new int[] { 1, 2, 3 });
@@ -284,7 +424,7 @@ namespace Interview.LinkedList.Excercise
             public int Val { get; set; }
             public Node Next { get; set; }
 
-            public static Node Create(int[] vals)
+            public static Node Create(params int[] vals)
             {
                 Node head = new Node(vals[0]);
                 Node last = head;
@@ -297,6 +437,18 @@ namespace Interview.LinkedList.Excercise
                 }
 
                 return head;
+            }
+
+            public Node[] ToList()
+            {
+                List<Node> node = new List<Node>();
+                Node n = this;
+                while (n != null)
+                {
+                    node.Add(n);
+                    n = n.Next;
+                }
+                return node.ToArray();
             }
 
             public void Print()
