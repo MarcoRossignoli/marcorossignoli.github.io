@@ -103,7 +103,9 @@ namespace Interview
             // LinkedList.Excercise.LinkedList.RemoveMiddle_Pg211();
             // LinkedList.Excercise.LinkedList.Partition_Pg212();
             // LinkedList.Excercise.LinkedList.Partition_Pg212();
-            LinkedList.Excercise.LinkedList.SumListRecoursive();
+            // LinkedList.Excercise.LinkedList.SumListRecoursive();
+            // LinkedList.Excercise.LinkedList.IsPalindrome();
+            LinkedList.Excercise.LinkedList.IsPalindromeRunner();
 
             Console.ReadKey();
         }

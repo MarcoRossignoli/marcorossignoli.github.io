@@ -6,6 +6,94 @@ namespace Interview.LinkedList.Excercise
 {
     public class LinkedList
     {
+        public static void IsPalindromeRunner()
+        {
+            // Node a = Node.Create(0, 1, 2, 3, 4, 3, 2, 1, 0);
+            Node a = Node.Create(0, 1, 2, 3);
+
+            Console.WriteLine(IsPalindrome(a));
+
+            return;
+
+            static bool IsPalindrome(Node a)
+            {
+                Stack<Node> s = new Stack<Node>();
+                Node slow = a;
+                Node fast = a;
+
+                while (fast != null && fast.Next != null)
+                {
+                    s.Push(slow);
+                    slow = slow.Next;
+                    fast = fast.Next.Next;
+                }
+
+                if (fast != null)
+                {
+                    slow = slow.Next;
+                }
+
+                while (slow != null)
+                {
+                    if (s.Pop().Val != slow.Val)
+                        return false;
+                    slow = slow.Next;
+                }
+
+                return true;
+            }
+        }
+
+        public static void IsPalindrome()
+        {
+            // Node a = Node.Create(1, 2, 1);
+            // Node a = Node.Create(1, 2, 2, 1);
+            // Node a = Node.Create(1, 2, 3);
+            // Node a = Node.Create(1, 2, 3, 4, 5);
+            // Node a = Node.Create(1, 1);
+            // Node a = Node.Create(1);
+            // Node a = Node.Create(1, 2, 2, 2, 1);
+            // Node a = Node.Create(1, 2, 4, 1, 1);
+            Node a = Node.Create(0, 1, 2, 3, 4, 3, 2, 1, 0);
+
+            IsPalindrome(a, a, out bool ok);
+
+            Console.WriteLine(ok);
+
+            return;
+
+            static Node IsPalindrome(Node n, Node h, out bool ok)
+            {
+                if (n is null)
+                {
+                    ok = true;
+                    return null;
+                }
+
+                Node n1 = IsPalindrome(n.Next, h, out bool oki);
+
+                if (!oki)
+                {
+                    ok = oki;
+                    return null;
+                }
+
+                Node n2 = n1 is null ? h : n1;
+
+                if (n2.Val != n.Val)
+                {
+                    ok = false;
+                    return null;
+                }
+                else
+                {
+                    ok = true;
+                    return n2.Next;
+                }
+            }
+
+        }
+
         public static void SumListRecoursive()
         {
             Node a = Node.Create(9, 9, 9);
