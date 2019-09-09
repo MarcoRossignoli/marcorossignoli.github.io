@@ -105,8 +105,9 @@ namespace Interview
             // LinkedList.Excercise.LinkedList.Partition_Pg212();
             // LinkedList.Excercise.LinkedList.SumListRecoursive();
             // LinkedList.Excercise.LinkedList.IsPalindrome();
-            LinkedList.Excercise.LinkedList.IsPalindromeRunner();
-
+            // LinkedList.Excercise.LinkedList.IsPalindromeRunner();
+            // LinkedList.Excercise.LinkedList.Intersect();
+            LinkedList.Excercise.LinkedList.Intersect_Pg222();
             Console.ReadKey();
         }
     }

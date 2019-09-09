@@ -6,6 +6,164 @@ namespace Interview.LinkedList.Excercise
 {
     public class LinkedList
     {
+        public static void Intersect_Pg222()
+        {
+            Node tail = Node.Create(1, 2, 3);
+            Node a = Node.Create(7, 8, 9, 0);
+            Node b = Node.Create(4, 5);
+
+            a.ToList()[a.ToList().Length - 1].Next = tail;
+            b.ToList()[b.ToList().Length - 1].Next = tail;
+
+            a.Print();
+            b.Print();
+
+            Console.WriteLine(Intersect(a, b) != null);
+            Console.WriteLine(Intersect(a, b) != null ? Intersect(a, b).Val : -1);
+
+            return;
+
+            static Node Intersect(Node a, Node b)
+            {
+                var sta = GetSizeTail(a);
+                var stb = GetSizeTail(b);
+
+                if (sta.Item2 != stb.Item2)
+                    return null;
+
+                var shortOne = sta.Item1 < stb.Item1 ? a : b;
+                var longOne = shortOne == a ? b : a;
+
+                longOne = MoveLongTo(longOne, Math.Abs(sta.Item1 - stb.Item1));
+
+                while (shortOne != longOne)
+                {
+                    shortOne = shortOne.Next;
+                    longOne = longOne.Next;
+                }
+
+                return shortOne;
+            }
+
+            static Node MoveLongTo(Node n, int m)
+            {
+                while (m > 0 && n != null)
+                {
+                    n = n.Next;
+                    m--;
+                }
+                return n;
+            }
+
+            static (int, Node) GetSizeTail(Node node)
+            {
+                if (node is null)
+                    return (0, null);
+
+                int size = 0;
+                Node tail = null;
+                while (node != null)
+                {
+                    tail = node;
+                    size++;
+                    node = node.Next;
+                }
+
+                return (size, tail);
+            }
+        }
+
+        public static void Intersect_ButeForce()
+        {
+            Node tail = Node.Create(1, 2, 3);
+            Node a = Node.Create(7, 8, 9, 0);
+            Node b = Node.Create(4, 5);
+
+            a.ToList()[a.ToList().Length - 1].Next = tail;
+            b.ToList()[b.ToList().Length - 1].Next = tail;
+
+            a.Print();
+            b.Print();
+
+            Console.WriteLine(Intersect(a, b) != null);
+            Console.WriteLine(Intersect(a, b) != null ? Intersect(a, b).Val : -1);
+
+            return;
+
+            static Node Intersect(Node a, Node b)
+            {
+                for (Node n1 = a; n1 != null; n1 = n1.Next)
+                {
+                    for (Node n2 = b; n2 != null; n2 = n2.Next)
+                    {
+                        if (n1 == n2)
+                        {
+                            return n1;
+                        }
+                    }
+                }
+                return null;
+            }
+        }
+
+        public static void Intersect()
+        {
+            Node tail = Node.Create(1, 2, 3);
+            Node a = Node.Create(7, 8, 9, 0);
+            Node b = Node.Create(4, 5);
+
+            a.ToList()[a.ToList().Length - 1].Next = tail;
+            b.ToList()[b.ToList().Length - 1].Next = tail;
+
+            a.Print();
+            b.Print();
+
+            Console.WriteLine(Intersect(a, b) != null);
+            Console.WriteLine(Intersect(a, b) != null ? Intersect(a, b).Val : -1);
+
+            return;
+
+            static Node Intersect(Node a, Node b)
+            {
+                var listA = Get(a);
+                var listB = Get(b);
+
+                Node intersectNode = null;
+
+                int counterA = listA.Count - 1;
+                int counterB = listB.Count - 1;
+
+                while (counterA >= 0 && counterB >= 0)
+                {
+                    if (listA[counterA] == listB[counterB])
+                    {
+                        intersectNode = listA[counterA];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    counterA--;
+                    counterB--;
+                }
+
+
+                return intersectNode;
+            }
+
+            static List<Node> Get(Node a)
+            {
+                List<Node> l = new List<Node>();
+                while (a != null)
+                {
+                    l.Add(a);
+                    a = a.Next;
+                }
+                return l;
+            }
+
+        }
+
         public static void IsPalindromeRunner()
         {
             // Node a = Node.Create(0, 1, 2, 3, 4, 3, 2, 1, 0);
