@@ -107,7 +107,11 @@ namespace Interview
             // LinkedList.Excercise.LinkedList.IsPalindrome();
             // LinkedList.Excercise.LinkedList.IsPalindromeRunner();
             // LinkedList.Excercise.LinkedList.Intersect();
-            LinkedList.Excercise.LinkedList.Intersect_Pg222();
+            // LinkedList.Excercise.LinkedList.Intersect_Pg222();
+            // LinkedList.Excercise.LinkedList.Intersect_Pg222();
+            // LinkedList.Excercise.LinkedList.LoopDetection();
+            LinkedList.Excercise.LinkedList.LoopDetection_Pg225();
+
             Console.ReadKey();
         }
     }

@@ -6,6 +6,78 @@ namespace Interview.LinkedList.Excercise
 {
     public class LinkedList
     {
+        public static void LoopDetection_Pg225()
+        {
+            Node a = Node.Create(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+            a.ToList()[a.ToList().Length - 1].Next = a.ToList()[3];
+
+            Console.WriteLine(LoopDetection(a) != null);
+            Console.WriteLine(LoopDetection(a) != null ? LoopDetection(a).Val : -1);
+
+            return;
+
+            static Node LoopDetection(Node n)
+            {
+                Node slow = n;
+                Node fast = n;
+
+                while (fast != null && fast.Next != null)
+                {
+                    slow = slow.Next;
+                    fast = fast.Next.Next;
+                    if (slow == fast)
+                    {
+                        break;
+                    }
+                }
+
+                if (fast is null || fast.Next is null)
+                {
+                    return null;
+                }
+
+                slow = n;
+
+                while (slow != fast)
+                {
+                    slow = slow.Next;
+                    fast = fast.Next;
+                }
+
+                return fast;
+            }
+        }
+
+        public static void LoopDetection()
+        {
+            Node a = Node.Create(7, 8, 9, 0);
+            a.ToList()[a.ToList().Length - 1].Next = a.ToList()[1];
+
+            Console.WriteLine(LoopDetection(a) != null);
+            Console.WriteLine(LoopDetection(a) != null ? LoopDetection(a).Val : -1);
+
+            return;
+
+            static Node LoopDetection(Node n)
+            {
+                if (n is null)
+                    return n;
+
+                List<Node> nodes = new List<Node>();
+                while (n != null)
+                {
+                    if (nodes.Contains(n))
+                    {
+                        return n;
+                    }
+                    nodes.Add(n);
+                    n = n.Next;
+                }
+
+                return null;
+            }
+        }
+
         public static void Intersect_Pg222()
         {
             Node tail = Node.Create(1, 2, 3);
