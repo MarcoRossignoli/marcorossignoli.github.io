@@ -110,7 +110,8 @@ namespace Interview
             // LinkedList.Excercise.LinkedList.Intersect_Pg222();
             // LinkedList.Excercise.LinkedList.Intersect_Pg222();
             // LinkedList.Excercise.LinkedList.LoopDetection();
-            LinkedList.Excercise.LinkedList.LoopDetection_Pg225();
+            // LinkedList.Excercise.LinkedList.LoopDetection_Pg225();
+            StacksAndQueue.TreeStack();
 
             Console.ReadKey();
         }
