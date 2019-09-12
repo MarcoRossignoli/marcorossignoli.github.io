@@ -4,6 +4,109 @@ namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void QueueNodes()
+        {
+            // QueueNodesType t = new QueueNodesType();
+            QueueFirstLast t = new QueueFirstLast();
+
+            t.Enqueue(1);
+            t.Enqueue(2);
+            t.Enqueue(3);
+            t.Enqueue(4);
+
+            Console.WriteLine(t.Dequeue());
+            Console.WriteLine(t.Dequeue());
+            Console.WriteLine(t.Dequeue());
+            Console.WriteLine(t.Dequeue());
+            Console.WriteLine(t.Dequeue());
+        }
+
+        class QueueFirstLast
+        {
+            Node _first; //first to exit
+            Node _last; // last inserted
+
+            public void Enqueue(int v)
+            {
+                Node n = new Node(v);
+
+                if (_last != null)
+                {
+                    _last.Next = n; // append old last to new last
+                }
+
+                _last = n; // set new enqued node as last
+
+                if (_first is null) // set first if null
+                {
+                    _first = _last;
+                }
+            }
+
+            public int Dequeue()
+            {
+                if (_first is null)
+                    throw new Exception("empty");
+
+                int val = _first.Val;
+                _first = _first.Next;
+
+                if (_first is null)
+                {
+                    _last = null;
+                }
+
+                return val;
+            }
+
+            class Node
+            {
+                public Node(int val) => Val = val;
+                public int Val { get; set; }
+                public Node Next { get; set; }
+            }
+        }
+
+        class QueueNodesType
+        {
+            Node _head;
+            Node _tail;
+
+            public void Enqueue(int v)
+            {
+                Node n = new Node(v);
+                if (_head is null)
+                {
+                    _tail = _head = n;
+                }
+                else
+                {
+                    _head = _head.Next = n;
+                }
+            }
+
+            public int Dequeue()
+            {
+                if (_tail is null)
+                    throw new Exception("empty");
+
+                int val = _tail.Val;
+                _tail = _tail.Next;
+
+                if (_tail is null)
+                    _head = null;
+
+                return val;
+            }
+
+            class Node
+            {
+                public Node(int val) => Val = val;
+                public int Val { get; set; }
+                public Node Next { get; set; }
+            }
+        }
+
         public static void StackWithArray()
         {
             StackArray sa = new StackArray();
