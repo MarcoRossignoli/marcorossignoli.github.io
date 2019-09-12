@@ -1,9 +1,118 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void StackOfPlates()
+        {
+            StackOfPlatesType t = new StackOfPlatesType(3);
+
+            // Console.WriteLine(t.Pop());
+
+            t.Push(1);
+            t.Push(2);
+            t.Push(3);
+            t.Push(4);
+            Console.WriteLine("Peek " + t.Peek());
+            t.Push(5);
+            t.Push(6);
+
+            while (!t.IsEmpty())
+            {
+                Console.WriteLine(t.Pop());
+            }
+
+            Console.WriteLine();
+            t.Push(1);
+            t.Push(2);
+            t.Push(3);
+            t.Push(4);
+            t.Push(5);
+            t.Push(6);
+
+            Console.WriteLine(t.PopAt(4));
+            Console.WriteLine();
+
+            while (!t.IsEmpty())
+            {
+                Console.WriteLine(t.Pop());
+            }
+
+        }
+
+        class StackOfPlatesType
+        {
+            List<int[]> _arrList = new List<int[]>();
+            int _index = -1;
+            int _capacity = 0;
+
+            public StackOfPlatesType(int capacity)
+            {
+                _capacity = capacity;
+            }
+
+            public int GetArrayIndex(int index)
+            {
+                return index / _capacity;
+            }
+
+            public int GetIndexIntoArray(int index)
+            {
+                return index % _capacity;
+            }
+
+            public void Push(int val)
+            {
+                _index++;
+                int arr = GetArrayIndex(_index);
+                if (arr + 1 > _arrList.Count)
+                    _arrList.Add(new int[_capacity]);
+
+                _arrList[arr][GetIndexIntoArray(_index)] = val;
+            }
+
+            public int PopAt(int index)
+            {
+                if (_index == -1)
+                    throw new Exception("empty");
+
+                var v = _arrList[GetArrayIndex(index)][GetIndexIntoArray(index)];
+
+                ShiftLeft(index);
+
+                _index--;
+
+                return v;
+            }
+
+            public void ShiftLeft(int index)
+            {
+                while (index < _index)
+                {
+                    _arrList[GetArrayIndex(index)][GetIndexIntoArray(index)] =
+                        _arrList[GetArrayIndex(index + 1)][GetIndexIntoArray(index + 1)];
+                    index++;
+                }
+            }
+
+            public int Pop()
+            {
+                return PopAt(_index);
+            }
+
+            public bool IsEmpty() => _index == -1;
+
+            public int Peek()
+            {
+                if (_index == -1)
+                    throw new Exception("empty");
+
+                return _arrList[GetArrayIndex(_index)][GetIndexIntoArray(_index)];
+            }
+        }
+
         public static void QueueNodes()
         {
             // QueueNodesType t = new QueueNodesType();
