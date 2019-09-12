@@ -4,6 +4,58 @@ namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void StackWithArray()
+        {
+            StackArray sa = new StackArray();
+            sa.Push(1);
+            sa.Push(2);
+            sa.Push(3);
+            sa.Push(4);
+            Console.WriteLine(sa.Count());
+            Console.WriteLine();
+            while (!sa.IsEmpty())
+            {
+                Console.WriteLine(sa.Pop());
+            }
+        }
+
+        class StackArray
+        {
+            int[] array = new int[100];
+            int _currentIndex = -1;
+
+            public void Push(int v)
+            {
+                array[++_currentIndex] = v;
+            }
+
+            public int Pop()
+            {
+                if (_currentIndex == -1)
+                    throw new Exception("Empty");
+
+                return array[_currentIndex--];
+            }
+
+            public bool IsEmpty() => _currentIndex == -1;
+
+            public int Peek()
+            {
+                if (_currentIndex == -1)
+                    throw new Exception("Empty");
+
+                return array[_currentIndex];
+            }
+
+            public int Count()
+            {
+                if (_currentIndex == -1)
+                    throw new Exception("Empty");
+
+                return _currentIndex + 1;
+            }
+        }
+
         public static void StackMin_Pg99()
         {
             StackMin2 sm = new StackMin2();
@@ -125,16 +177,9 @@ namespace Interview
 
             public void Push(int value)
             {
-                if (_head is null)
-                {
-                    _head = new Node(value, value);
-                }
-                else
-                {
-                    Node newNode = new Node(value, Math.Min(value, _head.Min));
-                    newNode.Next = _head;
-                    _head = newNode;
-                }
+                Node newNode = new Node(value, Math.Min(value, _head.Min));
+                newNode.Next = _head;
+                _head = newNode;
             }
 
             class Node
