@@ -32,7 +32,7 @@ namespace Interview
             t.Push(5);
             t.Push(6);
 
-            Console.WriteLine(t.PopAt(4));
+            Console.WriteLine("Pop at " + t.PopAt(4));
             Console.WriteLine();
 
             while (!t.IsEmpty())
@@ -40,6 +40,14 @@ namespace Interview
                 Console.WriteLine(t.Pop());
             }
 
+            Console.WriteLine();
+            t.Push(1);
+            t.Push(2);
+            t.Push(3);
+            while (!t.IsEmpty())
+            {
+                Console.WriteLine(t.Pop());
+            }
         }
 
         class StackOfPlatesType
