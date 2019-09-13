@@ -6,6 +6,67 @@ namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void SortStack()
+        {
+            fxStack s1 = new fxStack();
+            s1.Push(1);
+            s1.Push(4);
+            s1.Push(3);
+            s1.Push(4);
+            s1.Push(7);
+
+            Sort(s1);
+
+            while (s1.Count > 0)
+            {
+                Console.WriteLine(s1.Pop());
+            }
+
+            return;
+
+            static void Sort(fxStack s1)
+            {
+                if (s1 is null || s1.Count == 0)
+                    return;
+
+                int n = 0;
+                fxStack s2 = new fxStack();
+
+                while (s1.Count > 0)
+                {
+                    s2.Push(s1.Pop());
+                    n++;
+                }
+
+                while (s2.Count > 0)
+                    s1.Push(s2.Pop());
+
+                while (n > 0)
+                {
+                    int tmp = s1.Pop();
+                    for (int i = n - 1; i > 0; i--)
+                    {
+                        int v = s1.Pop();
+                        if (v > tmp)
+                        {
+                            s2.Push(tmp);
+                            tmp = v;
+                        }
+                        else
+                            s2.Push(v);
+                    }
+
+                    s1.Push(tmp);
+
+                    while (s2.Count > 0)
+                        s1.Push(s2.Pop());
+
+                    n--;
+                }
+
+            }
+        }
+
         public static void QueueViaStack()
         {
             // MyQueue mq = new MyQueue();
