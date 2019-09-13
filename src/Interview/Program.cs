@@ -116,7 +116,8 @@ namespace Interview
             // StacksAndQueue.StackMin_Pg99();
             // StacksAndQueue.StackWithArray();
             // StacksAndQueue.QueueNodes();
-            StacksAndQueue.StackOfPlates();
+            // StacksAndQueue.StackOfPlates();
+            StacksAndQueue.QueueViaStack();
 
             Console.ReadKey();
         }

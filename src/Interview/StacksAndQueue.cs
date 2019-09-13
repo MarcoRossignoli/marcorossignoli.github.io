@@ -1,10 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using fxStack = System.Collections.Generic.Stack<int>;
 namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void QueueViaStack()
+        {
+            // MyQueue mq = new MyQueue();
+            MyQueue2 mq = new MyQueue2();
+
+            mq.Add(1);
+            mq.Add(2);
+            mq.Add(3);
+
+            Console.WriteLine(mq.Remove());
+            Console.WriteLine(mq.Remove());
+            Console.WriteLine(mq.Remove());
+        }
+
+        class MyQueue2
+        {
+            fxStack s1 = new fxStack();
+            fxStack s2 = new fxStack();
+
+            public void Add(int i)
+            {
+                s1.Push(i);
+            }
+
+            public int Remove()
+            {
+                if (s1.Count + s2.Count == 0)
+                    throw new Exception("emtpy");
+
+                if (s2.Count == 0)
+                    while (s1.Count > 0)
+                        s2.Push(s1.Pop());
+
+                return s2.Pop();
+            }
+        }
+
+        class MyQueue
+        {
+            fxStack s1 = new fxStack();
+            fxStack s2 = new fxStack();
+            int _c = 0;
+
+            public void Add(int i)
+            {
+                s1.Push(i);
+                _c++;
+            }
+
+            public int Remove()
+            {
+                if (s1.Count == 0)
+                    throw new Exception("empty");
+
+                int c = _c - 1;
+
+                for (int i = c; c > 0; c--)
+                {
+                    s2.Push(s1.Pop());
+                }
+
+                int v = s1.Pop();
+
+                while (s2.Count > 0)
+                    s1.Push(s2.Pop());
+
+                _c--;
+
+                return v;
+            }
+
+        }
+
         public static void StackOfPlates()
         {
             StackOfPlatesType t = new StackOfPlatesType(3);
