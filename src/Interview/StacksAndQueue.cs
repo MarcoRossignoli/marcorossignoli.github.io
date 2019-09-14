@@ -6,6 +6,98 @@ namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void SortStackPg_238()
+        {
+            fxStack s1 = new fxStack();
+            s1.Push(1);
+            s1.Push(7);
+            s1.Push(3);
+            s1.Push(6);
+
+            Sort(s1);
+
+            while (s1.Count > 0)
+            {
+                Console.WriteLine(s1.Pop());
+            }
+
+            return;
+
+            static void Sort(fxStack s1)
+            {
+                fxStack s2 = new fxStack();
+                while (s1.Count > 0)
+                {
+                    int tmp = s1.Pop();
+                    while (s2.Count > 0 && s2.Peek() > tmp)
+                        s1.Push(s2.Pop());
+                    s2.Push(tmp);
+                }
+
+                while (s2.Count > 0)
+                {
+                    s1.Push(s2.Pop());
+                }
+            }
+        }
+
+        public static void SortStackNoCount()
+        {
+            fxStack s1 = new fxStack();
+            s1.Push(1);
+            s1.Push(4);
+            s1.Push(3);
+            s1.Push(4);
+            s1.Push(7);
+
+            Sort(s1);
+
+            while (s1.Count > 0)
+            {
+                Console.WriteLine(s1.Pop());
+            }
+
+            return;
+
+            static void Sort(fxStack s1)
+            {
+                if (s1 is null || s1.Count == 0)
+                    return;
+
+                fxStack s2 = new fxStack();
+
+                while (s1.Count > 0)
+                {
+                    int v = s1.Pop();
+                    int n = 0;
+
+                    while (s1.Count > 0)
+                    {
+                        int v2 = s1.Pop();
+                        if (v2 <= v)
+                        {
+                            s2.Push(v);
+                            v = v2;
+                        }
+                        else
+                            s2.Push(v2);
+                        n++;
+                    }
+
+                    while (n > 0)
+                    {
+                        s1.Push(s2.Pop());
+                        n--;
+                    }
+
+                    s2.Push(v);
+                }
+
+                while (s2.Count > 0)
+                    s1.Push(s2.Pop());
+            }
+        }
+
         public static void SortStack()
         {
             fxStack s1 = new fxStack();
