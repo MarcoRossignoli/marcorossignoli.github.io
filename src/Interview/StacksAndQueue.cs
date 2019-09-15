@@ -1,11 +1,190 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 using fxStack = System.Collections.Generic.Stack<int>;
 namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void AnimalShelterMy2()
+        {
+            AnimalShelter2 ash = new AnimalShelter2();
+            ash.Enque(new Animal(Type.Dog, 1));
+            ash.Enque(new Animal(Type.Cat, 2));
+            ash.Enque(new Animal(Type.Cat, 3));
+            ash.Enque(new Animal(Type.Dog, 4));
+            ash.Enque(new Animal(Type.Cat, 5));
+
+            Console.WriteLine(ash.DequeueAny());
+            Console.WriteLine(ash.DequeCat());
+            Console.WriteLine(ash.DequeDog());
+            Console.WriteLine(ash.DequeCat());
+
+            // Console.WriteLine(ash.DequeCat());
+
+            Console.WriteLine(ash.DequeDog());
+        }
+
+        class AnimalShelter2
+        {
+            AnimalNode _head;
+            AnimalNode _tail;
+
+            public void Enque(Animal a)
+            {
+                if (_head is null)
+                {
+                    _head = new AnimalNode() { Animal = a };
+                    _tail = _head;
+                }
+                else
+                {
+                    var n = new AnimalNode() { Animal = a };
+                    _head.Next = n;
+                    _head = n;
+                }
+            }
+
+            public Animal DequeueAny()
+            {
+                if (_tail is null)
+                    throw new Exception("emtpy");
+                Animal a = _tail.Animal;
+                _tail = _tail.Next;
+                if (_tail is null)
+                    _head = null;
+                return a;
+            }
+
+            public Animal DequeCat()
+            {
+                return DequeueType(Type.Cat);
+            }
+
+            public Animal DequeDog()
+            {
+                return DequeueType(Type.Dog);
+            }
+
+            private Animal DequeueType(Type type)
+            {
+                if (_tail is null)
+                    throw new Exception("empty");
+                if (_tail.Animal.Type == type)
+                    return DequeueAny();
+
+                AnimalNode tmp = _tail;
+                while(tmp.Next != null)
+                {
+                    if(tmp.Next.Animal.Type == type)
+                    {
+                        Animal a = tmp.Next.Animal;
+                        tmp.Next = tmp.Next.Next;
+                        return a;
+                    }
+                    else
+                    {
+                        tmp = tmp.Next;
+                    }
+                }
+                throw new Exception("not found");
+            }
+        }
+
+        class AnimalNode
+        {
+            public Animal Animal { get; set; }
+            public AnimalNode Next { get; set; }
+        }
+
+        public static void AnimalShelterMy()
+        {
+            AnimalShelter ash = new AnimalShelter();
+            ash.Enque(new Animal(Type.Dog, 1));
+            ash.Enque(new Animal(Type.Cat, 2));
+            ash.Enque(new Animal(Type.Cat, 3));
+            ash.Enque(new Animal(Type.Dog, 4));
+            ash.Enque(new Animal(Type.Cat, 5));
+
+            Console.WriteLine(ash.DequeueAny());
+            Console.WriteLine(ash.DequeCat());
+            Console.WriteLine(ash.DequeDog());
+            Console.WriteLine(ash.DequeCat());
+
+            Console.WriteLine(ash.DequeDog());
+        }
+
+        class AnimalShelter
+        {
+            System.Collections.Generic.LinkedList<Animal> _animals = new System.Collections.Generic.LinkedList<Animal>();
+
+            public void Enque(Animal a)
+            {
+                _animals.AddLast(a);
+            }
+
+            public Animal DequeueAny()
+            {
+                if (_animals.Count == 0)
+                    throw new Exception("empty");
+
+                LinkedListNode<Animal> last = _animals.First;
+                _animals.RemoveFirst();
+                return last.Value;
+            }
+
+            public Animal DequeCat()
+            {
+                return DequeueType(Type.Cat);
+            }
+
+            public Animal DequeDog()
+            {
+                return DequeueType(Type.Dog);
+            }
+
+            private Animal DequeueType(Type type)
+            {
+                if (_animals.Count == 0)
+                    throw new Exception("empty");
+                if (_animals.Last.Value.Type == type)
+                    return DequeueAny();
+
+                LinkedListNode<Animal> tmp = _animals.First;
+
+                while (tmp.Next != null)
+                {
+                    if (tmp.Next.Value.Type == type)
+                    {
+                        LinkedListNode<Animal> a = tmp.Next;
+                        _animals.Remove(tmp.Next);
+                        return a.Value;
+                    }
+                    tmp = tmp.Next;
+                }
+
+                throw new Exception("Not found");
+            }
+        }
+
+        [DebuggerDisplay("{Type}")]
+        class Animal
+        {
+            public int Num { get; set; }
+            public Animal(Type type, int num) => (Type, Num) = (type, num);
+            public Type Type { get; set; }
+            public override string ToString()
+            {
+                return $"{Type} {Num}";
+            }
+        }
+
+        enum Type
+        {
+            Cat,
+            Dog
+        }
+
         public static void SortStackPg_238()
         {
             fxStack s1 = new fxStack();

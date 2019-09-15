@@ -120,7 +120,8 @@ namespace Interview
             // StacksAndQueue.QueueViaStack();
             // StacksAndQueue.SortStack();
             // StacksAndQueue.SortStackNoCount();
-            StacksAndQueue.SortStackPg_238();
+            // StacksAndQueue.SortStackPg_238();
+            StacksAndQueue.AnimalShelterMy2();
 
             Console.ReadKey();
         }
