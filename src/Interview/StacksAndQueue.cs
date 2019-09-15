@@ -6,6 +6,93 @@ namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void AnimalShelterBookIdeaPg239()
+        {
+            AnimalShelter3 ash = new AnimalShelter3();
+            ash.Enque(new Dog() { Num = 1 });
+            ash.Enque(new Cat() { Num = 2 });
+            ash.Enque(new Cat() { Num = 3 });
+            ash.Enque(new Dog() { Num = 4 });
+            ash.Enque(new Cat() { Num = 5 });
+
+            Console.WriteLine(ash.DequeueAny());
+            Console.WriteLine(ash.DequeueAny());
+            Console.WriteLine(ash.DequeueCat());
+            Console.WriteLine(ash.DequeueDog());
+            Console.WriteLine(ash.DequeueCat());
+
+            Console.WriteLine(ash.DequeueCat());
+            Console.WriteLine(ash.DequeueDog());
+        }
+
+        class AnimalShelter3
+        {
+            System.Collections.Generic.LinkedList<Dog> _dogs = new System.Collections.Generic.LinkedList<Dog>();
+            System.Collections.Generic.LinkedList<Cat> _cats = new System.Collections.Generic.LinkedList<Cat>();
+            int timestamp = 0;
+
+            public void Enque(Animal2 a)
+            {
+                a.Timestamp = ++timestamp;
+                if (a is Dog)
+                    _dogs.AddLast((Dog)a);
+                else
+                    _cats.AddLast((Cat)a);
+            }
+
+            public Animal2 DequeueAny()
+            {
+                if (_cats.Count + _dogs.Count == 0)
+                    throw new Exception("empty");
+                if (_cats.Count > 0 && _dogs.Count == 0)
+                {
+                    return DequeueCat();
+                }
+                if (_dogs.Count > 0 && _cats.Count == 0)
+                {
+                    return DequeueDog();
+                }
+                if (_dogs.First.Value.Timestamp < _cats.First.Value.Timestamp)
+                {
+                    return DequeueDog();
+                }
+                else
+                {
+                    return DequeueCat();
+                }
+            }
+            public Cat DequeueCat()
+            {
+                if (_cats.Count == 0)
+                    throw new Exception("empty");
+                Cat cat = _cats.First.Value;
+                _cats.RemoveFirst();
+                return cat;
+            }
+            public Dog DequeueDog()
+            {
+                if (_dogs.Count == 0)
+                    throw new Exception("empty");
+                Dog dog = _dogs.First.Value;
+                _dogs.RemoveFirst();
+                return dog;
+            }
+        }
+
+
+        class Dog : Animal2 { }
+        class Cat : Animal2 { }
+
+        class Animal2
+        {
+            public int Num { get; set; }
+            public int Timestamp { get; set; }
+            public override string ToString()
+            {
+                return $"{this.GetType().Name} - {Num}";
+            }
+        }
+
         public static void AnimalShelterMy2()
         {
             AnimalShelter2 ash = new AnimalShelter2();
@@ -74,9 +161,9 @@ namespace Interview
                     return DequeueAny();
 
                 AnimalNode tmp = _tail;
-                while(tmp.Next != null)
+                while (tmp.Next != null)
                 {
-                    if(tmp.Next.Animal.Type == type)
+                    if (tmp.Next.Animal.Type == type)
                     {
                         Animal a = tmp.Next.Animal;
                         tmp.Next = tmp.Next.Next;

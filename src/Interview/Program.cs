@@ -121,7 +121,9 @@ namespace Interview
             // StacksAndQueue.SortStack();
             // StacksAndQueue.SortStackNoCount();
             // StacksAndQueue.SortStackPg_238();
-            StacksAndQueue.AnimalShelterMy2();
+            // StacksAndQueue.AnimalShelterMy2();
+            StacksAndQueue.AnimalShelterBookIdeaPg239();
+
 
             Console.ReadKey();
         }
