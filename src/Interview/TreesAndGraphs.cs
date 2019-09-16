@@ -8,7 +8,14 @@ namespace Interview
     {
         public static void BinaryMinHeaps()
         {
-
+            BinaryMinHeap bmh = new BinaryMinHeap(10);
+            bmh.Add(1);
+            bmh.Add(2);
+            bmh.Add(3);
+            bmh.Add(4);
+            bmh.Add(5);
+            bmh.Add(-1);
+            bmh.Poll();
         }
 
         // https://www.youtube.com/watch?v=t0Cq6tVNRBA
@@ -80,8 +87,8 @@ namespace Interview
                 int index = _size - 1;
                 while (hasParent(index) && getParent(index) > _items[index])
                 {
-                    Swap(getParent(index), _items[index]);
-                    index = getParent(index);
+                    Swap(getParentIndex(index), index);
+                    index = getParentIndex(index);
                 }
             }
 
