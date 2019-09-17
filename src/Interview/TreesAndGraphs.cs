@@ -6,6 +6,58 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void RouteBetweenNodes()
+        {
+            DirectedNode a = new DirectedNode() { Val = "A" };
+            DirectedNode b = new DirectedNode() { Val = "B" };
+            DirectedNode c = new DirectedNode() { Val = "C" };
+            DirectedNode d = new DirectedNode() { Val = "D" };
+            DirectedNode e = new DirectedNode() { Val = "E" };
+
+            a.Adjacent = new List<DirectedNode>() { c };
+            // a.Adjacent = new List<DirectedNode>() { b };
+            b.Adjacent = new List<DirectedNode>() { d };
+            c.Adjacent = new List<DirectedNode>() { e };
+            d.Adjacent = new List<DirectedNode>() { a };
+            e.Adjacent = new List<DirectedNode>() { d };
+
+            Console.WriteLine(FoundRoute(a, d));
+
+            return;
+
+            static bool FoundRoute(DirectedNode start, DirectedNode end)
+            {
+                if (start == end)
+                    return true;
+
+                System.Collections.Generic.Queue<DirectedNode> queue = new System.Collections.Generic.Queue<DirectedNode>();
+                HashSet<DirectedNode> hash = new HashSet<DirectedNode>();
+                hash.Add(start);
+
+                queue.Enqueue(start);
+
+                while (queue.Count > 0)
+                {
+                    DirectedNode node = queue.Dequeue();
+                    if (!hash.Contains(node))
+                    {
+                        if (node == end)
+                            return true;
+
+                        hash.Add(node);
+                    }
+
+                    foreach (DirectedNode adj in node.Adjacent)
+                    {
+                        if (!hash.Contains(adj))
+                            queue.Enqueue(adj);
+                    }
+                }
+
+                return false;
+            }
+        }
+
         public static void GraphSearch()
         {
             Console.WriteLine("DepthFirstSearchRecoursion");
