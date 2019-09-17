@@ -1,11 +1,122 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-
 namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void GraphSearch()
+        {
+
+            Console.WriteLine("DepthFirstSearchStack");
+            DepthFirstSearchStack(New());
+            Console.WriteLine("DepthFirstSearchRecoursion");
+            DepthFirstSearchRecoursion(New());
+            Console.WriteLine("BreadthFirstSearchQueue");
+            BreadthFirstSearchQueue(New());
+
+            return;
+
+            static void BreadthFirstSearchQueue(DirectedNode node)
+            {
+                if (node is null)
+                    return;
+
+
+                if (node is null)
+                    return;
+
+                System.Collections.Generic.Queue<DirectedNode> s = new System.Collections.Generic.Queue<DirectedNode>();
+                s.Enqueue(node);
+
+                while (s.Count > 0)
+                {
+                    DirectedNode n = s.Dequeue();
+                    n.Marked = true;
+                    Visit(n);
+                    foreach (DirectedNode n2 in n.Adjacent)
+                    {
+                        if (!n2.Marked)
+                        {
+                            n2.Marked = true;
+                            s.Enqueue(n2);
+                        }
+                    }
+                }
+            }
+
+            static void DepthFirstSearchRecoursion(DirectedNode node)
+            {
+                if (node is null)
+                    return;
+
+                node.Marked = true;
+                Visit(node);
+
+                foreach (DirectedNode n in node.Adjacent)
+                {
+                    if (!n.Marked)
+                    {
+                        DepthFirstSearchRecoursion(n);
+                    }
+                }
+
+            }
+
+            static void DepthFirstSearchStack(DirectedNode node)
+            {
+                if (node is null)
+                    return;
+
+                System.Collections.Generic.Stack<DirectedNode> s = new System.Collections.Generic.Stack<DirectedNode>();
+                s.Push(node);
+
+                while (s.Count > 0)
+                {
+                    DirectedNode n = s.Pop();
+                    n.Marked = true;
+                    Visit(n);
+                    foreach (DirectedNode n2 in n.Adjacent)
+                    {
+                        if (!n2.Marked)
+                        {
+                            n2.Marked = true;
+                            s.Push(n2);
+                        }
+                    }
+                }
+            }
+
+            static void Visit(DirectedNode node)
+            {
+                Console.WriteLine(node.Val);
+            }
+
+            static DirectedNode New()
+            {
+                return new DirectedNode()
+                {
+                    Val = "A",
+                    Adjacent = new List<DirectedNode>()
+                {
+                    new DirectedNode(){Val = "D"},
+                    new DirectedNode(){Val = "B", Adjacent = new List<DirectedNode>()
+                    {
+                        new DirectedNode(){Val = "C"},
+                        new DirectedNode(){Val = "E"}
+                    }
+                    },
+                }
+                };
+            }
+        }
+
+        class DirectedNode
+        {
+            public bool Marked { get; set; }
+            public string Val { get; set; }
+            public List<DirectedNode> Adjacent { get; set; } = new List<DirectedNode>();
+        }
+
         public static void BinaryMinHeaps()
         {
             BinaryMinHeap bmh = new BinaryMinHeap(10);
