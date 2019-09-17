@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+
 namespace Interview
 {
     class TreesAndGraphs
     {
         public static void GraphSearch()
         {
+            Console.WriteLine("DepthFirstSearchRecoursion");
+            DepthFirstSearchRecoursion(New());
 
             Console.WriteLine("DepthFirstSearchStack");
             DepthFirstSearchStack(New());
-            Console.WriteLine("DepthFirstSearchRecoursion");
-            DepthFirstSearchRecoursion(New());
             Console.WriteLine("BreadthFirstSearchQueue");
             BreadthFirstSearchQueue(New());
 
@@ -21,23 +23,24 @@ namespace Interview
                 if (node is null)
                     return;
 
-
-                if (node is null)
-                    return;
-
                 System.Collections.Generic.Queue<DirectedNode> s = new System.Collections.Generic.Queue<DirectedNode>();
                 s.Enqueue(node);
+
 
                 while (s.Count > 0)
                 {
                     DirectedNode n = s.Dequeue();
-                    n.Marked = true;
-                    Visit(n);
+
+                    if (!n.Explored)
+                    {
+                        Visit(n);
+                        n.Explored = true;
+                    }
+
                     foreach (DirectedNode n2 in n.Adjacent)
                     {
-                        if (!n2.Marked)
+                        if (!n2.Explored)
                         {
-                            n2.Marked = true;
                             s.Enqueue(n2);
                         }
                     }
@@ -49,12 +52,12 @@ namespace Interview
                 if (node is null)
                     return;
 
-                node.Marked = true;
+                node.Explored = true;
                 Visit(node);
 
                 foreach (DirectedNode n in node.Adjacent)
                 {
-                    if (!n.Marked)
+                    if (!n.Explored)
                     {
                         DepthFirstSearchRecoursion(n);
                     }
@@ -70,16 +73,21 @@ namespace Interview
                 System.Collections.Generic.Stack<DirectedNode> s = new System.Collections.Generic.Stack<DirectedNode>();
                 s.Push(node);
 
+
                 while (s.Count > 0)
                 {
                     DirectedNode n = s.Pop();
-                    n.Marked = true;
-                    Visit(n);
+
+                    if (!n.Explored)
+                    {
+                        Visit(n);
+                        n.Explored = true;
+                    }
+
                     foreach (DirectedNode n2 in n.Adjacent)
                     {
-                        if (!n2.Marked)
+                        if (!n2.Explored)
                         {
-                            n2.Marked = true;
                             s.Push(n2);
                         }
                     }
@@ -93,16 +101,17 @@ namespace Interview
 
             static DirectedNode New()
             {
+                var d = new DirectedNode() { Val = "D" };
                 return new DirectedNode()
                 {
                     Val = "A",
                     Adjacent = new List<DirectedNode>()
                 {
-                    new DirectedNode(){Val = "D"},
+                    d,
                     new DirectedNode(){Val = "B", Adjacent = new List<DirectedNode>()
                     {
                         new DirectedNode(){Val = "C"},
-                        new DirectedNode(){Val = "E"}
+                        new DirectedNode(){Val = "E", Adjacent = new List<DirectedNode>() { d } }
                     }
                     },
                 }
@@ -110,9 +119,10 @@ namespace Interview
             }
         }
 
+        [DebuggerDisplay("Val = {Val }Explored = {Explored}")]
         class DirectedNode
         {
-            public bool Marked { get; set; }
+            public bool Explored { get; set; }
             public string Val { get; set; }
             public List<DirectedNode> Adjacent { get; set; } = new List<DirectedNode>();
         }
