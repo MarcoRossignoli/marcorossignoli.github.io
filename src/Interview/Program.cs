@@ -125,7 +125,8 @@ namespace Interview
             // StacksAndQueue.AnimalShelterBookIdeaPg239();
             // TreesAndGraphs.BinaryMinHeaps();
             // TreesAndGraphs.GraphSearch();
-            TreesAndGraphs.RouteBetweenNodes();
+            // TreesAndGraphs.RouteBetweenNodes();
+            TreesAndGraphs.CreateBinaryTreeFromOrderedArray();
 
             Console.ReadKey();
         }
