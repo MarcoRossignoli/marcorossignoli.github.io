@@ -6,6 +6,95 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void CheckBalanced()
+        {
+            int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            BinaryNode d = Create(a, 0, a.Length - 1);
+            static BinaryNode Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNode bn = new BinaryNode(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+
+            Console.WriteLine(IsBalanced(d));
+
+            return;
+
+            static bool IsBalanced(BinaryNode node)
+            {
+                if (node is null)
+                    return true;
+
+                return Math.Abs(CalcHeight(node.Right) - CalcHeight(node.Left)) <= 1 &&
+                       IsBalanced(node.Left) && IsBalanced(node.Right);
+            }
+
+            static int CalcHeight(BinaryNode node)
+            {
+                if (node is null)
+                    return 0;
+
+                return 1 + CalcHeight(node.Left) + CalcHeight(node.Right);
+            }
+
+        }
+
+        public static void ListOfDepth()
+        {
+            int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            BinaryNode d = Create(a, 0, a.Length - 1);
+            static BinaryNode Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNode bn = new BinaryNode(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+            List<System.Collections.Generic.LinkedList<BinaryNode>> l = new List<System.Collections.Generic.LinkedList<BinaryNode>>();
+            Load(d, l, 0);
+            foreach (var node in l)
+            {
+                foreach (var n in node)
+                {
+                    Console.Write(n.Val);
+                }
+                Console.WriteLine();
+            }
+
+            return;
+
+            static void Load(BinaryNode node, List<System.Collections.Generic.LinkedList<BinaryNode>> l, int level)
+            {
+                if (node is null)
+                    return;
+
+                if (l.Count < level + 1)
+                    l.Add(new System.Collections.Generic.LinkedList<BinaryNode>());
+
+                l[level].AddLast(node);
+
+                Load(node.Left, l, level + 1);
+                Load(node.Right, l, level + 1);
+            }
+
+        }
+
         public static void CreateBinaryTreeFromOrderedArray()
         {
             int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7 };

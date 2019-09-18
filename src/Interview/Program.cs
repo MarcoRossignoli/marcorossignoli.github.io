@@ -126,7 +126,9 @@ namespace Interview
             // TreesAndGraphs.BinaryMinHeaps();
             // TreesAndGraphs.GraphSearch();
             // TreesAndGraphs.RouteBetweenNodes();
-            TreesAndGraphs.CreateBinaryTreeFromOrderedArray();
+            // TreesAndGraphs.CreateBinaryTreeFromOrderedArray();
+            // TreesAndGraphs.ListOfDepth();
+            TreesAndGraphs.CheckBalanced();
 
             Console.ReadKey();
         }
