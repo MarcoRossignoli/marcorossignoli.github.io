@@ -6,6 +6,52 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void IsBst()
+        {
+            int[] a = new int[] { 6, 7, 8, 10, 5, 12, 13 };
+            BinaryNode d = Create(a, 0, a.Length - 1);
+            static BinaryNode Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNode bn = new BinaryNode(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+
+            int prev = 0;
+            Console.WriteLine(IsBst(d, ref prev));
+
+            return;
+
+            static bool IsBst(BinaryNode node, ref int prev)
+            {
+                if (node != null)
+                {
+                    bool left = IsBst(node.Left, ref prev);
+                    if (!left)
+                        return false;
+
+                    if (node.Val < prev)
+                        return false;
+                    prev = node.Val;
+
+                    bool right = IsBst(node.Right, ref prev);
+                    if (!right)
+                        return false;
+
+                }
+                return true;
+            }
+
+        }
+
         public static void CheckBalanced()
         {
             int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7 };

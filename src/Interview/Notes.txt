@@ -56,6 +56,7 @@ Tree and graphs (111)
     * Root node has zero or more than one child nodes
     * Each child node has zero or more nodes
 -Binary tree: tree where every node has max 2 children
+    Height binary tree https://www.youtube.com/watch?v=_pnqMz5nrRs
 -Binary search tree MUST respect rule "all left descendant nodes <= currentNode < all right descendant nodes"
 -Balanced tree is a tree where INSERT and FIND complexity is O(log n) or not terribly imbalanced
 -Binary tree types

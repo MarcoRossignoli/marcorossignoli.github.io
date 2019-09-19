@@ -128,7 +128,8 @@ namespace Interview
             // TreesAndGraphs.RouteBetweenNodes();
             // TreesAndGraphs.CreateBinaryTreeFromOrderedArray();
             // TreesAndGraphs.ListOfDepth();
-            TreesAndGraphs.CheckBalanced();
+            // TreesAndGraphs.CheckBalanced();
+            TreesAndGraphs.IsBst();
 
             Console.ReadKey();
         }
