@@ -8,7 +8,8 @@ namespace Interview
     {
         public static void IsBst()
         {
-            int[] a = new int[] { 6, 7, 8, 10, 5, 12, 13 };
+            // int[] a = new int[] { 6, 7, 8, 10, 5, 12, 13 };
+            int[] a = new int[] { 6, 7, 8, 10, 11, 12, 13 };
             BinaryNode d = Create(a, 0, a.Length - 1);
             static BinaryNode Create(int[] a, int start, int end)
             {
@@ -24,28 +25,24 @@ namespace Interview
 
                 return bn;
             }
-
-            int prev = 0;
-            Console.WriteLine(IsBst(d, ref prev));
+            Console.WriteLine(IsBst(d, null));
 
             return;
 
-            static bool IsBst(BinaryNode node, ref int prev)
+            static bool IsBst(BinaryNode node, BinaryNode lastVisited)
             {
                 if (node != null)
                 {
-                    bool left = IsBst(node.Left, ref prev);
+                    bool left = IsBst(node.Left, lastVisited);
                     if (!left)
                         return false;
 
-                    if (node.Val < prev)
+                    if (lastVisited != null && node.Val < lastVisited.Val)
                         return false;
-                    prev = node.Val;
 
-                    bool right = IsBst(node.Right, ref prev);
+                    bool right = IsBst(node.Right, node);
                     if (!right)
                         return false;
-
                 }
                 return true;
             }
