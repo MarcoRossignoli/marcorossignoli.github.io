@@ -129,7 +129,8 @@ namespace Interview
             // TreesAndGraphs.CreateBinaryTreeFromOrderedArray();
             // TreesAndGraphs.ListOfDepth();
             // TreesAndGraphs.CheckBalanced();
-            TreesAndGraphs.IsBst();
+            // TreesAndGraphs.IsBstNoDup_InOrder();
+            TreesAndGraphs.IsBstMinMaxBest();
 
             Console.ReadKey();
         }

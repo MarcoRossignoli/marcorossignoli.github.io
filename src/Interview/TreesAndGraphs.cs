@@ -6,7 +6,46 @@ namespace Interview
 {
     class TreesAndGraphs
     {
-        public static void IsBst()
+        public static void IsBstMinMaxBest()
+        {
+            // int[] a = new int[] { 6, 7, 8, 10, 5, 12, 13 };
+            int[] a = new int[] { 6, 7, 8, 10, 11, 12, 13 };
+            BinaryNode d = Create(a, 0, a.Length - 1);
+            static BinaryNode Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNode bn = new BinaryNode(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+            Console.WriteLine(IsBst(d, null, null));
+
+            return;
+
+            static bool IsBst(BinaryNode node, int? min, int? max)
+            {
+                if (node is null)
+                    return true;
+
+                Console.WriteLine($"{min ?? int.MinValue} <= {node.Val} < {max ?? int.MaxValue}");
+                if ((min != null && node.Val < min) || (max != null & node.Val > max))
+                    return false;
+
+                if (!IsBst(node.Left, min, node.Val) || !IsBst(node.Right, node.Val, max))
+                    return false;
+
+                return true;
+            }
+        }
+
+        public static void IsBstNoDup_InOrder()
         {
             // int[] a = new int[] { 6, 7, 8, 10, 5, 12, 13 };
             int[] a = new int[] { 6, 7, 8, 10, 11, 12, 13 };
