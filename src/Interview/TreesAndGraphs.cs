@@ -6,6 +6,157 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void BuildOrder()
+        {
+            BinaryNodeLetter a = new BinaryNodeLetter("A");
+            BinaryNodeLetter b = new BinaryNodeLetter("B");
+            BinaryNodeLetter c = new BinaryNodeLetter("C");
+            BinaryNodeLetter d = new BinaryNodeLetter("D");
+            BinaryNodeLetter e = new BinaryNodeLetter("E");
+            BinaryNodeLetter f = new BinaryNodeLetter("F");
+
+            d.Children.Add(a);
+            b.Children.Add(f);
+            d.Children.Add(b);
+            a.Children.Add(f);
+            c.Children.Add(d);
+            // d.Children.Add(e);
+            // f.Children.Add(c);
+
+            List<BinaryNodeLetter> list = new List<BinaryNodeLetter>() { a, b, c, d, e, f };
+
+            List<BinaryNodeLetter> buildOrder = new List<BinaryNodeLetter>();
+
+            foreach (BinaryNodeLetter n in list)
+            {
+                if (!Compile(n, buildOrder, list.Count))
+                {
+                    Debug.WriteLine("Build not possible");
+                    return;
+                }
+            }
+
+            foreach (var n in buildOrder)
+            {
+                Debug.Write(n.Val);
+            }
+
+            return;
+
+            static bool Compile(BinaryNodeLetter node, List<BinaryNodeLetter> buildList, int projectNum)
+            {
+                if (projectNum < 0)
+                    return false;
+
+                foreach (BinaryNodeLetter n1 in node.Children)
+                {
+                    if (!Compile(n1, buildList, --projectNum))
+                        return false;
+                }
+
+                if (!buildList.Contains(node))
+                    buildList.Add(node);
+
+                return true;
+            }
+
+        }
+
+        [DebuggerDisplay("{Val}")]
+        class BinaryNodeLetter
+        {
+            public BinaryNodeLetter(string val) => Val = val;
+            public string Val { get; set; }
+            public List<BinaryNodeLetter> Children { get; set; } = new List<BinaryNodeLetter>();
+        }
+
+        public static void Successor()
+        {
+            int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            BinaryNodeWithParent d = Create(a, 0, a.Length - 1, null);
+            static BinaryNodeWithParent Create(int[] a, int start, int end, BinaryNodeWithParent parent)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNodeWithParent bn = new BinaryNodeWithParent(a[middle]) { Parent = parent };
+
+                bn.Left = Create(a, start, middle - 1, bn);
+                bn.Right = Create(a, middle + 1, end, bn);
+
+                return bn;
+            }
+
+            BinaryNodeWithParent startNode = InOrderGetN(d, 5);
+            var res = GetNextNode(startNode);
+            Console.WriteLine(res is null ? -1 : res.Val);
+            return;
+
+            static BinaryNodeWithParent InOrderGetN(BinaryNodeWithParent node, int val)
+            {
+                if (node != null)
+                {
+                    var nl = InOrderGetN(node.Left, val);
+
+                    if (nl != null)
+                        return nl;
+
+                    if (val == node.Val)
+                        return node;
+
+                    var nr = InOrderGetN(node.Right, val);
+                    if (nr != null)
+                        return nr;
+                }
+                return null;
+            }
+            static BinaryNodeWithParent FirstInOrder(BinaryNodeWithParent node)
+            {
+                if (node != null)
+                {
+                    var l = FirstInOrder(node.Left);
+                    if (l != null)
+                        return l;
+
+                    return node;
+                }
+                return null;
+            }
+            static BinaryNodeWithParent GetNextNode(BinaryNodeWithParent node)
+            {
+                int nodeVal = node.Val;
+                if (node.Right is null)
+                {
+                    while (node.Parent != null)
+                    {
+                        if (node.Parent.Val > nodeVal)
+                        {
+                            return node.Parent;
+                        }
+                        node = node.Parent;
+                    }
+                    return null;
+                }
+                else
+                {
+                    return FirstInOrder(node.Right);
+                }
+            }
+        }
+
+
+        [DebuggerDisplay("{Left.Val} <- {Val} -> {Right.Val}")]
+        class BinaryNodeWithParent
+        {
+            public BinaryNodeWithParent(int val) => Val = val;
+            public BinaryNodeWithParent Parent { get; set; }
+            public int Val { get; set; }
+            public BinaryNodeWithParent Left { get; set; }
+            public BinaryNodeWithParent Right { get; set; }
+        }
+
         public static void IsBstMinMaxBest()
         {
             // int[] a = new int[] { 6, 7, 8, 10, 5, 12, 13 };
