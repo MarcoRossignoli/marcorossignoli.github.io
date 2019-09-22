@@ -6,6 +6,98 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void FirstCommonAncestorPostOrder()
+        {
+            int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            BinaryNodeFound root = Create(a, 0, a.Length - 1);
+
+            BinaryNodeFound oneToPass = GetNode(root, 6);
+            BinaryNodeFound twoToPass = GetNode(root, 8);
+
+            BinaryNodeFound result = FoundFirstAncestor(root, oneToPass, twoToPass).CommonNode;
+
+            Console.WriteLine(result.Val);
+
+            return;
+
+            static ResultFirstCommonAncestorPostOrder FoundFirstAncestor(BinaryNodeFound node, BinaryNodeFound one, BinaryNodeFound two)
+            {
+                if (node is null)
+                    return new ResultFirstCommonAncestorPostOrder() { CurrentSum = 0 };
+
+                ResultFirstCommonAncestorPostOrder l = FoundFirstAncestor(node.Left, one, two);
+
+                if (l.CommonNode != null)
+                    return l;
+
+                ResultFirstCommonAncestorPostOrder r = FoundFirstAncestor(node.Right, one, two);
+                if (r.CommonNode != null)
+                    return r;
+
+                if (l.CurrentSum + r.CurrentSum == 2)
+                {
+                    return new ResultFirstCommonAncestorPostOrder() { CommonNode = node };
+                }
+
+                var currentSum = (node == one || node == two ? 1 : 0) + l.CurrentSum + r.CurrentSum;
+
+                if (currentSum == 2)
+                {
+                    return new ResultFirstCommonAncestorPostOrder() { CommonNode = node };
+                }
+
+                return new ResultFirstCommonAncestorPostOrder() { CurrentSum = currentSum };
+            }
+
+            static BinaryNodeFound Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNodeFound bn = new BinaryNodeFound(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+            static BinaryNodeFound GetNode(BinaryNodeFound node, int val)
+            {
+                if (node is null)
+                    return null;
+
+                BinaryNodeFound l = GetNode(node.Left, val);
+                if (l != null)
+                    return l;
+                if (node.Val == val)
+                    return node;
+                BinaryNodeFound r = GetNode(node.Right, val);
+                if (r != null)
+                    return r;
+
+                return null;
+            }
+        }
+
+        class ResultFirstCommonAncestorPostOrder
+        {
+            public int CurrentSum { get; set; }
+            public BinaryNodeFound CommonNode { get; set; }
+        }
+
+        [DebuggerDisplay("{Val}")]
+        class BinaryNodeFound
+        {
+            public bool Found { get; set; }
+            public BinaryNodeFound(int val) => Val = val;
+            public int Val { get; set; }
+            public BinaryNodeFound Left { get; set; }
+            public BinaryNodeFound Right { get; set; }
+        }
+
+
         public static void BuildOrder()
         {
             BinaryNodeLetter a = new BinaryNodeLetter("A");
