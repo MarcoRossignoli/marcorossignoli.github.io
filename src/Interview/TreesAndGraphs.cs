@@ -6,6 +6,75 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void BTCSequence()
+        {
+            int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            BinaryNode d = Create(a, 0, a.Length - 1);
+            static BinaryNode Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNode bn = new BinaryNode(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+
+            var array = GetArray(d);
+
+            PrintPerm(array, 0);
+
+            return;
+
+            static void PrintPerm(int[] array, int level)
+            {
+                int s = (int)Math.Pow(2, level) - 1;
+                int e = s + (int)Math.Pow(2, level) - 1;
+
+                if (s > array.Length - 1)
+                    return;
+
+                foreach (var perm in GetPerm(array, s, Math.Min(e, array.Length - 1)))
+                {
+                    Console.WriteLine(perm);
+                    PrintPerm(array, level + 1);
+                }
+            }
+
+            static IEnumerable<string> GetPerm(int[] array, int s, int end)
+            {
+                yield return "";
+            }
+
+            static int[] GetArray(BinaryNode node)
+            {
+                if (node is null)
+                    return null;
+                Queue<BinaryNode> q = new Queue<BinaryNode>();
+                q.Add(node);
+
+                List<int> array = new List<int>();
+
+                while (!q.IsEmpty())
+                {
+                    BinaryNode d = q.Remove();
+                    array.Add(d.Val);
+                    if (d.Left != null)
+                        q.Add(d.Left);
+                    if (d.Right != null)
+                        q.Add(d.Right);
+                }
+
+                return array.ToArray();
+
+            }
+        }
+
         public static void FirstCommonAncestorPostOrder()
         {
             int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };

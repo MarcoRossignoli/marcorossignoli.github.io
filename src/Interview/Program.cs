@@ -133,7 +133,8 @@ namespace Interview
             // TreesAndGraphs.IsBstMinMaxBest();
             // TreesAndGraphs.Successor();
             // TreesAndGraphs.BuildOrder();
-            TreesAndGraphs.FirstCommonAncestorPostOrder();
+            // TreesAndGraphs.FirstCommonAncestorPostOrder();
+            TreesAndGraphs.BTCSequence();
 
             Console.ReadKey();
         }
