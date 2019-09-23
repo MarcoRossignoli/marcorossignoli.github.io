@@ -98,7 +98,6 @@ namespace Interview
                 }
 
                 return array.ToArray();
-
             }
         }
 
