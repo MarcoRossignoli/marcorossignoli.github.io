@@ -11,12 +11,14 @@ namespace Interview
             int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             BinaryNodeFound root = Create(a, 0, a.Length - 1);
 
-            BinaryNodeFound oneToPass = GetNode(root, 6);
-            BinaryNodeFound twoToPass = GetNode(root, 8);
+            BinaryNodeFound root2 = Create(a, 0, a.Length - 1);
+
+            BinaryNodeFound oneToPass = GetNode(root, 8);
+            BinaryNodeFound twoToPass = GetNode(root, 1);
 
             BinaryNodeFound result = FoundFirstAncestor(root, oneToPass, twoToPass).CommonNode;
 
-            Console.WriteLine(result.Val);
+            Console.WriteLine(result is null ? -1 : result.Val);
 
             return;
 
@@ -24,6 +26,9 @@ namespace Interview
             {
                 if (node is null)
                     return new ResultFirstCommonAncestorPostOrder() { CurrentSum = 0 };
+
+                if (one == two)
+                    return new ResultFirstCommonAncestorPostOrder() { CurrentSum = 0, CommonNode = one };
 
                 ResultFirstCommonAncestorPostOrder l = FoundFirstAncestor(node.Left, one, two);
 
