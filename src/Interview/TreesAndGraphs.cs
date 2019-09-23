@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 
 namespace Interview
 {
@@ -8,7 +9,7 @@ namespace Interview
     {
         public static void BTCSequence()
         {
-            int[] a = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            int[] a = new int[] { 1, 2, 3 };
             BinaryNode d = Create(a, 0, a.Length - 1);
             static BinaryNode Create(int[] a, int start, int end)
             {
@@ -27,31 +28,54 @@ namespace Interview
 
             var array = GetArray(d);
 
-            PrintPerm(array, 0);
+            PrintPerm(array, 0, "");
 
             return;
 
-            static void PrintPerm(int[] array, int level)
+            static void PrintPerm(int[] array, int level, string parentToPrint)
             {
                 int s = (int)Math.Pow(2, level) - 1;
                 int e = s + (int)Math.Pow(2, level) - 1;
 
                 if (s > array.Length - 1)
                 {
-                    Console.WriteLine();
+                    Console.WriteLine(parentToPrint);
                     return;
                 }
 
                 foreach (var perm in GetPerm(array, s, Math.Min(e, array.Length - 1)))
                 {
-                    Console.Write(perm);
-                    PrintPerm(array, level + 1);
+                    PrintPerm(array, level + 1, parentToPrint + perm);
                 }
             }
 
-            static IEnumerable<string> GetPerm(int[] array, int s, int end)
+            static IEnumerable<string> GetPerm(int[] array, int s, int e)
             {
-                yield return "A";
+                StringBuilder builder = new StringBuilder();
+                for (int i = s; i <= e; i++)
+                {
+                    builder.Append(array[i]);
+                }
+
+                List<string> perm = new List<string>();
+
+                InternalPer(builder.ToString(), "", perm);
+
+                return perm;
+            }
+
+            static void InternalPer(string s, string prefix, List<string> perms)
+            {
+                if (s.Length == 0)
+                {
+                    perms.Add(prefix);
+                    return;
+                }
+                for (int i = 0; i < s.Length; i++)
+                {
+                    string remain = s.Substring(0, i) + s.Substring(i + 1);
+                    InternalPer(remain, prefix + s[i], perms);
+                }
             }
 
             static int[] GetArray(BinaryNode node)
