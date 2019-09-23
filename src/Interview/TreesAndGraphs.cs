@@ -37,18 +37,21 @@ namespace Interview
                 int e = s + (int)Math.Pow(2, level) - 1;
 
                 if (s > array.Length - 1)
+                {
+                    Console.WriteLine();
                     return;
+                }
 
                 foreach (var perm in GetPerm(array, s, Math.Min(e, array.Length - 1)))
                 {
-                    Console.WriteLine(perm);
+                    Console.Write(perm);
                     PrintPerm(array, level + 1);
                 }
             }
 
             static IEnumerable<string> GetPerm(int[] array, int s, int end)
             {
-                yield return "";
+                yield return "A";
             }
 
             static int[] GetArray(BinaryNode node)
