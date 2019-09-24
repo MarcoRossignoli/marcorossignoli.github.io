@@ -21,7 +21,7 @@ it is worth going through them all to ensure yourself you understand basic conce
 Array and string pg. 88 -> 9 done
 Linked List pg. 92 -> 8 done
 Stack and queue pg. 96 -> 6 done
-Tree and graphs pg. 100
+Tree and graphs pg. 100 (not clear 4.9)
 Sorting and Searching pg. 146
 Bit manipulation pg. 112
 Recursion and Dynamic programming pg.130 -> 14 done

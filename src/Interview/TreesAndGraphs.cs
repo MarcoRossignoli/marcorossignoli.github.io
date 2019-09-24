@@ -2,14 +2,129 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-
+using fxLinkedListInt = System.Collections.Generic.LinkedList<int>;
 namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void BTCSequence_Pg263()
+        {
+            int[] a = new int[] { 1, 2, 3, 4 };
+            BinaryNode d = Create(a, 0, a.Length - 1);
+            static BinaryNode Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNode bn = new BinaryNode(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+
+            var r = allSequence(d);
+
+            foreach (var item in r)
+            {
+                foreach (var i2 in item)
+                {
+                    Console.WriteLine(i2);
+                }
+                Console.WriteLine("----");
+            }
+
+            Console.WriteLine("End");
+
+            return;
+
+            static List<fxLinkedListInt> allSequence(BinaryNode b)
+            {
+                List<fxLinkedListInt> result = new List<fxLinkedListInt>();
+
+                if (b is null)
+                {
+                    result.Add(new fxLinkedListInt());
+                    return result;
+                }
+
+                fxLinkedListInt prefix = new fxLinkedListInt();
+                prefix.AddLast(b.Val);
+
+                List<fxLinkedListInt> leftSeq = allSequence(b.Left);
+                List<fxLinkedListInt> rightSeq = allSequence(b.Right);
+
+                foreach (var l in leftSeq)
+                {
+                    foreach (var r in rightSeq)
+                    {
+                        List<fxLinkedListInt> weaved = new List<fxLinkedListInt>();
+
+                        waveList(l, r, weaved, prefix);
+
+                        result.AddRange(weaved);
+                    }
+                }
+
+                return result;
+            }
+
+            static void waveList(fxLinkedListInt first, fxLinkedListInt second, List<fxLinkedListInt> results, fxLinkedListInt prefix)
+            {
+                if (first.Count == 0 || second.Count == 0)
+                {
+                    fxLinkedListInt result = Clone(prefix);
+
+                    Debug.Assert(result != prefix);
+
+                    foreach (var i in first)
+                    {
+                        result.AddLast(i);
+                    }
+
+                    foreach (var i in second)
+                    {
+                        result.AddLast(i);
+                    }
+
+                    results.Add(result);
+                    return;
+                }
+
+                int headFirst = first.First.Value;
+                first.RemoveFirst();
+                prefix.AddLast(headFirst);
+                waveList(first, second, results, prefix);
+                prefix.RemoveLast();
+                first.AddFirst(headFirst);
+
+                int headSecond = second.First.Value;
+                second.RemoveFirst();
+                prefix.AddLast(headSecond);
+                waveList(first, second, results, prefix);
+                prefix.RemoveLast();
+                second.AddFirst(headSecond);
+
+            }
+
+            static fxLinkedListInt Clone(fxLinkedListInt l)
+            {
+                fxLinkedListInt n = new fxLinkedListInt();
+                foreach (int item in l)
+                {
+                    n.AddLast(item);
+                }
+                return n;
+            }
+
+        }
+
         public static void BTCSequence()
         {
-            int[] a = new int[] { 1, 2, 3 };
+            int[] a = new int[] { 1, 2, 3, 4 };
             BinaryNode d = Create(a, 0, a.Length - 1);
             static BinaryNode Create(int[] a, int start, int end)
             {

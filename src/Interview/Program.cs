@@ -135,6 +135,7 @@ namespace Interview
             // TreesAndGraphs.BuildOrder();
             // TreesAndGraphs.FirstCommonAncestorPostOrder();
             TreesAndGraphs.BTCSequence();
+            TreesAndGraphs.BTCSequence_Pg263();
 
             Console.ReadKey();
         }
