@@ -15,6 +15,8 @@ namespace Interview
          b <- 2   3
              / \
             4   5
+           / \
+          6   7
             */
 
             BinaryNode a = new BinaryNode(1);
@@ -22,32 +24,47 @@ namespace Interview
             a.Right = new BinaryNode(3);
             a.Left.Left = new BinaryNode(4);
             a.Left.Right = new BinaryNode(5);
+            a.Left.Left.Left = new BinaryNode(6);
+            a.Left.Left.Right = new BinaryNode(7);
 
-            // BinaryNode b = a.Left;
-            BinaryNode b = new BinaryNode(2);
-            b.Left = new BinaryNode(4);
-            b.Right = new BinaryNode(5);
+            BinaryNode b = a.Left;
+            // BinaryNode b = new BinaryNode(2);
+            // b.Left = new BinaryNode(4);
+            // b.Right = new BinaryNode(5);
 
             int heightB = Height(b);
             Console.WriteLine(Check(a, b, heightB));
 
             return;
 
-            static bool Check(BinaryNode a, BinaryNode b, int height)
+            static (int currentHeight, bool foundSubTree) Check(BinaryNode a, BinaryNode b, int height)
             {
-                if (height == 0)
+                if (a is null)
+                    return (-1, false);
+
+                (int currentHeightLeft, bool foundSubTreeLeft) = Check(a.Left, b, height);
+
+                if (foundSubTreeLeft)
+                    return (0, true);
+
+                if (currentHeightLeft == height && EqualSubtree(a.Left, b))
                 {
-                    return EqualSubtree(a, b);
+                    return (0, true);
                 }
 
-                bool l = Check(a.Left, b, height - 1);
-                bool r = Check(a.Right, b, height - 1);
+                (int currentHeightRight, bool foundSubTreeRight) = Check(a.Right, b, height);
 
-                if (l || r)
-                    return true;
+                if (foundSubTreeRight)
+                    return (0, true);
 
-                return false;
+                if (currentHeightRight == height && EqualSubtree(a.Right, b))
+                {
+                    return (0, true);
+                }
+
+                return (Math.Max(currentHeightLeft, currentHeightRight) + 1, false);
             }
+
 
             static bool EqualSubtree(BinaryNode first, BinaryNode second)
             {
