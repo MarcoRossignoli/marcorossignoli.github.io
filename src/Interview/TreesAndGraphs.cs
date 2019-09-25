@@ -7,6 +7,106 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void CheckSubtree()
+        {
+            /*
+                1 <- a
+               / \
+         b <- 2   3
+             / \
+            4   5
+            */
+
+            BinaryNode a = new BinaryNode(1);
+            a.Left = new BinaryNode(2);
+            a.Right = new BinaryNode(3);
+            a.Left.Left = new BinaryNode(4);
+            a.Left.Right = new BinaryNode(5);
+
+            BinaryNode b = a.Left;
+
+            int heightB = Height(b);
+            Console.WriteLine(Check(a, b, heightB));
+
+            return;
+
+            static bool Check(BinaryNode a, BinaryNode b, int height)
+            {
+                if (height == 0)
+                {
+                    return EqualSubtree(a, b);
+                }
+
+                bool l = Check(a.Left, b, height - 1);
+                bool r = Check(a.Right, b, height - 1);
+
+                if (l || r)
+                    return true;
+
+                return false;
+            }
+
+            static bool EqualSubtree(BinaryNode first, BinaryNode second)
+            {
+                if (first is null && second is null)
+                    return true;
+
+                if (first is null && second != null || first != null && second is null)
+                    return false;
+
+                if (first.Val != second.Val)
+                    return false;
+
+                bool l = EqualSubtree(first.Left, second.Left);
+                bool r = EqualSubtree(first.Right, second.Right);
+
+                if (!(l && r))
+                    return false;
+
+                return true;
+            }
+
+            static int Height(BinaryNode node)
+            {
+                if (node is null)
+                    return -1;
+
+                return Math.Max(Height(node.Left), Height(node.Right)) + 1;
+            }
+
+            static BinaryNode Create(int[] a, int start, int end)
+            {
+                if (start > end)
+                    return null;
+
+                int middle = (start + end) / 2;
+
+                BinaryNode bn = new BinaryNode(a[middle]);
+
+                bn.Left = Create(a, start, middle - 1);
+                bn.Right = Create(a, middle + 1, end);
+
+                return bn;
+            }
+            static BinaryNodeFound GetNode(BinaryNodeFound node, int val)
+            {
+                if (node is null)
+                    return null;
+
+                BinaryNodeFound l = GetNode(node.Left, val);
+                if (l != null)
+                    return l;
+                if (node.Val == val)
+                    return node;
+                BinaryNodeFound r = GetNode(node.Right, val);
+                if (r != null)
+                    return r;
+
+                return null;
+            }
+
+        }
+
         public static void BTCSequence_Pg263()
         {
             int[] a = new int[] { 1, 2, 3, 4 };

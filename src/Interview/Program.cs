@@ -134,8 +134,9 @@ namespace Interview
             // TreesAndGraphs.Successor();
             // TreesAndGraphs.BuildOrder();
             // TreesAndGraphs.FirstCommonAncestorPostOrder();
-            TreesAndGraphs.BTCSequence();
-            TreesAndGraphs.BTCSequence_Pg263();
+            // TreesAndGraphs.BTCSequence();
+            // TreesAndGraphs.BTCSequence_Pg263();
+            TreesAndGraphs.CheckSubtree();
 
             Console.ReadKey();
         }
