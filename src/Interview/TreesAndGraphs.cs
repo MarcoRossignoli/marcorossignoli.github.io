@@ -27,10 +27,10 @@ namespace Interview
             a.Left.Left.Left = new BinaryNode(6);
             a.Left.Left.Right = new BinaryNode(7);
 
-            BinaryNode b = a.Left;
-            // BinaryNode b = new BinaryNode(2);
-            // b.Left = new BinaryNode(4);
-            // b.Right = new BinaryNode(5);
+            // BinaryNode b = a.Left;
+            BinaryNode b = new BinaryNode(2);
+            b.Left = new BinaryNode(4);
+            b.Right = new BinaryNode(5);
 
             int heightB = Height(b);
             Console.WriteLine(Check(a, b, heightB));
