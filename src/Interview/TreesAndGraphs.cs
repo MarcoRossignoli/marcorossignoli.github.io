@@ -7,6 +7,112 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void RandomNodeStart()
+        {
+
+        }
+
+        class RandomBinaryTree
+        {
+            RandomNode[] _array;
+            int _size;
+
+            public RandomBinaryTree()
+            {
+                _array = new RandomNode[10];
+            }
+
+            void EnsureCapacity(int size)
+            {
+                if (_array.Length < size)
+                {
+                    RandomNode[] tmp = new RandomNode[_array.Length * 2];
+                    _array.CopyTo(tmp, 0);
+                    _array = tmp;
+                }
+            }
+
+            public RandomNode[] Find(int v)
+            {
+                List<RandomNode> randomNode = new List<RandomNode>();
+                for (int i = 0; i < _size; i++)
+                {
+                    if (_array[i].Val == v)
+                        randomNode.Add(_array[i]);
+                }
+                return randomNode.ToArray();
+            }
+
+            public RandomNode GetRandom()
+            {
+                if (_size > 0)
+                {
+                    return _array[Environment.TickCount % _array.Length];
+                }
+                return null;
+            }
+
+            public void Remove(RandomNode node)
+            {
+                if (node._detached)
+                    throw new Exception("detached");
+
+
+                if (_size > 1)
+                {
+                    _array[node._index] = _array[_size];
+                }
+
+                node.Detach();
+                _size--;
+            }
+
+            public void Insert(int i)
+            {
+                EnsureCapacity(_size + 1);
+                _array[_size] = new RandomNode(_size, _array, i);
+                _size++;
+            }
+
+        }
+
+        class RandomNode
+        {
+            public RandomNode Left
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public RandomNode Right
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            internal bool _detached = true;
+            RandomNode[] _array;
+            internal int _index { get; set; }
+            public int Val { get; set; }
+            public RandomNode(int index, RandomNode[] array, int val)
+            {
+                _index = index;
+                _array = array;
+                Val = val;
+                _detached = false;
+            }
+
+            internal void Detach()
+            {
+                _array = null;
+                _detached = true;
+            }
+        }
+
         public static void CheckSubtree()
         {
             /*
