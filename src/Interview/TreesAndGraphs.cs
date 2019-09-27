@@ -9,13 +9,21 @@ namespace Interview
     {
         public static void RandomNodeStart()
         {
+            RandomBinaryTree bt = new RandomBinaryTree();
+            bt.Insert(1);
+            bt.Insert(2);
+            bt.Insert(3);
 
+            var binaryNodes = bt.Find(1);
+            var randomNode = bt.GetRandom();
+
+            bt.Remove(binaryNodes[0]);
         }
 
         class RandomBinaryTree
         {
-            RandomNode[] _array;
-            int _size;
+            internal RandomNode[] _array;
+            internal int _size;
 
             public RandomBinaryTree()
             {
@@ -47,7 +55,8 @@ namespace Interview
             {
                 if (_size > 0)
                 {
-                    return _array[Environment.TickCount % _array.Length];
+                    int randomIndex = Environment.TickCount % _size;
+                    return _array[randomIndex];
                 }
                 return null;
             }
@@ -60,7 +69,9 @@ namespace Interview
 
                 if (_size > 1)
                 {
-                    _array[node._index] = _array[_size];
+                    _array[node._index] = _array[_size - 1];
+                    _array[node._index]._index = node._index;
+                    _array[_size - 1] = null;
                 }
 
                 node.Detach();
@@ -70,7 +81,7 @@ namespace Interview
             public void Insert(int i)
             {
                 EnsureCapacity(_size + 1);
-                _array[_size] = new RandomNode(_size, _array, i);
+                _array[_size] = new RandomNode(_size, this, i);
                 _size++;
             }
 
@@ -82,7 +93,14 @@ namespace Interview
             {
                 get
                 {
-                    throw new NotImplementedException();
+                    if (_detached)
+                        throw new Exception("detached");
+
+                    int leftIndex = (_index * 2) + 1;
+                    if (leftIndex > _binaryTree._size - 1)
+                        return null;
+
+                    return _binaryTree._array[leftIndex];
                 }
             }
 
@@ -90,25 +108,32 @@ namespace Interview
             {
                 get
                 {
-                    throw new NotImplementedException();
+                    if (_detached)
+                        throw new Exception("detached");
+
+                    int rightIndex = (_index * 2) + 2;
+                    if (rightIndex > _binaryTree._size - 1)
+                        return null;
+
+                    return _binaryTree._array[rightIndex];
                 }
             }
 
             internal bool _detached = true;
-            RandomNode[] _array;
+            RandomBinaryTree _binaryTree;
             internal int _index { get; set; }
             public int Val { get; set; }
-            public RandomNode(int index, RandomNode[] array, int val)
+            public RandomNode(int index, RandomBinaryTree binaryTree, int val)
             {
                 _index = index;
-                _array = array;
+                _binaryTree = binaryTree;
                 Val = val;
                 _detached = false;
             }
 
             internal void Detach()
             {
-                _array = null;
+                _binaryTree = null;
                 _detached = true;
             }
         }
