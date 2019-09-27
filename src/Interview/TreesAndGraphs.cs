@@ -7,6 +7,72 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void BinaryTreeInsertDelete()
+        {
+            TreeNode root = new TreeNode(5);
+            root.Insert(3);
+            root.Insert(7);
+            root.Insert(1);
+            root.Insert(4);
+            root.Insert(6);
+            root.Insert(10);
+
+            var node = root.Find(10);
+
+        }
+
+        [DebuggerDisplay("{Val}")]
+        class TreeNode
+        {
+            public TreeNode(int val)
+            {
+                Val = val;
+            }
+            public int Val { get; set; }
+            public TreeNode Left { get; set; }
+            public TreeNode Right { get; set; }
+
+            public void Insert(int val)
+            {
+                if (val <= Val)
+                {
+                    // Go left
+                    if (Left is null)
+                        Left = new TreeNode(val);
+                    else
+                        Left.Insert(val);
+                }
+                else
+                {
+                    // Go right
+                    if (Right is null)
+                        Right = new TreeNode(val);
+                    else
+                        Right.Insert(val);
+                }
+            }
+
+            public void Remove(int val)
+            {
+                throw new NotImplementedException();
+            }
+
+            public TreeNode Find(int val)
+            {
+                if (val == Val)
+                    return this;
+
+                if (val < Val)
+                {
+                    return Left.Find(val);
+                }
+                else
+                {
+                    return Right.Find(val);
+                }
+            }
+        }
+
         public static void RandomNodeStart()
         {
             RandomBinaryTree bt = new RandomBinaryTree();
