@@ -27,7 +27,12 @@ namespace Interview
             {
                 if (node != null)
                 {
-                    return SumFromNode(node, 0, val) + NumberOfSum(node.Left, val) + NumberOfSum(node.Right, val);
+                    // sum pre-order top down
+                    return
+                        SumFromNode(node, 0, val) +
+
+                        NumberOfSum(node.Left, val) +
+                        NumberOfSum(node.Right, val);
                 }
                 return 0;
             }
