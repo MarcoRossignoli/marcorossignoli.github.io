@@ -7,9 +7,51 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void PathWithSum()
+        {
+            BinarySearchTreeNode root = new BinarySearchTreeNode(10);
+            root.Insert(5);
+            root.Insert(20);
+            root.Insert(-2);
+            root.Insert(6);
+            root.Insert(-17);
+            root.Insert(21);
+
+            int numberOfSum = NumberOfSum(root, 21);
+
+            Console.WriteLine(numberOfSum);
+
+            return;
+
+            int NumberOfSum(BinarySearchTreeNode node, int val)
+            {
+                if (node != null)
+                {
+                    return SumFromNode(node, 0, val) + NumberOfSum(node.Left, val) + NumberOfSum(node.Right, val);
+                }
+                return 0;
+            }
+
+            int SumFromNode(BinarySearchTreeNode node, int sum, int targetSum)
+            {
+                if (node is null)
+                    return 0;
+
+                int currentSumPreOrder = sum + node.Val;
+                if (currentSumPreOrder == targetSum)
+                    return 1;
+
+                int leftSum = SumFromNode(node.Left, currentSumPreOrder, targetSum);
+                int rightSum = SumFromNode(node.Right, currentSumPreOrder, targetSum);
+
+                return leftSum + rightSum;
+            }
+
+        }
+
         public static void BinaryTreeInsertDelete()
         {
-            TreeNode root = new TreeNode(5);
+            BinarySearchTreeNode root = new BinarySearchTreeNode(5);
             root.Insert(3);
             root.Insert(7);
             root.Insert(1);
@@ -18,19 +60,43 @@ namespace Interview
             root.Insert(10);
 
             var node = root.Find(10);
+            Console.WriteLine(root.Verify());
 
+            root = root.Remove(7);
+            Console.WriteLine(root.Verify());
+
+            root = root.Remove(5);
+            Console.WriteLine(root.Verify());
         }
 
         [DebuggerDisplay("{Val}")]
-        class TreeNode
+        class BinarySearchTreeNode
         {
-            public TreeNode(int val)
+            public BinarySearchTreeNode(int val)
             {
                 Val = val;
             }
             public int Val { get; set; }
-            public TreeNode Left { get; set; }
-            public TreeNode Right { get; set; }
+            public BinarySearchTreeNode Left { get; set; }
+            public BinarySearchTreeNode Right { get; set; }
+
+            public bool Verify()
+            {
+                return Verify(this);
+            }
+
+            private bool Verify(BinarySearchTreeNode node)
+            {
+                if (node is null)
+                    return true;
+
+
+                if ((node.Left is null ? int.MinValue : node.Left.Val) <= node.Val &&
+                        (node.Right is null ? int.MaxValue : node.Right.Val) > node.Val)
+                    return Verify(node.Left) && Verify(node.Right);
+                else
+                    return false;
+            }
 
             public void Insert(int val)
             {
@@ -38,7 +104,7 @@ namespace Interview
                 {
                     // Go left
                     if (Left is null)
-                        Left = new TreeNode(val);
+                        Left = new BinarySearchTreeNode(val);
                     else
                         Left.Insert(val);
                 }
@@ -46,28 +112,90 @@ namespace Interview
                 {
                     // Go right
                     if (Right is null)
-                        Right = new TreeNode(val);
+                        Right = new BinarySearchTreeNode(val);
                     else
                         Right.Insert(val);
                 }
             }
 
-            public void Remove(int val)
+            // https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/
+            public BinarySearchTreeNode Remove(int val)
             {
-                throw new NotImplementedException();
+                return RemoveInternal(this, val);
             }
 
-            public TreeNode Find(int val)
+            private BinarySearchTreeNode RemoveInternal(BinarySearchTreeNode node, int val)
+            {
+                if (node is null)
+                    return null;
+
+                // Search node
+                if (node.Val > val)
+                {
+                    node.Left = RemoveInternal(node.Left, val);
+                }
+                else if (node.Val < val)
+                {
+                    node.Right = RemoveInternal(node.Right, val);
+                }
+                else
+                {
+                    // node found
+
+                    // if left or right is null return other node
+                    // this cover 2 case 
+                    // 1) leaf node
+                    // 2) node with only one child
+                    if (node.Left is null)
+                        return node.Right;
+
+                    if (node.Right is null)
+                        return node.Left;
+
+                    // node has two child case number 3
+                    // find next in order and swap
+                    int min = GetNextInOrder(node.Right);
+                    node.Val = min;
+
+                    // remove the min
+                    node.Right = RemoveInternal(node.Right, min);
+                }
+
+                return node;
+            }
+
+            private int GetNextInOrder(BinarySearchTreeNode node)
+            {
+                Debug.Assert(node != null);
+
+                int min = 0;
+
+                while (node != null)
+                {
+                    min = node.Val;
+                    node = node.Left;
+                }
+
+                return min;
+            }
+
+            public BinarySearchTreeNode Find(int val)
             {
                 if (val == Val)
                     return this;
 
                 if (val < Val)
                 {
+                    if (Left is null)
+                        return null;
+
                     return Left.Find(val);
                 }
                 else
                 {
+                    if (Right is null)
+                        return null;
+
                     return Right.Find(val);
                 }
             }
