@@ -34,9 +34,9 @@ namespace Interview
             static void Merge(int[] array, int s, int e, int middle)
             {
                 int[] leftArray = new int[(middle - s) + 1];
-                Array.Copy(array, s, leftArray, 0, (middle - s) + 1);
+                Array.Copy(array, s, leftArray, 0, leftArray.Length);
                 int[] rightArray = new int[e - middle];
-                Array.Copy(array, middle + 1, rightArray, 0, e - middle);
+                Array.Copy(array, middle + 1, rightArray, 0, rightArray.Length);
 
                 int leftArrayIndex = 0;
                 int rightArrayIndex = 0;
