@@ -11,13 +11,65 @@ namespace Interview
             // BubbleSortWhileOptimized(array);
             // BubbleSortDoubleFor(array);
             // SelectionSort(array);
-            SelectionSortSwapAtTheEndOfCicle(array);
+            // SelectionSortSwapAtTheEndOfCicle(array);
+            MergeSort(array, 0, array.Length - 1);
             foreach (var item in array)
             {
                 Console.WriteLine(item);
             }
 
             return;
+
+            static void MergeSort(int[] array, int s, int e)
+            {
+                if (s < e)
+                {
+                    int middle = (s + e) / 2;
+                    MergeSort(array, 0, middle);
+                    MergeSort(array, middle + 1, e);
+                    Merge(array, s, e, middle);
+                }
+            }
+
+            static void Merge(int[] array, int s, int e, int middle)
+            {
+                int[] leftArray = new int[(middle - s) + 1];
+                Array.Copy(array, s, leftArray, 0, (middle - s) + 1);
+                int[] rightArray = new int[e - middle];
+                Array.Copy(array, middle + 1, rightArray, 0, e - middle);
+
+                int leftArrayIndex = 0;
+                int rightArrayIndex = 0;
+                int index = s;
+                while (leftArrayIndex < leftArray.Length && rightArrayIndex < rightArray.Length)
+                {
+                    if (leftArray[leftArrayIndex] <= rightArray[rightArrayIndex])
+                    {
+                        array[index] = leftArray[leftArrayIndex];
+                        leftArrayIndex++;
+                    }
+                    else
+                    {
+                        array[index] = rightArray[rightArrayIndex];
+                        rightArrayIndex++;
+                    }
+                    index++;
+                }
+
+                while (leftArrayIndex < leftArray.Length)
+                {
+                    array[index] = leftArray[leftArrayIndex];
+                    index++;
+                    leftArrayIndex++;
+                }
+
+                while (rightArrayIndex < rightArray.Length)
+                {
+                    array[index] = rightArray[rightArrayIndex];
+                    index++;
+                    rightArrayIndex++;
+                }
+            }
 
             static void SelectionSortSwapAtTheEndOfCicle(int[] array)
             {
