@@ -21,12 +21,12 @@ it is worth going through them all to ensure yourself you understand basic conce
 Array and string pg. 88 -> 9 done
 Linked List pg. 92 -> 8 done
 Stack and queue pg. 96 -> 6 done
-Tree and graphs pg. 100 (not clear 4.9) -> 10 so far
+Tree and graphs pg. 100 (not clear 4.9) -> 12
 Sorting and Searching pg. 146
 Bit manipulation pg. 112
 Recursion and Dynamic programming pg.130 -> 14 done
 
-Total so far 47
+Total so far 49
 
 Big O(49) https://www.bigocheatsheet.com/
 
