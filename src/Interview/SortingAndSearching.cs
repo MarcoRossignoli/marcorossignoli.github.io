@@ -7,6 +7,7 @@ namespace Interview
         public static void Sorting()
         {
             int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
+            //int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
             // BubbleSortWhileOptimized(array);
             // BubbleSortDoubleFor(array);
@@ -63,12 +64,13 @@ namespace Interview
                     leftArrayIndex++;
                 }
 
-                while (rightArrayIndex < rightArray.Length)
-                {
-                    array[index] = rightArray[rightArrayIndex];
-                    index++;
-                    rightArrayIndex++;
-                }
+                // If left array is ok right remains will be already ordered by precedence recoursion 
+                //while (rightArrayIndex < rightArray.Length)
+                //{
+                //    array[index] = rightArray[rightArrayIndex];
+                //    index++;
+                //    rightArrayIndex++;
+                //}
             }
 
             static void SelectionSortSwapAtTheEndOfCicle(int[] array)
