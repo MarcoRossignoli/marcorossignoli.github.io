@@ -13,13 +13,19 @@ namespace Interview
             // BubbleSortDoubleFor(array);
             // SelectionSort(array);
             // SelectionSortSwapAtTheEndOfCicle(array);
-            MergeSort(array, 0, array.Length - 1);
+            // MergeSort(array, 0, array.Length - 1);
+            MergeSortJBEvans(array);
             foreach (var item in array)
             {
                 Console.WriteLine(item);
             }
 
             return;
+
+            static void MergeSortJBEvans(int[] array)
+            {
+                MergeSortClass.Sort(array);
+            }
 
             static void MergeSort(int[] array, int s, int e)
             {
@@ -146,6 +152,60 @@ namespace Interview
                         }
                     }
                     count = lastSwap != -1 ? lastSwap : count;
+                }
+            }
+        }
+
+        class MergeSortClass
+        {
+            private readonly int[] elements;
+            private readonly int[] buffer;
+
+            public MergeSortClass(int[] elements)
+            {
+                this.elements = elements;
+                this.buffer = new int[elements.Length];
+                Array.Copy(this.elements, this.buffer, elements.Length);
+            }
+
+            public static void Sort(int[] source)
+            {
+                Sort(source, 0, source.Length);
+            }
+
+            public static void Sort(int[] source, int start, int length)
+            {
+                new MergeSortClass(source).Sort(start, length);
+            }
+
+            private void Sort(int start, int length)
+            {
+                TopDownSplitMerge(this.buffer, this.elements, start, length);
+            }
+
+            private void TopDownSplitMerge(int[] a, int[] b, int start, int end)
+            {
+                if (end - start < 2)
+                    return;
+
+                int middle = (end + start) / 2;
+                TopDownSplitMerge(b, a, start, middle);
+                TopDownSplitMerge(b, a, middle, end);
+                TopDownMerge(a, b, start, middle, end);
+            }
+
+            private void TopDownMerge(int[] a, int[] b, int start, int middle, int end)
+            {
+                for (int i = start, j = middle, k = start; k < end; k++)
+                {
+                    if (i < middle && (j >= end || a[i] <= a[j]))
+                    {
+                        b[k] = a[i++];
+                    }
+                    else
+                    {
+                        b[k] = a[j++];
+                    }
                 }
             }
         }
