@@ -6,21 +6,123 @@ namespace Interview
     {
         public static void Sorting()
         {
-            int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
-            //int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            // int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
+            // int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            // int[] array = new int[] { 2, 1 };
+            int[] array = new int[] { 7, 1, 2, 3, 4 };
 
             // BubbleSortWhileOptimized(array);
             // BubbleSortDoubleFor(array);
             // SelectionSort(array);
             // SelectionSortSwapAtTheEndOfCicle(array);
             // MergeSort(array, 0, array.Length - 1);
-            MergeSortJBEvans(array);
-            foreach (var item in array)
+            // MergeSortJBEvans(array);
+
+            // QuickSort(array);
+            QuickSort2(array, 0, array.Length - 1);
+
+            for (int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(array[i]);
             }
 
             return;
+
+            // https://www.youtube.com/watch?v=7h1s2SojIRw
+            static void QuickSort2(int[] array, int l, int r)
+            {
+
+                if (l < r)
+                {
+                    int pivotPosition = Partition(array, l, r);
+                    QuickSort2(array, l, pivotPosition - 1);
+                    QuickSort2(array, pivotPosition, r);
+                }
+
+                static int Partition(int[] array, int l, int r)
+                {
+                    int i = l;
+                    int j = r;
+
+                    int pivotValue = array[l];
+
+                    while (i < j)
+                    {
+                        do
+                        {
+                            i++;
+                        } while (array[i] <= pivotValue);
+
+                        do
+                        {
+                            j--;
+                        } while (array[j] > pivotValue);
+
+                        if (i < j)
+                        {
+                            Swap(array, i, j);
+                        }
+                    }
+                    Swap(array, l, j);
+                    return j;
+                }
+
+                static void Swap(int[] array, int a, int b)
+                {
+                    int tmp = array[a];
+                    array[a] = array[b];
+                    array[b] = tmp;
+                }
+            }
+
+            static void QuickSort(int[] array)
+            {
+                QuickSort(array, 0, array.Length - 1);
+
+                static void QuickSort(int[] array, int left, int right)
+                {
+                    int index = Partition(array, left, right);
+                    if (left < index - 1)
+                    {
+                        QuickSort(array, left, index - 1);
+                    }
+                    if (index < right)
+                    {
+                        QuickSort(array, index, right);
+                    }
+                }
+
+                static int Partition(int[] array, int left, int right)
+                {
+                    int pivot = (left + right) / 2;
+
+                    while (left <= right)
+                    {
+                        while (array[left] < array[pivot])
+                            left++;
+
+                        while (array[right] > array[pivot])
+                            right--;
+
+                        if (left <= right)
+                        {
+                            Swap(array, left, right);
+                            left++;
+                            right--;
+                        }
+                    }
+
+                    return left;
+                }
+
+                static void Swap(int[] array, int a, int b)
+                {
+                    int tmp = array[a];
+                    array[a] = array[b];
+                    array[b] = tmp;
+                }
+            }
+
 
             static void MergeSortJBEvans(int[] array)
             {
@@ -183,28 +285,28 @@ namespace Interview
                 TopDownSplitMerge(this.buffer, this.elements, start, length);
             }
 
-            private void TopDownSplitMerge(int[] a, int[] b, int start, int end)
+            private void TopDownSplitMerge(int[] buffer, int[] elements, int start, int end)
             {
                 if (end - start < 2)
                     return;
 
                 int middle = (end + start) / 2;
-                TopDownSplitMerge(b, a, start, middle);
-                TopDownSplitMerge(b, a, middle, end);
-                TopDownMerge(a, b, start, middle, end);
+                TopDownSplitMerge(elements, buffer, start, middle);
+                TopDownSplitMerge(elements, buffer, middle, end);
+                TopDownMerge(buffer, elements, start, middle, end);
             }
 
-            private void TopDownMerge(int[] a, int[] b, int start, int middle, int end)
+            private void TopDownMerge(int[] buffer, int[] elements, int start, int middle, int end)
             {
                 for (int i = start, j = middle, k = start; k < end; k++)
                 {
-                    if (i < middle && (j >= end || a[i] <= a[j]))
+                    if (i < middle && (j >= end || buffer[i] <= buffer[j]))
                     {
-                        b[k] = a[i++];
+                        elements[k] = buffer[i++];
                     }
                     else
                     {
-                        b[k] = a[j++];
+                        elements[k] = buffer[j++];
                     }
                 }
             }
