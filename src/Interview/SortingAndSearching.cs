@@ -6,10 +6,10 @@ namespace Interview
     {
         public static void Sorting()
         {
-            // int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
+            int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
             // int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
             // int[] array = new int[] { 2, 1 };
-            int[] array = new int[] { 7, 1, 2, 3, 4 };
+            // int[] array = new int[] { 7, 1, 2, 3, 4 };
 
             // BubbleSortWhileOptimized(array);
             // BubbleSortDoubleFor(array);
@@ -35,8 +35,8 @@ namespace Interview
                 if (l < r)
                 {
                     int pivotPosition = Partition(array, l, r);
-                    QuickSort2(array, l, pivotPosition - 1);
-                    QuickSort2(array, pivotPosition, r);
+                    QuickSort2(array, l, pivotPosition);
+                    QuickSort2(array, pivotPosition + 1, r);
                 }
 
                 static int Partition(int[] array, int l, int r)
