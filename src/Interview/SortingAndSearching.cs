@@ -42,14 +42,14 @@ namespace Interview
 
             static int Partition(int[] array, int left, int right)
             {
-                int pivot = array[(left + right) / 2];
+                int pivot = (left + right) / 2;
 
-                if (left <= right)
+                while (left <= right)
                 {
-                    while (array[left] < pivot)
+                    while (array[left] < array[pivot])
                         left++;
 
-                    while (array[right] > pivot)
+                    while (array[right] > array[pivot])
                         right--;
 
                     if (left <= right)
