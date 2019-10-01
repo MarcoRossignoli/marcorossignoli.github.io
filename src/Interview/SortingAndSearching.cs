@@ -6,10 +6,10 @@ namespace Interview
     {
         public static void Sorting()
         {
-            int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
-            // int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            // int[] array = new int[] { 2, 1 };
-            // int[] array = new int[] { 7, 1, 2, 3, 4 };
+            //int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
+            //int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            //int[] array = new int[] { 2, 1 };
+            int[] array = new int[] { 7, 1, 2, 3, 4 };
 
             // BubbleSortWhileOptimized(array);
             // BubbleSortDoubleFor(array);
@@ -31,41 +31,61 @@ namespace Interview
             // https://www.youtube.com/watch?v=7h1s2SojIRw
             static void QuickSort2(int[] array, int l, int r)
             {
-
                 if (l < r)
                 {
                     int pivotPosition = Partition(array, l, r);
-                    QuickSort2(array, l, pivotPosition);
+                    QuickSort2(array, l, pivotPosition - 1);
                     QuickSort2(array, pivotPosition + 1, r);
                 }
 
+                // Partition start from right
                 static int Partition(int[] array, int l, int r)
                 {
                     int i = l;
-                    int j = r;
+                    int j = r - 1;
+                    int pivot = array[r];
 
-                    int pivotValue = array[l];
+                    while(array[l] < pivot)
+                        l++;
 
-                    while (i < j)
-                    {
-                        do
-                        {
-                            i++;
-                        } while (array[i] <= pivotValue);
+                    while (array[r] > pivot)
+                        r++;
 
-                        do
-                        {
-                            j--;
-                        } while (array[j] > pivotValue);
-
-                        if (i < j)
-                        {
-                            Swap(array, i, j);
-                        }
-                    }
-                    Swap(array, l, j);
-                    return j;
                 }
+
+                // Partition start from left
+                //static int Partition(int[] array, int l, int r)
+                //{
+                //    int i = l;
+                //    int j = r;
+
+                //    int pivotValue = array[l];
+
+                //    while (i < j)
+                //    {
+                //        for (; i < r; i++)
+                //        {
+                //            if (array[i] > pivotValue)
+                //                break;
+                //        }
+
+                //        for (; j >= i; j--)
+                //        {
+                //            if (array[j] < pivotValue)
+                //                break;
+                //        }
+
+                //        if (i < j)
+                //        {
+                //            Swap(array, i, j);
+                //            i++;
+                //            j--;
+                //        }
+                //    }
+
+                //    Swap(array, l, j);
+                //    return j;
+                //}
 
                 static void Swap(int[] array, int a, int b)
                 {
