@@ -22,13 +22,127 @@ namespace Interview
             // QuickSort(array);
             // QuickSort2(array, 0, array.Length - 1);
             // QuickSort3(array, 0, array.Length - 1);
-            QuickSort4(array, 0, array.Length - 1);
+            // QuickSort4(array, 0, array.Length - 1);
+            RadixSort(array);
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine(array[i]);
             }
 
             return;
+
+            static void RadixSort(int[] array)
+            {
+                int startOfPositive = PartitionByZero(array);
+
+                RadixSortInternal(array, startOfPositive, array.Length - 1);
+                RadixSortInternal(array, 0, startOfPositive - 1);
+                ReverseNegative(array, 0, startOfPositive - 1);
+
+                void ReverseNegative(int[] array, int s, int e)
+                {
+                    while (s < e)
+                    {
+                        int tmp = array[s];
+                        array[s] = array[e];
+                        array[e] = tmp;
+                        s++;
+                        e--;
+                    }
+                }
+
+                void RadixSortInternal(int[] array, int s, int e)
+                {
+                    if (s >= e)
+                        return;
+
+                    System.Collections.Generic.List<System.Collections.Generic.Queue<int>> buckets =
+                    new System.Collections.Generic.List<System.Collections.Generic.Queue<int>>();
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        buckets.Add(new System.Collections.Generic.Queue<int>());
+                    }
+
+                    int passes = MaxDigit(array, s, e);
+                    for (int i = 1; i <= passes; i++)
+                    {
+                        for (int k = s; k <= e; k++)
+                        {
+                            int countDigit = CountDigit(array[k]);
+                            if (countDigit >= i)
+                            {
+                                int digitVal = GetDigit(array[k], countDigit - i);
+                                buckets[digitVal].Enqueue(array[k]);
+                            }
+                            else
+                            {
+                                buckets[0].Enqueue(array[k]);
+                            }
+                        }
+
+                        int indexCount = s;
+                        foreach (var b in buckets)
+                        {
+                            while (b.Count > 0)
+                            {
+                                array[indexCount] = b.Dequeue();
+                                indexCount++;
+                            }
+                        }
+                    }
+                }
+
+                static int GetDigit(int n, int position)
+                {
+                    return int.Parse(Math.Abs(n).ToString().Substring(position, 1));
+                }
+
+                static int MaxDigit(int[] array, int s, int e)
+                {
+                    int max = 0;
+                    for (int i = s; i <= e; i++)
+                    {
+                        max = Math.Max(max, CountDigit(array[i]));
+                    }
+                    return max;
+                }
+
+                static int CountDigit(int n)
+                {
+                    return (int)Math.Log10(Math.Abs((double)n)) + 1;
+                }
+
+                static int PartitionByZero(int[] array)
+                {
+                    int l = 0;
+                    int r = array.Length - 1;
+
+                    while (l <= r)
+                    {
+                        while (array[l] < 0)
+                            l++;
+
+                        while (array[r] > 0)
+                            r--;
+
+                        if (l <= r)
+                        {
+                            Swap(array, l, r);
+                            l++;
+                            r--;
+                        }
+                    }
+                    return l;
+                }
+
+                static void Swap(int[] array, int a, int b)
+                {
+                    int tmp = array[a];
+                    array[a] = array[b];
+                    array[b] = tmp;
+                }
+            }
 
             static void QuickSort4(int[] array, int left, int right)
             {
