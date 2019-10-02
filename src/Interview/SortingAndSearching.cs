@@ -72,7 +72,7 @@ namespace Interview
                             int countDigit = CountDigit(array[k]);
                             if (countDigit >= i)
                             {
-                                int digitVal = GetDigit(array[k], countDigit - i);
+                                int digitVal = GetDigit(array[k], i - 1);
                                 buckets[digitVal].Enqueue(array[k]);
                             }
                             else
@@ -82,7 +82,7 @@ namespace Interview
                         }
 
                         int indexCount = s;
-                        foreach (var b in buckets)
+                        foreach (System.Collections.Generic.Queue<int> b in buckets)
                         {
                             while (b.Count > 0)
                             {
@@ -95,8 +95,12 @@ namespace Interview
 
                 static int GetDigit(int n, int position)
                 {
-                    return int.Parse(Math.Abs(n).ToString().Substring(position, 1));
+                    if (position == 0)
+                        return Math.Abs(n) % 10;
+
+                    return GetDigit(Math.Abs(n) / 10, position - 1);
                 }
+
 
                 static int MaxDigit(int[] array, int s, int e)
                 {
@@ -120,10 +124,10 @@ namespace Interview
 
                     while (l <= r)
                     {
-                        while (array[l] < 0)
+                        while (l < array.Length && array[l] < 0)
                             l++;
 
-                        while (array[r] > 0)
+                        while (r >= 0 && array[r] > 0)
                             r--;
 
                         if (l <= r)
