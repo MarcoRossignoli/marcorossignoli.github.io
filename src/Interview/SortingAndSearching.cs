@@ -4,6 +4,83 @@ namespace Interview
 {
     class SortingAndSearching
     {
+        public static void SortedMerge()
+        {
+            int[] a = new int[] { 2, 4, 6, 0, 0, 0 };
+            int[] b = new int[] { 1, 3, 5 };
+            //int[] a = new int[] { 1, 2, 3, 0, 0, 0 };
+            //int[] b = new int[] { 4, 5, 6 };
+
+            // SortedMerge(a, b);
+            SortedMerge_Pg396(a, b);
+
+            foreach (var i in a)
+            {
+                Console.WriteLine(i);
+            }
+
+            return;
+
+            static void SortedMerge_Pg396(int[] a, int[] b)
+            {
+                SortedMerge(a, b, a.Length - b.Length, b.Length);
+
+                static void SortedMerge(int[] a, int[] b, int lenghtA, int lenghtB)
+                {
+                    int lastIndexA = lenghtA - 1;
+                    int lastIndexB = lenghtB - 1;
+                    int lastIndexMerged = lenghtA + lenghtB - 1;
+
+                    while (lastIndexB >= 0)
+                    {
+                        if (lastIndexA >= 0 && a[lastIndexA] > b[lastIndexB])
+                        {
+                            a[lastIndexMerged] = a[lastIndexA];
+                            lastIndexA--;
+                        }
+                        else
+                        {
+                            a[lastIndexMerged] = b[lastIndexB];
+                            lastIndexB--;
+                        }
+                        lastIndexMerged--;
+                    }
+                }
+            }
+
+            static void SortedMerge(int[] a, int[] b)
+            {
+                int i = 0;
+                int j = 0;
+                int lenOfA = a.Length - b.Length;
+
+                while (j < b.Length && i < lenOfA)
+                {
+                    if (b[j] < a[i])
+                    {
+                        for (int k = a.Length - 2; k >= i; k--)
+                        {
+                            a[k + 1] = a[k];
+                        }
+                        a[i] = b[j];
+                        j++;
+                        lenOfA++;
+                        continue;
+                    }
+                    i++;
+                }
+
+                while (j < b.Length)
+                {
+                    a[i++] = b[j];
+                    j++;
+                }
+            }
+
+
+        }
+
+
         public static void Sorting()
         {
             int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };

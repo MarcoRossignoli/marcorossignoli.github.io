@@ -140,7 +140,8 @@ namespace Interview
             // TreesAndGraphs.RandomNodeStart();
             // TreesAndGraphs.BinaryTreeInsertDelete();
             // TreesAndGraphs.PathWithSum();
-            SortingAndSearching.Sorting();
+            // SortingAndSearching.Sorting();
+            SortingAndSearching.SortedMerge();
 
             Console.ReadKey();
         }
