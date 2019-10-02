@@ -6,10 +6,11 @@ namespace Interview
     {
         public static void Sorting()
         {
-            // int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
+            int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
             // int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
             // int[] array = new int[] { 2, 1 };
-            int[] array = new int[] { 7, 1, 2, 3, 4 };
+            // int[] array = new int[] { 7, 1, 2, 3, 4 };
+            // int[] array = new int[] { 7, 3, 5, 4, 2 };
 
             // BubbleSortWhileOptimized(array);
             // BubbleSortDoubleFor(array);
