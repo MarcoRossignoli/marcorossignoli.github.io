@@ -143,7 +143,8 @@ namespace Interview
             // SortingAndSearching.Sorting();
             // SortingAndSearching.SortedMerge();
             // SortingAndSearching.GroupAnagrams();
-            SortingAndSearching.GroupAnagrams2();
+            // SortingAndSearching.GroupAnagrams2();
+            SortingAndSearching.SearchInRotatedArray();
             Console.ReadKey();
         }
     }

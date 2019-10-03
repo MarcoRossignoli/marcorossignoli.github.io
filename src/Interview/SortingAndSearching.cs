@@ -4,6 +4,45 @@ namespace Interview
 {
     class SortingAndSearching
     {
+        public static void SearchInRotatedArray()
+        {
+            int foundIndex = -1;
+            int n = 19;
+            int[] a = new int[] { 15, 16, 19, 20, 25, 25, 1, 3, 4, 5, 7, 10, 14 };
+
+            int s = 0;
+
+            for (int i = 0; i < a.Length - 2; i++)
+            {
+                if (a[i] - a[i + 1] > 0)
+                {
+                    s = i + 1;
+                    break;
+                }
+            }
+
+            int fs = 0;
+            int fe = a.Length - 1;
+
+            while (fs <= fe)
+            {
+                int mid = (fs + fe) / 2;
+
+                if (a[(s + mid) % a.Length] > n)
+                    fe = mid - 1;
+                else if (a[(s + mid) % a.Length] < n)
+                    fs = mid + 1;
+                else
+                {
+                    foundIndex = (s + mid) % a.Length;
+                    break;
+                }
+            }
+
+            Console.WriteLine(foundIndex);
+
+        }
+
         public static void GroupAnagrams2()
         {
             string[] a = new string[] { "ENAC", "EANC", "FRANCO", "BA", "NAEC", "OCNARF", "AB", "D" };
