@@ -141,8 +141,9 @@ namespace Interview
             // TreesAndGraphs.BinaryTreeInsertDelete();
             // TreesAndGraphs.PathWithSum();
             // SortingAndSearching.Sorting();
-            SortingAndSearching.SortedMerge();
-
+            // SortingAndSearching.SortedMerge();
+            // SortingAndSearching.GroupAnagrams();
+            SortingAndSearching.GroupAnagrams2();
             Console.ReadKey();
         }
     }

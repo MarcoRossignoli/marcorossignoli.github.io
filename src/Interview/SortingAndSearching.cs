@@ -4,6 +4,156 @@ namespace Interview
 {
     class SortingAndSearching
     {
+        public static void GroupAnagrams2()
+        {
+            string[] a = new string[] { "AB", "CD", "BA", "DC" };
+
+            //Console.WriteLine(FirstInOrder("arco", "Marco"));
+            //Console.WriteLine(FirstInOrder("arco", "arco"));
+            //Console.WriteLine(FirstInOrder("arco", "arc"));
+            //Console.WriteLine(FirstInOrder("rco", "arc"));
+            //Console.WriteLine(FirstInOrder("Arco", "arc"));
+            //Console.WriteLine(FirstInOrder("Marco", "Marco"));
+
+            QuickSortString(a, 0, a.Length - 1);
+
+            foreach (var item in a)
+            {
+                Console.WriteLine(item);
+            }
+
+            return;
+
+            static void QuickSortString(string[] array, int l, int r)
+            {
+                int i = Partition(array, l, r);
+                if (l < i - 1)
+                    Partition(array, l, i - 1);
+                if (i < r)
+                    Partition(array, i, r);
+
+
+            }
+        }
+
+        static int Partition(string[] a, int l, int r)
+        {
+            string pivot = a[(l + r) / 2];
+            while (l <= r)
+            {
+                while (FirstInOrder(QuickSortString(a[l]), QuickSortString(pivot)) == -1)
+                    l++;
+
+                while (FirstInOrder(QuickSortString(a[r]), QuickSortString(pivot)) == 1)
+                    r--;
+
+                if (l <= r)
+                {
+                    string tmp = a[r];
+                    a[r] = a[l];
+                    a[l] = tmp;
+                    l++;
+                    r--;
+                }
+            }
+            return l;
+        }
+
+        // 0 equal
+        // -1 a < b
+        // 1  b < a
+        static int FirstInOrder(string sa, string sb)
+        {
+            char[] a = sa.ToCharArray();
+            char[] b = sb.ToCharArray();
+
+            int ai = 0;
+            int bi = 0;
+
+            while (ai < a.Length && bi < b.Length)
+            {
+                if (a[ai] > b[bi])
+                    return 1;
+                else if (a[ai] < b[bi])
+                    return -1;
+
+                ai++;
+                bi++;
+            }
+
+            if (a.Length == b.Length)
+                return 0;
+            else if (a.Length < b.Length)
+                return -1;
+            else
+                return 1;
+        }
+
+        static void QuickSort(char[] array, int l, int r)
+        {
+            int i = Partition(array, l, r);
+            if (l < i - 1)
+                Partition(array, l, i - 1);
+            if (i < r)
+                Partition(array, i, r);
+
+            static int Partition(char[] a, int l, int r)
+            {
+                char pivot = a[(l + r) / 2];
+                while (l <= r)
+                {
+                    while (a[l] < pivot)
+                        l++;
+                    while (a[r] > pivot)
+                        r--;
+
+                    if (l <= r)
+                    {
+                        char tmp = a[r];
+                        a[r] = a[l];
+                        a[l] = tmp;
+                        l++;
+                        r--;
+                    }
+                }
+                return l;
+            }
+        }
+
+        static string QuickSortString(string s)
+        {
+            char[] sa = s.ToCharArray();
+            QuickSort(sa, 0, sa.Length - 1);
+            return new string(sa);
+        }
+
+        public static void GroupAnagrams()
+        {
+            string[] a = new string[] { "AB", "CD", "BA", "DC" };
+
+            foreach (var item in a)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
+
+            Array.Sort(a, (a, b) =>
+            {
+                char[] ar = a.ToCharArray();
+                char[] br = b.ToCharArray();
+                Array.Sort(ar);
+                Array.Sort(br);
+
+                return StringComparer.InvariantCultureIgnoreCase.Compare(new string(ar), new string(br));
+            });
+
+            foreach (var item in a)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
         public static void SortedMerge()
         {
             int[] a = new int[] { 2, 4, 6, 0, 0, 0 };
