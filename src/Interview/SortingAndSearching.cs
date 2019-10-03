@@ -6,23 +6,26 @@ namespace Interview
     {
         public static void GroupAnagrams2()
         {
-            // string[] a = new string[] { "ENAC", "EANC", "FRANCO", "NAEC" };
-            //string[] a = new string[] { "EANC", "FRANCO", "ENAC", "NAEC" };
+            string[] a = new string[] { "ENAC", "EANC", "FRANCO", "BA", "NAEC", "OCNARF", "AB", "D" };
+            // string[] a = new string[] { "EANC", "FRANCO", "ENAC", "EANC" };
 
-            //Console.WriteLine(FirstInOrder("arco", "Marco"));
-            //Console.WriteLine(FirstInOrder("arco", "arco"));
-            //Console.WriteLine(FirstInOrder("arco", "arc"));
-            //Console.WriteLine(FirstInOrder("rco", "arc"));
-            //Console.WriteLine(FirstInOrder("Arco", "arc"));
-            //Console.WriteLine(FirstInOrder("Marco", "Marco"));
-            Console.WriteLine(FirstInOrder("NAEC", "FRANCO"));
+            // Console.WriteLine(FirstInOrder("arco", "Marco"));
+            // Console.WriteLine(FirstInOrder("arco", "arco"));
+            // Console.WriteLine(FirstInOrder("arco", "arc"));
+            // Console.WriteLine(FirstInOrder("rco", "arc"));
+            // Console.WriteLine(FirstInOrder("Arco", "arc"));
+            // Console.WriteLine(FirstInOrder("Marco", "Marco"));
+            // Console.WriteLine(FirstInOrder("ENAC", "FRANCO"));
+            // Console.WriteLine(FirstInOrder("NAEC", "FRANCO"));
+            // Console.WriteLine(FirstInOrder("EANC", "FRANCO"));
+            // Console.WriteLine(FirstInOrder("NAEC", "FRANCO"));
 
-            //QuickSortString(a, 0, a.Length - 1);
+            QuickSortString(a, 0, a.Length - 1);
 
-            //foreach (var item in a)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            foreach (var item in a)
+            {
+                Console.WriteLine(item);
+            }
 
             return;
 
@@ -30,11 +33,9 @@ namespace Interview
             {
                 int i = Partition(array, l, r);
                 if (l < i - 1)
-                    Partition(array, l, i - 1);
+                    QuickSortString(array, l, i - 1);
                 if (i < r)
-                    Partition(array, i, r);
-
-
+                    QuickSortString(array, i, r);
             }
         }
 
@@ -66,26 +67,23 @@ namespace Interview
         // 1  b < a
         static int FirstInOrder(string sa, string sb)
         {
-            char[] a = sa.ToCharArray();
-            char[] b = sb.ToCharArray();
-
             int ai = 0;
             int bi = 0;
 
-            while (ai < a.Length && bi < b.Length)
+            while (ai < sa.Length && bi < sb.Length)
             {
-                if (a[ai] > b[bi])
+                if (sa[ai] > sb[bi])
                     return 1;
-                else if (a[ai] < b[bi])
+                else if (sa[ai] < sb[bi])
                     return -1;
 
                 ai++;
                 bi++;
             }
 
-            if (a.Length == b.Length)
+            if (sa.Length == sb.Length)
                 return 0;
-            else if (a.Length < b.Length)
+            else if (sa.Length < sb.Length)
                 return -1;
             else
                 return 1;
@@ -95,9 +93,9 @@ namespace Interview
         {
             int i = Partition(array, l, r);
             if (l < i - 1)
-                Partition(array, l, i - 1);
+                QuickSort(array, l, i - 1);
             if (i < r)
-                Partition(array, i, r);
+                QuickSort(array, i, r);
 
             static int Partition(char[] a, int l, int r)
             {
@@ -124,10 +122,17 @@ namespace Interview
 
         static string QuickSortString(string s)
         {
+            if (_anagramsCache.ContainsKey(s))
+                return _anagramsCache[s];
+
             char[] sa = s.ToCharArray();
             QuickSort(sa, 0, sa.Length - 1);
-            return new string(sa);
+            _anagramsCache.Add(s, new string(sa));
+
+            return _anagramsCache[s];
         }
+
+        static System.Collections.Generic.Dictionary<string, string> _anagramsCache = new System.Collections.Generic.Dictionary<string, string>();
 
         public static void GroupAnagrams()
         {
