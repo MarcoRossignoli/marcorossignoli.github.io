@@ -6,7 +6,8 @@ namespace Interview
     {
         public static void GroupAnagrams2()
         {
-            string[] a = new string[] { "AB", "CD", "BA", "DC" };
+            // string[] a = new string[] { "ENAC", "EANC", "FRANCO", "NAEC" };
+            //string[] a = new string[] { "EANC", "FRANCO", "ENAC", "NAEC" };
 
             //Console.WriteLine(FirstInOrder("arco", "Marco"));
             //Console.WriteLine(FirstInOrder("arco", "arco"));
@@ -14,13 +15,14 @@ namespace Interview
             //Console.WriteLine(FirstInOrder("rco", "arc"));
             //Console.WriteLine(FirstInOrder("Arco", "arc"));
             //Console.WriteLine(FirstInOrder("Marco", "Marco"));
+            Console.WriteLine(FirstInOrder("NAEC", "FRANCO"));
 
-            QuickSortString(a, 0, a.Length - 1);
+            //QuickSortString(a, 0, a.Length - 1);
 
-            foreach (var item in a)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in a)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             return;
 
