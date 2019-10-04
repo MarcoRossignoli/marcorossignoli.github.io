@@ -50,7 +50,7 @@ namespace Interview
         {
             ArrayNoSize a = new ArrayNoSize(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
-            Console.WriteLine(Find(a, 3));
+            Console.WriteLine(Find(a, 9));
 
             static int Find(ArrayNoSize a, int x)
             {
@@ -62,7 +62,15 @@ namespace Interview
 
                 while (l > -1)
                 {
-                    int i = Search(a, l, r, x);
+                    int i = -1;
+
+                    // optimization we can skip level where values are less than x
+                    // because are ordered
+                    if (x <= a.ItemAt(r))
+                    {
+                        i = Search(a, l, r, x);
+                    }
+
                     if (i == -1)
                     {
                         l = r + 1;
