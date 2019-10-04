@@ -6,11 +6,51 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void SortedSearchNoSize_Pg411()
+        {
+            ArrayNoSize a = new ArrayNoSize(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+            Console.WriteLine(Find(a, 9));
+
+            static int Find(ArrayNoSize a, int x)
+            {
+                int index = 1;
+                while (a.ItemAt(index) > -1 && a.ItemAt(index) < x)
+                {
+                    index *= 2;
+                }
+
+                return Search(a, index / 2, index, x);
+            }
+
+            static int Search(ArrayNoSize a, int l, int r, int x)
+            {
+                while (l <= r)
+                {
+                    int mid = (l + r) / 2;
+
+                    if (a.ItemAt(mid) == x)
+                        return mid;
+
+                    if (a.ItemAt(mid) == -1 || a.ItemAt(mid) > x)
+                    {
+                        r = mid - 1;
+                    }
+                    else
+                    {
+                        l = mid + 1;
+                    }
+                }
+
+                return -1;
+            }
+        }
+
         public static void SortedSearchNoSize()
         {
             ArrayNoSize a = new ArrayNoSize(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
-            Console.WriteLine(Find(a, 7));
+            Console.WriteLine(Find(a, 3));
 
             static int Find(ArrayNoSize a, int x)
             {
