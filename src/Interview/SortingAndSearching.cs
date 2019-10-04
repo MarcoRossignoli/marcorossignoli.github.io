@@ -2,8 +2,83 @@
 
 namespace Interview
 {
+    // 157
+    // 407
     class SortingAndSearching
     {
+        public static void SortedSearchNoSize()
+        {
+            ArrayNoSize a = new ArrayNoSize(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+            Console.WriteLine(Find(a, 7));
+
+            static int Find(ArrayNoSize a, int x)
+            {
+                int l = 0;
+                int r = 0;
+
+                if (a.ItemAt(0) == -1)
+                    return -1;
+
+                while (l > -1)
+                {
+                    int i = Search(a, l, r, x);
+                    if (i == -1)
+                    {
+                        l = r + 1;
+
+                        if (a.ItemAt(l) == -1)
+                            return -1;
+
+                        r = l * 2;
+                        while (a.ItemAt(r) == -1)
+                        {
+                            r = (l + r) / 2;
+                        }
+                    }
+                    else
+                        return i;
+                }
+                return -1;
+            }
+
+            static int Search(ArrayNoSize a, int l, int r, int x)
+            {
+                while (l <= r)
+                {
+                    int mid = (l + r) / 2;
+                    if (a.ItemAt(mid) == x)
+                        return mid;
+
+                    if (a.ItemAt(mid) > x)
+                        r = mid - 1;
+                    else
+                        l = mid + 1;
+                }
+
+                return -1;
+            }
+
+        }
+
+        class ArrayNoSize
+        {
+            int[] _a;
+            public ArrayNoSize(int[] a)
+            {
+                _a = a;
+            }
+
+            public int ItemAt(int i)
+            {
+                if (i < 0 || i > _a.Length - 1)
+                    return -1;
+
+                return _a[i];
+            }
+
+        }
+
         public static void SearchInRotatedArray()
         {
             int foundIndex = -1;

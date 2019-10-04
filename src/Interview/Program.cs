@@ -144,7 +144,9 @@ namespace Interview
             // SortingAndSearching.SortedMerge();
             // SortingAndSearching.GroupAnagrams();
             // SortingAndSearching.GroupAnagrams2();
-            SortingAndSearching.SearchInRotatedArray();
+            // SortingAndSearching.SearchInRotatedArray();
+            SortingAndSearching.SortedSearchNoSize();
+
             Console.ReadKey();
         }
     }
