@@ -6,6 +6,94 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void SparseSearch_Pg401()
+        {
+            string[] a = new string[] { "at", "", "", "", "ball", "", "", "car", "", "", "dad", "", "" };
+
+            Console.WriteLine(S(a, 0, a.Length - 1, "ball"));
+
+            return;
+
+            static int S(string[] a, int l, int r, string s)
+            {
+                while (l <= r)
+                {
+                    int mid = (l + r) / 2;
+
+                    if (a[mid] == "")
+                    {
+                        int li = mid - 1;
+                        int ri = mid + 1;
+
+                        while (true)
+                        {
+
+                            if (li < l && ri > r)
+                                return -1;
+                            else if (ri <= r && a[ri] != "")
+                            {
+                                mid = ri;
+                                break;
+                            }
+                            else if (li >= l && a[li] != "")
+                            {
+                                mid = li;
+                                break;
+                            }
+                            li--;
+                            ri++;
+                        }
+                    }
+
+                    if (a[mid].CompareTo(s) == 0)
+                        return mid;
+                    else if (a[mid].CompareTo(s) == -1)
+                        return S(a, mid + 1, r, s);
+                    else
+                        return S(a, l, mid - 1, s);
+                }
+                return -1;
+            }
+
+        }
+
+        public static void SparseSearch()
+        {
+            string[] a = new string[] { "at", "", "", "", "ball", "", "", "car", "", "", "dad", "", "" };
+
+            Console.WriteLine(S(a, 0, a.Length - 1, "ball"));
+
+            return;
+
+            static int S(string[] a, int l, int r, string s)
+            {
+                while (l <= r)
+                {
+                    int mid = (l + r) / 2;
+
+                    if (a[mid] == s)
+                        return mid;
+
+                    if (a[mid] == "")
+                    {
+                        int ls = S(a, l, mid - 1, s);
+                        if (ls != -1)
+                            return ls;
+                        int rs = S(a, mid + 1, r, s);
+                        if (rs != -1)
+                            return rs;
+                    }
+
+                    if (a[mid].CompareTo(s) == -1)
+                        return S(a, mid + 1, r, s);
+                    else
+                        return S(a, l, mid - 1, s);
+                }
+                return -1;
+            }
+
+        }
+
         public static void SortedSearchNoSize_Pg411()
         {
             ArrayNoSize a = new ArrayNoSize(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
