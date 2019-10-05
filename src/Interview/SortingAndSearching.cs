@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Interview
 {
@@ -6,6 +7,129 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void SortBigFile()
+        {
+            GenerateBigFile();
+
+            string endFile = SplitMergeFile("bigFile.txt", 0, new FileInfo("bigFile.txt").Length);
+
+            Console.WriteLine("end");
+
+            return;
+
+            static string SplitMergeFile(string fileName, long startOffset, long endOffset)
+            {
+                if (startOffset < endOffset && (endOffset - startOffset) >= 50 * (1024 * 1024))
+                {
+                    (long mid, long next) = FindNextLine((startOffset + endOffset) / 2, fileName);
+
+                    string lf = SplitMergeFile(fileName, startOffset, mid);
+                    string rf = SplitMergeFile(fileName, next, endOffset);
+
+                    if (lf is null && rf is null)
+                        return WritePartition(fileName, startOffset, endOffset);
+                    else
+                        return Merge(lf, rf);
+                }
+                return null;
+            }
+
+            static string WritePartition(string originalFileName, long startOffset, long endOffset)
+            {
+                using (FileStream fs = File.OpenRead(originalFileName))
+                {
+                    fs.Seek(startOffset, SeekOrigin.Begin);
+                    using (FileStream write = File.OpenWrite(Path.GetRandomFileName()))
+                    {
+                        byte[] buffer = new byte[1024];
+                        while (fs.Position <= endOffset)
+                        {
+                            fs.Read(buffer, 0, buffer.Length);
+                            write.Write(buffer, 0, buffer.Length);
+                        }
+                        return write.Name;
+                    }
+                }
+            }
+
+            static string Merge(string file1, string file2)
+            {
+                using var fs1 = File.OpenRead(file1);
+                using var fs2 = File.OpenRead(file2);
+                using var fs1r = new StreamReader(fs1);
+                using var fs2r = new StreamReader(fs2);
+                string mergedFileName = Path.GetRandomFileName();
+                using var fsmerged = new StreamWriter(File.OpenWrite(mergedFileName));
+
+                string line1 = fs1r.ReadLine();
+                string line2 = fs2r.ReadLine();
+                while (!fs1r.EndOfStream && !fs2r.EndOfStream)
+                {
+                    if (line1.CompareTo(line2) <= 0)
+                    {
+                        fsmerged.WriteLine(line1);
+                        line1 = fs1r.ReadLine();
+                    }
+                    else
+                    {
+                        fsmerged.WriteLine(line2);
+                        line2 = fs1r.ReadLine();
+                    }
+                }
+
+                if (!fs1r.EndOfStream)
+                {
+
+                }
+
+                if (!fs2r.EndOfStream)
+                {
+
+                }
+
+                fs1.Dispose();
+                fs2.Dispose();
+
+                File.Delete(file1);
+                File.Delete(file2);
+
+                return mergedFileName;
+            }
+
+            static (long, long) FindNextLine(long mid, string fileName)
+            {
+                using (var file = File.OpenRead(fileName))
+                {
+                    file.Seek(mid, SeekOrigin.Begin);
+                    using (StreamReader reader = new StreamReader(file))
+                    {
+                        reader.ReadLine();
+                        long first = file.Position;
+                        reader.ReadLine();
+                        long next = file.Position;
+                        return (first, next);
+                    }
+                }
+            }
+
+            static void GenerateBigFile()
+            {
+                if (File.Exists("bigFile.txt"))
+                    return;
+
+                using (FileStream fs = new FileStream("bigFile.txt", FileMode.Create))
+                {
+                    using (StreamWriter sw = new StreamWriter(fs, null, 1024, leaveOpen: true))
+                    {
+                        while (fs.Length < (1024 * 1024) * 500)
+                        {
+                            sw.WriteLine(Guid.NewGuid().ToString());
+                        }
+                    }
+                }
+            }
+        }
+
         public static void SparseSearch_Pg401()
         {
             string[] a = new string[] { "at", "", "", "", "ball", "", "", "car", "", "", "dad", "", "" };
