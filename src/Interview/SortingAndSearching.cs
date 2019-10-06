@@ -7,126 +7,148 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
-        public static void SortBigFile()
+        public static void QuickSortAndMergeSorteIterative()
         {
-            GenerateBigFile();
+            int[] a = new int[] { 4, 3, 5, 6, 8, 345, 7, 5, 2 };
 
-            string endFile = SplitMergeFile("bigFile.txt", 0, new FileInfo("bigFile.txt").Length);
+            QuickSortIterative(a, 0, a.Length - 1);
 
-            Console.WriteLine("end");
+            foreach (var v in a)
+            {
+                Console.WriteLine(v);
+            }
+
+            Console.WriteLine();
+
+            a = new int[] { 4, 3, 5, 6, 8, 345, 7, 5, 2 };
+
+            MergeSortIterative(a, 0, a.Length - 1);
+
+            foreach (var v in a)
+            {
+                Console.WriteLine(v);
+            }
 
             return;
 
-            static string SplitMergeFile(string fileName, long startOffset, long endOffset)
+            static void MergeSortIterative(int[] a, int l, int h)
             {
-                if (startOffset < endOffset && (endOffset - startOffset) >= 50 * (1024 * 1024))
+                int curr_size;
+                int left_start;
+                for (curr_size = 1; curr_size <= a.Length - 1; curr_size = 2 * curr_size)
                 {
-                    (long mid, long next) = FindNextLine((startOffset + endOffset) / 2, fileName);
-
-                    string lf = SplitMergeFile(fileName, startOffset, mid);
-                    string rf = SplitMergeFile(fileName, next, endOffset);
-
-                    if (lf is null && rf is null)
-                        return WritePartition(fileName, startOffset, endOffset);
-                    else
-                        return Merge(lf, rf);
-                }
-                return null;
-            }
-
-            static string WritePartition(string originalFileName, long startOffset, long endOffset)
-            {
-                using (FileStream fs = File.OpenRead(originalFileName))
-                {
-                    fs.Seek(startOffset, SeekOrigin.Begin);
-                    using (FileStream write = File.OpenWrite(Path.GetRandomFileName()))
+                    for (left_start = 0; left_start < a.Length - 1; left_start += 2 * curr_size)
                     {
-                        byte[] buffer = new byte[1024];
-                        while (fs.Position <= endOffset)
-                        {
-                            fs.Read(buffer, 0, buffer.Length);
-                            write.Write(buffer, 0, buffer.Length);
-                        }
-                        return write.Name;
+                        int mid = left_start + curr_size - 1;
+                        int right_end = Math.Min(left_start + 2 * curr_size - 1, a.Length - 1);
+                        Merge(a, left_start, mid, right_end);
                     }
                 }
             }
 
-            static string Merge(string file1, string file2)
+            static void Merge(int[] arr, int l, int m, int r)
             {
-                using var fs1 = File.OpenRead(file1);
-                using var fs2 = File.OpenRead(file2);
-                using var fs1r = new StreamReader(fs1);
-                using var fs2r = new StreamReader(fs2);
-                string mergedFileName = Path.GetRandomFileName();
-                using var fsmerged = new StreamWriter(File.OpenWrite(mergedFileName));
+                int i, j, k;
+                int n1 = m - l + 1;
+                int n2 = r - m;
 
-                string line1 = fs1r.ReadLine();
-                string line2 = fs2r.ReadLine();
-                while (!fs1r.EndOfStream && !fs2r.EndOfStream)
+                int[] L = new int[n1];
+                int[] R = new int[n2];
+
+                for (i = 0; i < n1; i++)
+                    L[i] = arr[l + i];
+                for (j = 0; j < n2; j++)
+                    R[j] = arr[m + 1 + j];
+
+                i = 0;
+                j = 0;
+                k = l;
+                while (i < n1 && j < n2)
                 {
-                    if (line1.CompareTo(line2) <= 0)
+                    if (L[i] <= R[j])
                     {
-                        fsmerged.WriteLine(line1);
-                        line1 = fs1r.ReadLine();
+                        arr[k] = L[i];
+                        i++;
                     }
                     else
                     {
-                        fsmerged.WriteLine(line2);
-                        line2 = fs1r.ReadLine();
+                        arr[k] = R[j];
+                        j++;
                     }
+                    k++;
                 }
 
-                if (!fs1r.EndOfStream)
+                while (i < n1)
                 {
-
+                    arr[k] = L[i];
+                    i++;
+                    k++;
                 }
-
-                if (!fs2r.EndOfStream)
+                while (j < n2)
                 {
-
-                }
-
-                fs1.Dispose();
-                fs2.Dispose();
-
-                File.Delete(file1);
-                File.Delete(file2);
-
-                return mergedFileName;
-            }
-
-            static (long, long) FindNextLine(long mid, string fileName)
-            {
-                using (var file = File.OpenRead(fileName))
-                {
-                    file.Seek(mid, SeekOrigin.Begin);
-                    using (StreamReader reader = new StreamReader(file))
-                    {
-                        reader.ReadLine();
-                        long first = file.Position;
-                        reader.ReadLine();
-                        long next = file.Position;
-                        return (first, next);
-                    }
+                    arr[k] = R[j];
+                    j++;
+                    k++;
                 }
             }
 
-            static void GenerateBigFile()
+            static void QuickSortIterative(int[] a, int l, int h)
             {
-                if (File.Exists("bigFile.txt"))
-                    return;
+                Stack<int> stack = new Stack<int>();
 
-                using (FileStream fs = new FileStream("bigFile.txt", FileMode.Create))
+                stack.Push(l);
+                stack.Push(h);
+
+                while (!stack.IsEmpty())
                 {
-                    using (StreamWriter sw = new StreamWriter(fs, null, 1024, leaveOpen: true))
+                    int ch = stack.Pop();
+                    int cl = stack.Pop();
+
+                    int i = Partition(a, cl, ch);
+
+                    if (cl < i - 1)
                     {
-                        while (fs.Length < (1024 * 1024) * 500)
-                        {
-                            sw.WriteLine(Guid.NewGuid().ToString());
-                        }
+                        stack.Push(cl);
+                        stack.Push(i - 1);
+                    }
+
+                    if (i < ch)
+                    {
+                        stack.Push(i);
+                        stack.Push(ch);
+                    }
+
+                }
+            }
+
+            static int Partition(int[] array, int left, int right)
+            {
+                int pivot = (left + right) / 2;
+
+                while (left <= right)
+                {
+                    while (array[left] < array[pivot])
+                        left++;
+
+                    while (array[right] > array[pivot])
+                        right--;
+
+                    if (left <= right)
+                    {
+                        Swap(array, left, right);
+                        left++;
+                        right--;
                     }
                 }
+
+                return left;
+            }
+
+            static void Swap(int[] array, int a, int b)
+            {
+                int tmp = array[a];
+                array[a] = array[b];
+                array[b] = tmp;
             }
         }
 

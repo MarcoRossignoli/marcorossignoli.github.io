@@ -149,7 +149,8 @@ namespace Interview
             // SortingAndSearching.SortedSearchNoSize_Pg411();
             // SortingAndSearching.SparseSearch();
             // SortingAndSearching.SparseSearch_Pg401();
-            SortingAndSearching.SortBigFile();
+            // SortingAndSearching.SortBigFile();
+            SortingAndSearching.QuickSortAndMergeSorteIterative();
 
             Console.ReadKey();
         }
