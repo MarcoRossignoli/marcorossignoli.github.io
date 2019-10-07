@@ -7,6 +7,36 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void FindDup()
+        {
+            int[] a = new int[] {   0, 1, 2, 3, 4, 5, 6, 7,
+                                    8, 9, 10, 10 , 0 , 7 ,7 ,7
+                                };
+
+            byte[] m = new byte[1024 * 4];
+            System.Collections.Generic.HashSet<int> dup = new System.Collections.Generic.HashSet<int>();
+            for (int i = 0; i < a.Length; i++)
+            {
+                int arrayIndex = a[i] / 8;
+                int bitIndex = a[i] % 8;
+
+                if ((m[arrayIndex] & (1 << bitIndex)) == (1 << bitIndex))
+                {
+                    dup.Add(a[i]);
+                }
+                else
+                {
+                    m[arrayIndex] |= (byte)(1 << bitIndex);
+                }
+            }
+
+            foreach (var item in dup)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
         public static void QuickSortAndMergeSorteIterative()
         {
             int[] a = new int[] { 4, 3, 5, 6, 8, 345, 7, 5, 2 };
