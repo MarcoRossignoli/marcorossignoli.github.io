@@ -9,8 +9,10 @@ namespace Interview
     {
         public static void FindDup()
         {
-            int[] a = new int[] {   0, 1, 2, 3, 4, 5, 6, 7,
-                                    8, 9, 10, 10 , 0 , 7 ,7 ,7
+            int[] a = new int[] {   
+                                    0, 1, 2, 3, 4, 5, 6, 7,
+                                    8, 9, 10, 10 , 0 , 7 ,7,
+                                    11, 12, 34, 55, 33, 66, 66
                                 };
 
             byte[] m = new byte[1024 * 4];
