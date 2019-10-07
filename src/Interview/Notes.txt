@@ -22,11 +22,11 @@ Array and string pg. 88 -> 9 done
 Linked List pg. 92 -> 8 done
 Stack and queue pg. 96 -> 6 done
 Tree and graphs pg. 100 (not clear 4.9, 4.12 optimized) -> 12
-Sorting and Searching pg. 146 -> 5 so far
+Sorting and Searching pg. 146 -> 8 so far (pay attention 10.7)
 Bit manipulation pg. 112
 Recursion and Dynamic programming pg.130 -> 14 done
 
-Total so far 54
+Total so far 57
 
 Big O(49) https://www.bigocheatsheet.com/
 
