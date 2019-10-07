@@ -7,9 +7,79 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void SortedMatrix()
+        {
+            int[][] m = new int[][]
+            {
+                new int[] {15,20,40,85},
+                new int[] {20,35,80,95},
+                new int[] {30,55,95,105},
+                new int[] {40,80,100,120},
+            };
+
+            Console.WriteLine("(r,c) " + Find(m, 55));
+
+            return;
+
+            static (int r, int c) Find(int[][] m, int v)
+            {
+                if (m.Length == 0)
+                    return (-1, -1);
+
+                for (int r = 0, c = 0; r < m.Length && c < m[0].Length; r++, c++)
+                {
+                    if (m[r][c] == v)
+                        return (r, c);
+
+                    if (v < m[r][c])
+                        return (-1, -1);
+
+                    (int rc, int cc) = SearchCol(m, r, c + 1, m[0].Length - 1, v);
+                    if (rc != -1)
+                        return (rc, cc);
+
+                    (int rr, int cr) = SearchRow(m, c, r + 1, m.Length - 1, v);
+                    if (rr != -1)
+                        return (rr, cr);
+                }
+
+                return (-1, -1);
+            }
+
+            static (int r, int c) SearchRow(int[][] m, int c, int s, int e, int v)
+            {
+                while (s <= e)
+                {
+                    int mid = (s + e) / 2;
+                    if (m[mid][c] == v)
+                        return (mid, c);
+                    if (m[mid][c] > v)
+                        e = mid - 1;
+                    else
+                        s = mid + 1;
+                }
+                return (-1, -1);
+            }
+
+            static (int r, int c) SearchCol(int[][] m, int r, int s, int e, int v)
+            {
+                while (s <= e)
+                {
+                    int mid = (s + e) / 2;
+                    if (m[r][mid] == v)
+                        return (r, mid);
+                    if (m[r][mid] > v)
+                        e = mid - 1;
+                    else
+                        s = mid + 1;
+                }
+                return (-1, -1);
+            }
+        }
+
         public static void FindDup()
         {
-            int[] a = new int[] {   
+            int[] a = new int[] {
                                     0, 1, 2, 3, 4, 5, 6, 7,
                                     8, 9, 10, 10 , 0 , 7 ,7,
                                     11, 12, 34, 55, 33, 66, 66
