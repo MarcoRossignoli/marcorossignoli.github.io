@@ -8,6 +8,93 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void PeakValleySort()
+        {
+            int[] a = new int[] { 5, 3, 1, 2, 3 };
+
+            QuickSort(a, 0, a.Length - 1);
+
+            for (int i = 1; i < a.Length; i += 2)
+            {
+                Swap(a, i - 1, i);
+            }
+
+            //int[] t = new int[a.Length];
+            //Array.Copy(a, t, a.Length);
+
+            //int s = 0;
+            //int e = a.Length - 1;
+            //int i = 0;
+
+            //while (s <= e)
+            //{
+            //    if (s < e)
+            //    {
+            //        a[i++] = t[e];
+            //        a[i++] = t[s];
+            //    }
+            //    else
+            //    {
+            //        a[i] = t[e];
+            //    }
+            //    s++;
+            //    e--;
+            //}
+
+            foreach (var item in a)
+            {
+                Console.WriteLine(item);
+            }
+
+            return;
+
+            static void Swap(int[] array, int a, int b)
+            {
+                int tmp = array[a];
+                array[a] = array[b];
+                array[b] = tmp;
+            }
+
+            static void QuickSort(int[] a, int l, int r)
+            {
+                int partitionIndex = Partition(a, l, r);
+
+                if (l < partitionIndex - 1)
+                {
+                    QuickSort(a, l, partitionIndex - 1);
+                }
+
+                if (partitionIndex < r)
+                {
+                    QuickSort(a, partitionIndex, r);
+                }
+            }
+
+            static int Partition(int[] a, int l, int r)
+            {
+                int pivot = a[(l + r) / 2];
+                int lt = l;
+                int rt = r;
+                while (lt <= rt)
+                {
+                    while (a[lt] < pivot)
+                        lt++;
+                    while (a[rt] > pivot)
+                        rt--;
+                    if (lt <= rt)
+                    {
+                        int tmp = a[lt];
+                        a[lt] = a[rt];
+                        a[rt] = tmp;
+                        lt++;
+                        rt--;
+                    }
+                }
+                return lt;
+            }
+
+        }
+
         public static void RankFromStream()
         {
             RankNode rn = new RankNode(5);
@@ -20,7 +107,7 @@ namespace Interview
             rn.Insert(13);
             rn.Insert(3);
 
-            Console.WriteLine(rn.GetRank(4));
+            Console.WriteLine(rn.GetRank(3));
         }
 
         [DebuggerDisplay("{_data}")]
