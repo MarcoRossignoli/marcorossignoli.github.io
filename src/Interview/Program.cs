@@ -152,7 +152,8 @@ namespace Interview
             // SortingAndSearching.SortBigFile();
             // SortingAndSearching.QuickSortAndMergeSorteIterative();
             // SortingAndSearching.FindDup();
-            SortingAndSearching.SortedMatrix();
+            // SortingAndSearching.SortedMatrix();
+            SortingAndSearching.RankFromStream();
 
             Console.ReadKey();
         }

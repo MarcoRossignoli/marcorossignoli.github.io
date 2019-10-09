@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Interview
@@ -7,6 +8,76 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void RankFromStream()
+        {
+            RankNode rn = new RankNode(5);
+            rn.Insert(1);
+            rn.Insert(4);
+            rn.Insert(4);
+            rn.Insert(5);
+            rn.Insert(9);
+            rn.Insert(7);
+            rn.Insert(13);
+            rn.Insert(3);
+
+            Console.WriteLine(rn.GetRank(4));
+        }
+
+        [DebuggerDisplay("{_data}")]
+        class RankNode
+        {
+            int _data;
+
+            RankNode _left;
+            RankNode _right;
+
+            int _countLeft = 0;
+            public RankNode(int data)
+            {
+                _data = data;
+            }
+
+            public void Insert(int data)
+            {
+                if (data <= _data)
+                {
+                    if (_left is null)
+                        _left = new RankNode(data);
+                    else
+                        _left.Insert(data);
+                    _countLeft++;
+                }
+                else
+                {
+                    if (_right is null)
+                        _right = new RankNode(data);
+                    else
+                        _right.Insert(data);
+                }
+            }
+
+            public int GetRank(int data)
+            {
+                if (_data == data)
+                    return _countLeft;
+                else if (data <= _data)
+                {
+                    if (_left is null)
+                        return -1;
+                    else
+                        return _left.GetRank(data);
+                }
+                else
+                {
+                    int countRight = _right is null ? -1 : _right.GetRank(data);
+                    if (countRight == -1)
+                        return -1;
+                    else
+                        return _countLeft + 1 + countRight;
+                }
+            }
+        }
+
         public static void SortedMatrix()
         {
             int[][] m = new int[][]
