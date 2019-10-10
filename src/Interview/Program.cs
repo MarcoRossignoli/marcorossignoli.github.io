@@ -154,7 +154,8 @@ namespace Interview
             // SortingAndSearching.FindDup();
             // SortingAndSearching.SortedMatrix();
             // SortingAndSearching.RankFromStream();
-            SortingAndSearching.PeakValleySort();
+            // SortingAndSearching.PeakValleySort();
+            BitManipulation.Insertion();
 
             Console.ReadKey();
         }
