@@ -158,8 +158,9 @@ namespace Interview
             // BitManipulation.Insertion();
             // BitManipulation.Insertion_Pg276();
             // BitManipulation.BinaryToString();
-            BitManipulation.IntToBinary();
-            BitManipulation.IntToHex();
+            // BitManipulation.IntToBinary();
+            // BitManipulation.IntToHex();
+            BitManipulation.FlipBitToWin();
 
             Console.ReadKey();
         }

@@ -7,6 +7,7 @@ namespace Interview
 {
     // https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html
     // https://www.electronics-tutorials.ws/binary/binary-fractions.html Converting Decimal to a Binary Fraction
+    // https://graphics.stanford.edu/~seander/bithacks.html
     class BitManipulation
     {
         public static void IntToHex()
