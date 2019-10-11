@@ -10,6 +10,116 @@ namespace Interview
     // https://graphics.stanford.edu/~seander/bithacks.html
     class BitManipulation
     {
+        public static void NextNumberV2()
+        {
+            int v = 200;
+
+            int leftMostOneIndex = GetLeftMostOne(v);
+            int rightMostOneIndex = GeRightMostOne(v);
+            int rightMostZero = GetRightMostZero(v, 0);
+            int rightMostZeroFromLastFirstOne = GetRightMostZero(v, rightMostOneIndex + 1);
+
+            int low = v;
+            low = Update(low, leftMostOneIndex, false);
+            low = Update(low, rightMostZero, true);
+
+            int high = v;
+            high = Update(high, rightMostOneIndex, false);
+            high = Update(high, rightMostZeroFromLastFirstOne, true);
+
+
+            Console.WriteLine(v.ToString() + " " + v.ToBitStringConsoleString());
+            Console.WriteLine(low.ToString() + " " + low.ToBitStringConsoleString());
+            Console.WriteLine(high.ToString() + " " + high.ToBitStringConsoleString());
+
+            return;
+
+            int Update(int n, int i, bool bitValue)
+            {
+                int v = bitValue ? 1 : 0;
+                int re = ~(1 << i);
+                n = n & re;
+                n = n | (v << i);
+                return n;
+            }
+
+            int GetRightMostZero(int v, int start)
+            {
+                for (int i = start; i <= 31; i++)
+                {
+                    if ((v & (1 << i)) == 0)
+                        return i;
+                }
+                return -1;
+            }
+
+            int GeRightMostOne(int v)
+            {
+                for (int i = 0; i <= 31; i++)
+                {
+                    if ((v & (1 << i)) != 0)
+                        return i;
+                }
+                return -1;
+            }
+
+            int GetLeftMostOne(int v)
+            {
+                for (int i = 31; i >= 0; i--)
+                {
+                    if ((v & (1 << i)) != 0)
+                        return i;
+                }
+                return -1;
+            }
+        }
+
+        public static void NextNumber()
+        {
+
+            int v = 200;
+
+            Console.WriteLine(v.ToString() + " " + v.ToBitStringConsoleString());
+
+            int numOfBitInV = GetNumOfBit(v);
+
+            int tmp = v;
+            while (true)
+            {
+                tmp++;
+                if (GetNumOfBit(tmp) == numOfBitInV)
+                {
+                    Console.WriteLine(tmp.ToString() + " " + tmp.ToBitStringConsoleString());
+                    break;
+                }
+            }
+
+            tmp = v;
+            while (tmp > 0)
+            {
+                tmp--;
+                if (GetNumOfBit(tmp) == numOfBitInV)
+                {
+                    Console.WriteLine(tmp.ToString() + " " + tmp.ToBitStringConsoleString());
+                    break;
+                }
+            }
+
+            Console.WriteLine();
+
+            static int GetNumOfBit(int n)
+            {
+                int c = 0;
+                while (n > 0)
+                {
+                    if ((n & 1) != 0)
+                        c++;
+
+                    n >>= 1;
+                }
+                return c;
+            }
+        }
         public static void IntToHex()
         {
             char[] charsets = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
@@ -119,6 +229,10 @@ namespace Interview
 
     static class BitExt
     {
+        public static string ToBitStringConsoleString(this int i)
+        {
+            return Convert.ToString(i, 2);
+        }
         public static void ToBitStringConsole(this int i)
         {
             Console.WriteLine(Convert.ToString(i, 2));
