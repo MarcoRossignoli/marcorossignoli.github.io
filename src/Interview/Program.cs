@@ -156,7 +156,10 @@ namespace Interview
             // SortingAndSearching.RankFromStream();
             // SortingAndSearching.PeakValleySort();
             // BitManipulation.Insertion();
-            BitManipulation.Insertion_Pg276();
+            // BitManipulation.Insertion_Pg276();
+            // BitManipulation.BinaryToString();
+            BitManipulation.IntToBinary();
+            BitManipulation.IntToHex();
 
             Console.ReadKey();
         }

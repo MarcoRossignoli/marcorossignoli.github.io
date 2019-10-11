@@ -1,11 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Interview
 {
+    // https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html
+    // https://www.electronics-tutorials.ws/binary/binary-fractions.html Converting Decimal to a Binary Fraction
     class BitManipulation
     {
+        public static void IntToHex()
+        {
+            char[] charsets = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+            int val = 15151487;
+            StringBuilder sb = new StringBuilder();
+            int radix = 16;
+            while (val > 0)
+            {
+                sb.Append(charsets[val % radix]);
+                val = val / radix;
+            }
+            Console.WriteLine(new string(sb.ToString().Reverse().ToArray()));
+        }
+
+        public static void IntToBinary()
+        {
+            int val = 4;
+            char[] charsets = new char[] { '0', '1' };
+            StringBuilder sb = new StringBuilder();
+            int radix = 2;
+            while (val > 0)
+            {
+                sb.Append(charsets[val % radix]);
+                val = val / radix;
+            }
+            Console.WriteLine(new string(sb.ToString().Reverse().ToArray()));
+
+
+        }
+
+        public static void BinaryToString()
+        {
+            double r = 0.72;
+
+            while (r > 0)
+            {
+                double r1 = r * 2;
+                if (r1 >= 1)
+                {
+                    Console.WriteLine(1);
+                    r = r1 - 1;
+                }
+                else
+                {
+                    Console.WriteLine(0);
+                    r = r1;
+                }
+            }
+        }
+
         public static void Insertion_Pg276()
         {
             int n = 0b_10000000000;
