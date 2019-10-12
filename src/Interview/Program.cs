@@ -160,7 +160,7 @@ namespace Interview
             // BitManipulation.BinaryToString();
             // BitManipulation.IntToBinary();
             // BitManipulation.IntToHex();
-            BitManipulation.NextNumber();
+            // BitManipulation.NextNumber();
             BitManipulation.NextNumberV2();
 
             Console.ReadKey();

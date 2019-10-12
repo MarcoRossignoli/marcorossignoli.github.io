@@ -12,6 +12,11 @@ namespace Interview
     {
         public static void NextNumberV2()
         {
+            int i = 1 << 5;
+            i.ToBitStringConsole();
+            // all 1 after i and all 0 before inclusive i
+            (i - 1).ToBitStringConsole();
+
             int v = 200;
 
             int leftMostOneIndex = GetLeftMostOne(v);
