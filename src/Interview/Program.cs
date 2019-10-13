@@ -161,7 +161,9 @@ namespace Interview
             // BitManipulation.IntToBinary();
             // BitManipulation.IntToHex();
             // BitManipulation.NextNumber();
-            BitManipulation.NextNumberV2();
+            // BitManipulation.NextNumberV2();
+            // BitManipulation.Conversion();
+            BitManipulation.PairwiseSwap();
 
             Console.ReadKey();
         }

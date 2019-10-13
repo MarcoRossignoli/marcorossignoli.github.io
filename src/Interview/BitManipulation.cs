@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -10,9 +9,49 @@ namespace Interview
     // https://graphics.stanford.edu/~seander/bithacks.html
     class BitManipulation
     {
+        public static void PairwiseSwap()
+        {
+            int n = 0b_1010;
+            n.ToBitStringConsole();
+
+            int mask = 170 |
+                       170 << 8 |
+                       170 << 16 |
+                       170 << 24;
+
+            // mask.ToBitStringConsole();
+
+            int parta = (n & mask >> 1) << 1;
+            int partb = (n & mask ) >> 1;
+
+            (parta | partb).ToBitStringConsole();
+
+        }
+
+        public static void Conversion()
+        {
+            int a = 29;
+            int b = 15;
+            int c = 0;
+
+            while (a > 0 || b > 0)
+            {
+                bool lsbA = (a & 1) == 1;
+                bool lsbB = (b & 1) == 1;
+                if (lsbA != lsbB)
+                    c++;
+
+                a = a >> 1;
+                b = b >> 1;
+            }
+
+            Console.WriteLine(c);
+        }
+
         public static void NextNumberV2()
         {
-            int i = 1 << 5;
+            int i = 1 << 10;
+            // int i = 5;
             i.ToBitStringConsole();
             // all 1 after i and all 0 before inclusive i
             (i - 1).ToBitStringConsole();
