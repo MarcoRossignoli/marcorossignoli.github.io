@@ -9,6 +9,50 @@ namespace Interview
     // https://graphics.stanford.edu/~seander/bithacks.html
     class BitManipulation
     {
+        public static void DrawLine()
+        {
+            byte[] screen = new byte[]
+            {
+                0,0,0,
+                0,0,0,
+                0,0,0
+            };
+
+            DrawLine(screen, 3, 5, 12, 2);
+
+            PrintScreen(screen);
+
+            return;
+
+            static void DrawLine(byte[] screen, int width, int x1, int x2, int y)
+            {
+                int sp = width * (y - 1);
+                int rowLength = width * 8;
+                for (int i = (8 * width) - x2; i <= (8 * width) - x1; i++)
+                {
+                    int byteIndex = sp + ((rowLength - i - 1) / 8);
+                    byte b = screen[byteIndex];
+                    b = (byte)(b | ((byte)1 << (i % (byte)8)));
+                    screen[byteIndex] = b;
+
+                    PrintScreen(screen);
+                }
+            }
+
+            static void PrintScreen(byte[] screen)
+            {
+                for (int i = 0; i < screen.Length; i++)
+                {
+                    if (i % 3 == 0)
+                        Console.WriteLine();
+
+                    Console.Write(Convert.ToString(screen[i], 2));
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
+        }
+
         public static void PairwiseSwap()
         {
             int n = 0b_1010;
@@ -22,7 +66,7 @@ namespace Interview
             // mask.ToBitStringConsole();
 
             int parta = (n & mask >> 1) << 1;
-            int partb = (n & mask ) >> 1;
+            int partb = (n & mask) >> 1;
 
             (parta | partb).ToBitStringConsole();
 

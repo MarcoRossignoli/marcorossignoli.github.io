@@ -163,7 +163,8 @@ namespace Interview
             // BitManipulation.NextNumber();
             // BitManipulation.NextNumberV2();
             // BitManipulation.Conversion();
-            BitManipulation.PairwiseSwap();
+            // BitManipulation.PairwiseSwap();
+            BitManipulation.DrawLine();
 
             Console.ReadKey();
         }
