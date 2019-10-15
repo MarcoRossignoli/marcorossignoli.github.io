@@ -29,29 +29,32 @@ namespace Interview
                 string op = stack.Pop();
                 double opB = double.Parse(stack.Pop());
 
-                string nextOp = "";
-                if (stack.Count > 0)
+                if (op == "*" || op == "/")
                 {
-                    nextOp = stack.Peek();
-                }
-                if (nextOp == "*" || nextOp == "/")
-                {
-                    string nextOpToExecute = stack.Pop();
-                    double opC = double.Parse(stack.Pop());
-                    stack.Push((nextOpToExecute == "*" ? opB * opC : opB / opC).ToString());
-                    stack.Push(op);
-                    stack.Push(opA.ToString());
+                    stack.Push((op == "*" ? opA * opB : opA / opB).ToString());
                 }
                 else
                 {
-                    if (op == "+")
-                        stack.Push((opA + opB).ToString());
-                    if (op == "-")
-                        stack.Push((opA - opB).ToString());
-                    if (op == "/")
-                        stack.Push((opA / opB).ToString());
-                    if (op == "*")
-                        stack.Push((opA * opB).ToString());
+                    string nextOp = "";
+                    if (stack.Count > 0)
+                    {
+                        nextOp = stack.Peek();
+                    }
+                    if (nextOp == "*" || nextOp == "/")
+                    {
+                        string nextOpToExecute = stack.Pop();
+                        double opC = double.Parse(stack.Pop());
+                        stack.Push((nextOpToExecute == "*" ? opB * opC : opB / opC).ToString());
+                        stack.Push(op);
+                        stack.Push(opA.ToString());
+                    }
+                    else
+                    {
+                        if (op == "+")
+                            stack.Push((opA + opB).ToString());
+                        if (op == "-")
+                            stack.Push((opA - opB).ToString());
+                    }
                 }
             }
             Console.WriteLine(stack.Pop());
