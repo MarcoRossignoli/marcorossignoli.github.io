@@ -164,7 +164,8 @@ namespace Interview
             // BitManipulation.NextNumberV2();
             // BitManipulation.Conversion();
             // BitManipulation.PairwiseSwap();
-            BitManipulation.DrawLine();
+            // BitManipulation.DrawLine();
+            Moderate.Calculator_Pg185();
 
             Console.ReadKey();
         }
