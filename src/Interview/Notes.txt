@@ -25,10 +25,10 @@ Tree and graphs pg. 100 (not clear 4.9, 4.12 optimized) -> 12
 Sorting and Searching pg. 146 -> 11 (pay attention 10.7)
 Bit manipulation pg. 112 -> 8 so far
 Recursion and Dynamic programming pg.130 -> 14 done
-
+System Design and Scalability exercises pg 387 -> 1
 Moderate(16.26) -> 1
 
-Total so far 69
+Total so far 70
 
 Big O(49) https://www.bigocheatsheet.com/
 
