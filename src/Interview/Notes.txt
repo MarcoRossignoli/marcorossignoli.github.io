@@ -27,8 +27,8 @@ Bit manipulation pg. 112 -> 8 so far
 Recursion and Dynamic programming pg.130 -> 14 done
 System Design and Scalability exercises pg 387 -> 1
 Moderate(16.26) -> 1
-
 LeetCode -> 2
+https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/
 
 Total so far 72
 
