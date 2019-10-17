@@ -166,7 +166,8 @@ namespace Interview
             // BitManipulation.PairwiseSwap();
             // BitManipulation.DrawLine();
             // Moderate.Calculator_Pg185();
-            SystemDesignAndScalability.SocialNetwork();
+            // SystemDesignAndScalability.SocialNetwork();
+            ArrayAndString.ArrayAndString_Exercise.ValidPalindrome();
 
             Console.ReadKey();
         }

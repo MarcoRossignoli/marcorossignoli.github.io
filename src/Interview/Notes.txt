@@ -28,7 +28,9 @@ Recursion and Dynamic programming pg.130 -> 14 done
 System Design and Scalability exercises pg 387 -> 1
 Moderate(16.26) -> 1
 
-Total so far 70
+LeetCode -> 2
+
+Total so far 72
 
 Big O(49) https://www.bigocheatsheet.com/
 
