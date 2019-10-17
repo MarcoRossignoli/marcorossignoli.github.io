@@ -43,9 +43,18 @@ namespace Interview
         [DebuggerDisplay("{_name}")]
         class Person
         {
+            public enum VisitState
+            {
+                Unvisited,
+                InVisiting,
+                Visited,
+            }
+
             string _name;
-            public string VisitedBy { get; set; }
-            public string FromPath { get; set; }
+
+            public string PastNodes { get; set; }
+
+            public VisitState VisitStateValue { get; set; } = Person.VisitState.Unvisited;
 
             public Person(string name) => _name = name;
             public List<Person> Friends { get; set; } = new List<Person>();
@@ -53,9 +62,11 @@ namespace Interview
             public string ShortestPathParallel(Person b)
             {
                 Queue<Person> qa = new Queue<Person>();
+                this.PastNodes = this._name;
                 qa.Add(this);
 
                 Queue<Person> qb = new Queue<Person>();
+                b.PastNodes = b._name;
                 qb.Add(b);
 
                 HashSet<Person> visited = new HashSet<Person>();
@@ -63,26 +74,33 @@ namespace Interview
                 while (!qa.IsEmpty() && !qb.IsEmpty())
                 {
                     Person va = qa.Remove();
-                    va.VisitedBy = "Left";
-                    visited.Add(va);
+                    if (!visited.Contains(va))
+                    {
+                        va.VisitStateValue = VisitState.Visited;
+                        visited.Add(va);
+                    }
 
                     Person vb = qb.Remove();
-                    vb.VisitedBy = "Right";
-                    visited.Add(vb);
+                    if (!visited.Contains(vb))
+                    {
+                        vb.VisitStateValue = VisitState.Visited;
+                        visited.Add(vb);
+                    }
 
                     foreach (var p in va.Friends)
                     {
                         if (!visited.Contains(p))
                         {
-                            p.FromPath += va.FromPath + " " + va._name;
-                            qa.Add(p);
-                        }
-                        else
-                        {
-                            if (visited.TryGetValue(p, out Person actual) && actual.VisitedBy == "Right")
+                            if (p.VisitStateValue == VisitState.Unvisited)
                             {
-
+                                p.PastNodes += p.PastNodes + va._name;
+                                p.VisitStateValue = VisitState.InVisiting;
                             }
+                            else
+                            {
+                                return va.PastNodes + va._name + p._name + p.PastNodes + b._name;
+                            }
+                            qa.Add(p);
                         }
                     }
 
@@ -90,15 +108,16 @@ namespace Interview
                     {
                         if (!visited.Contains(p))
                         {
-                            p.FromPath += va.FromPath + " " + va._name;
-                            qb.Add(p);
-                        }
-                        else
-                        {
-                            if (visited.TryGetValue(p, out Person actual) && actual.VisitedBy == "Left")
+                            if (p.VisitStateValue == VisitState.Unvisited)
                             {
-
+                                p.PastNodes += p.PastNodes + vb._name;
+                                p.VisitStateValue = VisitState.InVisiting;
                             }
+                            else
+                            {
+                                return vb.PastNodes + vb._name + p._name + p.PastNodes + this._name;
+                            }
+                            qb.Add(p);
                         }
                     }
                 }
@@ -120,13 +139,13 @@ namespace Interview
                     visitedA.Add(va);
 
                     if (va == b)
-                        return va.FromPath + " " + b._name;
+                        return va.PastNodes + " " + b._name;
 
                     foreach (var p in va.Friends)
                     {
                         if (!visitedA.Contains(p))
                         {
-                            p.FromPath += va.FromPath + " " + va._name;
+                            p.PastNodes += va.PastNodes + " " + va._name;
                             qa.Add(p);
                         }
                     }
