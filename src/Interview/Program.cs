@@ -167,7 +167,8 @@ namespace Interview
             // BitManipulation.DrawLine();
             // Moderate.Calculator_Pg185();
             // SystemDesignAndScalability.SocialNetwork();
-            ArrayAndString.ArrayAndString_Exercise.ValidPalindrome();
+            // ArrayAndString.ArrayAndString_Exercise.ValidPalindrome();
+            LeetCode.StringToInteger();
 
             Console.ReadKey();
         }
