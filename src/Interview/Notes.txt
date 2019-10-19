@@ -28,9 +28,10 @@ Recursion and Dynamic programming pg.130 -> 14 done
 System Design and Scalability exercises pg 387 -> 1
 Moderate(16.26,16.1) -> 2
 LeetCode -> 10
-https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/ -> for stack/queue/graph
+https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/ 
+-> for stack/queue/graph ex.Num 1,... -> 1
 
-Total so far 81
+Total so far 82
 
 Big O(49) https://www.bigocheatsheet.com/
 
