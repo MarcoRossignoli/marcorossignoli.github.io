@@ -27,10 +27,10 @@ Bit manipulation pg. 112 -> 8
 Recursion and Dynamic programming pg.130 -> 14 done
 System Design and Scalability exercises pg 387 -> 1
 Moderate(16.26,16.1) -> 2
-LeetCode -> 6
+LeetCode -> 7
 https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/ -> for stack/queue/graph
 
-Total so far 77
+Total so far 78
 
 Big O(49) https://www.bigocheatsheet.com/
 
