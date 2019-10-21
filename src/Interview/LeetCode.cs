@@ -20,9 +20,6 @@ namespace Interview
 
             static int CoinChangeMin(int amount, int[] coins, int[] memoize)
             {
-                if (amount < 0)
-                    return -1;
-
                 if (amount == 0)
                     return 0;
 
@@ -35,6 +32,7 @@ namespace Interview
                 {
                     int diff = amount - coins[i];
 
+                    // if diff is negative no solution in this branch so skip and stop recursion
                     if (diff < 0)
                         continue;
 
