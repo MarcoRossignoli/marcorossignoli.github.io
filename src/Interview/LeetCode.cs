@@ -1,11 +1,101 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Interview
 {
     class LeetCode
     {
+        public static void CoinChange_TopDown()
+        {
+            int amount = 11;
+            int[] coins = new int[] { 1, 2, 5 };
+            int[] memoize = new int[amount];
+            for (int i = 0; i < memoize.Length; i++)
+            {
+                memoize[i] = -1;
+            }
+            Console.WriteLine(CoinChangeMin(amount, coins, memoize));
+
+            return;
+
+            static int CoinChangeMin(int amount, int[] coins, int[] memoize)
+            {
+                if (amount < 0)
+                    return -1;
+
+                if (amount == 0)
+                    return 0;
+
+                int currentSubSum = int.MaxValue;
+
+                // Subtrac every coin
+                // if we've something less than 0 there is not solution in that branch
+                // when we return 0 there is a solution and we return count of edges of tree
+                for (int i = 0; i < coins.Length; i++)
+                {
+                    int diff = amount - coins[i];
+
+                    if (diff < 0)
+                        continue;
+
+                    int val = 0;
+                    if (memoize[diff] != -1)
+                    {
+                        val = memoize[diff];
+                    }
+                    else
+                    {
+                        val = CoinChangeMin(diff, coins, memoize);
+                        // we memoize result for diff = val to reuse results
+                        memoize[diff] = val;
+                    }
+
+                    currentSubSum = Math.Min(val + 1, currentSubSum);
+                }
+
+                return currentSubSum;
+            }
+
+        }
+
+        public static void CoinChange_BottomUp()
+        {
+            int amount = 11;
+            int[] coins = new int[] { 1, 2, 5 };
+
+            int[] problemsToSolve = new int[amount + 1];
+            for (int i = 0; i < problemsToSolve.Length; i++)
+            {
+                problemsToSolve[i] = int.MaxValue;
+            }
+            problemsToSolve[0] = 0;
+
+            for (int i = 1; i < problemsToSolve.Length; i++)
+            {
+                for (int k = 0; k < coins.Length; k++)
+                {
+                    // try a solution with coin
+                    int diff = i - coins[k];
+                    // if diff is minus of 0 we cannot use this coin and go on
+                    if (diff < 0)
+                        continue;
+
+                    // if this coin is possible part of solution we can use it so +1
+                    // and sum old solved solution
+                    int calculateSolutionWithCurrentCoin = problemsToSolve[diff] + 1;
+
+                    // if we're better than present solution override
+                    int solution = Math.Min(calculateSolutionWithCurrentCoin, problemsToSolve[i]);
+
+                    // Assign new solution
+                    problemsToSolve[i] = solution;
+                }
+            }
+
+            // Print solution for problem amout
+            Console.WriteLine(problemsToSolve[problemsToSolve.Length - 1]);
+        }
+
         public static void SpiralMatrix()
         {
             int[][] matrix = new int[][]
