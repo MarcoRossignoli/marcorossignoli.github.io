@@ -5,6 +5,59 @@ namespace Interview
 {
     class LeetCode
     {
+        public static void ReverseNodeRecoursive()
+        {
+            ListNode a = new ListNode(1);
+            a.next = new ListNode(2);
+            a.next.next = new ListNode(3);
+            ListNode r = new Solution().ReverseList(a);
+        }
+
+        class Solution
+        {
+            ListNode _newHead = null;
+
+            public ListNode ReverseList(ListNode head)
+            {
+                if (head is null || head.next is null)
+                    return head;
+
+                InternalReverse(head);
+                head.next = null;
+
+                return _newHead;
+            }
+
+            ListNode InternalReverse(ListNode head)
+            {
+                if (head is null)
+                {
+                    return null;
+                }
+
+                ListNode downNode = InternalReverse(head.next);
+                if (downNode is null)
+                {
+                    _newHead = head;
+                    return head;
+                }
+                else
+                {
+                    downNode.next = head;
+                }
+
+                return head;
+            }
+        }
+
+        class ListNode
+        {
+            public int val;
+            public ListNode next;
+            public ListNode(int x) { val = x; }
+        }
+
+
         public static void CoinChange_TopDown()
         {
             int amount = 11;
