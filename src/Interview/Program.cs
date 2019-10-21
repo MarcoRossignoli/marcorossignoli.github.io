@@ -169,7 +169,8 @@ namespace Interview
             // SystemDesignAndScalability.SocialNetwork();
             // ArrayAndString.ArrayAndString_Exercise.ValidPalindrome();
             // LeetCode.StringToInteger();
-            Geeksforgeeks.QueueWithLinkedList();
+            // Geeksforgeeks.QueueWithLinkedList();
+            LeetCode.SpiralMatrix();
 
             Console.ReadKey();
         }

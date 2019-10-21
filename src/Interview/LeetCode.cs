@@ -6,6 +6,60 @@ namespace Interview
 {
     class LeetCode
     {
+        public static void SpiralMatrix()
+        {
+            int[][] matrix = new int[][]
+            {
+                new int[]{ 1,2,3,4},
+                new int[]{ 5,6,7,8},
+                new int[]{ 9,10,11,12}
+            };
+
+            List<int> spiralOrder = new List<int>();
+
+            int colBegin = 0;
+            int colEnd = matrix[0].Length - 1;
+            int rowBegin = 0;
+            int rowEnd = matrix.Length - 1;
+
+            while (colBegin <= colEnd && rowBegin <= rowEnd)
+            {
+                for (int i = colBegin; i <= colEnd; i++)
+                {
+                    spiralOrder.Add(matrix[rowBegin][i]);
+                }
+
+                rowBegin++;
+
+                for (int i = rowBegin; i <= rowEnd; i++)
+                {
+                    spiralOrder.Add(matrix[i][colEnd]);
+                }
+
+                colEnd--;
+
+                if (rowBegin <= rowEnd)
+                {
+                    for (int i = colEnd; i >= colBegin; i--)
+                    {
+                        spiralOrder.Add(matrix[rowEnd][i]);
+                    }
+                }
+
+                rowEnd--;
+
+                if (colBegin <= colEnd)
+                {
+                    for (int i = rowEnd; i >= rowBegin; i--)
+                    {
+                        spiralOrder.Add(matrix[i][colBegin]);
+                    }
+                }
+
+                colBegin++;
+            }
+        }
+
         public static void StringToInteger()
         {
             Console.WriteLine(MyAtoi("   -42"));
