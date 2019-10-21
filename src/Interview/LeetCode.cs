@@ -48,6 +48,7 @@ namespace Interview
                         memoize[diff] = val;
                     }
 
+                    // chose the best child branch and add "current" edge to count +1
                     currentSubSum = Math.Min(val + 1, currentSubSum);
                 }
 
