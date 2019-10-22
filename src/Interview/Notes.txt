@@ -9,6 +9,7 @@ https://karelz.github.io/interview_prep/
     * binary trees 111
     * basic graph algorithms (search) 118
     * basic sorting 157
+    * recursion and dynamic programming 130
 -Ability to understand and analyze problems, identify the right basic data structures and algorithms in them.
 
 -Concepts and Algorithms - While I don’t think most of these are good interview questions (some Bit Manipulation questions are rather ugly), 
@@ -16,7 +17,23 @@ it is worth going through them all to ensure yourself you understand basic conce
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Big O(49)
+2nd
+Array and string pg. 88 -> 9 done
+Linked List pg. 92 -> 8 done
+Stack and queue pg. 96 -> 6 done
+Tree and graphs pg. 100 (not clear 4.9, 4.12 optimized) -> 12 -> there are hard problem left out if needed at the end of exercise
+Sorting and Searching pg. 146 -> 11 (pay attention 10.7)
+Bit manipulation pg. 112 -> 8
+Recursion and Dynamic programming pg.130 -> 14 done
+System Design and Scalability exercises pg 387 -> 1
+Moderate(16.26,16.1) -> 2
+LeetCode -> 16
+https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/ 
+-> for stack/queue/graph ex.Num 1,... -> 1
+
+Total so far 88
+
+Big O(49) https://www.bigocheatsheet.com/
 
 sum of 1 to n = n(n+1)/2 = n^2
 sum of 1 to n-1 = n(n-1)/2 = n^2
@@ -46,6 +63,7 @@ Tree and graphs (111)
     * Root node has zero or more than one child nodes
     * Each child node has zero or more nodes
 -Binary tree: tree where every node has max 2 children
+    Height binary tree https://www.youtube.com/watch?v=_pnqMz5nrRs
 -Binary search tree MUST respect rule "all left descendant nodes <= currentNode < all right descendant nodes"
 -Balanced tree is a tree where INSERT and FIND complexity is O(log n) or not terribly imbalanced
 -Binary tree types

@@ -6,6 +6,68 @@ namespace Interview.ArrayAndString
 {
     public class ArrayAndString_Exercise
     {
+        public static void ValidPalindrome()
+        {
+
+            Console.Write(IsPalindrome("0P"));
+
+            return;
+
+            bool IsPalindrome(string s)
+            {
+                if (s.Length <= 1)
+                    return true;
+
+                int l = 0;
+                int r = s.Length - 1;
+
+                while (l <= r)
+                {
+                    if (!IsInRange(s[l]))
+                    {
+                        l++;
+                        continue;
+                    }
+                    if (!IsInRange(s[r]))
+                    {
+                        r--;
+                        continue;
+                    }
+
+                    if (ToLower(s[l]) != ToLower(s[r]))
+                    {
+                        return false;
+                    }
+
+                    l++;
+                    r--;
+                }
+
+                return true;
+            }
+
+            char ToLower(char c)
+            {
+                if (c >= 65 && c <= 90)
+                {
+                    return (char)(c + 32);
+                }
+                return c;
+            }
+
+            bool IsInRange(char c)
+            {
+                if (
+                        (c >= 65 && c <= 90) ||
+                        (c >= 97 && c <= 122) ||
+                        (c >= 48 && c <= 57)
+                   )
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         public static void Permutation()
         {
             // total permutation n!
