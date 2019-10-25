@@ -15,6 +15,7 @@ WorkingDirectory: `$(SolutionDir)..\..\product\Windows_NT.$(Platform).$(Configur
 First build
 ``` bash
 build -skiptests
+build -release -skiptests
 ``` 
 
 Build only native after updates 
