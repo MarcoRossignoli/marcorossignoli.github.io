@@ -20,7 +20,6 @@ namespace Clr
         [MethodImpl(methodImplOptions: MethodImplOptions.NoInlining)]
         public bool CheckOptimized(string[] array, int index)
         {
-
             if ((uint)index >= (uint)array.Length)
             {
                 return false;
