@@ -10,6 +10,13 @@ Command: `$(SolutionDir)..\..\product\Windows_NT.$(Platform).$(Configuration)\co
 Command Arguments: `/v ...\Exp1.dll`  <-- .net main dll to debug  
 WorkingDirectory: `$(SolutionDir)..\..\product\Windows_NT.$(Platform).$(Configuration)`
 
+Environment:
+`
+COMPlus_JitBreak="Check"
+COMPlus_NoGuiOnAssert=0
+COMPlus_TieredCompilation=1
+`
+
 #### Build
 
 First build
