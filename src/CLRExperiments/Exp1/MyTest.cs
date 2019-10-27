@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace Clr
 {
     // if ((uint)index >= (uint)array.Length https://github.com/dotnet/corert/pull/6965#discussion_r255924605
-
+    // https://github.com/dotnet/coreclr/pull/27480 :)
     class MyTest
     {
         [MethodImpl(methodImplOptions: MethodImplOptions.NoInlining)]
