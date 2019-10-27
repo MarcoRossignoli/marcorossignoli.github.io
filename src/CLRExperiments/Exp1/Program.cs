@@ -1,6 +1,5 @@
 ﻿using System;
-
-namespace Clr
+namespace Exp1
 {
     // https://github.com/dotnet/coreclr/blob/master/Documentation/building/debugging-instructions.md
     // https://github.com/dotnet/coreclr/blob/master/Documentation/botr/ryujit-overview.md
@@ -9,9 +8,8 @@ namespace Clr
     {
         static void Main(string[] args)
         {
-            MyTest mt = new MyTest();
-            Console.WriteLine(mt.Check(new string[5], 6));
-            Console.WriteLine(mt.CheckOptimized(new string[5], 6));
+            DoubleNegation.I1(new Random().Next());
+            DoubleNegation.M1(new Random().Next());
         }
     }
 }
