@@ -17,6 +17,7 @@ Merged in [.NET Core codebases(corefx, coreclr, corert, performance)](https://gi
 [Mentions: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=mentions%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 
 #### Interesting issues
+https://github.com/dotnet/corefx/issues/40962 Review System.Buffers.SequenceReader<T> proposals  
 https://github.com/dotnet/corefx/issues/39683 Consider pooling Http2Stream objects  
 https://github.com/dotnet/corefx/issues/29254 System.Reflection.Emit  
 https://github.com/dotnet/corefx/issues/19630 [Uri] Uri.IsWellFormedUriString() returns false for a URL which is correct  
