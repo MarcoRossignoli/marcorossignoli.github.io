@@ -332,7 +332,30 @@ namespace Interview
 
         public static void TripleStep_BottomUp()
         {
-            // TODO
+            int n = 4;
+            int[] mem = new int[n + 1];
+
+            Console.WriteLine(F(n, 3));
+
+            return;
+
+            static int F(int n, int n1)
+            {
+                int[] problems = new int[n + 1];
+                problems[0] = 1;
+                problems[1] = 1;
+                problems[2] = 2;
+
+                for (int i = 3; i < problems.Length; i++)
+                {
+                    for (int k = 1; k <= n1; k++)
+                    {
+                        problems[i] += problems[i - k];
+                    }
+                }
+
+                return problems[^1];
+            }
         }
 
         public static void RobotInAGrid()

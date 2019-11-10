@@ -68,7 +68,7 @@ namespace Interview
             // HuffmanCoding.Test();
 
             // DynamicProgramming.TripleStep_TopDown();
-            // DynamicProgramming.TripleStep_BottomUp();
+            DynamicProgramming.TripleStep_BottomUp();
             // DynamicProgramming.RobotInAGrid();
             // DynamicProgramming.PowerSet();
             // DynamicProgramming.PowerSet_Page349();
@@ -173,7 +173,7 @@ namespace Interview
             // LeetCode.SpiralMatrix();
             // LeetCode.CoinChange_BottomUp();
             // LeetCode.CoinChange_TopDown();
-            LeetCode.ReverseNodeRecoursive();
+            // LeetCode.ReverseNodeRecoursive();
 
             Console.ReadKey();
         }
