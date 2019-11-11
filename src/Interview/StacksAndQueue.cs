@@ -6,6 +6,79 @@ namespace Interview
 {
     public class StacksAndQueue
     {
+        public static void CircularQueue()
+        {
+            Queue<int> q = new Queue<int>();
+
+            q.Enqueue(1);
+            q.Enqueue(2);
+            q.Enqueue(3);
+            q.Enqueue(4);
+            q.Enqueue(5);
+
+            Console.WriteLine(q.Dequeue());
+            Console.WriteLine(q.Dequeue());
+
+            q.Enqueue(6);
+            q.Enqueue(7);
+            q.Enqueue(8);
+            q.Enqueue(9);
+
+            Console.WriteLine(q.Dequeue());
+            Console.WriteLine(q.Dequeue());
+
+            q.Enqueue(10);
+            q.Enqueue(11);
+            q.Enqueue(12);
+            q.Enqueue(13);
+
+            q.Enqueue(14);
+            q.Enqueue(15);
+        }
+
+        class CircularQueue<T>
+        {
+            T[] _array = new T[5];
+            int _current = 0;
+            int _next = 0;
+            int _count = 0;
+
+            public void Enqueue(T val)
+            {
+                if (_count == _array.Length)
+                {
+                    Expand();
+                }
+
+                _array[_next] = val;
+                _count++;
+                _next = (_next + 1) % _array.Length;
+            }
+
+            void Expand()
+            {
+                T[] n = new T[_array.Length * 2];
+                Array.Copy(_array, _current, n, 0, _array.Length - _current);
+                Array.Copy(_array, 0, n, _array.Length - _current, _current);
+                _current = 0;
+                _next = _count;
+                _array = n;
+            }
+
+            public T Dequeue()
+            {
+                if (_count == 0)
+                {
+                    throw new Exception("empty");
+                }
+                T val = _array[_current];
+                _count--;
+                _current = (_current + 1) % _array.Length;
+                return val;
+            }
+
+        }
+
         public static void AnimalShelterBookIdeaPg239()
         {
             AnimalShelter3 ash = new AnimalShelter3();
