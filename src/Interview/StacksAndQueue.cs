@@ -6,7 +6,7 @@ namespace Interview
 {
     public class StacksAndQueue
     {
-        public static void CircularQueue()
+        public static void CircularQueueMy()
         {
             CircularQueue<int> q = new CircularQueue<int>();
 

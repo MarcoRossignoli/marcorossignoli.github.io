@@ -174,7 +174,7 @@ namespace Interview
             // LeetCode.CoinChange_BottomUp();
             // LeetCode.CoinChange_TopDown();
             // LeetCode.ReverseNodeRecoursive();
-            StacksAndQueue.CircularQueue();
+            StacksAndQueue.CircularQueueMy();
 
             Console.ReadKey();
         }
