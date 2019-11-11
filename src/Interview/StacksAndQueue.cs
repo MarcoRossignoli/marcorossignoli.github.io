@@ -8,7 +8,7 @@ namespace Interview
     {
         public static void CircularQueue()
         {
-            Queue<int> q = new Queue<int>();
+            CircularQueue<int> q = new CircularQueue<int>();
 
             q.Enqueue(1);
             q.Enqueue(2);
