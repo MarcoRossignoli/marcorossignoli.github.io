@@ -624,7 +624,7 @@ namespace Interview
         public static void SearchInRotatedArray()
         {
             int foundIndex = -1;
-            int n = 19;
+            int n = 25;
             int[] a = new int[] { 15, 16, 19, 20, 25, 25, 1, 3, 4, 5, 7, 10, 14 };
 
             int s = 0;
