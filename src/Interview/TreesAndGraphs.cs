@@ -7,6 +7,57 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void InOrderTraversalIterative()
+        {
+            TreeNode root = new TreeNode(1);
+            root.left = new TreeNode(2);
+            root.right = new TreeNode(3);
+
+            HashSet<int> l = new HashSet<int>();
+            Stack<TreeNode> s = new Stack<TreeNode>();
+
+            s.Push(root);
+
+            while (!s.IsEmpty())
+            {
+                var f = s.Peek();
+
+                if (f.left != null)
+                {
+                    if (!l.Contains(f.left.val))
+                    {
+                        s.Push(f.left);
+                        continue;
+                    }
+                }
+
+                if (
+                    (
+                        f.left == null || l.Contains(f.left.val)) &&
+                        f.right != null
+                    )
+                {
+                    l.Add(s.Pop().val);
+
+                    if (!l.Contains(f.right.val))
+                    {
+                        s.Push(f.right);
+                        continue;
+                    }
+                }
+
+                l.Add(s.Pop().val);
+            }
+        }
+
+        class TreeNode
+        {
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+            public TreeNode(int x) { val = x; }
+        }
+
         public static void PathWithSum()
         {
             BinarySearchTreeNode root = new BinarySearchTreeNode(10);
