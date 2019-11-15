@@ -29,8 +29,56 @@ namespace Interview
             three.right = six;
             six.right = eight;
 
-            ConnectHelper(one);
+            // ConnectHelper(one);
 
+            connect2(one);
+
+            static void connect2(Node root)
+            {
+                Queue<Node> queue = new Queue<Node>();
+                if (root != null)
+                    queue.Add(root);
+
+                for (int level = 1, curLevel = 0; !queue.IsEmpty(); level = curLevel, curLevel = 0)
+                {
+                    Node curParent = queue.Remove();
+                    level--;
+
+                    if (curParent.left != null)
+                    {
+                        queue.Add(curParent.left);
+                        curLevel++;
+                    }
+
+                    if (curParent.right != null)
+                    {
+                        queue.Add(curParent.right);
+                        curLevel++;
+                    }
+
+                    while (level > 0)
+                    {
+                        Node curChild = queue.Remove();
+
+                        level--;
+
+                        if (curChild.left != null)
+                        {
+                            queue.Add(curChild.left);
+                            curLevel++;
+                        }
+
+                        if (curChild.right != null)
+                        {
+                            queue.Add(curChild.right);
+                            curLevel++;
+                        }
+
+                        curParent.next = curChild;
+                        curParent = curChild;
+                    }
+                }
+            }
 
             static void ConnectHelper(Node root)
             {
