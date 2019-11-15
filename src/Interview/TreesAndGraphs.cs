@@ -7,6 +7,86 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void PopulatingNextRightPoint()
+        {
+            Node one = new Node() { val = 1 };
+            Node two = new Node() { val = 2 };
+            Node three = new Node() { val = 3 };
+            Node four = new Node() { val = 4 };
+            Node five = new Node() { val = 5 };
+            Node six = new Node() { val = 6 };
+            Node seven = new Node() { val = 7 };
+            Node eight = new Node() { val = 8 };
+
+            one.left = two;
+            one.right = three;
+
+            two.left = four;
+            two.right = five;
+
+            four.left = seven;
+
+            three.right = six;
+            six.right = eight;
+
+            ConnectHelper(one);
+
+
+            static void ConnectHelper(Node root)
+            {
+                if (root == null)
+                {
+                    return;
+                }
+
+                Node temp = root;
+                Node start = null;
+                Node prev = new Node(-1, null, null, null);
+
+                while (temp != null)
+                {
+                    if (start == null)
+                    {
+                        start = temp.left ?? temp.right;
+                    }
+
+                    if (temp.left != null)
+                    {
+                        prev.next = temp.left;
+                        prev = temp.left;
+                    }
+
+                    if (temp.right != null)
+                    {
+                        prev.next = temp.right;
+                        prev = temp.right;
+                    }
+
+                    temp = temp.next;
+                }
+
+                ConnectHelper(start);
+            }
+        }
+
+        [DebuggerDisplay("{val}")]
+        class Node
+        {
+            public int val;
+            public Node left;
+            public Node right;
+            public Node next;
+
+            public Node() { }
+            public Node(int _val, Node _left, Node _right, Node _next)
+            {
+                val = _val;
+                left = _left;
+                right = _right;
+                next = _next;
+            }
+        }
+
         public static void InOrderTraversalIterative()
         {
             TreeNode root = new TreeNode(1);
