@@ -6,6 +6,32 @@ namespace Interview
 {
     public class DynamicProgramming
     {
+        public static void WildCardMatching()
+        {
+            bool v = IsMatch("ciao","ci*");
+
+            return;
+
+            static bool IsMatch(string s, string p)
+            {
+                if (p.Replace("*", "").Length > s.Length)
+                    return false;
+                bool[] d = new bool[s.Length + 1];
+                d[0] = true;
+                for (int i = 1; i <= p.Length; ++i)
+                {
+                    char pchar = p[i - 1];
+                    if (pchar == '*')
+                        for (int j = 1; j <= s.Length; ++j)
+                            d[j] = d[j - 1] || d[j];
+                    else
+                        for (int j = s.Length; j >= 1; --j)
+                            d[j] = d[j - 1] && (pchar == '?' || pchar == s[j - 1]);
+                    d[0] = d[0] && pchar == '*';
+                }
+                return d[s.Length];
+            }
+        }
         public static void BooleanEvaluation()
         {
             string expression = "0&0|1";

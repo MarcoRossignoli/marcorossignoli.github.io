@@ -7,6 +7,140 @@ namespace Interview
 {
     class TreesAndGraphs
     {
+        public static void NumsOfIsland()
+        {
+            char[][] island = new char[][]{
+                new []{ '1', '1', '1' },
+                new []{ '0', '1', '0' },
+                new []{ '1', '1', '1' }
+                };
+
+            var res = NumIslands(island);
+
+            return;
+
+            static int NumIslands(char[][] grid)
+            {
+                int numIsland = 1;
+
+                for (int r = 0; r < grid.Length; r++)
+                {
+                    for (int c = 0; c < grid[0].Length; c++)
+                    {
+                        if (grid[r][c] == '1')
+                        {
+                            if (r - 1 >= 0 && grid[r - 1][c] != '0' && grid[r - 1][c] != '1')
+                            {
+                                grid[r][c] = grid[r - 1][c];
+                            }
+                            else if (r + 1 < grid.Length && grid[r + 1][c] != '0' && grid[r + 1][c] != '1')
+                            {
+                                grid[r][c] = grid[r + 1][c];
+                            }
+                            else if (c - 1 >= 0 && grid[r][c - 1] != '0' && grid[r][c - 1] != '1')
+                            {
+                                grid[r][c] = grid[r][c - 1];
+                            }
+                            else if (c + 1 < grid[0].Length && grid[r][c + 1] != '0' && grid[r][c + 1] != '1')
+                            {
+                                grid[r][c] = grid[r][c + 1];
+                            }
+                            else
+                            {
+                                grid[r][c] = (++numIsland).ToString()[0];
+                            }
+                        }
+                    }
+                }
+
+                return --numIsland;
+            }
+        }
+
+        public static void InOrderPreOrderCreateTree()
+        {
+            // [1,2,3]
+            // [2,3,1]
+            // preorder = [3, 9, 20, 15, 7]
+            // inorder = [9, 3, 15, 20, 7]
+            int[] preorder = new[] { 1, 2, 3 };
+            int[] inorder = new[] { 2, 3, 1 };
+
+            TreeNode final = BuildTree(preorder, inorder);
+
+            static TreeNode BuildTree(int[] preorder, int[] inorder)
+            {
+                if (inorder.Length == 0 || preorder.Length == 0)
+                {
+                    return null;
+                }
+
+                System.Collections.Generic.Stack<TreeNode> st = new System.Collections.Generic.Stack<TreeNode>();
+                TreeNode root = new TreeNode(preorder[0]);
+
+                st.Push(root);
+                int j = 0;
+                for (int i = 1; i < preorder.Length; i++)
+                {
+                    TreeNode cur = st.Peek();
+                    if (cur.val != inorder[j])
+                    {
+                        cur.left = new TreeNode(preorder[i]);
+                        st.Push(cur.left);
+                    }
+                    else
+                    {
+                        while (st.Count > 0 && st.Peek().val == inorder[j])
+                        {
+                            j++;
+                            cur = st.Pop();
+                        }
+                        if (j < preorder.Length)
+                        {
+                            cur.right = new TreeNode(preorder[i]);
+                            st.Push(cur.right);
+                        }
+                    }
+                }
+
+                return root;
+            }
+
+            //static TreeNode BuildTree(int[] preorder, int[] inorder)
+            //{
+            //    if (preorder.Length == 0)
+            //        return null;
+
+            //    TreeNode root = new TreeNode(preorder[0]);
+            //    TreeNode current = root;
+            //    TreeNode parent = null;
+
+            //    for (int i = 1; i < preorder.Length; i++)
+            //    {
+            //        int inOrd = Array.IndexOf(inorder, preorder[i]) - Array.IndexOf(inorder, current.val);
+            //        if (inOrd == -1)
+            //        {
+            //            current.left = new TreeNode(preorder[i]);
+            //            parent = current;
+            //            current = current.left;
+            //        }
+            //        else if (inOrd == 1)
+            //        {
+            //            current.right = new TreeNode(preorder[i]);
+            //            parent = current;
+            //            current = current.right;
+            //        }
+            //        else
+            //        {
+            //            parent.right = new TreeNode(preorder[i]);
+            //            current = parent.right;
+            //        }
+            //    }
+
+            //    return root;
+            //}
+        }
+
         public static void PopulatingNextRightPoint()
         {
             Node one = new Node() { val = 1 };
@@ -178,6 +312,7 @@ namespace Interview
             }
         }
 
+        [DebuggerDisplay("{val}")]
         class TreeNode
         {
             public int val;
