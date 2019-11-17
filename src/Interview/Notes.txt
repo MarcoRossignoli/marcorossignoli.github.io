@@ -27,11 +27,11 @@ Bit manipulation pg. 112 -> 8
 Recursion and Dynamic programming pg.130 -> 14 done
 System Design and Scalability exercises pg 387 -> 1
 Moderate(16.26,16.1) -> 2
-LeetCode -> 29
+LeetCode -> 43
 https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/ 
 -> for stack/queue/graph ex.Num 1,... -> 1
 
-Total so far 100
+Total so far 115
 
 Stopped 22 Oct/ 9 Nov, 18 days
 
