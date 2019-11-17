@@ -182,8 +182,9 @@ namespace Interview
             // DynamicProgramming.WildCardMatching();
             // SortingAndSearching.FindMin();
             var r = new Solution().FindMedianSortedArrays(
-                new int[] { 1, 2 }, new int[] { 3, 4 }
+                // new int[] { 1, 2 }, new int[] { 3, 4 }
                 // new int[] { 1, 2, 7, 8 }, new int[] { 3, 4, 5 }
+                new int[] { 1, 2, 7, 8, 9 }, new int[] { 3, 4, 5 }
                 );
             Console.ReadKey();
         }
