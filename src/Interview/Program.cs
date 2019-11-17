@@ -146,7 +146,7 @@ namespace Interview
             // SortingAndSearching.GroupAnagrams2();
             // SortingAndSearching.SearchInRotatedArray();
             // SortingAndSearching.SortedSearchNoSize();
-            SortingAndSearching.SortedSearchNoSize_Pg411();
+            // SortingAndSearching.SortedSearchNoSize_Pg411();
             // SortingAndSearching.SparseSearch();
             // SortingAndSearching.SparseSearch_Pg401();
             // SortingAndSearching.SortBigFile();
@@ -179,7 +179,12 @@ namespace Interview
             // TreesAndGraphs.PopulatingNextRightPoint();
             // TreesAndGraphs.InOrderPreOrderCreateTree();
             // TreesAndGraphs.NumsOfIsland();
-            DynamicProgramming.WildCardMatching();
+            // DynamicProgramming.WildCardMatching();
+            // SortingAndSearching.FindMin();
+            var r = new Solution().FindMedianSortedArrays(
+                new int[] { 1, 2 }, new int[] { 3, 4 }
+                // new int[] { 1, 2, 7, 8 }, new int[] { 3, 4, 5 }
+                );
             Console.ReadKey();
         }
     }
