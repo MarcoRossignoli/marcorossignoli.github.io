@@ -36,6 +36,7 @@ Total so far 115
 Stopped 22 Oct/ 9 Nov, 18 days
 
 Big O(49) https://www.bigocheatsheet.com/
+https://adrianmejia.com/most-popular-algorithms-time-complexity-every-programmer-should-know-free-online-tutorial-course/
 
 sum of 1 to n = n(n+1)/2 = n^2
 sum of 1 to n-1 = n(n-1)/2 = n^2
