@@ -8,6 +8,47 @@ namespace Interview
     // 407
     class SortingAndSearching
     {
+        public static void FindMin()
+        {
+            int[] nums = new int[] { 3, 1, 3 };
+
+            /*
+            if (nums.Length == 0 || nums is null)
+                return -1;
+            if (nums.Length == 1)
+                return nums[0];
+            // is not rotated
+            if (nums[0] <= nums[nums.Length - 1])
+                return nums[0];
+            // optimized
+            if (nums.Length == 2)
+                return Math.Min(nums[0], nums[1]);
+            */
+
+            int res = Search(nums, 0, nums.Length - 1);
+
+            return;
+
+            static int Search(int[] n, int l, int r)
+            {
+                if (Math.Abs(l - r) == 1)
+                    return Math.Min(n[l], n[r]);
+
+                int mid = (l + r) / 2;
+
+                if (n[mid] <= n[r])
+                {
+                    return Search(n, l, mid);
+                }
+                else
+                {
+                    return Search(n, mid, r);
+                }
+            }
+        }
+
+
+
         public static void PeakValleySort()
         {
             int[] a = new int[] { 5, 3, 1, 2, 3 };
@@ -624,7 +665,7 @@ namespace Interview
         public static void SearchInRotatedArray()
         {
             int foundIndex = -1;
-            int n = 19;
+            int n = 25;
             int[] a = new int[] { 15, 16, 19, 20, 25, 25, 1, 3, 4, 5, 7, 10, 14 };
 
             int s = 0;
@@ -896,7 +937,8 @@ namespace Interview
 
         public static void Sorting()
         {
-            int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
+            // int[] array = new int[] { 3, 4, 7, 8, 2, 9, -1, 1, -100, 34, 6, 4 };
+            int[] array = new int[] { 3, 7, 2, 9, 5 };
             // int[] array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
             // int[] array = new int[] { 2, 1 };
             // int[] array = new int[] { 7, 1, 2, 3, 4 };
@@ -909,11 +951,11 @@ namespace Interview
             // MergeSort(array, 0, array.Length - 1);
             // MergeSortJBEvans(array);
 
-            // QuickSort(array);
+            QuickSort(array);
             // QuickSort2(array, 0, array.Length - 1);
             // QuickSort3(array, 0, array.Length - 1);
             // QuickSort4(array, 0, array.Length - 1);
-            RadixSort(array);
+            // RadixSort(array);
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine(array[i]);
@@ -990,7 +1032,6 @@ namespace Interview
 
                     return GetDigit(Math.Abs(n) / 10, position - 1);
                 }
-
 
                 static int MaxDigit(int[] array, int s, int e)
                 {

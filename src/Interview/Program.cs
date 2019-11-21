@@ -173,9 +173,44 @@ namespace Interview
             // LeetCode.SpiralMatrix();
             // LeetCode.CoinChange_BottomUp();
             // LeetCode.CoinChange_TopDown();
-            LeetCode.ReverseNodeRecoursive();
+            // LeetCode.ReverseNodeRecoursive();
+            // StacksAndQueue.CircularQueueMy();
+            // TreesAndGraphs.InOrderTraversalIterative();
+            // TreesAndGraphs.PopulatingNextRightPoint();
+            // TreesAndGraphs.InOrderPreOrderCreateTree();
+            // TreesAndGraphs.NumsOfIsland();
+            // DynamicProgramming.WildCardMatching();
+            // SortingAndSearching.FindMin();
+            // var r = new Solution().FindMedianSortedArrays(
+            // new int[] { 1, 2 }, new int[] { 3, 4 }
+            // new int[] { 1, 2, 7, 8 }, new int[] { 3, 4, 5 }
+            // new int[] { 1, 2, 7, 8, 9 }, new int[] { 3, 4, 5 }
+            // );
 
+            printNSE(new int[] { 10, 3, 7 }, 3);
             Console.ReadKey();
         }
+
+
+        static void printNSE(int[] arr, int n)
+        {
+            int next, i, j;
+            for (i = 0; i < n; i++)
+            {
+                next = -1;
+                for (j = i + 1; j < n; j++)
+                {
+                    if (arr[i] > arr[j])
+                    {
+                        next = arr[j];
+                        break;
+                    }
+                }
+                Console.WriteLine(arr[i] + " -- " + next);
+            }
+        }
+
     }
+
+
 }

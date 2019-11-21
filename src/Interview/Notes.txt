@@ -27,13 +27,16 @@ Bit manipulation pg. 112 -> 8
 Recursion and Dynamic programming pg.130 -> 14 done
 System Design and Scalability exercises pg 387 -> 1
 Moderate(16.26,16.1) -> 2
-LeetCode -> 16
+LeetCode -> 43
 https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/ 
 -> for stack/queue/graph ex.Num 1,... -> 1
 
-Total so far 88
+Total so far 115
+
+Stopped 22 Oct/ 9 Nov, 18 days
 
 Big O(49) https://www.bigocheatsheet.com/
+https://adrianmejia.com/most-popular-algorithms-time-complexity-every-programmer-should-know-free-online-tutorial-course/
 
 sum of 1 to n = n(n+1)/2 = n^2
 sum of 1 to n-1 = n(n-1)/2 = n^2
@@ -124,7 +127,7 @@ Convert binary complement to negative integer
 
 -Shift Operator
     * Logical shift: >>> right shift bit and add 0 as new bit 1001 >>> 1 = 0100
-    * Arithmetical shift: >> right shift bit and keep same sign bit value 1001(positive is signed) >> 1 = 0100 is like divide by 2
+    * Arithmetical shift: >> right shift bit and keep same sign bit value 1001(positive is signed) >> 1 = 1100 is like divide by 2
 
 Sorting and searching(157)
 -Bubble sorting: iterate through collection and swap a pair if first is greater than second.
