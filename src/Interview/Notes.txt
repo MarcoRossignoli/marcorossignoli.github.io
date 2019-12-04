@@ -31,6 +31,9 @@ LeetCode -> 43
 https://www.geeksforgeeks.org/practice-for-cracking-any-coding-interview/ 
 -> for stack/queue/graph ex.Num 1,... -> 1
 
+Interesting site
+https://blog.usejournal.com/500-data-structures-and-algorithms-practice-problems-35afe8a1e222
+
 Total so far 115
 
 Stopped 22 Oct/ 9 Nov, 18 days
