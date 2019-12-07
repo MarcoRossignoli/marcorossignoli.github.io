@@ -57,11 +57,13 @@ https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/ 
 [Versionsof.net](https://versionsof.net)  
 [SDK zip download](https://github.com/dotnet/core-sdk#installers-and-binaries)  
 https://www.rapidtables.com/convert/number/index.html converters  
-https://roslynquoter.azurewebsites.net/ Roslynquoter
-### Web compiler/decompiler/runner
+https://roslynquoter.azurewebsites.net/ Roslynquoter  
+
+### Web compiler/decompiler/runner/tools
 
 https://sharplab.io/  
 https://try.dot.net/  
 https://www.ideone.com  
-https://godbolt.org/
+https://godbolt.org/  
+https://www.diffchecker.com/
 
