@@ -17,14 +17,6 @@ Merged in [.NET Core codebases(corefx, coreclr, corert, performance,dotnet/runti
 [Commented: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=commenter%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 [Mentions: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=mentions%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 
-#### Interesting issues
-https://github.com/dotnet/corefx/issues/33279 API Proposal: SafeBuffer Span<T> methods  
-https://github.com/dotnet/coreclr/issues/27939  Move ILVerify tool to dotnet/runtime repo  
-https://github.com/dotnet/corefx/issues/39683 Consider pooling Http2Stream objects  
-https://github.com/dotnet/corefx/issues/41221 HTTP2: optimize HPACK decoding      
-https://github.com/dotnet/corefx/issues/29254 System.Reflection.Emit  
-https://github.com/dotnet/corefx/issues/19630 [Uri] Uri.IsWellFormedUriString() returns false for a URL which is correct  
-
 ---
 
 [notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/corefx/notes.md)  
