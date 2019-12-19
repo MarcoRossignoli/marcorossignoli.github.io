@@ -18,23 +18,6 @@ Merged in [.NET Core codebases(corefx, coreclr, corert, performance,dotnet/runti
 [Commented: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=commenter%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 [Mentions: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=mentions%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 
----
-
-[notes](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/corefx/notes.md)  
-[cross repo](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/corefx/crossRepoManaged.md)  
-[git](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/git/notes.md)  
-[issues](https://github.com/MarcoRossignoli/marcorossignoli.github.io/blob/master/docs/corefx/issues.md)   
-
-
-#### Issues query
-
-corefx [up-for-grabs](https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs)  
-corefx [bugs](https://github.com/dotnet/corefx/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Abug)  
-corefx [api-approved](https://github.com/dotnet/corefx/labels/api-approved)  
-corefx [Hackaton](https://github.com/dotnet/corefx/issues?q=is%3Aissue+is%3Aopen+label%3AHackathon)  
-coreclr [up-for-grabs](https://github.com/dotnet/coreclr/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs)  
-Pinned https://github.com/dotnet/corefx/issues/29254
-
 #### Useful links
 
 https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/  I was mentioned, happy.  
