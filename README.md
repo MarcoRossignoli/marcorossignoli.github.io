@@ -37,7 +37,7 @@ https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/ 
 https://www.rapidtables.com/convert/number/index.html converters  
 https://roslynquoter.azurewebsites.net/ Roslynquoter  
 
-### Web compiler/decompiler/runner/tools
+### compiler/decompiler/runner/tools
 
 https://sharplab.io/  
 https://try.dot.net/  
