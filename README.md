@@ -43,5 +43,7 @@ https://sharplab.io/
 https://try.dot.net/  
 https://www.ideone.com  
 https://godbolt.org/  
-https://www.diffchecker.com/
+https://www.diffchecker.com/  
+https://github.com/icsharpcode/ILSpy  
+https://github.com/0xd4d/dnSpy  
 
