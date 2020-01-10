@@ -46,69 +46,6 @@ set COMPlus_JitDisasm=Dictionary`2:.ctor <- Constructor
 set COMPlus_JitDisasm=.ctor <- Constructor
 ```
 
-
-## Available Outerloop
-Guide https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/pullrequest-builds.md  
-New Azure pipeline commands https://github.com/dotnet/corefx/issues/35121#issuecomment-462849658  
-```
-/azp run corefx-ci
-/azp run corefx-outerloop-linux
-/azp run corefx-outerloop-osx
-/azp run corefx-outerloop-windows
-
-Also, to run all the above, you can just do:
-/azp run
-
-@dotnet-bot test Outerloop Windows x64 Debug Build
-@dotnet-bot test Outerloop Linux x64 Debug Build
-@dotnet-bot test Outerloop NETFX x86 Debug Build
-@dotnet-bot test Outerloop UWP CoreCLR x64 Debug Build
-@dotnet-bot test Outerloop Linux x64 Release Build please
-@dotnet-bot test Outerloop Windows x86 Release Build please
-
-@dotnet-bot help // to get all available tests
-```
-
-## Coverage
-
-Workflow https://github.com/dotnet/corefx/issues/23588#issuecomment-394055817
-
-On CoreClr repo:
-```
-build -release -skipTests -- /p:DebugType=pdbonly
-build -release -skipTests -windowsmscorlib -- /p:DebugType=pdbonly
-```
-
-The second step is important to get IL only of CoreLib on the folder that is going to be used in the CoreCLROverridePath, but as mentioned can be done in other ways.
-
-On CoreFx repo:
-```
-build -- /p:CoreCLROverridePath=C:\s\coreclr\bin\Product\Windows_NT.x64.Release
-build-tests -skipTests -- /p:CoreCLROverridePath=C:\s\coreclr\bin\Product\Windows_NT.x64.Release
-cd src\System.Collections\tests
-msbuild /t:RebuildAndTest /p:Coverage=True /p:CodeCoverageAssemblies="System.Private.CoreLib"
-```
-
-## Benchmarking/Profiling
-
-https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/benchmarking.md  
-
-Adam Sitnik  
-https://github.com/dotnet/corefxlab/pull/2369#issuecomment-399122942  
-https://github.com/dotnet/coreclr/pull/22832#issuecomment-471991845  
-
-Andrey Akinshin https://github.com/dotnet/corefx/pull/32389#issuecomment-424642336  
-Viktor Hofer https://github.com/dotnet/corefx/pull/30632#issuecomment-399778513  
-corefx guide(my [PR](https://github.com/dotnet/coreclr/pull/18524#issuecomment-398237008)) https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/performance-tests.md  
-
-Performance repo https://github.com/dotnet/performance  
-https://github.com/dotnet/performance/tree/master/src/tools/ResultsComparer Comparer  
-
-Run benchmarks multi corerun.exe
-```
-.\scripts\benchmarks_ci.py --frameworks netcoreapp3.0 --filter *.Perf_Dictionary.* --corerun D:\git\corefxupstream\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe D:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe --bdn-arguments="--join"
-```
-
 Stephen's way to profile allocation https://github.com/dotnet/corefx/pull/36056#issuecomment-476671769  
 
 ## Extras
