@@ -1,3 +1,4 @@
+set GIT_ASK_YESNO=false
 taskkill /IM dotnet.exe /F
 taskkill /IM VBCSCompiler.exe /F
 taskkill /IM msbuild.exe /F
