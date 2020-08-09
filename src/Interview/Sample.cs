@@ -4,13 +4,19 @@ using System.Diagnostics;
 
 namespace Interview
 {
+    public class TreeNode2
+    {
+        public TreeNode2 left;
+        public TreeNode2 right;
+    }
+
     [DebuggerDisplay("{Name}")]
     public class Project
     {
         public List<Project> DependsOn { get; set; } = new List<Project>();
         public List<Project> IsDependencyFor { get; set; } = new List<Project>();
         public string Name { get; set; }
-        public void AddDependand(Project p)
+        public void AddDependsOn(Project p)
         {
             if (!DependsOn.Contains(p))
             {
@@ -28,7 +34,37 @@ namespace Interview
         public void Start()
         {
             // Stack();
-            BuildOrder();
+            // BuildOrder();
+            Depth();
+        }
+
+        public void Depth()
+        {
+            TreeNode2 n = new TreeNode2();
+            n.left = new TreeNode2();
+            n.right = new TreeNode2();
+
+            Console.WriteLine(maxDepth(n));
+
+            static int maxDepth(TreeNode2 root)
+            {
+                if (root == null)
+                {
+                    return 0;
+                }
+                if (root.left == null && root.right == null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    int l = maxDepth(root.left);
+                    int r = maxDepth(root.right);
+                    return (1 + ((l > r) ? l : r));
+                    //T O(n) S O(n)
+
+                }
+            }
         }
 
         public void BuildOrder()
@@ -40,14 +76,14 @@ namespace Interview
             Project e = new Project() { Name = "E" };
             Project f = new Project() { Name = "F" };
 
-            a.AddDependand(b);
+            a.AddDependsOn(b);
 
-            b.AddDependand(c);
-            b.AddDependand(d);
+            b.AddDependsOn(c);
+            b.AddDependsOn(d);
 
-            c.AddDependand(f);
+            c.AddDependsOn(f);
 
-            d.AddDependand(e);
+            d.AddDependsOn(e);
 
             // Ciruclar Dep
             // e.AddDependand(a);
@@ -60,8 +96,7 @@ namespace Interview
             int prjN = pjs.Count;
             List<Project> finalOrder = new List<Project>();
 
-            int totalProject = pjs.Count;
-            while (totalProject > 0)
+            while (pjs.Count > 0)
             {
                 bool circularDep = true;
 
@@ -71,7 +106,6 @@ namespace Interview
                     {
                         finalOrder.Add(p);
                         pjs.Remove(p);
-                        totalProject--;
                         circularDep = false;
 
                         foreach (Project p2 in p.IsDependencyFor)
