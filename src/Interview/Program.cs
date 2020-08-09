@@ -186,8 +186,9 @@ namespace Interview
             // new int[] { 1, 2, 7, 8 }, new int[] { 3, 4, 5 }
             // new int[] { 1, 2, 7, 8, 9 }, new int[] { 3, 4, 5 }
             // );
+            //printNSE(new int[] { 10, 3, 7 }, 3);
 
-            printNSE(new int[] { 10, 3, 7 }, 3);
+            new Sample().Start();
             Console.ReadKey();
         }
 

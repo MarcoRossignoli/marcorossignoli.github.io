@@ -45,7 +45,7 @@ sum of 1 to n = n(n+1)/2 = n^2
 sum of 1 to n-1 = n(n-1)/2 = n^2
 sum of 2^n(power of 2) = 1 + 2 + 4 + 8 = 2^(n+1)-1 2^n
 
-O(log n), O(n) , O(n log n) , O(n^2) , O(2^x) , O(n!)
+O(1), O(log n), O(n) , O(n log n) , O(n^2) , O(2^x) , O(n!)
 
 https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/
 
