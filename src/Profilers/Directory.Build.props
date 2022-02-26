@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    <Artifacts>$(RepoRoot)artifacts</Artifacts>
+    <BaseOutputPath>$(Artifacts)\$(MSBuildProjectName)</BaseOutputPath>
+  </PropertyGroup>
+</Project>

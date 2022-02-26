@@ -279,3 +279,4 @@ config.ps1
 /src/RegExPerf/before/results
 **/before/results
 **/test-results
+**/artifacts
