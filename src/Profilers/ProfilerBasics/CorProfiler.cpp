@@ -4,6 +4,8 @@
 #include "CorProfiler.h"
 #include "corhlpr.h"
 #include <string>
+#include <Logger.h>
+#include <iostream>
 
 CorProfiler::CorProfiler() : refCount(0), corProfilerInfo(nullptr)
 {
@@ -32,10 +34,10 @@ HRESULT STDMETHODCALLTYPE CorProfiler::Initialize(IUnknown* pICorProfilerInfoUnk
     auto hr = this->corProfilerInfo->SetEventMask(eventMask);
     if (hr != S_OK)
     {
-        printf("ERROR: Profiler SetEventMask failed (HRESULT: %d)", hr);
+        Logger::Log("ERROR: Profiler SetEventMask failed");
     }
 
-    printf("CorProfiler::Initialize\n");
+    Logger::Log("CorProfiler::Initialize\n");
     return S_OK;
 }
 
@@ -47,7 +49,7 @@ HRESULT STDMETHODCALLTYPE CorProfiler::Shutdown()
         this->corProfilerInfo = nullptr;
     }
 
-    printf("CorProfiler::Shutdown\n");
+    Logger::Log("CorProfiler::Shutdown\n");
     return S_OK;
 }
 
@@ -143,7 +145,33 @@ HRESULT STDMETHODCALLTYPE CorProfiler::FunctionUnloadStarted(FunctionID function
 
 HRESULT STDMETHODCALLTYPE CorProfiler::JITCompilationStarted(FunctionID functionId, BOOL fIsSafeToBlock)
 {
-    printf("CorProfiler::JITCompilationStarted\n");
+    Logger::Log("CorProfiler::JITCompilationStarted\n");
+
+    ClassID classId;
+    ModuleID moduleId;
+    mdToken mdtokenFunction;
+
+    this->corProfilerInfo->GetFunctionInfo(functionId, &classId, &moduleId, &mdtokenFunction);
+
+    LPCBYTE loadAddress;
+    ULONG nameLen = 0;
+    AssemblyID assemblyId;
+
+    HRESULT hr = this->corProfilerInfo->GetModuleInfo(moduleId, &loadAddress, nameLen, &nameLen, NULL, &assemblyId);
+    if (SUCCEEDED(hr))
+    {
+        WCHAR* pszName = new WCHAR[nameLen];  // count the trailing \0
+        this->corProfilerInfo->GetModuleInfo(moduleId, &loadAddress, nameLen, &nameLen, pszName, &assemblyId);
+
+        std::wcout << "Module: " << pszName << "\n";
+
+        //  Logger::Log(output);
+        delete[] pszName;
+    }
+    else
+        Logger::Log("(UNKNOWN)");
+
+    Logger::Log("--------------\n");
     return S_OK;
 }
 

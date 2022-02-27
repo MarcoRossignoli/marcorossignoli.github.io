@@ -1,5 +1,4 @@
 LIBRARY "ProfilerBasics.Dll"
 
 EXPORTS
-    DllCanUnloadNow PRIVATE
     DllGetClassObject PRIVATE
