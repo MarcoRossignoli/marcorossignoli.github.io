@@ -1,0 +1,5 @@
+LIBRARY "CLRIEProfiler.Dll"
+
+EXPORTS
+    DllCanUnloadNow PRIVATE
+    DllGetClassObject PRIVATE

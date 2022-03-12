@@ -18,23 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ClassFactory.h" />
-    <ClInclude Include="CorProfiler.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ClassFactory.cpp" />
-    <ClCompile Include="CorProfiler.cpp" />
-    <ClCompile Include="dllmain.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClrProfiler.def" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7e901e9f-e414-48cc-8a90-f6d07069b3e5}</ProjectGuid>
-    <RootNamespace>ProfilerBasics</RootNamespace>
+    <ProjectGuid>{817e9420-5406-4ced-897c-7cda10268964}</ProjectGuid>
+    <RootNamespace>CLRIEProfiler</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -84,7 +72,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(Artifacts)\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -102,11 +89,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>$(MSBuildProjectDirectory)\CLRIEProfiler.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)CLRIEProfiler.xml $(BaseOutputPath) /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -130,12 +122,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(MSBuildProjectDirectory)\ClrProfiler.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(MSBuildProjectDirectory)\CLRIEProfiler.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)CLRIEProfiler.xml $(BaseOutputPath)$(LibrariesArchitecture)\$(Configuration) /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -153,6 +149,24 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="CLRIEProfiler.def" />
+    <None Include="CLRIEProfiler.xml">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="InstrumentationMethod.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Factory.h" />
+    <ClInclude Include="InstrumentationEngine.h" />
+    <ClInclude Include="InstrumentationMethod.h" />
+    <ClInclude Include="common.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -15,27 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CorProfiler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ClassFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="CLRIEProfiler.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CLRIEProfiler.def">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CorProfiler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ClassFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstrumentationMethod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClrProfiler.def">
-      <Filter>Resource Files</Filter>
-    </None>
+    <ClInclude Include="InstrumentationEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentationMethod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

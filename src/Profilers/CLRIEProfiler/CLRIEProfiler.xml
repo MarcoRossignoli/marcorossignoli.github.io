@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstrumentationEngineConfiguration>
+    <InstrumentationMethod>
+        <Name>Instrumentation Method Test</Name>
+        <Description>Enable testing instrumentation in the instrumentation engine</Description>
+        <Module>CLRIEProfiler.dll</Module>
+        <ClassGuid>{cf0d821e-299b-5307-a3d8-b283c03916dd}</ClassGuid>
+        <Priority>50</Priority>
+    </InstrumentationMethod>
+</InstrumentationEngineConfiguration>

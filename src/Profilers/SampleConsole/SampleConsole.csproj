@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <None Remove="run.cmd" />
+    <None Remove="runCLRIE.cmd" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="runCLRIE.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="run.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
