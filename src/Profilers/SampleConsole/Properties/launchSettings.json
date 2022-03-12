@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "SampleConsole": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CORECLR_PROFILER_PATH_64": "..\\..\\..\\ProfilerBasics\\x64\\Debug\\ProfilerBasics.dll",
+        "CORECLR_ENABLE_PROFILING": "1",
+        "CORECLR_PROFILER": "{cf0d821e-299b-5307-a3d8-b283c03916dd}"
+      }
+    }
+  }
+}
