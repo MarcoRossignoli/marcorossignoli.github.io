@@ -6,6 +6,7 @@
 #include <string>
 #include <Logger.h>
 #include <iostream>
+#include <atlcomcli.h>
 
 CorProfiler::CorProfiler() : refCount(0), corProfilerInfo(nullptr)
 {
@@ -172,6 +173,12 @@ HRESULT STDMETHODCALLTYPE CorProfiler::JITCompilationStarted(FunctionID function
         Logger::Log("(UNKNOWN)");
 
     Logger::Log("--------------\n");
+
+    CComPtr<IMethodMalloc> pMalloc;
+    this->corProfilerInfo->GetILFunctionBodyAllocator(moduleId, &pMalloc);
+
+    // this->corProfilerInfo->SetILFunctionBody(moduleId, m_tkFunction, pFunction);
+
     return S_OK;
 }
 

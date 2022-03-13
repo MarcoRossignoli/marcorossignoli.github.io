@@ -20,8 +20,8 @@ BOOL STDMETHODCALLTYPE DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID
     {
         case DLL_PROCESS_ATTACH:
             Logger::Log("DllMain DLL_PROCESS_ATTACH\n");
-            printf("Waiting for debugger attach...pid: %i\n", processId);
-            cin.ignore();
+            // printf("Waiting for debugger attach...pid: %i\n", processId);
+            // cin.ignore();
             break;
 
         case DLL_THREAD_ATTACH:
