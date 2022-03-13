@@ -32,8 +32,6 @@ extern "C" HRESULT STDMETHODCALLTYPE DllGetClassObject(REFCLSID rclsid, REFIID r
         return E_FAIL;
     }
 
-    printf("[I'm here]\n");
-
     return factory->QueryInterface(riid, ppv);
 }
 

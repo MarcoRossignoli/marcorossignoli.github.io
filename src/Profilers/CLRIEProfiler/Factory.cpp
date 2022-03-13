@@ -46,8 +46,7 @@ HRESULT STDMETHODCALLTYPE ClassFactory::CreateInstance(IUnknown *pUnkOuter, REFI
 {
     HRESULT hr = S_OK;
 
-    CComPtr<CInstrumentationMethod> pInstrumentationMethod;
-    pInstrumentationMethod.Attach(new CInstrumentationMethod);
+    CInstrumentationMethod* pInstrumentationMethod = new CInstrumentationMethod();
     if (pInstrumentationMethod == NULL)
     {
         return E_OUTOFMEMORY;

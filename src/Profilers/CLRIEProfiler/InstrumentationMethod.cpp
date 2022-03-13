@@ -1,6 +1,7 @@
 
 #include "common.h"
 #include "InstrumentationMethod.h"
+#include <string>
 
 HRESULT CInstrumentationMethod::Initialize(_In_ IProfilerManager* pProfilerManager)
 {
@@ -44,7 +45,21 @@ HRESULT STDMETHODCALLTYPE CInstrumentationMethod::OnShutdown()
 
 HRESULT STDMETHODCALLTYPE CInstrumentationMethod::ShouldInstrumentMethod(_In_ IMethodInfo* pMethodInfo, _In_ BOOL isRejit, _Out_ BOOL* pbInstrument)
 {
-    *pbInstrument = FALSE;
+    BSTR fullName = 0;
+    pMethodInfo->GetFullName(&fullName);
+    std::wstring str = fullName;
+
+    if (str.find(L"Main") != std::string::npos) {
+        *pbInstrument = TRUE;
+    }
+    else
+    {
+        *pbInstrument = FALSE;
+    }
+
+    SysFreeString(fullName);
+
+
     return S_OK;
 }
 
@@ -55,6 +70,21 @@ HRESULT STDMETHODCALLTYPE CInstrumentationMethod::BeforeInstrumentMethod(_In_ IM
 
 HRESULT STDMETHODCALLTYPE CInstrumentationMethod::InstrumentMethod(_In_ IMethodInfo* pMethodInfo, _In_ BOOL isRejit)
 {
+    CComPtr<IInstructionGraph> pInstructionGraph;
+    pMethodInfo->GetInstructions(&pInstructionGraph);
+
+    CComPtr<IInstructionFactory> sptrInstructionFactory;
+    pMethodInfo->GetInstructionFactory(&sptrInstructionFactory);
+
+    CComPtr<IInstruction> firstInstr;
+    pInstructionGraph->GetFirstInstruction(&firstInstr);
+
+    CComPtr<IInstruction> nop;
+    sptrInstructionFactory->CreateInstruction(Cee_Nop, &nop);
+
+    // Inject a nop as a first op
+    pInstructionGraph->InsertBefore(firstInstr, nop);
+
     return S_OK;
 }
 
