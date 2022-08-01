@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	string pdb = "C:\\git\\localplayground\\msdia\\MSDIA\\x64\\Debug\\ConsoleApplication1.pdb";
+	string pdb = "C:\\git\\marcorossignoli.github.io\\src\\MSDIA\\ConsoleApp1\\bin\\Debug\\net6.0\\ConsoleApp1.exe";
 	cout << pdb;
 
 	CoInitialize(nullptr);
