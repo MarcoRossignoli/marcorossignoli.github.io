@@ -47,3 +47,8 @@ git fetch -p
 powershell "git branch --list --format '%(if:equals=[gone])%(upstream:track)%(then)%(refname)%(end)' |  ? { $_ -ne '' } | % { $_ -replace '^refs/heads/', '' } | % { git branch -D $_ }"
 ```
 
+* Block push for upstream for safety   
+```
+git remote set-url --push upstream no_push
+```
+
