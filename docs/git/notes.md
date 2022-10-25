@@ -52,3 +52,9 @@ powershell "git branch --list --format '%(if:equals=[gone])%(upstream:track)%(th
 git remote set-url --push upstream no_push
 ```
 
+* Bring branch to fork
+```
+git checkout main
+git checkout --track -b release/7.0.2xx upstream/release/7.0.2xx  <- first name is the one we want on origin the second the upstream one
+git push origin <- push it on origin
+```
