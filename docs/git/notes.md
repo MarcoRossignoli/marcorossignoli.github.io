@@ -16,9 +16,9 @@ git reset --hard origin/<current branch name>
 * Update upstream/origin  
 ```
 git fetch upstream
-git checkout master
-git merge upstream/master
-git push origin master
+git checkout main
+git merge upstream/main
+git push origin main
 ```
 
 Or rebase https://github.com/dotnet/corefx/pull/29751#issuecomment-390033889
