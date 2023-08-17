@@ -49,8 +49,6 @@ https://github.com/0xd4d/dnSpy
 
 ### async primitives
 
-Async primitives
-
 https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-1-asyncmanualresetevent/  
 https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-2-asyncautoresetevent/  
 https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-3-asynccountdownevent/  
