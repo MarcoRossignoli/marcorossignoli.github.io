@@ -47,3 +47,14 @@ https://www.diffchecker.com/
 https://github.com/icsharpcode/ILSpy  
 https://github.com/0xd4d/dnSpy  
 
+### async primitives
+
+Async primitives
+
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-1-asyncmanualresetevent/  
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-2-asyncautoresetevent/  
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-3-asynccountdownevent/  
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-4-asyncbarrier/  
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-5-asyncsemaphore/  
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-6-asynclock/  
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-7-asyncreaderwriterlock/  
