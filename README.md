@@ -19,8 +19,8 @@ Merged in [.NET Core codebases(corefx, coreclr, corert, performance,dotnet/runti
 [Mentions: Recently updated](https://github.com/issues?utf8=%E2%9C%93&q=mentions%3AMarcoRossignoli+sort%3Aupdated-desc+)  
 
 #### Useful links  
-https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-5/ I was mentioned, happy.  
-https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/  I was mentioned, happy.    
+https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-5/ I was mentioned.  
+https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/  I was mentioned.    
 [Toni announce of Coverlet submission to dotnet foundation](https://twitter.com/tonerdo/status/1090680711785402368)  
 [Apis of .Net https://apisof.net/](https://apisof.net/)  
 [.Net Api browser https://docs.microsoft.com/en-us/dotnet/api/](https://docs.microsoft.com/en-us/dotnet/api/)  
