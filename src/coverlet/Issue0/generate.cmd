@@ -1,1 +1,0 @@
-ReportGenerator\ReportGenerator.exe -reports:coverage.opencover.xml -targetdir:coverageReport

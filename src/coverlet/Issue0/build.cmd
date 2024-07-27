@@ -1,1 +1,0 @@
-dotnet test --configuration Release "CoverletTest\CoverletTest.csproj"  /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=..\coverage.opencover.xml  /v:m  /p:ExcludeByFile=\"**/*Attribute*.cs\"

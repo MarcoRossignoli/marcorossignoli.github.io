@@ -1,1 +1,0 @@
-dotnet test /p:CollectCoverage=true XUnitTestProject1
