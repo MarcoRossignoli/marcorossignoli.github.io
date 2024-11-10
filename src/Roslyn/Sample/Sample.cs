@@ -5,7 +5,15 @@
         public void Startup(string str)
         {
             Int @int = new Int();
-            @int.AddExt("prefix");
+            @int.AddExt()
+                .AddExt("prefix")
+                .AddExt();
+
+            //@int.AddExt()
+            //    .AddExt()
+            //    .AddExt();
+
+            @int.AddExt("prefix").AddExt().AddExt();
         }
     }
 
@@ -17,6 +25,16 @@
         }
 
         public static string AddExt<T>(this IInt<T> s)
+        {
+            return ".ext";
+        }
+
+        public static Int AddExt(this Int s)
+        {
+            return s;
+        }
+
+        public static string AddExt(this string s)
         {
             return ".ext";
         }

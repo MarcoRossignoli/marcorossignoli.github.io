@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp;
+﻿using System.Diagnostics;
 using Microsoft.CodeAnalysis;
-using System.Diagnostics;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Playground
@@ -17,31 +12,110 @@ namespace Playground
             Compilation compilation = CreateTestCompilation();
             Debug.Assert(compilation.SyntaxTrees.Count() == 1);
 
-            SyntaxTree tree = compilation.SyntaxTrees.First();
-            CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
-            SemanticModel semanticModel = compilation.GetSemanticModel(tree);
-
-            IEnumerable<MemberAccessExpressionSyntax> memberAccess =
-                root.DescendantNodes().OfType<MemberAccessExpressionSyntax>()
-                .Where(x => x.IsKind(SyntaxKind.SimpleMemberAccessExpression));
-
-            INamedTypeSymbol integer = compilation.GetTypeByMetadataName("System.Int32")
-                ?? throw new Exception("System.Int32 not found in the compilation");
-            INamedTypeSymbol? iintType = compilation.GetTypeByMetadataName("Sample.IInt`1") 
-                ?? throw new Exception("Sample.IInt not found in the compilation");
-            INamedTypeSymbol iintTypeOfInt =  iintType.Construct(integer);
-
-            foreach (MemberAccessExpressionSyntax access in memberAccess)
+            foreach (SyntaxTree sourceTree in compilation.SyntaxTrees)
             {
-                // Identify the extension method call
-                SymbolInfo symbolInfo = semanticModel.GetSymbolInfo(access);
-                if (symbolInfo.Symbol is IMethodSymbol methodSymbol &&
-                    methodSymbol.IsExtensionMethod &&
-                    methodSymbol.Name == "AddExt" &&
-                    SymbolEqualityComparer.Default.Equals(methodSymbol.ReceiverType, iintTypeOfInt))
-                {
+                SemanticModel model = compilation.GetSemanticModel(sourceTree);
 
+                RemoveParameterForAdd rewriter = new(model);
+
+                SyntaxNode newSource = rewriter.Visit(sourceTree.GetRoot());
+
+                if (newSource != sourceTree.GetRoot())
+                {
+                    // File.WriteAllText(sourceTree.FilePath, newSource.ToFullString());
+                    Console.WriteLine(newSource.ToString());
                 }
+            }
+
+            //SyntaxTree tree = compilation.SyntaxTrees.First();
+            //SyntaxNode root = tree.GetRoot();
+            //// Console.WriteLine("=== BEFORE ===\n\n" + root.ToString());
+            //SemanticModel semanticModel = compilation.GetSemanticModel(tree);
+
+            //IEnumerable<MemberAccessExpressionSyntax> memberAccess =
+            //    root.DescendantNodes().OfType<MemberAccessExpressionSyntax>()
+            //    .Where(x => x.IsKind(SyntaxKind.SimpleMemberAccessExpression));
+
+            //INamedTypeSymbol integer = compilation.GetTypeByMetadataName("System.Int32")
+            //    ?? throw new Exception("System.Int32 not found in the compilation");
+            //INamedTypeSymbol? iintType = compilation.GetTypeByMetadataName("Sample.IInt`1")
+            //    ?? throw new Exception("Sample.IInt not found in the compilation");
+            //INamedTypeSymbol iintTypeOfInt = iintType.Construct(integer);
+
+            //foreach (MemberAccessExpressionSyntax originalMemberAccess in memberAccess)
+            //{
+            //    if (originalMemberAccess.Parent is not InvocationExpressionSyntax invocationExpressionSyntax)
+            //    {
+            //        continue;
+            //    }
+
+            //    // Identify the extension method call
+            //    SymbolInfo symbolInfo = semanticModel.GetSymbolInfo(originalMemberAccess);
+            //    if (symbolInfo.Symbol is IMethodSymbol methodSymbol &&
+            //        methodSymbol.IsExtensionMethod &&
+            //        methodSymbol.Name == "AddExt" &&
+            //        methodSymbol.Parameters.Length > 0 &&
+            //        SymbolEqualityComparer.Default.Equals(methodSymbol.ReceiverType, iintTypeOfInt))
+            //    {
+            //        // Console.WriteLine("=== OLD EXPRESSION ===\n\n" + invocationExpressionSyntax.ToString());
+
+            //        // Remove arguments from the invocation
+            //        InvocationExpressionSyntax newInvokationExpression = invocationExpressionSyntax
+            //            .WithArgumentList(SyntaxFactory.ArgumentList());
+            //        newInvokationExpression = newInvokationExpression.WithTriviaFrom(invocationExpressionSyntax);
+
+            //        // Console.WriteLine("=== NEW EXPRESSION ===\n\n" + newInvokationExpression.ToString());
+
+            //        Console.WriteLine("=== BEFORE TO APPLY ===\n\n" + root.ToString());
+
+            //        root = root.ReplaceNode(invocationExpressionSyntax, newInvokationExpression);
+
+            //        Console.WriteLine("=== AFTER ===\n\n" + root.ToString());
+
+            //        Console.Clear();
+            //    }
+            //}
+
+            //Console.WriteLine("=== AFTER ===\n\n" + root.ToString());
+        }
+
+        public class RemoveParameterForAdd : CSharpSyntaxRewriter
+        {
+            private readonly SemanticModel _semanticModel;
+            private readonly INamedTypeSymbol _integer;
+            private readonly INamedTypeSymbol? _iintType;
+            private readonly INamedTypeSymbol _iintTypeOfInt;
+
+            public RemoveParameterForAdd(SemanticModel semanticModel)
+            {
+                _integer = semanticModel.Compilation.GetTypeByMetadataName("System.Int32")
+                    ?? throw new Exception("System.Int32 not found in the compilation");
+                _iintType = semanticModel.Compilation.GetTypeByMetadataName("Sample.IInt`1")
+                    ?? throw new Exception("Sample.IInt not found in the compilation");
+                _iintTypeOfInt = _iintType.Construct(_integer);
+                _semanticModel = semanticModel;
+            }
+
+            public override SyntaxNode? VisitInvocationExpression(InvocationExpressionSyntax node)
+            {
+                if (node.ChildNodes().FirstOrDefault() is MemberAccessExpressionSyntax memberAccessExpressionSyntax && memberAccessExpressionSyntax.IsKind(SyntaxKind.SimpleMemberAccessExpression))
+                {
+                    SymbolInfo symbolInfo = _semanticModel.GetSymbolInfo(memberAccessExpressionSyntax);
+                    if (symbolInfo.Symbol is IMethodSymbol methodSymbol &&
+                        methodSymbol.IsExtensionMethod &&
+                        methodSymbol.Name == "AddExt" &&
+                        methodSymbol.Parameters.Length > 0 &&
+                        SymbolEqualityComparer.Default.Equals(methodSymbol.ReceiverType, _iintTypeOfInt))
+                    {
+                        // Remove arguments from the invocation
+                        InvocationExpressionSyntax newInvokationExpression = node
+                            .WithArgumentList(SyntaxFactory.ArgumentList());
+                        newInvokationExpression = newInvokationExpression.WithTriviaFrom(node);
+                        return newInvokationExpression;
+                    }
+                }
+
+                return base.VisitInvocationExpression(node);
             }
         }
 
