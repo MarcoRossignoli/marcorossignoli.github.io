@@ -14,6 +14,9 @@
             //    .AddExt();
 
             @int.AddExt("prefix").AddExt().AddExt();
+
+            var r = @int.AddExt("prefix");
+            r.AddExt().AddExt();
         }
     }
 

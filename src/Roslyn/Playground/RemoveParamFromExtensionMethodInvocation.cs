@@ -23,7 +23,8 @@ namespace Playground
                 if (newSource != sourceTree.GetRoot())
                 {
                     // File.WriteAllText(sourceTree.FilePath, newSource.ToFullString());
-                    Console.WriteLine(newSource.ToString());
+                    Console.WriteLine("== BEFORE ==\n\n" + sourceTree.ToString());
+                    Console.WriteLine("== AFTER ==\n\n" + newSource.ToString());
                 }
             }
 
